@@ -116,11 +116,20 @@ module.exports.start = function start(config) {
         });
 
         socket.on('disconnect', function () {
+            var data;
             if (activeConnections.client[socket.id]) {
-                var data = activeConnections.joins[socket.id];
+                data = activeConnections.joins[socket.id];
                 socket.leave(data.room);
                 delete activeConnections.joins[socket.id];
                 socketServer.sockets.emit('clientDisconnected', data);
+            }
+
+            if (activeConnections.remote[socket.id]) {
+                data = activeConnections.joins[socket.id];
+                if (data) {
+                    socket.leave(data.room);
+                    delete activeConnections.joins[socket.id];
+                }
             }
 
             delete activeConnections.client[socket.id];

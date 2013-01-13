@@ -95,9 +95,8 @@
 
     </style>
 </head>
-
 <body>
-<div id="main-wrapper">
+    <div id="main-wrapper">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container-fluid">
@@ -167,7 +166,6 @@ function SocketServer() {
         self.manager.leave(data.id, data.room);
     });
     this.socket.on('console', function (data) {
-        //console.log('received', data);
         self.manager.log(data.id, data);
     });
 }
