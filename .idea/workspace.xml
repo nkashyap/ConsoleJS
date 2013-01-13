@@ -2,32 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a443409a-9e2c-40b9-828b-2c44d355713c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI/bootstrap/img/glyphicons-halflings-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI/bootstrap/img/glyphicons-halflings.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/Config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/Server.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/Start.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI/bootstrap/css/bootstrap-responsive.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI/bootstrap/css/bootstrap-responsive.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI/bootstrap/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI/bootstrap/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI/bootstrap/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI/bootstrap/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Static/client1.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Static/client2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Static/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\RequestManager.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\index.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Static/index.html" afterPath="$PROJECT_DIR$/Static/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="E:\Dev\ConsoleJS\ConsoleJS.js" afterPath="$PROJECT_DIR$/Client/ConsoleJS.js" />
-      <change type="MOVED" beforePath="E:\Dev\ConsoleJS\console.js" afterPath="$PROJECT_DIR$/Static/console.js" />
     </list>
     <ignored path="ConsoleJS.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/ConsoleJS.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358075791537" ignored="false" />
-    <file path="/Dummy.txt" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358081829103" ignored="false" />
-    <file path="/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358096832008" ignored="false" />
+    <file path="/Dummy.txt" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358096986228" ignored="false" />
+    <file path="/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358110306380" ignored="false" />
     <file path="/RequestManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357495395468" ignored="false" />
     <file path="/client.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358077090758" ignored="false" />
     <file path="$PROJECT_DIR$/../GetAppointment/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358031848605" ignored="false" />
@@ -101,31 +83,10 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Static/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="267" column="5" selection-start="7908" selection-end="7908" vertical-scroll-proportion="1.088937">
+            <state line="10" column="26" selection-start="483" selection-end="483" vertical-scroll-proportion="-1.9172113">
               <folding>
-                <element signature="e#1872#1935#0" expanded="false" />
-                <element signature="e#1986#2051#0" expanded="false" />
-                <element signature="e#2103#2171#0" expanded="false" />
-                <element signature="e#2227#2299#0" expanded="false" />
-                <element signature="e#2346#2399#0" expanded="false" />
-                <element signature="e#2459#2572#0" expanded="false" />
-                <element signature="e#2635#2743#0" expanded="false" />
-                <element signature="e#2970#3090#0" expanded="false" />
-                <element signature="e#3313#3356#0" expanded="false" />
-                <element signature="e#3396#3636#0" expanded="false" />
-                <element signature="e#3676#3740#0" expanded="false" />
-                <element signature="e#3804#4039#0" expanded="false" />
-                <element signature="e#4097#4166#0" expanded="false" />
-                <element signature="e#4224#4396#0" expanded="false" />
-                <element signature="e#4718#4827#0" expanded="false" />
-                <element signature="e#4889#4999#0" expanded="false" />
-                <element signature="e#5966#6230#0" expanded="false" />
-                <element signature="e#6410#6475#0" expanded="false" />
-                <element signature="e#6526#6605#0" expanded="false" />
-                <element signature="e#8097#8238#0" expanded="false" />
-                <element signature="e#8287#8323#0" expanded="false" />
-                <element signature="e#8378#9281#0" expanded="false" />
-                <element signature="e#8463#8870#0" expanded="false" />
+                <element signature="tag#style#0;tag#head#0;tag#html#0" expanded="false" />
+                <element signature="tag#div#0;tag#body#0;tag#html#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -490,6 +451,15 @@
       <created>1356252491264</created>
       <updated>1356252491264</updated>
     </task>
+    <task id="LOCAL-00001" summary="Javascript remote console logging work in progress">
+      <created>1358096941305</created>
+      <updated>1358096941305</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Javascript remote console logging work in progress">
+      <created>1358096989968</created>
+      <updated>1358096989968</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -516,7 +486,7 @@
     <frame x="-1928" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4483493" sideWeight="0.49359658" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4493063" sideWeight="0.49359658" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -527,17 +497,17 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15101388" sideWeight="0.6710671" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49573106" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49786553" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12966916" sideWeight="0.5516507" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920128" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12966916" sideWeight="0.5506937" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24866596" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49573106" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -719,31 +689,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Static/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="267" column="5" selection-start="7908" selection-end="7908" vertical-scroll-proportion="1.088937">
+        <state line="10" column="26" selection-start="483" selection-end="483" vertical-scroll-proportion="-1.9172113">
           <folding>
-            <element signature="e#1872#1935#0" expanded="false" />
-            <element signature="e#1986#2051#0" expanded="false" />
-            <element signature="e#2103#2171#0" expanded="false" />
-            <element signature="e#2227#2299#0" expanded="false" />
-            <element signature="e#2346#2399#0" expanded="false" />
-            <element signature="e#2459#2572#0" expanded="false" />
-            <element signature="e#2635#2743#0" expanded="false" />
-            <element signature="e#2970#3090#0" expanded="false" />
-            <element signature="e#3313#3356#0" expanded="false" />
-            <element signature="e#3396#3636#0" expanded="false" />
-            <element signature="e#3676#3740#0" expanded="false" />
-            <element signature="e#3804#4039#0" expanded="false" />
-            <element signature="e#4097#4166#0" expanded="false" />
-            <element signature="e#4224#4396#0" expanded="false" />
-            <element signature="e#4718#4827#0" expanded="false" />
-            <element signature="e#4889#4999#0" expanded="false" />
-            <element signature="e#5966#6230#0" expanded="false" />
-            <element signature="e#6410#6475#0" expanded="false" />
-            <element signature="e#6526#6605#0" expanded="false" />
-            <element signature="e#8097#8238#0" expanded="false" />
-            <element signature="e#8287#8323#0" expanded="false" />
-            <element signature="e#8378#9281#0" expanded="false" />
-            <element signature="e#8463#8870#0" expanded="false" />
+            <element signature="tag#style#0;tag#head#0;tag#html#0" expanded="false" />
+            <element signature="tag#div#0;tag#body#0;tag#html#0" expanded="false" />
           </folding>
         </state>
       </provider>
