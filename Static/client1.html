@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ConsoleJS - Test Page</title>
+    <!--<script type="text/javascript" src="Core/RequestManager.js"></script>-->
+    <script type="text/javascript" src="http://localhost:8082/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="http://localhost:8082/Client/ConsoleJS.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    ConsoleJS.config({
+        identity : 'Client 1',
+        overrideNativeConsole: true,
+        enableNativeConsoleLogging: true,
+        enableRemoteConsoleLogging: true,
+        enableWebConsoleLogging: false
+    });
+
+    setInterval(function(){
+//        console.time('test');
+        console.log('log test');
+        console.info('info test');
+        console.warn('warn test');
+        console.debug('debug test');
+        console.assert(1 === 1, 'assert test');
+        console.assert(1 !== 1, 'assert test');
+        console.trace();
+
+        try {
+            undef();
+        } catch(e) {
+            console.error(e);
+            console.exception(e);
+        }
+
+//        console.time('test-child');
+//        console.count('test');
+//        console.count('test-child');
+//        console.count('test-child');
+//        console.count('test');
+//
+//        console.dir(document.body);
+//        console.dirxml(document.body);
+//
+//        console.timeEnd('test-child');
+//        console.timeEnd('test');
+
+        //console.profile();
+        //console.profileEnd();
+        //console.group();
+        //console.groupCollapsed();
+        //console.groupEnd();
+        //console.markTimeline();
+        //console.timeStamp();
+
+    }, 10000);
+
+</script>
+</body>
+</html>

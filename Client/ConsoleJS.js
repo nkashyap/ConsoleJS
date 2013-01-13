@@ -14,20 +14,20 @@ var ConsoleJS = (function () {
         counters = {},
         timeCounters = {},
         withoutScope = ['dir', 'dirxml'],
-        manager,
         wrapper,
         settings = {
+            identity : 'NoIdentity',
             overrideNativeConsole: true,
             enableNativeConsoleLogging: true,
 
             enableRemoteConsoleLogging: true,
-            remoteConsoleURL: '',
             remoteCallback: function (type, log, stack) {
                 console.log(arguments);
             },
 
             enableWebConsoleLogging: false
         },
+        server = new SocketServer(settings.identity),
         formatter = {
             chrome: function (e, obj) {
                 if (obj) {
@@ -234,25 +234,26 @@ var ConsoleJS = (function () {
                 return result;
             },
 
-            other : function(fn, obj){
+            other: function (fn, obj) {
                 var frames = [],
                     maxStackSize = 30,
                     i = 0,
                     length;
 
-                try{
-                    for (;(fn = fn.caller);){
+                try {
+                    for (; (fn = fn.caller);) {
                         frames.push({
                             name: getFuncName(fn),
                             fn: fn
                         });
 
-                        if(++i >= maxStackSize) break;
+                        if (++i >= maxStackSize) break;
                     }
-                }catch(e){}
+                } catch (e) {
+                }
 
-                if(!obj){
-                    for(i = 0, length = frames.length; i < length; i++){
+                if (!obj) {
+                    for (i = 0, length = frames.length; i < length; i++) {
                         frames[i] = frames[i].name;
                     }
                 }
@@ -279,6 +280,8 @@ var ConsoleJS = (function () {
         if (settings.overrideNativeConsole) {
             window.console = window.ConsoleJS;
         }
+
+        server.identity = cfg.identity;
     }
 
     function sort(a, b) {
@@ -316,64 +319,64 @@ var ConsoleJS = (function () {
         if (typeList.indexOf(type) > -1) {
 
             switch (type) {
-            case '[object Error]':
-            case '[object ErrorEvent]':
-                obj = obj.message;
+                case '[object Error]':
+                case '[object ErrorEvent]':
+                    obj = obj.message;
 
-            case '[object String]':
-                value = '"' + obj.replace(/\n/g, '\\n').replace(/"/g, '\\"').replace(/</g, '').replace(/>/g, '') + '"';
-                break;
+                case '[object String]':
+                    value = '"' + obj.replace(/\n/g, '\\n').replace(/"/g, '\\"').replace(/</g, '').replace(/>/g, '') + '"';
+                    break;
 
-            case '[object Arguments]':
-                obj = Array.prototype.slice.call(obj);
+                case '[object Arguments]':
+                    obj = Array.prototype.slice.call(obj);
 
-            case '[object Array]':
-                value = '[';
-                for (i = 0, length = obj.length; i < length; i++) {
-                    parts[partsCount++] = stringify(obj[i], simple);
-                }
-                value += parts.join(', ') + ']';
-                break;
-
-            case 'object':
-            case '[object ScriptProfile]':
-            case '[object ScriptProfileNode]':
-            case '[object Object]':
-                value = '{ ';
-                for (prop in obj) {
-                    if (obj.hasOwnProperty(prop)) {
-                        names[namesCount++] = prop;
+                case '[object Array]':
+                    value = '[';
+                    for (i = 0, length = obj.length; i < length; i++) {
+                        parts[partsCount++] = stringify(obj[i], simple);
                     }
-                }
+                    value += parts.join(', ') + ']';
+                    break;
 
-                names.sort(sort);
+                case 'object':
+                case '[object ScriptProfile]':
+                case '[object ScriptProfileNode]':
+                case '[object Object]':
+                    value = '{ ';
+                    for (prop in obj) {
+                        if (obj.hasOwnProperty(prop)) {
+                            names[namesCount++] = prop;
+                        }
+                    }
 
-                for (i = 0; i < namesCount; i++) {
-                    parts[partsCount++] = stringify(names[i]) + ': ' + stringify(obj[names[i]], simple);
-                }
+                    names.sort(sort);
 
-                if (obj.constructor && obj.constructor.name) {
-                    parts[partsCount++] = stringify('constructor') + ': ' + stringify(obj.constructor.name);
-                }
+                    for (i = 0; i < namesCount; i++) {
+                        parts[partsCount++] = stringify(names[i]) + ': ' + stringify(obj[names[i]], simple);
+                    }
 
-                if (type === '[object ScriptProfileNode]') {
-                    parts[partsCount++] = stringify('children') + ': ' + stringify(obj.children());
-                }
+                    if (obj.constructor && obj.constructor.name) {
+                        parts[partsCount++] = stringify('constructor') + ': ' + stringify(obj.constructor.name);
+                    }
 
-                value += parts.join(', ') + '}';
-                break;
+                    if (type === '[object ScriptProfileNode]') {
+                        parts[partsCount++] = stringify('children') + ': ' + stringify(obj.children());
+                    }
 
-            case '[object Number]':
-                value = String(obj);
-                break;
-            case '[object Boolean]':
-                value = obj ? 'true' : 'false';
-                break;
-            case '[object Function]':
-                value = '"' + getFuncName(obj) + '"';
-                break;
-            default:
-                break;
+                    value += parts.join(', ') + '}';
+                    break;
+
+                case '[object Number]':
+                    value = String(obj);
+                    break;
+                case '[object Boolean]':
+                    value = obj ? 'true' : 'false';
+                    break;
+                case '[object Function]':
+                    value = '"' + getFuncName(obj) + '"';
+                    break;
+                default:
+                    break;
             }
         } else if (obj === null) {
             value = '"null"';
@@ -409,24 +412,116 @@ var ConsoleJS = (function () {
         return value;
     }
 
-    function sendRequest(payload) {
-        if (window.RequestManager && !manager) {
-            manager = new RequestManager(console);
+    function SocketServer(id) {
+        var self = this;
+
+        this.identity = id;
+        this.pending = [];
+        this.subscribed = false;
+        this.socket = io.connect(getServerURL());
+
+        this.socket.on('connect', function () {
+            console.log('Connected to the Server');
+            console.log('Subscribe to room', {
+                id: self.socket.socket.sessionid,
+                room : self.identity
+            });
+
+            self.socket.emit('clientSubscribe', {
+                id: self.socket.socket.sessionid,
+                room : self.identity
+            });
+        });
+
+        this.socket.on('clientConnected', function(data) {
+            if(data.id === self.socket.socket.sessionid){
+                console.log('subscribed to room', data);
+                self.subscribed = true;
+                self.processPendingRequest();
+            }
+        });
+
+        this.socket.on('clientDisconnected', function(data) {
+            if(data.id === self.socket.socket.sessionid){
+                console.log('unsubscribed to room', data);
+                self.subscribed = false;
+            }
+        });
+
+        this.socket.on('reconnect', function () {
+            console.log('Reconnected to the Server');
+            console.log('subscribe to', {
+                id: self.socket.socket.sessionid,
+                room : self.identity
+            });
+
+            self.socket.emit('clientSubscribe', {
+                id: self.socket.socket.sessionid,
+                room : self.identity
+            });
+        });
+
+        this.socket.on('disconnect', function () {
+            console.log('Unsubscribe to room', {
+                id: self.socket.socket.sessionid,
+                room : self.identity
+            });
+
+            self.socket.emit('clientUnsubscribe', {
+                id: self.socket.socket.sessionid,
+                room : self.identity
+            });
+
+            console.log('Disconnected from the Server');
+        });
+
+        this.socket.on('connect_failed', function () {
+            console.warn('Failed to connect to the Server');
+        });
+
+        this.socket.on('error', function () {
+            console.warn('Socket Error');
+        });
+
+        this.socket.on('command', function (data) {
+            console.log('command received', data);
+        });
+
+        this.processPendingRequest = function processPendingRequest() {
+            var i = 0, length = this.pending.length;
+            if (length) {
+                do {
+                    var req = this.pending[i++];
+                    this.request(req.type, req.data);
+                } while (i < length)
+            }
+            this.pending = [];
         }
 
-        if (manager) {
-            manager.add({
-                method: 'POST',
-                url: settings.remoteConsoleURL,
-                async: true,
-                payload: payload,
-                headers: {
-                    contentType: 'application/json'
-                }
-            }, function callback(response) {
-                console.log(arguments);
-            });
+        this.request = function request(eventName, data) {
+            if (this.socket.socket.connected && this.subscribed) {
+                data.id = this.socket.socket.sessionid;
+                this.socket.emit(eventName, data);
+            } else {
+                this.pending.push({ type: eventName, data: data });
+            }
         }
+
+        function getServerURL() {
+            var url = '',
+                scripts = window.document.scripts,
+                length = scripts.length;
+
+            while (length > 0) {
+                var src = scripts[--length].src;
+                if (src.indexOf('socket.io') > -1) {
+                    url = src.split('socket.io')[0];
+                    break;
+                }
+            }
+            return url;
+        }
+
     }
 
     function createException() {
@@ -473,14 +568,14 @@ var ConsoleJS = (function () {
         var type = getStackType(e),
             className = ({}).toString.call(e);
 
-        if(['[object Error]','[object ErrorEvent]'].indexOf(className) === -1){
+        if (['[object Error]', '[object ErrorEvent]'].indexOf(className) === -1) {
             wrapper.warn(className + ' error type missing!');
             return [];
         }
 
-        if(type !== 'other' && (!!(e.stack || e.stacktrace) || type === 'opera9')){
+        if (type !== 'other' && (!!(e.stack || e.stacktrace) || type === 'opera9')) {
             return formatter[type](e, obj) || [];
-        }else{
+        } else {
             return formatter.other(arguments.callee, obj);
         }
     }
@@ -499,16 +594,14 @@ var ConsoleJS = (function () {
             var output = {
                 type: type,
                 message: value || stringify(args),
-                callStack: callStack ? stringify(callStack) : ''
+                stack: callStack ? stringify(callStack) : ''
             };
 
             if (settings.remoteCallback) {
-                settings.remoteCallback(output.type, output.message, output.callStack);
+                settings.remoteCallback(output.type, output.message, output.stack);
             }
 
-            if (settings.remoteConsoleURL) {
-                sendRequest(output);
-            }
+            server.request('console', output);
         }
     }
 
