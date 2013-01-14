@@ -1,0 +1,21 @@
+/**
+ * Created with JetBrains WebStorm.
+ * User: nisheeth
+ * Date: 14/01/13
+ * Time: 15:31
+ * To change this template use File | Settings | File Templates.
+ */
+
+function ControlClient(manager, socket){
+    this.manager = manager;
+    this.socket = socket;
+    this.id = this.socket.id;
+    this.rooms = [];
+}
+
+ControlClient.prototype.remove = function remove(){
+
+};
+
+
+module.exports = ControlClient;
