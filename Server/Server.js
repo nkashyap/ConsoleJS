@@ -19,12 +19,9 @@ module.exports.start = function start(config) {
 
     function parseURL(url) {
         if (url == '/') {
-            url = '/index.html';
+            url = '/UI/index.html';
         }
 
-        if (url.indexOf('.html') > -1) {
-            url = '/Static' + url;
-        }
         return url;
     }
 

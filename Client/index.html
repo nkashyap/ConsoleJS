@@ -2,14 +2,13 @@
 <html>
 <head>
     <title>ConsoleJS - Test Page</title>
-    <!--<script type="text/javascript" src="Core/RequestManager.js"></script>-->
     <script type="text/javascript" src="http://localhost:8082/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="http://localhost:8082/Client/ConsoleJS.js"></script>
 </head>
 <body>
 <script type="text/javascript">
     ConsoleJS.config({
-        identity : 'Client 2',
+        identity : 'Client 1',
         overrideNativeConsole: true,
         enableNativeConsoleLogging: true,
         enableRemoteConsoleLogging: true,
@@ -18,14 +17,14 @@
 
     setInterval(function(){
 //        console.time('test');
-        console.log('log test');
-//        console.info('info test');
+//        console.log('log test');
+        console.info('info test');
 //        console.warn('warn test');
 //        console.debug('debug test');
 //        console.assert(1 === 1, 'assert test');
 //        console.assert(1 !== 1, 'assert test');
 //        console.trace();
-
+//
 //        try {
 //            undef();
 //        } catch(e) {
