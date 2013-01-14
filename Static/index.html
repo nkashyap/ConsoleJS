@@ -1,102 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>ConsoleJS</title>
+    <title>ConsoleJS Remote</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="UI/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="UI/bootstrap/css/bootstrap-responsive.min.css">
-    <script src="UI/jquery-1.8.3.min.js"></script>
-    <script src="UI/bootstrap/js/bootstrap.min.js"></script>
+    <link href="UI/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="UI/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <script src="UI/lib/jquery-1.8.3.min.js"></script>
+    <script src="UI/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <style type="text/css">
-        html, body {
-            height: 100%;
-        }
 
-        body {
-            overflow: hidden;
-            padding-top: 60px;
-            padding-bottom: 40px;
-        }
-
-        p {
-            margin: 0 0 1px;
-        }
-
-        .sidebar-nav {
-            padding: 9px 0;
-        }
-
-        .table td, .label {
-            line-height: 16px;
-            font-size: 13px;
-        }
-
-        #main-wrapper {
-            min-height: 100%;
-            height: auto !important;
-            height: 100%;
-            margin: 0px auto -54px;
-        }
-
-        #connectRoomsContent {
-            -moz-box-shadow: 0 0 5px 1px #888;
-            -webkit-box-shadow: 0 0 5px 1px #888;
-            box-shadow: 0 0 5px 1px #888;
-        }
-
-        ::-webkit-scrollbar {
-            width: 15px
-        }
-
-        ::-webkit-scrollbar-button:vertical {
-            background-color: transparent;
-            height: 5px
-        }
-
-        ::-webkit-scrollbar-button:start:decrement {
-            display: block
-        }
-
-        ::-webkit-scrollbar-button:end:increment {
-            display: block
-        }
-
-        ::-webkit-scrollbar-button:vertical:start:increment {
-            display: none
-        }
-
-        ::-webkit-scrollbar-button:vertical:end:decrement {
-            display: none
-        }
-
-        ::-webkit-scrollbar-track-piece {
-            background-color: white
-        }
-
-        ::-webkit-scrollbar-thumb:vertical {
-            background-color: rgba(0, 0, 0, 0.2);
-            height: 50px;
-            border-right: 4px solid white;
-            border-left: 4px solid white
-        }
-
-        ::-webkit-scrollbar-thumb:vertical:hover {
-            background-color: rgba(0, 0, 0, 0.4)
-        }
-
-        ::-webkit-scrollbar-corner:vertical {
-            background-color: white
-        }
-
-        ::-webkit-scrollbar-resizer:vertical {
-            background-color: red
-        }
-
-    </style>
+    <link href="UI/consoleJS.css" rel="stylesheet">
+    <script src="UI/ChatRoom.js"></script>
+    <script src="UI/Client.js"></script>
+    <script src="UI/ClientManager.js"></script>
+    <script src="UI/SocketServer.js"></script>
 </head>
 <body>
-    <div id="main-wrapper">
+<div id="main-wrapper">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container-fluid">
@@ -129,277 +50,33 @@
 </div>
 </body>
 <script type="text/javascript">
-function SocketServer() {
-    var self = this;
-    this.socket = io.connect('http://localhost:8082');
-    this.manager = new ClientManager(this.socket);
 
-    this.socket.on('connect', function () {
-        console.log('Connected to the Server');
-    });
-    this.socket.on('reconnect', function () {
-        console.log('Reconnected to the Server');
-    });
-    this.socket.on('disconnect', function () {
-        console.log('Disconnected from the Server');
-    });
-    this.socket.on('connect_failed', function () {
-        console.warn('Failed to connect to the Server');
-    });
-    this.socket.on('error', function () {
-        console.warn('Socket Error');
-    });
-    this.socket.on('clientConnected', function (data) {
-        console.log('clientConnected: ', data);
-        self.manager.add(data.id, data.room);
-    });
-    this.socket.on('clientDisconnected', function (data) {
-        console.log('clientDisconnected: ', data);
-        self.manager.remove(data.id);
-    });
-    this.socket.on('subscribed', function (data) {
-        console.log('subscribed to room', data);
-        self.manager.join(data.id, data.room);
-    });
-    this.socket.on('unsubscribed', function (data) {
-        console.log('Unsubscribed from room', data);
-        self.manager.leave(data.id, data.room);
-    });
-    this.socket.on('console', function (data) {
-        self.manager.log(data.id, data);
-    });
-}
+(function () {
 
-SocketServer.prototype.request = function request(data) {
-    this.manager.command(data);
-}
+    var server = new SocketServer('http://localhost:8082');
+    server.start();
 
-function ClientManager(socket) {
-    this.clients = [];
-    this.socket = socket;
-}
-
-ClientManager.prototype.getClient = function getClient(id) {
-    var length = this.clients.length;
-    while (length > 0) {
-        var client = this.clients[--length];
-        if (client.id === id) {
-            return client;
-        }
-    }
-    return null;
-}
-
-ClientManager.prototype.add = function add(id, name) {
-    this.clients.push(new Client(id, name, this.socket));
-}
-
-ClientManager.prototype.remove = function remove(id) {
-    var client = this.getClient(id);
-    if (client) {
-        this.clients.splice(this.clients.indexOf(client), 1);
-        client.remove();
-    }
-}
-
-ClientManager.prototype.log = function log(id, data) {
-    var client = this.getClient(id);
-    if (client) {
-        client.log(data);
-    }
-}
-
-ClientManager.prototype.command = function command(data) {
-    console.log(data);
-}
-
-ClientManager.prototype.join = function join(id, room) {
-    var client = this.getClient(id);
-    if (client) {
-        client.join(room);
-    }
-}
-
-ClientManager.prototype.leave = function leave(id, room) {
-    var client = this.getClient(id);
-    if (client) {
-        client.leave(room);
-    }
-}
-
-
-function Client(id, name, socket) {
-    this.target = $("#clientList");
-    this.id = id;
-    this.name = name;
-    this.socket = socket;
-    this.subscribe = false;
-    this.link = null;
-    this.room = null;
-    this.chatRoom = null;
-
-    this.add();
-}
-
-Client.prototype.add = function add() {
-    var self = this;
-    this.link = $("<li><a href='#' id='" + this.id + "'>" + this.name + "</a></li>");
-    this.link.find("a").click(function (e) {
-
-        if (self.subscribe && self.chatRoom) {
-            self.chatRoom.show();
-        }
-
-        if (!self.subscribe) {
-            console.log('Subscribing to room', { id: self.id, room: self.name });
-            self.socket.emit('subscribe', { id: self.id, room: self.name });
-            self.subscribe = true;
+    $('#command').keypress(function (e) {
+        if (e.keyCode == 13 && !e.shiftKey) {
+            var data = $(this).val();
+            if (data) {
+                server.request(data);
+                $(this).val('');
+            }
+            e.preventDefault();
         }
     });
 
-    this.target.append(this.link);
-}
-
-Client.prototype.remove = function remove() {
-    if (self.subscribe) {
-        console.log('unsubscribe', { id: self.id, room: self.name });
-        self.socket.emit('unsubscribe', { id: self.id, room: self.name });
+    function sizing() {
+        var wrapperHeight = $("#main-wrapper").height();
+        var tabHeight = $("#connectRooms").height() || 0;
+        var contentHeight = wrapperHeight - tabHeight - 200;
+        $("#connectRoomsContent").height(contentHeight + "px");
     }
 
-    if (this.link) {
-        this.link.remove();
-    }
-}
+    $(document).ready(sizing);
+    $(window).resize(sizing);
 
-Client.prototype.log = function log(data) {
-    if (this.chatRoom) {
-        this.chatRoom.addLog(data);
-    }
-}
-
-Client.prototype.join = function join(room) {
-    this.chatRoom = new ChatRoom(this.id, this.name);
-}
-
-Client.prototype.leave = function leave(room) {
-    if (this.chatRoom) {
-        this.chatRoom.leave();
-    }
-}
-
-
-function ChatRoom(id, name) {
-    this.target = $("#connectRooms");
-    this.contentTarget = $("#connectRoomsContent");
-    this.id = id;
-    this.name = name;
-    this.tab = null;
-    this.content = null;
-    this.table = null;
-
-    this.add();
-
-    var self = this;
-    this.target.find("li").click(function (e) {
-        e.preventDefault();
-        self.show($(this));
-    });
-}
-
-ChatRoom.prototype.add = function add() {
-    this.tab = $("<li><a href='#" + this.id + "Tab' data-toggle='tab'>" + this.name + "</a></li>");
-    this.content = $("<div class='tab-pane fade' id='" + this.id + "Tab'></div>");
-    this.table = $("<table id='" + this.id + "Log' class='table table-hover table-condensed'></table>");
-
-    this.content.append(this.table);
-    this.contentTarget.append(this.content);
-    this.target.append(this.tab);
-    this.show();
-}
-
-ChatRoom.prototype.show = function show(tab) {
-    tab = tab || this.tab;
-    var index = this.target.find("li").index(tab),
-            content = this.contentTarget.find('> div'),
-            activeContent = this.contentTarget.find('> div:eq(' + index + ')');
-
-    this.target.find("li").removeClass();
-    content.removeClass('fade active');
-    content.hide();
-
-    tab.addClass('selected active');
-    activeContent.show();
-    activeContent.addClass('active');
-}
-
-ChatRoom.prototype.remove = function remove() {
-    if (this.tab) {
-        this.tab.remove();
-    }
-    if (this.content) {
-        this.content.remove();
-    }
-}
-
-ChatRoom.prototype.leave = function leave() {
-    console.log('Left');
-}
-
-ChatRoom.prototype.addLog = function addLog(data) {
-    var row = $("<tr></tr>"),
-            css = '';
-
-    //success
-    switch (data.type) {
-        case 'assert':
-        case 'error':
-            css = 'important';
-            break;
-        case 'warn':
-            css = 'warning';
-            break;
-        case 'info':
-            css = 'info';
-            break;
-        case 'trace':
-        case 'debug':
-            css = 'inverse';
-            break;
-
-    }
-
-    var title = $('<td><span class="label ' + (css ? 'label-' + css : '') + '">' + (data.type || '') + '</span></td>');
-    var msg = $('<td><p class="text ' + (css ? 'text-' + css : '') + '">' + (data.message || '') + '</p></td>');
-
-    row.append(title);
-    row.append(msg);
-    this.table.prepend(row);
-}
-
-
-var server = new SocketServer();
-
-$('#command').keypress(function (e) {
-    if (e.keyCode == 13 && !e.shiftKey) {
-        var data = $(this).val();
-        if (data) {
-            server.request(data);
-            $(this).val('');
-        }
-        e.preventDefault();
-    }
-});
-
-function sizing() {
-    var wrapperHeight = $("#main-wrapper").height();
-    var tabHeight = $("#connectRooms").height() || 0;
-    var contentHeight = wrapperHeight - tabHeight - 200;
-    $("#connectRoomsContent").height(contentHeight + "px");
-}
-
-$(document).ready(sizing);
-$(window).resize(sizing);
-
-
+}());
 </script>
 </html>

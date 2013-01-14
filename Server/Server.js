@@ -1,6 +1,7 @@
 var io = require('socket.io'),
     http = require('http'),
-    fs = require('fs');
+    fs = require('fs'),
+    path = require('path');
 
 module.exports.start = function start(config) {
 
@@ -19,6 +20,10 @@ module.exports.start = function start(config) {
     });
 
     function parseURL(url) {
+        if (url == '/') {
+            url = '/index.html';
+        }
+
         if (url.indexOf('.html') > -1) {
             url = '/Static' + url;
         }
@@ -26,7 +31,18 @@ module.exports.start = function start(config) {
     }
 
     function handler(request, response) {
-        var url = parseURL(request.url);
+        var url = parseURL(request.url),
+            ext = path.extname(url),
+            contentType = 'text/html';
+
+        switch (ext) {
+            case '.js':
+                contentType = 'text/javascript';
+                break;
+            case '.css':
+                contentType = 'text/css';
+                break;
+        }
 
         fs.readFile(__dirname + '/..' + url,
             function (err, data) {
@@ -35,8 +51,8 @@ module.exports.start = function start(config) {
                     return response.end('Error loading ' + request.url);
                 }
 
-                response.writeHead(200);
-                response.end(data);
+                response.writeHead(200, { 'Content-Type': contentType });
+                response.end(data, 'utf-8');
             }
         );
     }
@@ -54,10 +70,13 @@ module.exports.start = function start(config) {
         }
     }
 
+    //todo support multi join
     function getRoom(socket) {
         var data = activeConnections.joins[socket.id];
         return data ? data.room : null;
     }
+
+    var emitAlways = ['subscribed', 'unsubscribed'];
 
     function emit(socket, eventName, data) {
         var room = getRoom(socket);
@@ -68,10 +87,11 @@ module.exports.start = function start(config) {
 
         if (room) {
             socket.broadcast.to(room).emit(eventName, data);
-        } else {
-            //socket.emit(eventName, data);
         }
-        socket.emit(eventName, data);
+
+        if (emitAlways.indexOf(eventName) > -1 || !room) {
+            socket.emit(eventName, data);
+        }
     }
 
     socketServer.sockets.on('connection', function (socket) {
@@ -119,9 +139,11 @@ module.exports.start = function start(config) {
             var data;
             if (activeConnections.client[socket.id]) {
                 data = activeConnections.joins[socket.id];
-                socket.leave(data.room);
-                delete activeConnections.joins[socket.id];
-                socketServer.sockets.emit('clientDisconnected', data);
+                if (data) {
+                    socket.leave(data.room);
+                    delete activeConnections.joins[socket.id];
+                    socketServer.sockets.emit('clientDisconnected', data);
+                }
             }
 
             if (activeConnections.remote[socket.id]) {
