@@ -6,15 +6,37 @@
  * To change this template use File | Settings | File Templates.
  */
 
-function ConsoleClient(manager, socket){
+function ConsoleClient(manager, socket) {
     this.manager = manager;
     this.socket = socket;
     this.id = this.socket.id;
+    this.room = null;
 }
 
-ConsoleClient.prototype.remove = function remove(){
-
+ConsoleClient.prototype.bind = function bind(room) {
+    this.room = room;
 };
 
+ConsoleClient.prototype.subscribe = function subscribe(name) {
+    this.emit('subscribed', { name: name });
+    this.socket.join(name);
+};
+
+ConsoleClient.prototype.unSubscribe = function unSubscribe(name) {
+    this.broadcast('unsubscribed', { name: name }, name);
+    this.socket.leave(name);
+};
+
+ConsoleClient.prototype.emit = function emit(eventName, data) {
+    this.socket.emit(eventName, data);
+};
+
+ConsoleClient.prototype.broadcast = function broadcast(eventName, data, room) {
+    this.socket.broadcast.to(room).emit(eventName, data);
+};
+
+ConsoleClient.prototype.remove = function remove() {
+    this.room.offline();
+};
 
 module.exports = ConsoleClient;

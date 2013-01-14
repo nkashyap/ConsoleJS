@@ -423,26 +423,24 @@ var ConsoleJS = (function () {
         this.socket.on('connect', function () {
             console.log('Connected to the Server');
             console.log('Subscribe to room', {
-                id: self.socket.socket.sessionid,
-                room : self.identity
+                name : self.identity
             });
 
-            self.socket.emit('clientSubscribe', {
-                id: self.socket.socket.sessionid,
-                room : self.identity
+            self.socket.emit('subscribe', {
+                name : self.identity
             });
         });
 
-        this.socket.on('clientConnected', function(data) {
-            if(data.id === self.socket.socket.sessionid){
+        this.socket.on('online', function(data) {
+            if(data.name === self.identity){
                 console.log('subscribed to room', data);
                 self.subscribed = true;
                 self.processPendingRequest();
             }
         });
 
-        this.socket.on('clientDisconnected', function(data) {
-            if(data.id === self.socket.socket.sessionid){
+        this.socket.on('offline', function(data) {
+            if(data.name === self.identity){
                 console.log('unsubscribed to room', data);
                 self.subscribed = false;
             }
@@ -451,28 +449,28 @@ var ConsoleJS = (function () {
         this.socket.on('reconnect', function () {
             console.log('Reconnected to the Server');
             console.log('subscribe to', {
-                id: self.socket.socket.sessionid,
-                room : self.identity
+                name : self.identity
             });
 
-            self.socket.emit('clientSubscribe', {
-                id: self.socket.socket.sessionid,
-                room : self.identity
+            self.socket.emit('subscribe', {
+                name : self.identity
             });
         });
 
         this.socket.on('disconnect', function () {
             console.log('Unsubscribe to room', {
-                id: self.socket.socket.sessionid,
-                room : self.identity
+                name : self.identity
             });
 
-            self.socket.emit('clientUnsubscribe', {
-                id: self.socket.socket.sessionid,
-                room : self.identity
+            self.socket.emit('unsubscribe', {
+                name : self.identity
             });
 
             console.log('Disconnected from the Server');
+        });
+
+        this.socket.on('command', function (data) {
+            console.log('command received', data);
         });
 
         this.socket.on('connect_failed', function () {
@@ -481,10 +479,6 @@ var ConsoleJS = (function () {
 
         this.socket.on('error', function () {
             console.warn('Socket Error');
-        });
-
-        this.socket.on('command', function (data) {
-            console.log('command received', data);
         });
 
         this.processPendingRequest = function processPendingRequest() {
@@ -500,7 +494,7 @@ var ConsoleJS = (function () {
 
         this.request = function request(eventName, data) {
             if (this.socket.socket.connected && this.subscribed) {
-                data.id = this.socket.socket.sessionid;
+                data.name = self.identity;
                 this.socket.emit(eventName, data);
             } else {
                 this.pending.push({ type: eventName, data: data });

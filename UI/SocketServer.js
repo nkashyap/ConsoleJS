@@ -32,24 +32,31 @@ SocketServer.prototype.start = function start() {
     this.socket.on('error', function () {
         console.warn('Socket Error');
     });
-    this.socket.on('clientConnected', function (data) {
-        console.log('clientConnected: ', data);
-        self.manager.add(data.id, data.room);
+
+
+    this.socket.on('online', function (data) {
+        console.log('online: ', data);
+        //TODO remove id or add id
+        self.manager.add(data);
     });
-    this.socket.on('clientDisconnected', function (data) {
-        console.log('clientDisconnected: ', data);
-        self.manager.remove(data.id);
+    this.socket.on('offline', function (data) {
+        console.log('offline: ', data);
+        self.manager.remove(data);
     });
+
     this.socket.on('subscribed', function (data) {
         console.log('subscribed to room', data);
-        self.manager.join(data.id, data.room);
+        //TODO remove id or add id
+        self.manager.join(data);
     });
     this.socket.on('unsubscribed', function (data) {
         console.log('Unsubscribed from room', data);
-        self.manager.leave(data.id, data.room);
+        //TODO remove id or add id
+        self.manager.leave(data);
     });
+
     this.socket.on('console', function (data) {
-        self.manager.log(data.id, data);
+        self.manager.log(data);
     });
 }
 

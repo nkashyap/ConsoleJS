@@ -6,11 +6,10 @@
  * To change this template use File | Settings | File Templates.
  */
 
-function Client(manager, id, name, socket) {
+function Client(manager, data, socket) {
     this.target = $("#clientList");
     this.manager = manager;
-    this.id = id;
-    this.name = name;
+    this.name = data.name;
     this.socket = socket;
     this.subscribe = false;
     this.isActive = false;
@@ -22,7 +21,7 @@ function Client(manager, id, name, socket) {
 
 Client.prototype.add = function add() {
     var self = this;
-    this.link = $("<li><a href='#' id='" + this.id + "'>" + this.name + "</a></li>");
+    this.link = $("<li><a href='#' id='link-" + this.name + "'>" + this.name + "</a></li>");
     this.link.find("a").click(function (e) {
 
         if (self.subscribe && self.chatRoom) {
@@ -30,8 +29,8 @@ Client.prototype.add = function add() {
         }
 
         if (!self.subscribe) {
-            console.log('Subscribing to room', { id: self.id, room: self.name });
-            self.socket.emit('subscribe', { id: self.id, room: self.name });
+            console.log('Subscribing to room', { name: self.name });
+            self.socket.emit('subscribe', { name: self.name });
             self.subscribe = true;
         }
     });
@@ -40,9 +39,9 @@ Client.prototype.add = function add() {
 }
 
 Client.prototype.remove = function remove() {
-    if (self.subscribe) {
-        console.log('unsubscribe', { id: self.id, room: self.name });
-        self.socket.emit('unsubscribe', { id: self.id, room: self.name });
+    if (this.subscribe) {
+        console.log('unsubscribe', { name: this.name });
+        this.socket.emit('unsubscribe', { name: this.name });
     }
 
     if (this.link) {
@@ -57,8 +56,8 @@ Client.prototype.active = function active(flag) {
 }
 
 Client.prototype.command = function command(data) {
-    console.log('command', { id: this.id, room: this.name, data: data });
-    this.socket.emit('command', { id: this.id, room: this.name, data: data });
+    console.log('command', { name: this.name, data: data });
+    this.socket.emit('command', { name: this.name, data: data });
 }
 
 Client.prototype.log = function log(data) {
@@ -67,13 +66,13 @@ Client.prototype.log = function log(data) {
     }
 }
 
-Client.prototype.join = function join(room) {
-    this.chatRoom = new ChatRoom(this, this.id, this.name, room);
+Client.prototype.join = function join() {
+    this.chatRoom = new ChatRoom(this);
 }
 
-Client.prototype.leave = function leave(room) {
+Client.prototype.leave = function leave() {
     if (this.chatRoom) {
-        this.chatRoom.leave(room);
+        this.chatRoom.leave();
     }
 }
 

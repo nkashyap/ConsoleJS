@@ -12,23 +12,23 @@ function ClientManager(socket) {
     this.activeClient = null;
 }
 
-ClientManager.prototype.getClient = function getClient(id) {
+ClientManager.prototype.getClient = function getClient(data) {
     var length = this.clients.length;
     while (length > 0) {
         var client = this.clients[--length];
-        if (client.id === id) {
+        if (client.name === data.name) {
             return client;
         }
     }
     return null;
 }
 
-ClientManager.prototype.add = function add(id, name) {
-    this.clients.push(new Client(this, id, name, this.socket));
+ClientManager.prototype.add = function add(data) {
+    this.clients.push(new Client(this, data, this.socket));
 }
 
-ClientManager.prototype.remove = function remove(id) {
-    var client = this.getClient(id);
+ClientManager.prototype.remove = function remove(data) {
+    var client = this.getClient(data);
     if (client) {
         this.clients.splice(this.clients.indexOf(client), 1);
         client.remove();
@@ -41,12 +41,11 @@ ClientManager.prototype.active = function active(client) {
             this.activeClient.isActive = false;
         }
     }
-
     this.activeClient = client;
 }
 
-ClientManager.prototype.log = function log(id, data) {
-    var client = this.getClient(id);
+ClientManager.prototype.log = function log(data) {
+    var client = this.getClient(data);
     if (client) {
         client.log(data);
     }
@@ -58,16 +57,16 @@ ClientManager.prototype.command = function command(data) {
     }
 }
 
-ClientManager.prototype.join = function join(id, room) {
-    var client = this.getClient(id);
+ClientManager.prototype.join = function join(data) {
+    var client = this.getClient(data);
     if (client) {
-        client.join(room);
+        client.join();
     }
 }
 
-ClientManager.prototype.leave = function leave(id, room) {
-    var client = this.getClient(id);
+ClientManager.prototype.leave = function leave(data) {
+    var client = this.getClient(data);
     if (client) {
-        client.leave(room);
+        client.leave();
     }
 }

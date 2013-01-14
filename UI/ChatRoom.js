@@ -6,13 +6,11 @@
  * To change this template use File | Settings | File Templates.
  */
 
-function ChatRoom(client, id, name, room) {
+function ChatRoom(client) {
     this.target = $("#connectRooms");
     this.contentTarget = $("#connectRoomsContent");
-    this.id = id;
-    this.name = name;
     this.client = client;
-    this.room = room;
+    this.name = this.client.name;
     this.tab = null;
     this.content = null;
     this.table = null;
@@ -21,9 +19,9 @@ function ChatRoom(client, id, name, room) {
 }
 
 ChatRoom.prototype.add = function add() {
-    this.tab = $("<li><a href='#" + this.id + "Tab' data-toggle='tab'>" + this.name + "</a></li>");
-    this.content = $("<div class='tab-pane fade' id='" + this.id + "Tab'></div>");
-    this.table = $("<table id='" + this.id + "Log' class='table table-hover table-condensed'></table>");
+    this.tab = $("<li><a href='#Tab-" + this.name + "' data-toggle='tab'>" + this.name + "</a></li>");
+    this.content = $("<div class='tab-pane fade' id='Content-" + this.name + "'></div>");
+    this.table = $("<table id='Log-" + this.name + "' class='table table-hover table-condensed'></table>");
 
     var self = this;
     this.tab.click(function (e) {
@@ -63,7 +61,7 @@ ChatRoom.prototype.remove = function remove() {
 }
 
 ChatRoom.prototype.leave = function leave() {
-    console.log('Left' + this.room);
+    console.log('Left' + this.client.name);
 }
 
 ChatRoom.prototype.addLog = function addLog(data) {
