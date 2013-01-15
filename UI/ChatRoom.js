@@ -88,9 +88,10 @@ ChatRoom.prototype.addLog = function addLog(data) {
     }
 
     var title = $('<td><span class="label ' + (css ? 'label-' + css : '') + '">' + (data.type || '') + '</span></td>');
-    var msg = $('<td><p class="text ' + (css ? 'text-' + css : '') + '">' + (data.message || '') + '</p></td>');
+    var msg = $('<td><code class="prettyprint">' + (data.message || '') + '</code></td>');
 
     row.append(title);
     row.append(msg);
     this.table.prepend(row);
+    prettyPrint();
 }

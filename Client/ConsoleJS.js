@@ -19,12 +19,8 @@ var ConsoleJS = (function () {
             identity : 'NoIdentity',
             overrideNativeConsole: true,
             enableNativeConsoleLogging: true,
-
             enableRemoteConsoleLogging: true,
-            remoteCallback: function (type, log, stack) {
-                console.log(arguments);
-            },
-
+            remoteCallback: function (type, log, stack) {},
             enableWebConsoleLogging: false
         },
         server = new SocketServer(settings.identity),
@@ -469,8 +465,20 @@ var ConsoleJS = (function () {
             console.log('Disconnected from the Server');
         });
 
-        this.socket.on('command', function (data) {
-            console.log('command received', data);
+        this.socket.on('command', function (cmd) {
+            var evalFun;
+            try{
+                evalFun = new Function([], "return " + cmd.data + ";");
+                var result = evalFun();
+                console.log('command result', result);
+                wrapper.log(result);
+            }catch(e){
+                if(evalFun && evalFun.toString()){
+                    wrapper.error(e, evalFun.toString());
+                }else{
+                    wrapper.error(e);
+                }
+            }
         });
 
         this.socket.on('connect_failed', function () {
@@ -685,7 +693,9 @@ var ConsoleJS = (function () {
             }
 
             var value = node ? node.outerHTML || node.innerHTML || node.toString() || stringify(node) : null;
-            logger("dirxml", node, value);
+            value = value.replace(/</img, '&lt;');
+            value = value.replace(/>/img, '&gt;');
+            logger("dirxml", node,  value);
         },
 
         group: function group() {

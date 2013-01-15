@@ -21,6 +21,10 @@ p {
     font-size: 13px;
 }
 
+pre.prettyprint {
+    margin-bottom: 2px;
+}
+
 #main-wrapper {
     min-height: 100%;
     height: auto !important;

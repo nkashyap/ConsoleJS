@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="Lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="Lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="Lib/prettify/prettify.css" type="text/css" rel="stylesheet" />
 
     <script src="Lib/jquery-1.8.3.min.js"></script>
     <script src="Lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="Lib/prettify/prettify.js"></script>
+    <script src="Lib/prettify/lang-css.js"></script>
+    <script src="Lib/prettify/lang-tex.js"></script>
     <script src="/socket.io/socket.io.js"></script>
 
     <link href="UI/consoleJS.css" rel="stylesheet">
@@ -16,7 +20,7 @@
     <script src="UI/ClientManager.js"></script>
     <script src="UI/SocketServer.js"></script>
 </head>
-<body>
+<body onload="prettyPrint();">
 <div id="main-wrapper">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
