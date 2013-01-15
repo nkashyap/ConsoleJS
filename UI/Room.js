@@ -10,6 +10,7 @@ function Room(manager, data) {
     this.target = $("#clientList");
     this.manager = manager;
     this.name = data.name;
+    this.mode = data.mode;
     this.isSubscribed = false;
     this.isActive = false;
     this.isOnline = false;
@@ -78,7 +79,7 @@ Room.prototype.log = function log(data) {
 Room.prototype.subscribed = function subscribed() {
     this.isSubscribed = true;
     this.console.add();
-    this.console.show();
+    this.show();
 }
 
 Room.prototype.unsubscribed = function unsubscribed() {
@@ -86,7 +87,27 @@ Room.prototype.unsubscribed = function unsubscribed() {
     this.console.remove();
 }
 
+Room.prototype.getTransportMode = function getTransportMode() {
+    var transport = this.manager.socket.socket.transport,
+        list = this.manager.socket.socket.transports,
+        mode = '';
+
+    if(list){
+        var length =  list.length;
+        while(length > 0){
+            mode = list[--length];
+            if(transport[mode]){
+                break;
+            }
+        }
+    }
+
+    return mode;
+};
+
 Room.prototype.show = function show() {
+    this.mode = this.mode || this.getTransportMode();
+    $('#connection').text(this.mode);
     this.console.show();
 };
 

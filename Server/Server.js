@@ -52,6 +52,7 @@ module.exports.start = function start(config) {
         );
     }
 
+
     socketServer.sockets.on('connection', function (socket) {
         manager.add(socket);
 
@@ -71,7 +72,6 @@ module.exports.start = function start(config) {
         });
 
         socket.on('console', function (data) {
-            //console.log('console', data);
             manager.console(socket, data);
         });
 

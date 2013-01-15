@@ -17,6 +17,10 @@ ConsoleClient.prototype.bind = function bind(room) {
     this.room = room;
 };
 
+ConsoleClient.prototype.getTransportMode = function getTransportMode() {
+    return this.manager.getTransportMode(this.socket);
+}
+
 ConsoleClient.prototype.subscribe = function subscribe(name) {
     this.emit('subscribed', { name: name });
     this.socket.join(name);

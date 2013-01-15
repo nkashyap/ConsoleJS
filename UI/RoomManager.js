@@ -20,6 +20,7 @@ RoomManager.prototype.online = function online(data) {
         this.rooms.push(room);
         room.add();
     }else{
+        room.mode = data.mode;
         room.online();
     }
 }
@@ -27,6 +28,7 @@ RoomManager.prototype.online = function online(data) {
 RoomManager.prototype.offline = function offline(data) {
     var room = this.getRoom(data);
     if(room){
+        room.mode = data.mode;
         room.offline();
     }
 }

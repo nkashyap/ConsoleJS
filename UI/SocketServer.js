@@ -40,11 +40,11 @@ SocketServer.prototype.start = function start() {
     });
 
     this.socket.on('online', function (data) {
-        self.emit('log', 'online: ' + data.name);
+        self.emit('log', 'online: ' + data.name + ', mode: ' + data.mode);
         self.manager.online(data);
     });
     this.socket.on('offline', function (data) {
-        self.emit('log', 'offline: ' + data.name);
+        self.emit('log', 'offline: ' + data.name + ', mode: ' + data.mode);
         self.manager.offline(data);
     });
 

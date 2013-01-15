@@ -24,13 +24,13 @@ Room.prototype.bind = function bind(console) {
 Room.prototype.online = function online() {
     this.enabled = true;
     this.console.subscribe(this.name);
-    this.manager.emit('online', { name: this.name });
+    this.manager.emit('online', { name: this.name, mode: this.console.getTransportMode() });
 };
 
 Room.prototype.offline = function offline() {
     this.enabled = false;
     this.console.unSubscribe(this.name);
-    this.manager.emit('offline', { name: this.name });
+    this.manager.emit('offline', { name: this.name, mode: this.console.getTransportMode() });
 };
 
 Room.prototype.subscribe = function subscribe(client) {

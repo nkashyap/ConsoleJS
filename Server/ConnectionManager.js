@@ -14,13 +14,19 @@ ConnectionManager.prototype.isConsoleClient = function isConsoleClient(socket) {
     return socket.manager.handshaken[socket.id].xdomain;
 };
 
+ConnectionManager.prototype.getTransportMode = function getTransportMode(socket) {
+    return this.server.transports[socket.id].name;
+}
+
 ConnectionManager.prototype.add = function add(socket) {
     if (this.isConsoleClient(socket)) {
         this.consoles.push(new ConsoleClient(this, socket));
     } else {
         var control = new ControlClient(this, socket);
         this.consoles.forEach(function (item) {
-            control.emit('online', { name: item.room.name });
+            if(item.room){
+                control.emit('online', { name: item.room.name, mode:  item.getTransportMode() });
+            }
         });
         this.clients.push(control);
     }

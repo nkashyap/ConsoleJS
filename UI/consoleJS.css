@@ -44,6 +44,10 @@ pre.prettyprint {
     margin: 0px auto -54px;
 }
 
+#connection {
+    text-transform: capitalize;
+}
+
 #connectRoomsContent {
     -moz-box-shadow: 0 0 5px 1px #888;
     -webkit-box-shadow: 0 0 5px 1px #888;
