@@ -23,8 +23,9 @@ ConsoleClient.prototype.subscribe = function subscribe(name) {
 };
 
 ConsoleClient.prototype.unSubscribe = function unSubscribe(name) {
-    this.broadcast('unsubscribed', { name: name }, name);
+    //this.broadcast('unsubscribed', { name: name }, name);
     this.socket.leave(name);
+    this.emit('unsubscribed', { name: name });
 };
 
 ConsoleClient.prototype.emit = function emit(eventName, data) {

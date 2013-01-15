@@ -6,24 +6,22 @@
  * To change this template use File | Settings | File Templates.
  */
 
-function ChatRoom(client) {
+function ConsoleUI(room) {
     this.target = $("#connectRooms");
     this.contentTarget = $("#connectRoomsContent");
-    this.client = client;
-    this.name = this.client.name;
+    this.room = room;
+    this.name = this.room.name;
     this.tab = null;
     this.content = null;
     this.table = null;
-
-    this.add();
 }
 
-ChatRoom.prototype.add = function add() {
+ConsoleUI.prototype.add = function add() {
+    var self = this;
     this.tab = $("<li><a href='#Tab-" + this.name + "' data-toggle='tab'>" + this.name + "</a></li>");
     this.content = $("<div class='tab-pane fade' id='Content-" + this.name + "'></div>");
     this.table = $("<table id='Log-" + this.name + "' class='table table-hover table-condensed'></table>");
 
-    var self = this;
     this.tab.click(function (e) {
         self.show();
     });
@@ -31,10 +29,35 @@ ChatRoom.prototype.add = function add() {
     this.content.append(this.table);
     this.contentTarget.append(this.content);
     this.target.append(this.tab);
-    this.show();
+};
+
+ConsoleUI.prototype.remove = function remove() {
+    if(this.table){
+        this.table.remove();
+    }
+    if(this.content){
+        this.content.remove();
+    }
+    if(this.tab){
+        this.tab.remove();
+    }
+
+    this.room.setActive(false);
+};
+
+ConsoleUI.prototype.online = function online() {
+    var tab = this.tab.find('a');
+    tab.removeClass();
+    tab.addClass('online');
 }
 
-ChatRoom.prototype.show = function show() {
+ConsoleUI.prototype.offline = function remove() {
+    var tab = this.tab.find('a');
+    tab.removeClass();
+    tab.addClass('offline');
+}
+
+ConsoleUI.prototype.show = function show() {
     var index = this.target.find("li").index(this.tab),
         content = this.contentTarget.find('> div'),
         activeContent = this.contentTarget.find('> div:eq(' + index + ')');
@@ -47,24 +70,10 @@ ChatRoom.prototype.show = function show() {
     activeContent.show();
     activeContent.addClass('active');
 
-    this.client.active(true);
-}
+    this.room.setActive(true);
+};
 
-ChatRoom.prototype.remove = function remove() {
-    if (this.tab) {
-        this.tab.remove();
-    }
-    if (this.content) {
-        this.content.remove();
-    }
-    this.client.active(false);
-}
-
-ChatRoom.prototype.leave = function leave() {
-    console.log('Left' + this.client.name);
-}
-
-ChatRoom.prototype.addLog = function addLog(data) {
+ConsoleUI.prototype.log = function log(data) {
     var row = $("<tr></tr>"),
         css = '';
 
@@ -93,5 +102,6 @@ ChatRoom.prototype.addLog = function addLog(data) {
     row.append(title);
     row.append(msg);
     this.table.prepend(row);
+
     prettyPrint();
-}
+};

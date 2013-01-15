@@ -15,9 +15,9 @@
     <script src="/socket.io/socket.io.js"></script>
 
     <link href="UI/consoleJS.css" rel="stylesheet">
-    <script src="UI/ChatRoom.js"></script>
-    <script src="UI/Client.js"></script>
-    <script src="UI/ClientManager.js"></script>
+    <script src="UI/ConsoleUI.js"></script>
+    <script src="UI/Room.js"></script>
+    <script src="UI/RoomManager.js"></script>
     <script src="UI/SocketServer.js"></script>
 </head>
 <body onload="prettyPrint();">
@@ -57,9 +57,6 @@
 
 (function () {
 
-    var server = new SocketServer('http://localhost:8082');
-    server.start();
-
     $('#command').keypress(function (e) {
         if (e.keyCode == 13 && !e.shiftKey) {
             var data = $(this).val();
@@ -81,6 +78,8 @@
     $(document).ready(sizing);
     $(window).resize(sizing);
 
+    var server = new SocketServer('http://localhost:8082');
+    server.start();
 }());
 </script>
 </html>

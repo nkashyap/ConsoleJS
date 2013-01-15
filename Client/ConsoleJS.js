@@ -16,14 +16,14 @@ var ConsoleJS = (function () {
         withoutScope = ['dir', 'dirxml'],
         wrapper,
         settings = {
-            identity : 'NoIdentity',
+            name : 'NoName',
             overrideNativeConsole: true,
             enableNativeConsoleLogging: true,
             enableRemoteConsoleLogging: true,
             remoteCallback: function (type, log, stack) {},
             enableWebConsoleLogging: false
         },
-        server = new SocketServer(settings.identity),
+        server = new SocketServer(settings.name),
         formatter = {
             chrome: function (e, obj) {
                 if (obj) {
@@ -277,7 +277,7 @@ var ConsoleJS = (function () {
             window.console = window.ConsoleJS;
         }
 
-        server.identity = cfg.identity;
+        server.name = cfg.name;
     }
 
     function sort(a, b) {
@@ -408,10 +408,10 @@ var ConsoleJS = (function () {
         return value;
     }
 
-    function SocketServer(id) {
+    function SocketServer(name) {
         var self = this;
 
-        this.identity = id;
+        this.name = name;
         this.pending = [];
         this.subscribed = false;
         this.socket = io.connect(getServerURL());
@@ -419,16 +419,16 @@ var ConsoleJS = (function () {
         this.socket.on('connect', function () {
             console.log('Connected to the Server');
             console.log('Subscribe to room', {
-                name : self.identity
+                name : self.name
             });
 
             self.socket.emit('subscribe', {
-                name : self.identity
+                name : self.name
             });
         });
 
         this.socket.on('online', function(data) {
-            if(data.name === self.identity){
+            if(data.name === self.name){
                 console.log('subscribed to room', data);
                 self.subscribed = true;
                 self.processPendingRequest();
@@ -436,7 +436,7 @@ var ConsoleJS = (function () {
         });
 
         this.socket.on('offline', function(data) {
-            if(data.name === self.identity){
+            if(data.name === self.name){
                 console.log('unsubscribed to room', data);
                 self.subscribed = false;
             }
@@ -445,21 +445,21 @@ var ConsoleJS = (function () {
         this.socket.on('reconnect', function () {
             console.log('Reconnected to the Server');
             console.log('subscribe to', {
-                name : self.identity
+                name : self.name
             });
 
             self.socket.emit('subscribe', {
-                name : self.identity
+                name : self.name
             });
         });
 
         this.socket.on('disconnect', function () {
             console.log('Unsubscribe to room', {
-                name : self.identity
+                name : self.name
             });
 
             self.socket.emit('unsubscribe', {
-                name : self.identity
+                name : self.name
             });
 
             console.log('Disconnected from the Server');
@@ -502,7 +502,7 @@ var ConsoleJS = (function () {
 
         this.request = function request(eventName, data) {
             if (this.socket.socket.connected && this.subscribed) {
-                data.name = self.identity;
+                data.name = self.name;
                 this.socket.emit(eventName, data);
             } else {
                 this.pending.push({ type: eventName, data: data });
