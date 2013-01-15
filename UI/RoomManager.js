@@ -69,7 +69,7 @@ RoomManager.prototype.getRoom = function getRoom(data) {
 
 RoomManager.prototype.setActive = function setActive(room) {
     if(this.activeRoom && room.isActive){
-        this.activeRoom.isActive = false;
+        this.activeRoom.setActive(false);
         this.activeRoom = null;
     }
 
@@ -82,7 +82,7 @@ RoomManager.prototype.command = function command(data) {
     if(this.activeRoom && this.activeRoom.name !== this.server.room.name){
         this.activeRoom.command(data);
     }else{
-        this.server.emit('error', 'No Active Remote Client!!');
+        this.server.emit('error', 'Select Active Remote Client to send commands!!');
     }
 }
 

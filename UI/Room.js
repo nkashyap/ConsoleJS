@@ -36,9 +36,8 @@ Room.prototype.add = function add() {
 }
 
 Room.prototype.online = function online() {
-    var link = this.link.find('a');
-    link.removeClass();
-    link.addClass('online');
+    this.link.removeClass('offline');
+    this.link.addClass('online');
     this.isOnline = true;
     if (this.isSubscribed) {
         this.console.online();
@@ -46,9 +45,8 @@ Room.prototype.online = function online() {
 }
 
 Room.prototype.offline = function offline() {
-    var link = this.link.find('a');
-    link.removeClass();
-    link.addClass('offline');
+    this.link.removeClass('online');
+    this.link.addClass('offline');
     this.isOnline = false;
     if (this.isSubscribed) {
         this.console.offline();
@@ -57,6 +55,11 @@ Room.prototype.offline = function offline() {
 
 Room.prototype.setActive = function setActive(flag) {
     this.isActive = flag;
+    if(this.isActive){
+        this.link.addClass('active');
+    }else{
+        this.link.removeClass('active');
+    }
     this.manager.setActive(this);
 }
 

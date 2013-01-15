@@ -29,6 +29,7 @@ ConsoleUI.prototype.add = function add() {
     this.content.append(this.table);
     this.contentTarget.append(this.content);
     this.target.append(this.tab);
+    this.online();
 };
 
 ConsoleUI.prototype.remove = function remove() {
@@ -46,15 +47,13 @@ ConsoleUI.prototype.remove = function remove() {
 };
 
 ConsoleUI.prototype.online = function online() {
-    var tab = this.tab.find('a');
-    tab.removeClass();
-    tab.addClass('online');
+    this.tab.removeClass('offline');
+    this.tab.addClass('online');
 }
 
 ConsoleUI.prototype.offline = function remove() {
-    var tab = this.tab.find('a');
-    tab.removeClass();
-    tab.addClass('offline');
+    this.tab.removeClass('online');
+    this.tab.addClass('offline');
 }
 
 ConsoleUI.prototype.show = function show() {
@@ -62,7 +61,7 @@ ConsoleUI.prototype.show = function show() {
         content = this.contentTarget.find('> div'),
         activeContent = this.contentTarget.find('> div:eq(' + index + ')');
 
-    this.target.find("li").removeClass();
+    this.target.find("li").removeClass('selected active');
     content.removeClass('fade active');
     content.hide();
 

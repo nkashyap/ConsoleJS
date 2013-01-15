@@ -12,6 +12,18 @@ p {
     margin: 0 0 1px;
 }
 
+.online {
+    list-style-image: url("icons/online.png");
+}
+
+.offline {
+    list-style-image: url("icons/offline.png");
+}
+
+.online, .offline {
+    list-style-position: inside;
+}
+
 .sidebar-nav {
     padding: 9px 0;
 }
