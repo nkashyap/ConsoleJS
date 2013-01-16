@@ -93,19 +93,178 @@ ConsoleUI.prototype.log = function log(data, notify) {
         case 'debug':
             css = 'inverse';
             break;
-
     }
 
-    var title = $('<td><span class="label ' + (css ? 'label-' + css : '') + '">' + (data.type || '') + '</span></td>');
-    var msg = $('<td><code class="prettyprint">' + (data.message || '') + '</code></td>');
+    var message = this.getData(data.type, data.message); //getMessage(data.type, data.message);
 
-    row.append(title);
+    //var title = $('<td><span class="label ' + (css ? 'label-' + css : '') + '">' + (data.type || '') + '</span></td>');
+    var msg = $('<td><span class="label ' + (css ? 'label-' + css : '') + '">' + (data.type || '') + '</span><code>' + (message || '') + '</code></td>');
+    //var msg = $('<td><code style="padding-left:20px;" class="prettyprint">' + (message || '') + '</code></td>');
+
+    //row.append(title);
     row.append(msg);
     this.table.prepend(row);
 
-    prettyPrint();
+    //prettyPrint();
 
     if(notify){
         this.tab.find('a').addClass('notify');
     }
 };
+
+ConsoleUI.prototype.stripBrackets = function stripBrackets(data) {
+    var last = data.length - 1;
+    if(data.charAt(0) === '[' && data.charAt(last) === ']'){
+        return data.substring(1, last);
+    }
+    return data;
+};
+
+ConsoleUI.prototype.getData = function getData(type, data) {
+    data = this.stripBrackets(data);
+    switch (type) {
+        case 'trace':
+        case 'error':
+        case 'assert':
+        case 'debug':
+        case 'time':
+        case 'warn':
+        case 'info':
+        case 'log':
+            break;
+    }
+    return data;
+}
+
+function JSONParse(data) {
+    try {
+        return JSON.parse(data);
+    } catch (ex) {
+        return data;
+    }
+}
+
+function getMessage(data){
+    var message = JSONParse(data);
+    var type =  getType(message);
+    switch (type) {
+        case 'StringArray':
+            message = message.join(',');
+            break;
+        case 'StringJSONArray':
+            //message = getStringJON(message);
+            break;
+        case 'StringArrayObject':
+            break;
+        case 'ArrayMix':
+            break;
+        case 'String':
+            break;
+        default:
+            break;
+    }
+    console.log(type, message);
+    return message;
+}
+
+function getStringJON(data){
+    var result = [];
+    forEach(data, function(item){
+        var type = typeof item;
+        if(['number','string','boolean','null','undefined'].indexOf(type) > -1){
+            result.push(item);
+        }else{
+            var json = [];
+            for(var prop in item){
+                if(item.hasOwnProperty(prop)){
+                    json.push(prop +": "+ item[prop]);
+                }
+            }
+
+            result.push("{ " + json.join(",") + " }");
+        }
+    });
+    return result.join(",");
+}
+
+function getType(data){
+    var type;
+    if(isArray(data)){
+        if(isStringOnly(data)){
+            type = 'StringArray';
+//        }else if(isStringJSONOnly(data)){
+//            type = 'StringJSONArray';
+        }else{
+            type = 'ArrayMix';
+        }
+    } else if (typeof data === 'string'){
+        type = 'String';
+    }else{
+        type = 'Unknown';
+    }
+    return type;
+}
+
+function isStringOnly(data){
+    var list = filter(data, function(item){
+        return (item && typeof(item) === 'object');
+    });
+
+    return list.length === 0;
+}
+
+function isStringJSONOnly(data){
+    var list = filter(data, function(item){
+        var type = typeof item;
+        if(['number','string','boolean','null','undefined'].indexOf(type) > -1){
+            return false;
+        }
+
+        return (item.constructor !== 'Object');
+    });
+
+    return list.length === 0;
+}
+
+
+function isArray(data){
+    return Object.prototype.toString.call(data) === '[object Array]';
+}
+
+var filter  = (function(){
+    if(Array.prototype.filter){
+        return function(array, callback){
+            return array.filter(callback);
+        }
+    }else{
+        return function(array, callback){
+            var i = 0, length = array.length, result = [];
+            if(length){
+                do{
+                    var value = array[i];
+                    if(callback.call(array, value, i, array)){
+                        result.push(value);
+                    }
+                }while(i < length)
+            }
+            return result;
+        }
+    }
+}());
+
+var forEach  = (function(){
+    if(Array.prototype.forEach){
+        return function(array, callback){
+            array.forEach(callback);
+        }
+    }else{
+        return function(array, callback){
+            var i = 0, length = array.length;
+            if(length){
+                do{
+                    callback.call(array, array[i], i, array);
+                }while(i < length)
+            }
+        }
+    }
+}());
