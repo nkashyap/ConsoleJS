@@ -24,7 +24,8 @@ var ConsoleJS = (function () {
         nativeOverride: true,
         nativeEnabled: true,
         remoteEnabled: true,
-        remoteCallback: function (data, mode) {},
+        remoteCallback: function (data, mode) {
+        },
         //TODO
         webEnabled: false
     };
@@ -423,13 +424,26 @@ var ConsoleJS = (function () {
         return name || "anonymous";
     }
 
+    function getValueOrClassName(obj) {
+        var valueList = [
+            '[object String]', '[object Error]', '[object Arguments]', '[object Array]', '[object Object]',
+            '[object Number]', '[object Boolean]', '[object Function]', '[object ErrorEvent]'
+        ]
+        var type = ({}).toString.call(obj);
+
+        if (valueList.indexOf(type) > -1) {
+            return stringify(obj);
+        } else {
+            return type;
+        }
+    }
+
     function stringify(obj, simple) {
         var value = '',
             type = ({}).toString.call(obj),
             typeList = [
                 '[object String]', '[object Error]', '[object Arguments]', '[object Array]', '[object Object]',
-                '[object Number]', '[object Boolean]', '[object Function]', '[object ErrorEvent]',
-                '[object ScriptProfileNode]', '[object ScriptProfile]', 'object'
+                '[object Number]', '[object Boolean]', '[object Function]', '[object ErrorEvent]'
             ],
             i,
             prop,
@@ -438,10 +452,6 @@ var ConsoleJS = (function () {
             namesCount = 0,
             parts = [],
             names = [];
-
-        if (typeList.indexOf(type) === -1) {
-            type = typeof (type);
-        }
 
         if (typeList.indexOf(type) > -1) {
 
@@ -460,16 +470,12 @@ var ConsoleJS = (function () {
                 case '[object Array]':
                     value = '[';
                     for (i = 0, length = obj.length; i < length; i++) {
-                        parts[partsCount++] = stringify(obj[i], simple);
+                        parts[partsCount++] = getValueOrClassName(obj[i]);
                     }
-                    value += parts.join(', ') + ']';
+                    value += parts.join(',') + ']';
                     break;
 
-                case 'object':
-                case '[object ScriptProfile]':
-                case '[object ScriptProfileNode]':
                 case '[object Object]':
-                    value = '{ ';
                     for (prop in obj) {
                         if (obj.hasOwnProperty(prop)) {
                             names[namesCount++] = prop;
@@ -478,19 +484,16 @@ var ConsoleJS = (function () {
 
                     names.sort(sort);
 
+                    if (obj && obj.constructor && obj.constructor.name) {
+                        value = obj.constructor.name
+                        parts[partsCount++] = '\t"constructor": "' + obj.constructor.name + '"';
+                    }
+
                     for (i = 0; i < namesCount; i++) {
-                        parts[partsCount++] = stringify(names[i]) + ': ' + stringify(obj[names[i]], simple);
+                        parts[partsCount++] = '\t"' + names[i] + '": ' + getValueOrClassName(obj[names[i]]);
                     }
 
-                    if (obj.constructor && obj.constructor.name) {
-                        parts[partsCount++] = stringify('constructor') + ': ' + stringify(obj.constructor.name);
-                    }
-
-                    if (type === '[object ScriptProfileNode]') {
-                        parts[partsCount++] = stringify('children') + ': ' + stringify(obj.children());
-                    }
-
-                    value += parts.join(', ') + '}';
+                    value += ': {\n' + parts.join(',\n') + '\n}\n';
                     break;
 
                 case '[object Number]':
@@ -512,7 +515,7 @@ var ConsoleJS = (function () {
             value = '"undefined"';
 
         } else if (simple === undefined) {
-            value = type + '{\n';
+            value = type + ': {\n';
             for (prop in obj) {
                 if (obj.hasOwnProperty(prop)) {
                     names[namesCount++] = prop;
@@ -522,11 +525,10 @@ var ConsoleJS = (function () {
             names.sort(sort);
 
             for (i = 0; i < namesCount; i++) {
-                // safety from max stack
-                parts[partsCount++] = names[i] + ': ' + stringify(obj[names[i]], true);
+                parts[partsCount++] = '\t' + names[i] + ': ' + getValueOrClassName(obj[names[i]]);
             }
 
-            value += parts.join(',\n') + '\n}';
+            value += parts.join(',\n') + '\n}\n';
 
         } else {
             try {
@@ -580,19 +582,22 @@ var ConsoleJS = (function () {
     function getStack(e, obj) {
         e = e || createException();
 
-        var type = getStackType(e),
+        var data = "",
+            type = getStackType(e),
             className = ({}).toString.call(e);
 
         if (['[object Error]', '[object ErrorEvent]'].indexOf(className) === -1) {
             wrapper.warn(className + ' error type missing!');
-            return [];
+            return data;
         }
 
         if (type !== 'other' && (!!(e.stack || e.stacktrace) || type === 'opera9')) {
-            return formatter[type](e, obj) || [];
+            data = formatter[type](e, obj);
         } else {
-            return formatter.other(arguments.callee, obj);
+            data = formatter.other(arguments.callee, obj);
         }
+
+        return data;
     }
 
     function logger(type, args, value, callStack) {
@@ -697,7 +702,7 @@ var ConsoleJS = (function () {
         },
 
         dir: function dir(obj) {
-            logger("dir", obj, stringify([obj]));
+            logger("dir", obj);
         },
 
         dirxml: function dirxml(node) {

@@ -46,14 +46,301 @@ p {
     padding: 9px 0;
 }
 
-.table td, .label {
-    line-height: 16px;
-    font-size: 13px;
+/*.table td, .label {*/
+    /*line-height: 16px;*/
+    /*font-size: 13px;*/
+/*}*/
+
+/*pre.prettyprint {*/
+    /*margin-bottom: 2px;*/
+/*}*/
+
+.console {
+    position: relative;
+    margin: 2px;
+    padding: 5px 80px 5px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    /*background-color: #fff;*/
+    /*border: 1px solid #ddd;*/
+    border: 1px solid rgb(111, 114, 117);
+    background-color: rgba(236, 235, 235, 0.5);
 }
 
-pre.prettyprint {
-    margin-bottom: 2px;
+
+.type-log::after,
+.type-info::after,
+.type-assert::after,
+.type-count::after,
+.type-time::after,
+.type-timeEnd::after,
+.type-debug::after,
+.type-warn::after,
+.type-dir::after,
+.type-dirxml::after,
+.type-group::after,
+.type-groupCollapsed::after,
+.type-groupEnd::after,
+.type-markTimeline::after,
+.type-timeStamp::after,
+.type-profile::after,
+.type-profileEnd::after,
+.type-error::after,
+.type-trace::after
+{
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: bold;
+    -webkit-border-radius: 4px 0 4px 0;
+    -moz-border-radius: 4px 0 4px 0;
+    border-radius: 4px 0 4px 0;
 }
+
+
+.type-log {
+    /*border: 1px solid rgb(111, 114, 117);*/
+    /*background-color: rgba(236, 235, 235, 0.5);*/
+}
+.type-log::after {
+    content: "log";
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.5);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+
+.type-info {
+    /*background-color: rgba(2, 123, 255, 0.1);*/
+    /*border: 1px solid rgb(0, 92, 255);*/
+}
+.type-info::after {
+    content: "info";
+    color: rgb(0, 92, 255);
+    background-color: rgba(0, 177, 255, 0.4);
+    border: 1px solid rgb(0, 92, 255);
+}
+
+
+.type-error {
+    /*border: 1px solid rgb(255, 0, 0);*/
+    /*background-color: rgba(255, 0, 0, 0.2);*/
+}
+.type-error::after {
+    content: "error";
+    color: rgb(255, 0, 0);
+    background-color: rgba(255, 0, 0, 0.3);
+    border: 1px solid rgb(255, 0, 0);
+}
+
+
+
+.type-assert {
+    /*border: 1px solid rgb(3, 92, 3);*/
+    /*background-color: rgba(5, 156, 35, 0.25);*/
+}
+.type-assert::after {
+    content: "assert";
+    color: rgb(3, 92, 3);
+    background-color: rgba(61, 255, 0, 0.22);
+    border: 1px solid rgb(3, 92, 3);
+}
+
+.type-assert-failed {
+    /*border: 1px solid rgb(255, 0, 0);*/
+    /*background-color: rgba(255, 0, 0, 0.2);*/
+}
+.type-assert-failed::after {
+    content: "assert";
+    color: rgb(255, 0, 0);
+    background-color: rgba(255, 0, 0, 0.3);
+    border: 1px solid rgb(255, 0, 0);
+}
+
+
+.type-count {
+    /*border: 1px solid rgb(111, 114, 117);*/
+    /*background-color: rgba(236, 235, 235, 0.5);*/
+}
+.type-count::after {
+    content: "count";
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+
+.type-time {
+    /*border: 1px solid rgb(111, 114, 117);*/
+    /*background-color: rgba(236, 235, 235, 0.5);*/
+}
+.type-time::after {
+    content: "time";
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+
+.type-timeEnd {
+    /*border: 1px solid rgb(111, 114, 117);*/
+    /*background-color: rgba(236, 235, 235, 0.5);*/
+}
+.type-timeEnd::after {
+    content: "timeEnd";
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+
+.type-debug {
+    /*border: 1px solid rgb(111, 114, 117);*/
+    /*background-color: rgba(236, 235, 235, 0.5);*/
+}
+.type-debug::after {
+    content: "debug";
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+
+.type-warn {
+    /*border: 1px solid rgb(111, 114, 117);*/
+    /*background-color: rgba(236, 235, 235, 0.5);*/
+}
+.type-warn::after {
+    content: "warn";
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+
+.type-dir {
+    /*border: 1px solid rgb(111, 114, 117);*/
+    /*background-color: rgba(236, 235, 235, 0.5);*/
+}
+.type-dir::after {
+    content: "dir";
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+
+.type-dirxml {
+    /*border: 1px solid rgb(111, 114, 117);*/
+    /*background-color: rgba(236, 235, 235, 0.5);*/
+}
+.type-dirxml::after {
+    content: "dirxml";
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+
+.type-group {
+    /*border: 1px solid rgb(111, 114, 117);*/
+    /*background-color: rgba(236, 235, 235, 0.5);*/
+}
+.type-group::after {
+    content: "group";
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+
+.type-groupCollapsed {
+    /*border: 1px solid rgb(111, 114, 117);*/
+    /*background-color: rgba(236, 235, 235, 0.5);*/
+}
+.type-groupCollapsed::after {
+    content: "groupCollapsed";
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+
+.type-groupEnd {
+    /*border: 1px solid rgb(111, 114, 117);*/
+    /*background-color: rgba(236, 235, 235, 0.5);*/
+}
+.type-groupEnd::after {
+    content: "groupEnd";
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+
+.type-markTimeline {
+    /*border: 1px solid rgb(111, 114, 117);*/
+    /*background-color: rgba(236, 235, 235, 0.5);*/
+}
+.type-markTimeline::after {
+    content: "markTimeline";
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+
+.type-timeStamp {
+    /*border: 1px solid rgb(111, 114, 117);*/
+    /*background-color: rgba(236, 235, 235, 0.5);*/
+}
+.type-timeStamp::after {
+    content: "timeStamp";
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+
+.type-profile {
+    /*border: 1px solid rgb(111, 114, 117);*/
+    /*background-color: rgba(236, 235, 235, 0.5);*/
+}
+.type-profile::after {
+    content: "profile";
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+
+.type-profileEnd {
+    /*border: 1px solid rgb(111, 114, 117);*/
+    /*background-color: rgba(236, 235, 235, 0.5);*/
+}
+.type-profileEnd::after {
+    content: "profileEnd";
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+
+.type-trace {
+    /*border: 1px solid rgb(111, 114, 117);*/
+    /*background-color: rgba(236, 235, 235, 0.5);*/
+}
+.type-trace::after {
+    content: "trace";
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
 
 #main-wrapper {
     min-height: 100%;
