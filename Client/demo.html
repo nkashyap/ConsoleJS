@@ -19,7 +19,7 @@
         nativeEnabled: true,
         remoteEnabled: true,
         remoteCallback: function (data, mode) {
-            connectionMode.innerHTML = 'Connection mode: '+ mode;
+            connectionMode.innerHTML = 'Connection mode: '+ (mode || 'Unknown');
             var li = document.createElement("li");
                 li.innerHTML = data.type +': '+ data.message;
             log.insertBefore(li, log.firstElementChild);
