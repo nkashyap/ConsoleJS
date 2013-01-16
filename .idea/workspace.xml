@@ -2,34 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a443409a-9e2c-40b9-828b-2c44d355713c" name="Default" comment="">
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-apollo.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-clj.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-go.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-hs.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-lisp.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-lua.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-ml.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-n.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-proto.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-scala.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-sql.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-vb.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-vhdl.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-wiki.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-xq.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-yaml.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/ConsoleJS.js" afterPath="$PROJECT_DIR$/Client/ConsoleJS.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/ConsoleUI.css" afterPath="$PROJECT_DIR$/UI/ConsoleUI.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/ConsoleUI.js" afterPath="$PROJECT_DIR$/UI/ConsoleUI.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/index.html" afterPath="$PROJECT_DIR$/Client/index.html" />
-      <change type="MODIFICATION" beforePath="E:\Dev\ConsoleJS\Lib\prettify\prettify.css" afterPath="$PROJECT_DIR$/Lib/prettify/prettify.css" />
-      <change type="MODIFICATION" beforePath="E:\Dev\ConsoleJS\Lib\prettify\prettify.js" afterPath="$PROJECT_DIR$/Lib/prettify/prettify.js" />
+      <change type="MODIFICATION" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-css.js" afterPath="$PROJECT_DIR$/Lib/prettify/lang-css.js" />
+      <change type="MODIFICATION" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-tex.js" afterPath="$PROJECT_DIR$/Lib/prettify/lang-tex.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ConsoleJS.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/ConsoleJS.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358377003682" ignored="false" />
-    <file path="/Dummy.txt" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358358551876" ignored="false" />
+    <file path="/Dummy.txt" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358378876877" ignored="false" />
     <file path="/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358373833644" ignored="false" />
     <file path="/RequestManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357495395468" ignored="false" />
     <file path="/client.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358077090758" ignored="false" />
@@ -132,7 +112,7 @@
       <file leaf-file-name="ConsoleUI.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="5" selection-start="990" selection-end="990" vertical-scroll-proportion="-6.0961537">
+            <state line="172" column="41" selection-start="3609" selection-end="3609" vertical-scroll-proportion="-30.25">
               <folding>
                 <element signature="e#39#113#0" expanded="false" />
                 <element signature="e#117#141#0" expanded="false" />
@@ -235,10 +215,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1066" />
+    <option name="x" value="384" />
+    <option name="y" value="175" />
+    <option name="width" value="1152" />
+    <option name="height" value="700" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -531,7 +511,11 @@
       <created>1358204781751</created>
       <updated>1358204781751</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Style and prettify applied">
+      <created>1358378879766</created>
+      <updated>1358378879766</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -555,10 +539,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="false" />
+    <frame x="384" y="175" width="1152" height="700" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5687569" sideWeight="0.49359658" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.9556377" sideWeight="0.49359658" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -569,17 +553,17 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15101388" sideWeight="0.6710671" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49573106" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49786553" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12753469" sideWeight="0.43124312" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21926606" sideWeight="0.04436229" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20572057" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49573106" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -622,7 +606,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="File moved" />
+    <option name="LAST_COMMIT_MESSAGE" value="Style and prettify applied" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -637,6 +621,7 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Javascript remote console logging work in progress" />
     <MESSAGE value="File moved" />
+    <MESSAGE value="Style and prettify applied" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -778,7 +763,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="5" selection-start="990" selection-end="990" vertical-scroll-proportion="-6.0961537">
+        <state line="172" column="41" selection-start="3609" selection-end="3609" vertical-scroll-proportion="-30.25">
           <folding>
             <element signature="e#39#113#0" expanded="false" />
             <element signature="e#117#141#0" expanded="false" />
