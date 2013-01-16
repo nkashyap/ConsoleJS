@@ -37,6 +37,9 @@ p {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    line-height: 1.3 !important;
 }
 
 .sidebar-nav {
