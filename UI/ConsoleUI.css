@@ -28,8 +28,15 @@ p {
 }
 
 .online, .offline {
-    text-transform: capitalize;
     list-style-position: inside;
+}
+
+.online a, .offline a{
+    font-size: 12px;
+    text-transform: capitalize;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .sidebar-nav {

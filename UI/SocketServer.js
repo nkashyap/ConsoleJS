@@ -8,7 +8,7 @@
 
 function SocketServer(url) {
     this.url = url;
-    this.name = 'local';
+    this.name = 'ConsoleJS';
     this.socket = null;
     this.manager = null;
     this.room = null;

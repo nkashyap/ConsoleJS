@@ -67,7 +67,7 @@ window.DeviceDetection = (function ()
     {
         var device = getDevice();
         
-        return !!device ? device.name : 'unknownDevice';
+        return !!device ? device.name + ':' + device.family + ':' + device.version : 'unknownDevice';
     }
 
     return {
