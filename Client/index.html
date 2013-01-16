@@ -4,7 +4,7 @@
     <title>ConsoleJS - Test Page</title>
     <script type="text/javascript" src="http://localhost:8082/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="http://localhost:8082/Client/ConsoleJS.js"></script>
-    <script type="text/javascript" src="http://localhost:8082/Client/deviceDetection.js"></script>
+    <script type="text/javascript" src="http://localhost:8082/Client/BrowserJS.js"></script>
 </head>
 <body>
 <h1 id="ConnectionMode"></h1>
@@ -14,7 +14,7 @@
     var connectionMode = document.getElementById('ConnectionMode');
 
     ConsoleJS.config({
-        name : DeviceDetection.getDeviceName(),
+        name : BrowserJS.toString(),
         nativeOverride: true,
         nativeEnabled: true,
         remoteEnabled: true,
