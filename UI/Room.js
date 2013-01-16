@@ -27,7 +27,7 @@ Room.prototype.add = function add() {
             self.show();
         }
 
-        if (!self.isSubscribed) {
+        if (!self.isSubscribed && self.isOnline) {
             self.manager.emit('subscribe', { name: self.name });
         }
     });

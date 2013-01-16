@@ -15,7 +15,8 @@ ConnectionManager.prototype.isConsoleClient = function isConsoleClient(socket) {
 };
 
 ConnectionManager.prototype.getTransportMode = function getTransportMode(socket) {
-    return this.server.transports[socket.id].name;
+    var mode = this.server.transports[socket.id];
+    return mode ? mode.name : '';
 }
 
 ConnectionManager.prototype.add = function add(socket) {
@@ -24,8 +25,8 @@ ConnectionManager.prototype.add = function add(socket) {
     } else {
         var control = new ControlClient(this, socket);
         this.consoles.forEach(function (item) {
-            if(item.room){
-                control.emit('online', { name: item.room.name, mode:  item.getTransportMode() });
+            if (item.room) {
+                control.emit('online', { name: item.room.name, mode: item.getTransportMode() });
             }
         });
         this.clients.push(control);
