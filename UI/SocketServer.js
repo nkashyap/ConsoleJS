@@ -22,14 +22,18 @@ SocketServer.prototype.start = function start() {
     this.manager.online({ name : this.name });
     this.room = this.manager.getRoom({ name : this.name });
     this.room.subscribed();
+    this.room.offline();
 
     this.socket.on('connect', function () {
+        self.room.online();
         self.emit('info', 'Connected to the Server');
     });
     this.socket.on('reconnect', function () {
+        self.room.online();
         self.emit('info', 'Reconnected to the Server');
     });
     this.socket.on('disconnect', function () {
+        self.room.offline();
         self.emit('info', 'Disconnected from the Server');
     });
     this.socket.on('connect_failed', function () {
@@ -49,11 +53,11 @@ SocketServer.prototype.start = function start() {
     });
 
     this.socket.on('subscribed', function (data) {
-        self.emit('log', 'Subscribed to room ' + data.name);
+        self.emit('log', 'Subscribed to ' + data.name);
         self.manager.subscribed(data);
     });
     this.socket.on('unsubscribed', function (data) {
-        self.emit('log', 'Unsubscribed from room ' + data.name);
+        self.emit('log', 'Unsubscribed from ' + data.name);
         self.manager.unsubscribed(data);
     });
 

@@ -41,7 +41,9 @@ ConsoleClient.prototype.broadcast = function broadcast(eventName, data, room) {
 };
 
 ConsoleClient.prototype.remove = function remove() {
-    this.room.offline();
+    if (this.room) {
+        this.room.offline();
+    }
 };
 
 module.exports = ConsoleClient;

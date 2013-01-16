@@ -15,248 +15,151 @@ var ConsoleJS = (function () {
         timeCounters = {},
         withoutScope = ['dir', 'dirxml'],
         wrapper,
-        settings = {
-            name : 'NoName',
-            overrideNativeConsole: true,
-            enableNativeConsoleLogging: true,
-            enableRemoteConsoleLogging: true,
-            remoteCallback: function (type, log, stack) {},
-            enableWebConsoleLogging: false
-        },
-        server = new SocketServer(settings.name),
-        formatter = {
-            chrome: function (e, obj) {
-                if (obj) {
-                    var stack = e.stack.replace(/\n\r|\r\n/g, "\n").split(/[\n\r]/),
-                        length = stack.length,
-                        result = [],
-                        i, item, match, frame, value;
+        formatter,
+        settings,
+        server;
 
-                    for (i = 0; i < length; i++) {
-                        item = stack[i];
-                        match = item.match(/^\s+at\s+(.*)((?:http|https|ftp|file):\/\/.*)$/);
+    settings = {
+        name: 'NoName',
+        nativeOverride: true,
+        nativeEnabled: true,
+        remoteEnabled: true,
+        remoteCallback: function (data, mode) {},
+        //TODO
+        webEnabled: false
+    };
 
-                        if (match) {
-                            frame = {
-                                name: match[1].replace(/\s*\($/, "") || "{anonymous}"
-                            };
-                            value = match[2].match(/^(.+)\:(\d+\:\d+)\)?$/);
+    function SocketServer(name) {
+        this.name = name;
+        this.pending = [];
+        this.subscribed = false;
+        this.socket = io.connect(this.getServerURL());
+        this.mode = null;
 
-                            if (value) {
-                                frame.href = value[1];
-                                frame.lineNo = value[2].substring(0, value[2].indexOf(':'));
-                            }
+        var self = this;
 
-                            result.push(frame);
-                        }
-                    }
+        this.socket.on('connect', function () {
+            wrapper.log('Connected to the Server');
+            wrapper.log('Subscribing to', {
+                name: self.name
+            });
 
-                    return result;
+            self.socket.emit('subscribe', {
+                name: self.name
+            });
+        });
 
-                } else {
+        this.socket.on('reconnect', function () {
+            wrapper.log('Reconnected to the Server');
+            wrapper.log('Subscribing to', {
+                name: self.name
+            });
 
-                    var stack = (e.stack + '\n').replace(/^\S[^\(]+?[\n$]/gm, '').
-                        replace(/^\s+(at eval )?at\s+/gm, '').
-                        replace(/^([^\(]+?)([\n$])/gm, '{anonymous}()@$1$2').
-                        replace(/^Object.<anonymous>\s*\(([^\)]+)\)/gm, '{anonymous}()@$1').split('\n');
+            self.socket.emit('subscribe', {
+                name: self.name
+            });
+        });
 
-                    stack.pop();
+        this.socket.on('disconnect', function () {
+            wrapper.log('Unsubscribing from', {
+                name: self.name
+            });
 
-                    return stack;
-                }
-            },
+            self.socket.emit('unsubscribe', {
+                name: self.name
+            });
 
-            firefox: function (e, obj) {
-                var stack = e.stack.replace(/(?:\n@:0)?\s+$/m, '').replace(/^\(/gm, '{anonymous}(').split('\n'),
-                    idx = 0,
-                    count = 0,
-                    length = stack.length,
-                    items = [],
-                    result = [],
-                    i, item, value, match, name, frame;
+            wrapper.log('Disconnected from the Server');
+        });
 
-                for (i = 0; i < length; i++) {
-                    item = stack[i];
-                    value = item || '';
-
-                    if (value.indexOf('@http') > -1) {
-                        if (idx) {
-                            items[idx] += value;
-                        } else {
-                            items[count++] = value;
-                        }
-                        idx = 0;
-                    } else {
-                        if (idx) {
-                            items[idx] += value;
-                        } else {
-                            idx = count;
-                            items[count++] = value;
-                        }
-                    }
-                }
-
-                items.pop();
-
-                if (obj) {
-                    for (i = 0; item = items[i++];) {
-                        match = item.match(/^(.*)((?:http|https|ftp|file):\/\/.*)$/);
-                        if (match) {
-                            name = match[1].replace(/\s*\($/, "") || "{anonymous}";
-                            frame = {
-                                name: name.substring(0, name.indexOf("("))
-                            };
-                            value = match[2].match(/(.+)\:(.+)/);
-
-                            if (value) {
-                                frame.href = value[1];
-                                frame.lineNo = value[2];
-                            }
-
-                            result.push(frame);
-                        }
-                    }
-
-                    return result;
-                } else {
-                    return items;
-                }
-            },
-
-            opera11: function (e, obj) {
-                var ANON = '{anonymous}',
-                    lineRE = /^.*line (\d+), column (\d+)(?: in (.+))? in (\S+):$/,
-                    lines = (e.stacktrace || '').split('\n'),
-                    result = [],
-                    i, match, location, fnName,
-                    len = lines.length;
-
-                for (i = 0; i < len; i += 2) {
-                    match = lineRE.exec(lines[i]);
-                    if (match) {
-                        location = match[4] + ':' + match[1] + ':' + match[2];
-                        fnName = (match[3] || "global code").replace(/<anonymous function: (\S+)>/, "$1").replace(/<anonymous function>/, ANON);
-                        if (obj) {
-                            result.push({
-                                name: fnName,
-                                href: match[4],
-                                lineNo: match[1]
-                            });
-                        } else {
-                            result.push(fnName + '@' + location);
-                        }
-                    }
-                }
-
-                return result;
-            },
-
-            opera10b: function (e, obj) {
-                var lineRE = /^(.*)@(.+):(\d+)$/,
-                    lines = (e.stacktrace || '').split('\n'),
-                    result = [],
-                    i, match, fnName,
-                    len = lines.length;
-
-                for (i = 0; i < len; i++) {
-                    match = lineRE.exec(lines[i]);
-                    if (match) {
-                        fnName = match[1] ? (match[1] + '()') : "global code";
-                        if (obj) {
-                            result.push({
-                                name: fnName,
-                                href: match[2],
-                                lineNo: match[3]
-                            });
-                        } else {
-                            result.push(fnName + '@' + match[2] + ':' + match[3]);
-                        }
-                    }
-                }
-
-                return result;
-            },
-
-            opera10a: function (e, obj) {
-                var ANON = '{anonymous}',
-                    lineRE = /Line (\d+).*script (?:in )?(\S+)(?:: In function (\S+))?$/i,
-                    lines = (e.stacktrace || '').split('\n'),
-                    result = [],
-                    i, match, fnName,
-                    len = lines.length;
-
-                for (i = 0; i < len; i += 2) {
-                    match = lineRE.exec(lines[i]);
-                    if (match) {
-                        fnName = match[3] || ANON;
-                        if (obj) {
-                            result.push({
-                                name: fnName,
-                                href: match[2],
-                                lineNo: match[1]
-                            });
-                        } else {
-                            result.push(fnName + '()@' + match[2] + ':' + match[1]);
-                        }
-                    }
-                }
-
-                return result;
-            },
-
-            opera9: function (e, obj) {
-                var ANON = '{anonymous}',
-                    lineRE = /Line (\d+).*script (?:in )?(\S+)/i,
-                    lines = e.message.split('\n'),
-                    result = [],
-                    i, match,
-                    len = lines.length;
-
-                for (i = 2; i < len; i += 2) {
-                    match = lineRE.exec(lines[i]);
-                    if (match) {
-                        if (obj) {
-                            result.push({
-                                name: ANON,
-                                href: match[2],
-                                lineNo: match[1]
-                            });
-                        } else {
-                            result.push(ANON + '()@' + match[2] + ':' + match[1]);
-                        }
-                    }
-                }
-
-                return result;
-            },
-
-            other: function (fn, obj) {
-                var frames = [],
-                    maxStackSize = 30,
-                    i = 0,
-                    length;
-
-                try {
-                    for (; (fn = fn.caller);) {
-                        frames.push({
-                            name: getFuncName(fn),
-                            fn: fn
-                        });
-
-                        if (++i >= maxStackSize) break;
-                    }
-                } catch (e) {
-                }
-
-                if (!obj) {
-                    for (i = 0, length = frames.length; i < length; i++) {
-                        frames[i] = frames[i].name;
-                    }
-                }
-
-                return frames;
+        this.socket.on('online', function (data) {
+            if (data.name === self.name) {
+                wrapper.log('Subscribed to', data);
+                self.mode = data.mode;
+                self.subscribed = true;
+                self.processPendingRequest();
             }
-        };
+        });
+
+        this.socket.on('offline', function (data) {
+            if (data.name === self.name) {
+                wrapper.log('Unsubscribed from', data);
+                self.subscribed = false;
+            }
+        });
+
+        this.socket.on('command', function (cmd) {
+            var evalFun;
+            try {
+                evalFun = new Function([], "return " + cmd.data + ";");
+                var result = evalFun();
+                wrapper.log(result);
+            } catch (e) {
+                if (evalFun && evalFun.toString()) {
+                    wrapper.error(e, evalFun.toString());
+                } else {
+                    wrapper.error(e);
+                }
+            }
+        });
+
+        this.socket.on('connect_failed', function () {
+            wrapper.warn('Failed to connect to the Server');
+        });
+
+        this.socket.on('error', function () {
+            wrapper.warn('Socket Error');
+        });
+    }
+
+    SocketServer.prototype.getServerURL = function getServerURL() {
+        var url = '',
+            scripts = window.document.scripts,
+            length = scripts.length;
+
+        while (length > 0) {
+            var src = scripts[--length].src;
+            if (src.indexOf('socket.io') > -1) {
+                url = src.split('socket.io')[0];
+                break;
+            }
+        }
+        return url;
+    };
+
+    SocketServer.prototype.processPendingRequest = function processPendingRequest() {
+        var i = 0, length = this.pending.length;
+        if (length) {
+            do {
+                var req = this.pending[i++];
+                this.request(req.type, req.data);
+            } while (i < length)
+        }
+        this.pending = [];
+    };
+
+    SocketServer.prototype.request = function request(eventName, data) {
+        if (this.socket.socket.connected && this.subscribed) {
+            data.name = this.name;
+            this.socket.emit(eventName, data);
+        } else {
+            this.pending.push({ type: eventName, data: data });
+        }
+    };
+
+
+    function config(cfg) {
+        copy(cfg, settings);
+
+        // override native console
+        if (settings.nativeOverride) {
+            window.console = window.ConsoleJS;
+        }
+
+        if (settings.remoteEnabled) {
+            server = new SocketServer(settings.name);
+        }
+    }
 
     function copy(source, target) {
         var prop;
@@ -269,16 +172,240 @@ var ConsoleJS = (function () {
         return target;
     }
 
-    function config(cfg) {
-        copy(cfg, settings);
 
-        // override native console
-        if (settings.overrideNativeConsole) {
-            window.console = window.ConsoleJS;
+    formatter = {
+        chrome: function (e, obj) {
+            if (obj) {
+                var stack = e.stack.replace(/\n\r|\r\n/g, "\n").split(/[\n\r]/),
+                    length = stack.length,
+                    result = [],
+                    i, item, match, frame, value;
+
+                for (i = 0; i < length; i++) {
+                    item = stack[i];
+                    match = item.match(/^\s+at\s+(.*)((?:http|https|ftp|file):\/\/.*)$/);
+
+                    if (match) {
+                        frame = {
+                            name: match[1].replace(/\s*\($/, "") || "{anonymous}"
+                        };
+                        value = match[2].match(/^(.+)\:(\d+\:\d+)\)?$/);
+
+                        if (value) {
+                            frame.href = value[1];
+                            frame.lineNo = value[2].substring(0, value[2].indexOf(':'));
+                        }
+
+                        result.push(frame);
+                    }
+                }
+
+                return result;
+
+            } else {
+
+                var stack = (e.stack + '\n').replace(/^\S[^\(]+?[\n$]/gm, '').
+                    replace(/^\s+(at eval )?at\s+/gm, '').
+                    replace(/^([^\(]+?)([\n$])/gm, '{anonymous}()@$1$2').
+                    replace(/^Object.<anonymous>\s*\(([^\)]+)\)/gm, '{anonymous}()@$1').split('\n');
+
+                stack.pop();
+
+                return stack;
+            }
+        },
+
+        firefox: function (e, obj) {
+            var stack = e.stack.replace(/(?:\n@:0)?\s+$/m, '').replace(/^\(/gm, '{anonymous}(').split('\n'),
+                idx = 0,
+                count = 0,
+                length = stack.length,
+                items = [],
+                result = [],
+                i, item, value, match, name, frame;
+
+            for (i = 0; i < length; i++) {
+                item = stack[i];
+                value = item || '';
+
+                if (value.indexOf('@http') > -1) {
+                    if (idx) {
+                        items[idx] += value;
+                    } else {
+                        items[count++] = value;
+                    }
+                    idx = 0;
+                } else {
+                    if (idx) {
+                        items[idx] += value;
+                    } else {
+                        idx = count;
+                        items[count++] = value;
+                    }
+                }
+            }
+
+            items.pop();
+
+            if (obj) {
+                for (i = 0; item = items[i++];) {
+                    match = item.match(/^(.*)((?:http|https|ftp|file):\/\/.*)$/);
+                    if (match) {
+                        name = match[1].replace(/\s*\($/, "") || "{anonymous}";
+                        frame = {
+                            name: name.substring(0, name.indexOf("("))
+                        };
+                        value = match[2].match(/(.+)\:(.+)/);
+
+                        if (value) {
+                            frame.href = value[1];
+                            frame.lineNo = value[2];
+                        }
+
+                        result.push(frame);
+                    }
+                }
+
+                return result;
+            } else {
+                return items;
+            }
+        },
+
+        opera11: function (e, obj) {
+            var ANON = '{anonymous}',
+                lineRE = /^.*line (\d+), column (\d+)(?: in (.+))? in (\S+):$/,
+                lines = (e.stacktrace || '').split('\n'),
+                result = [],
+                i, match, location, fnName,
+                len = lines.length;
+
+            for (i = 0; i < len; i += 2) {
+                match = lineRE.exec(lines[i]);
+                if (match) {
+                    location = match[4] + ':' + match[1] + ':' + match[2];
+                    fnName = (match[3] || "global code").replace(/<anonymous function: (\S+)>/, "$1").replace(/<anonymous function>/, ANON);
+                    if (obj) {
+                        result.push({
+                            name: fnName,
+                            href: match[4],
+                            lineNo: match[1]
+                        });
+                    } else {
+                        result.push(fnName + '@' + location);
+                    }
+                }
+            }
+
+            return result;
+        },
+
+        opera10b: function (e, obj) {
+            var lineRE = /^(.*)@(.+):(\d+)$/,
+                lines = (e.stacktrace || '').split('\n'),
+                result = [],
+                i, match, fnName,
+                len = lines.length;
+
+            for (i = 0; i < len; i++) {
+                match = lineRE.exec(lines[i]);
+                if (match) {
+                    fnName = match[1] ? (match[1] + '()') : "global code";
+                    if (obj) {
+                        result.push({
+                            name: fnName,
+                            href: match[2],
+                            lineNo: match[3]
+                        });
+                    } else {
+                        result.push(fnName + '@' + match[2] + ':' + match[3]);
+                    }
+                }
+            }
+
+            return result;
+        },
+
+        opera10a: function (e, obj) {
+            var ANON = '{anonymous}',
+                lineRE = /Line (\d+).*script (?:in )?(\S+)(?:: In function (\S+))?$/i,
+                lines = (e.stacktrace || '').split('\n'),
+                result = [],
+                i, match, fnName,
+                len = lines.length;
+
+            for (i = 0; i < len; i += 2) {
+                match = lineRE.exec(lines[i]);
+                if (match) {
+                    fnName = match[3] || ANON;
+                    if (obj) {
+                        result.push({
+                            name: fnName,
+                            href: match[2],
+                            lineNo: match[1]
+                        });
+                    } else {
+                        result.push(fnName + '()@' + match[2] + ':' + match[1]);
+                    }
+                }
+            }
+
+            return result;
+        },
+
+        opera9: function (e, obj) {
+            var ANON = '{anonymous}',
+                lineRE = /Line (\d+).*script (?:in )?(\S+)/i,
+                lines = e.message.split('\n'),
+                result = [],
+                i, match,
+                len = lines.length;
+
+            for (i = 2; i < len; i += 2) {
+                match = lineRE.exec(lines[i]);
+                if (match) {
+                    if (obj) {
+                        result.push({
+                            name: ANON,
+                            href: match[2],
+                            lineNo: match[1]
+                        });
+                    } else {
+                        result.push(ANON + '()@' + match[2] + ':' + match[1]);
+                    }
+                }
+            }
+
+            return result;
+        },
+
+        other: function (fn, obj) {
+            var frames = [],
+                maxStackSize = 30,
+                i = 0,
+                length;
+
+            try {
+                for (; (fn = fn.caller);) {
+                    frames.push({
+                        name: getFuncName(fn),
+                        fn: fn
+                    });
+
+                    if (++i >= maxStackSize) break;
+                }
+            } catch (e) {
+            }
+
+            if (!obj) {
+                for (i = 0, length = frames.length; i < length; i++) {
+                    frames[i] = frames[i].name;
+                }
+            }
+
+            return frames;
         }
-
-        server.name = cfg.name;
-    }
+    };
 
     function sort(a, b) {
         return a.toLowerCase() < b.toLowerCase() ? -1 : 1;
@@ -299,7 +426,11 @@ var ConsoleJS = (function () {
     function stringify(obj, simple) {
         var value = '',
             type = ({}).toString.call(obj),
-            typeList = ['[object String]', '[object Error]', '[object Arguments]', '[object Array]', '[object Object]', '[object Number]', '[object Boolean]', '[object Function]', '[object ErrorEvent]', '[object ScriptProfileNode]', '[object ScriptProfile]', 'object'],
+            typeList = [
+                '[object String]', '[object Error]', '[object Arguments]', '[object Array]', '[object Object]',
+                '[object Number]', '[object Boolean]', '[object Function]', '[object ErrorEvent]',
+                '[object ScriptProfileNode]', '[object ScriptProfile]', 'object'
+            ],
             i,
             prop,
             length = 0,
@@ -408,124 +539,6 @@ var ConsoleJS = (function () {
         return value;
     }
 
-    function SocketServer(name) {
-        var self = this;
-
-        this.name = name;
-        this.pending = [];
-        this.subscribed = false;
-        this.socket = io.connect(getServerURL());
-
-        this.socket.on('connect', function () {
-            console.log('Connected to the Server');
-            console.log('Subscribe to room', {
-                name : self.name
-            });
-
-            self.socket.emit('subscribe', {
-                name : self.name
-            });
-        });
-
-        this.socket.on('online', function(data) {
-            if(data.name === self.name){
-                console.log('subscribed to room', data);
-                self.subscribed = true;
-                self.processPendingRequest();
-            }
-        });
-
-        this.socket.on('offline', function(data) {
-            if(data.name === self.name){
-                console.log('unsubscribed to room', data);
-                self.subscribed = false;
-            }
-        });
-
-        this.socket.on('reconnect', function () {
-            console.log('Reconnected to the Server');
-            console.log('subscribe to', {
-                name : self.name
-            });
-
-            self.socket.emit('subscribe', {
-                name : self.name
-            });
-        });
-
-        this.socket.on('disconnect', function () {
-            console.log('Unsubscribe to room', {
-                name : self.name
-            });
-
-            self.socket.emit('unsubscribe', {
-                name : self.name
-            });
-
-            console.log('Disconnected from the Server');
-        });
-
-        this.socket.on('command', function (cmd) {
-            var evalFun;
-            try{
-                evalFun = new Function([], "return " + cmd.data + ";");
-                var result = evalFun();
-                console.log('command result', result);
-                wrapper.log(result);
-            }catch(e){
-                if(evalFun && evalFun.toString()){
-                    wrapper.error(e, evalFun.toString());
-                }else{
-                    wrapper.error(e);
-                }
-            }
-        });
-
-        this.socket.on('connect_failed', function () {
-            console.warn('Failed to connect to the Server');
-        });
-
-        this.socket.on('error', function () {
-            console.warn('Socket Error');
-        });
-
-        this.processPendingRequest = function processPendingRequest() {
-            var i = 0, length = this.pending.length;
-            if (length) {
-                do {
-                    var req = this.pending[i++];
-                    this.request(req.type, req.data);
-                } while (i < length)
-            }
-            this.pending = [];
-        }
-
-        this.request = function request(eventName, data) {
-            if (this.socket.socket.connected && this.subscribed) {
-                data.name = self.name;
-                this.socket.emit(eventName, data);
-            } else {
-                this.pending.push({ type: eventName, data: data });
-            }
-        }
-
-        function getServerURL() {
-            var url = '',
-                scripts = window.document.scripts,
-                length = scripts.length;
-
-            while (length > 0) {
-                var src = scripts[--length].src;
-                if (src.indexOf('socket.io') > -1) {
-                    url = src.split('socket.io')[0];
-                    break;
-                }
-            }
-            return url;
-        }
-
-    }
-
     function createException() {
         try {
             undef();
@@ -584,26 +597,28 @@ var ConsoleJS = (function () {
 
     function logger(type, args, value, callStack) {
 
-        if (console[type] && settings.enableNativeConsoleLogging) {
-            if (withoutScope.indexOf(type) > -1) {
-                console[type](args);
-            } else {
-                console[type].apply(console, args);
+        if (console && settings.nativeEnabled) {
+            if (console[type]) {
+                if (withoutScope.indexOf(type) > -1) {
+                    console[type](args);
+                } else {
+                    console[type].apply(console, args);
+                }
             }
         }
 
-        if (settings.enableRemoteConsoleLogging) {
+        if (settings.remoteEnabled) {
             var output = {
                 type: type,
                 message: value || stringify(args),
                 stack: callStack ? stringify(callStack) : ''
             };
 
-            if (settings.remoteCallback) {
-                settings.remoteCallback(output.type, output.message, output.stack);
-            }
-
             server.request('console', output);
+
+            if (settings.remoteCallback) {
+                settings.remoteCallback(output, server.mode);
+            }
         }
     }
 
@@ -695,7 +710,7 @@ var ConsoleJS = (function () {
             var value = node ? node.outerHTML || node.innerHTML || node.toString() || stringify(node) : null;
             value = value.replace(/</img, '&lt;');
             value = value.replace(/>/img, '&gt;');
-            logger("dirxml", node,  value);
+            logger("dirxml", node, value);
         },
 
         group: function group() {

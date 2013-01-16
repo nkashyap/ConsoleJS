@@ -87,6 +87,3 @@ RoomManager.prototype.command = function command(data) {
         this.server.emit('error', 'Select Active Remote Client to send commands!!');
     }
 }
-
-
-

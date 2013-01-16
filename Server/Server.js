@@ -2,6 +2,7 @@ var io = require('socket.io'),
     http = require('http'),
     fs = require('fs'),
     path = require('path'),
+    os = require('os'),
     ConnectionManager = require('./ConnectionManager');
 
 
@@ -11,7 +12,7 @@ module.exports.start = function start(config) {
         socketServer = io.listen(webServer),
         manager = new ConnectionManager(socketServer);
 
-    webServer.listen(8082);
+    webServer.listen(config.port);
 
     socketServer.configure(function () {
         socketServer.set('log level', 0);
@@ -36,6 +37,9 @@ module.exports.start = function start(config) {
                 break;
             case '.css':
                 contentType = 'text/css';
+                break;
+            case '.png':
+                contentType = 'image/png';
                 break;
         }
 

@@ -72,7 +72,7 @@ Room.prototype.command = function command(data) {
 
 Room.prototype.log = function log(data) {
     if(this.isSubscribed){
-        this.console.log(data);
+        this.console.log(data, !this.isActive);
     }
 }
 

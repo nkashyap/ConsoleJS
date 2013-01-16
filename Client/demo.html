@@ -2,17 +2,28 @@
 <html>
 <head>
     <title>ConsoleJS - Test Page</title>
-    <script type="text/javascript" src="http://localhost:8082/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="http://localhost:8082/Client/ConsoleJS.js"></script>
-    <script type="text/javascript" src="http://localhost:8082/Client/deviceDetection.js"></script>
+    <script type="text/javascript" src="http://www-thedictator.bbdev1.com:8082/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="http://www-thedictator.bbdev1.com:8082/Client/ConsoleJS.js"></script>
+    <script type="text/javascript" src="http://www-thedictator.bbdev1.com:8082/Client/deviceDetection.js"></script>
 </head>
 <body>
+<h1 id="ConnectionMode"></h1>
+<ul id="log"></ul>
 <script type="text/javascript">
+    var log = document.getElementById('log');
+    var connectionMode = document.getElementById('ConnectionMode');
+
     ConsoleJS.config({
-        name : DeviceDetection.getDeviceName() + '-Index',
+        name : DeviceDetection.getDeviceName() + '-Demo' ,
         nativeOverride: true,
         nativeEnabled: true,
-        remoteEnabled: true
+        remoteEnabled: true,
+        remoteCallback: function (data, mode) {
+            connectionMode.innerHTML = 'Connection mode: '+ mode;
+            var li = document.createElement("li");
+                li.innerHTML = data.type +': '+ data.message;
+            log.insertBefore(li, log.firstElementChild);
+        }
     });
 
     //setInterval(function(){
@@ -39,8 +50,8 @@
         console.count('test-child');
         console.count('test');
 
-        console.dir(document.body);
-        console.dirxml(document.body);
+        //console.dir(document.body);
+        //console.dirxml(document.body);
 
         console.timeEnd('test-child');
         console.timeEnd('test');

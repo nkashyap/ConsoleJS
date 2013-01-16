@@ -23,7 +23,7 @@ ConsoleUI.prototype.add = function add() {
     this.table = $("<table id='Log-" + this.name + "' class='table table-hover table-condensed'></table>");
 
     this.tab.click(function (e) {
-        self.show();
+        self.room.show();
     });
 
     this.content.append(this.table);
@@ -65,6 +65,7 @@ ConsoleUI.prototype.show = function show() {
     content.removeClass('fade active');
     content.hide();
 
+    this.tab.find('a').removeClass('notify');
     this.tab.addClass('selected active');
     activeContent.show();
     activeContent.addClass('active');
@@ -72,7 +73,7 @@ ConsoleUI.prototype.show = function show() {
     this.room.setActive(true);
 };
 
-ConsoleUI.prototype.log = function log(data) {
+ConsoleUI.prototype.log = function log(data, notify) {
     var row = $("<tr></tr>"),
         css = '';
 
@@ -103,4 +104,8 @@ ConsoleUI.prototype.log = function log(data) {
     this.table.prepend(row);
 
     prettyPrint();
+
+    if(notify){
+        this.tab.find('a').addClass('notify');
+    }
 };
