@@ -381,13 +381,15 @@ var ConsoleJS = (function () {
             return result;
         },
 
-        other: function (fn, obj) {
+        other: function (args, obj) {
             var frames = [],
-                maxStackSize = 30,
+                fn,
+                maxStackSize = 10,
                 i = 0,
                 length;
 
             try {
+                fn = args.callee;
                 for (; (fn = fn.caller);) {
                     frames.push({
                         name: getFuncName(fn),
@@ -397,6 +399,7 @@ var ConsoleJS = (function () {
                     if (++i >= maxStackSize) break;
                 }
             } catch (e) {
+                return ["Error in generating trace", e];
             }
 
             if (!obj) {
@@ -595,7 +598,7 @@ var ConsoleJS = (function () {
         if (type !== 'other' && (!!(e.stack || e.stacktrace) || type === 'opera9')) {
             data = formatter[type](e, obj);
         } else {
-            data = formatter.other(arguments.callee, obj);
+            data = formatter.other(arguments, obj);
         }
 
         return data;

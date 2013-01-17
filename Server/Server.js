@@ -15,7 +15,17 @@ module.exports.start = function start(config) {
     webServer.listen(config.port);
 
     socketServer.configure(function () {
-        socketServer.set('log level', 0);
+        socketServer.enable('browser client minification');
+        socketServer.enable('browser client etag');
+        socketServer.enable('browser client gzip');
+        socketServer.set('log level', 1);
+        socketServer.set('transports', [
+            'websocket',
+            'flashsocket',
+            'htmlfile',
+            'xhr-polling',
+            'jsonp-polling'
+        ]);
     });
 
     function parseURL(url) {
