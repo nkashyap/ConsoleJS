@@ -36,48 +36,39 @@ var ConsoleJS = (function () {
         this.subscribed = false;
         this.socket = io.connect(this.getServerURL());
         this.mode = null;
-
         var self = this;
 
         this.socket.on('connect', function () {
             wrapper.log('Connected to the Server');
-            wrapper.log('Subscribing to', {
-                name: self.name
-            });
-
-            self.socket.emit('subscribe', {
-                name: self.name
-            });
+            wrapper.log('Subscribing to', { name: self.name });
+            self.socket.emit('subscribe', { name: self.name });
         });
 
-        this.socket.on('reconnect', function () {
-            wrapper.log('Reconnected to the Server');
-            wrapper.log('Subscribing to', {
-                name: self.name
-            });
+        this.socket.on('connecting', function (mode) {
+            self.mode = mode;
+            wrapper.log('Connecting to the Server');
+        });
 
-            self.socket.emit('subscribe', {
-                name: self.name
-            });
+        this.socket.on('reconnect', function (mode, attempts) {
+            self.mode = mode;
+            wrapper.log('Reconnected to the Server');
+            wrapper.log('Subscribing to', { name: self.name });
+            self.socket.emit('subscribe', { name: self.name });
+        });
+
+        this.socket.on('reconnecting', function () {
+            wrapper.log('Reconnecting to the Server');
         });
 
         this.socket.on('disconnect', function () {
-            wrapper.log('Unsubscribing from', {
-                name: self.name
-            });
-
-            self.socket.emit('unsubscribe', {
-                name: self.name
-            });
-
+            wrapper.log('Unsubscribing from', { name: self.name });
+            self.socket.emit('unsubscribe', { name: self.name });
             wrapper.log('Disconnected from the Server');
         });
 
         this.socket.on('online', function (data) {
             if (data.name === self.name) {
-                self.mode = data.mode;
                 self.subscribed = true;
-
                 wrapper.log('Subscribed to', data);
                 self.processPendingRequest();
             }
@@ -109,6 +100,10 @@ var ConsoleJS = (function () {
             wrapper.warn('Failed to connect to the Server');
         });
 
+        this.socket.on('reconnect_failed', function () {
+            wrapper.warn('Failed to reconnect to the Server');
+        });
+
         this.socket.on('error', function () {
             wrapper.warn('Socket Error');
         });
@@ -126,6 +121,7 @@ var ConsoleJS = (function () {
                 break;
             }
         }
+
         return url;
     };
 
@@ -135,9 +131,10 @@ var ConsoleJS = (function () {
             do {
                 var req = this.pending[i++];
                 this.request(req.type, req.data);
-            } while (i < length)
+            } while (i < length);
+
+            this.pending = [];
         }
-        this.pending = [];
     };
 
     SocketServer.prototype.request = function request(eventName, data) {
