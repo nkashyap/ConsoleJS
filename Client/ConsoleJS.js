@@ -75,9 +75,10 @@ var ConsoleJS = (function () {
 
         this.socket.on('online', function (data) {
             if (data.name === self.name) {
-                wrapper.log('Subscribed to', data);
                 self.mode = data.mode;
                 self.subscribed = true;
+
+                wrapper.log('Subscribed to', data);
                 self.processPendingRequest();
             }
         });

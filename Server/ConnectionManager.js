@@ -2,16 +2,16 @@ var ControlClient = require('./ControlClient'),
     ConsoleClient = require('./ConsoleClient'),
     Room = require('./Room');
 
-function ConnectionManager(server) {
+function ConnectionManager(server, config) {
     this.server = server;
+    this.config = config;
     this.clients = [];
     this.consoles = [];
     this.rooms = [];
 }
 
-//TODO check shortcut to xdomain
 ConnectionManager.prototype.isConsoleClient = function isConsoleClient(socket) {
-    return socket.manager.handshaken[socket.id].xdomain;
+    return socket.manager.handshaken[socket.id].headers.referer.indexOf(this.config.port) === -1;
 };
 
 ConnectionManager.prototype.getTransportMode = function getTransportMode(socket) {

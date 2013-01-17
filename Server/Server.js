@@ -10,7 +10,7 @@ module.exports.start = function start(config) {
 
     var webServer = http.createServer(handler),
         socketServer = io.listen(webServer),
-        manager = new ConnectionManager(socketServer);
+        manager = new ConnectionManager(socketServer, config);
 
     webServer.listen(config.port);
 
