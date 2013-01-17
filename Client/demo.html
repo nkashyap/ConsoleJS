@@ -41,16 +41,16 @@
         console.debug('debug test');
         console.assert(1 === 1, 'assert test');
         console.assert(1 !== 1, 'assert test');
-        console.trace();
 
         setTimeout(function(){
+            console.dir(document.getElementById('dummy'));
+            console.dirxml(document.getElementById('dummy'));
+            console.trace();
             try {
                 undef();
             } catch(e) {
                 console.error(e);
             }
-            console.dirxml(document.getElementById('dummy'));
-            console.dir(document.getElementById('dummy'));
         }, 10000);
 
         setTimeout(function(){

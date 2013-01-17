@@ -710,9 +710,8 @@ var ConsoleJS = (function () {
         },
 
         dirxml: function dirxml(node) {
-            if (node instanceof Window) {
-                node = node.document.documentElement;
-            } else if (node instanceof Document) {
+            var nodeType = node.nodeType;
+            if (nodeType === 9) {
                 node = node.documentElement;
             }
 
