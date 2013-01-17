@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a443409a-9e2c-40b9-828b-2c44d355713c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-css.js" afterPath="$PROJECT_DIR$/Lib/prettify/lang-css.js" />
-      <change type="MODIFICATION" beforePath="E:\Dev\ConsoleJS\Lib\prettify\lang-tex.js" afterPath="$PROJECT_DIR$/Lib/prettify/lang-tex.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/ConsoleJS.js" afterPath="$PROJECT_DIR$/Client/ConsoleJS.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" afterPath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLinters/jslint.xml" afterPath="$PROJECT_DIR$/.idea/jsLinters/jslint.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ConsoleJS.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/ConsoleJS.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358377003682" ignored="false" />
-    <file path="/Dummy.txt" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358378876877" ignored="false" />
+    <file path="/ConsoleJS.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358452201750" ignored="false" />
+    <file path="/Dummy.txt" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358451680044" ignored="false" />
     <file path="/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358373833644" ignored="false" />
     <file path="/RequestManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357495395468" ignored="false" />
     <file path="/client.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358077090758" ignored="false" />
@@ -47,7 +48,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -82,6 +82,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -90,88 +91,7 @@
     <favorites_list name="ConsoleJS" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="ConsoleUI.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="2" selection-start="2585" selection-end="2585" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="52" selection-start="1910" selection-end="1942" vertical-scroll-proportion="-25.51724">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConsoleUI.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="172" column="41" selection-start="3609" selection-end="3609" vertical-scroll-proportion="-30.25">
-              <folding>
-                <element signature="e#39#113#0" expanded="false" />
-                <element signature="e#117#141#0" expanded="false" />
-                <element signature="e#150#377#0" expanded="false" />
-                <element signature="e#387#437#0" expanded="false" />
-                <element signature="e#448#499#0" expanded="false" />
-                <element signature="e#519#555#0" expanded="false" />
-                <element signature="e#578#812#0" expanded="false" />
-                <element signature="e#827#850#0" expanded="false" />
-                <element signature="e#7663#7763#0" expanded="false" />
-                <element signature="e#7777#7812#0" expanded="false" />
-                <element signature="e#7835#7990#0" expanded="false" />
-                <element signature="e#8012#8031#0" expanded="false" />
-                <element signature="e#8069#8123#0" expanded="false" />
-                <element signature="e#8168#8190#0" expanded="false" />
-                <element signature="e#8233#8255#0" expanded="false" />
-                <element signature="e#8309#8330#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConsoleJS.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/ConsoleJS.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="550" column="0" selection-start="16649" selection-end="16649" vertical-scroll-proportion="-302.30768">
-              <folding>
-                <element signature="e#368#587#0" expanded="false" />
-                <element signature="e#622#2970#0" expanded="false" />
-                <element signature="e#3038#3391#0" expanded="false" />
-                <element signature="e#3478#3738#0" expanded="false" />
-                <element signature="e#3812#4055#0" expanded="false" />
-                <element signature="e#4084#4355#0" expanded="false" />
-                <element signature="e#4391#4587#0" expanded="false" />
-                <element signature="e#12256#12322#0" expanded="false" />
-                <element signature="e#12355#12675#0" expanded="false" />
-                <element signature="e#16552#16648#0" expanded="false" />
-                <element signature="e#16679#17434#0" expanded="false" />
-                <element signature="e#19202#19636#0" expanded="false" />
-                <element signature="e#19680#19997#0" expanded="false" />
-                <element signature="e#20040#20413#0" expanded="false" />
-                <element signature="e#20448#20499#0" expanded="false" />
-                <element signature="e#20532#20582#0" expanded="false" />
-                <element signature="e#20615#20665#0" expanded="false" />
-                <element signature="e#20696#20745#0" expanded="false" />
-                <element signature="e#20863#21336#0" expanded="false" />
-                <element signature="e#21371#21422#0" expanded="false" />
-                <element signature="e#21475#21535#0" expanded="false" />
-                <element signature="e#21576#21630#0" expanded="false" />
-                <element signature="e#21679#21737#0" expanded="false" />
-                <element signature="e#21784#21839#0" expanded="false" />
-                <element signature="e#21905#21958#0" expanded="false" />
-                <element signature="e#22007#22063#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -195,13 +115,11 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Server/Room.js" />
         <option value="$PROJECT_DIR$/Server/ConnectionManager.js" />
         <option value="$PROJECT_DIR$/Server/ControlClient.js" />
         <option value="$PROJECT_DIR$/Static/index.html" />
         <option value="$PROJECT_DIR$/Static/client2.html" />
         <option value="$PROJECT_DIR$/Static/client1.html" />
-        <option value="$PROJECT_DIR$/Server/Server.js" />
         <option value="$PROJECT_DIR$/UI/index.html" />
         <option value="$PROJECT_DIR$/Lib/prettify/prettify.js" />
         <option value="$PROJECT_DIR$/Lib/prettify/prettify.css" />
@@ -211,14 +129,16 @@
         <option value="$PROJECT_DIR$/Client/index.html" />
         <option value="$PROJECT_DIR$/UI/ConsoleUI.js" />
         <option value="$PROJECT_DIR$/Client/ConsoleJS.js" />
+        <option value="$PROJECT_DIR$/Server/Server.js" />
+        <option value="$PROJECT_DIR$/node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="384" />
-    <option name="y" value="175" />
-    <option name="width" value="1152" />
-    <option name="height" value="700" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1066" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -264,8 +184,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -308,6 +228,168 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="socket.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="socket.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="socket.io-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="socket.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="socket.io-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="socket.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="socket.io-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="socket.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="socket.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -320,7 +402,7 @@
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
+    <property name="options.lastSelected" value="Settings.JavaScript.Linters.JSLint" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Server/Start.js" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
@@ -330,8 +412,8 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PublishConfig" persistUploadOnCheckin="false" />
   <component name="RecentsManager">
@@ -362,6 +444,22 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" working-dir="$PROJECT_DIR$" coffeescript-run="false">
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -390,22 +488,6 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" working-dir="$PROJECT_DIR$" coffeescript-run="false">
-      <method />
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -419,6 +501,13 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -440,13 +529,6 @@
       </option>
       <envs />
       <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
-      <JSDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="false" name="Start" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="Server/Start.js" working-dir="$PROJECT_DIR$" coffeescript-run="false">
@@ -515,7 +597,11 @@
       <created>1358378879766</created>
       <updated>1358378879766</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Style and prettify applied">
+      <created>1358378929479</created>
+      <updated>1358378929479</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -539,10 +625,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="384" y="175" width="1152" height="700" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.9556377" sideWeight="0.49359658" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21782178" sideWeight="0.49359658" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -553,17 +639,17 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15101388" sideWeight="0.6710671" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49573106" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49786553" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21926606" sideWeight="0.04436229" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20572057" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15101388" sideWeight="0.7590759" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24092409" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49573106" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -633,21 +719,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/socket.io/lib/socket.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="367" column="14" selection-start="6489" selection-end="6489" vertical-scroll-proportion="0.7640118" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/ConnectionManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="710" selection-end="710" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/Room.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="26" selection-start="1007" selection-end="1018" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/ControlClient.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="0" selection-start="876" selection-end="876" vertical-scroll-proportion="0.0" />
@@ -656,13 +727,6 @@
     <entry file="file://$PROJECT_DIR$/Server/ConsoleClient.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="0" selection-start="311" selection-end="311" vertical-scroll-proportion="0.59367394" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/Server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="589" selection-end="589" vertical-scroll-proportion="0.022701476">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/UI/index.html">
@@ -674,34 +738,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Lib/prettify/lang-tex.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="1945" selection-end="1945" vertical-scroll-proportion="0.9398411">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state line="46" column="0" selection-start="1945" selection-end="1945" vertical-scroll-proportion="0.9398411" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Lib/prettify/lang-css.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="159" column="0" selection-start="6286" selection-end="6286" vertical-scroll-proportion="0.9398411">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state line="159" column="0" selection-start="6286" selection-end="6286" vertical-scroll-proportion="0.9398411" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Downloads/prettify-1-Jun-2011/google-code-prettify/src/prettify.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1347" column="39" selection-start="51220" selection-end="51220" vertical-scroll-proportion="0.095011875">
-          <folding />
-        </state>
+        <state line="1347" column="39" selection-start="51220" selection-end="51220" vertical-scroll-proportion="0.095011875" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Lib/prettify/prettify.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="19" selection-start="682" selection-end="682" vertical-scroll-proportion="0.12258797">
-          <folding />
-        </state>
+        <state line="16" column="19" selection-start="682" selection-end="682" vertical-scroll-proportion="0.12258797" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Lib/prettify/prettify.js">
@@ -713,57 +765,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="52" selection-start="1910" selection-end="1942" vertical-scroll-proportion="-25.51724">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="2" selection-start="2585" selection-end="2585" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/ConsoleJS.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="550" column="0" selection-start="16649" selection-end="16649" vertical-scroll-proportion="-302.30768">
-          <folding>
-            <element signature="e#368#587#0" expanded="false" />
-            <element signature="e#622#2970#0" expanded="false" />
-            <element signature="e#3038#3391#0" expanded="false" />
-            <element signature="e#3478#3738#0" expanded="false" />
-            <element signature="e#3812#4055#0" expanded="false" />
-            <element signature="e#4084#4355#0" expanded="false" />
-            <element signature="e#4391#4587#0" expanded="false" />
-            <element signature="e#12256#12322#0" expanded="false" />
-            <element signature="e#12355#12675#0" expanded="false" />
-            <element signature="e#16552#16648#0" expanded="false" />
-            <element signature="e#16679#17434#0" expanded="false" />
-            <element signature="e#19202#19636#0" expanded="false" />
-            <element signature="e#19680#19997#0" expanded="false" />
-            <element signature="e#20040#20413#0" expanded="false" />
-            <element signature="e#20448#20499#0" expanded="false" />
-            <element signature="e#20532#20582#0" expanded="false" />
-            <element signature="e#20615#20665#0" expanded="false" />
-            <element signature="e#20696#20745#0" expanded="false" />
-            <element signature="e#20863#21336#0" expanded="false" />
-            <element signature="e#21371#21422#0" expanded="false" />
-            <element signature="e#21475#21535#0" expanded="false" />
-            <element signature="e#21576#21630#0" expanded="false" />
-            <element signature="e#21679#21737#0" expanded="false" />
-            <element signature="e#21784#21839#0" expanded="false" />
-            <element signature="e#21905#21958#0" expanded="false" />
-            <element signature="e#22007#22063#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="41" selection-start="3609" selection-end="3609" vertical-scroll-proportion="-30.25">
+        <state line="172" column="41" selection-start="3609" selection-end="3609" vertical-scroll-proportion="0.029282577">
           <folding>
             <element signature="e#39#113#0" expanded="false" />
             <element signature="e#117#141#0" expanded="false" />
@@ -781,6 +785,62 @@
             <element signature="e#8168#8190#0" expanded="false" />
             <element signature="e#8233#8255#0" expanded="false" />
             <element signature="e#8309#8330#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="36" selection-start="2092" selection-end="2092" vertical-scroll-proportion="1.764526">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="2" selection-start="2585" selection-end="2585" vertical-scroll-proportion="2.317716">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/Server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="12" selection-start="735" selection-end="735" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/ConsoleJS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="257" column="0" selection-start="7156" selection-end="7156" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#16961#17716#0" expanded="false" />
+            <element signature="e#17748#18311#0" expanded="false" />
+            <element signature="e#18363#19071#0" expanded="false" />
+            <element signature="e#19087#22739#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/socket.io/lib/socket.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="195" column="0" selection-start="3318" selection-end="3318" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/socket.io/node_modules/socket.io-client/lib/socket.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="133" column="47" selection-start="2916" selection-end="2916" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1539" column="26" selection-start="34957" selection-end="34957" vertical-scroll-proportion="0.023752969">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>

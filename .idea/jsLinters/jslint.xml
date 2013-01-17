@@ -4,6 +4,8 @@
     <option indent="4" />
     <option maxerr="50" />
     <option plusplus="true" />
+    <option predef="window,document,console,io" />
+    <option todo="true" />
   </component>
 </project>
 

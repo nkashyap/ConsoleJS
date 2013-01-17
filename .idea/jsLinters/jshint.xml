@@ -13,6 +13,7 @@
     <option es5="true" />
     <option browser="true" />
     <option maxerr="50" />
+    <option predef="window,document,console,io" />
   </component>
 </project>
 
