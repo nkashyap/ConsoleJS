@@ -38,9 +38,9 @@ var ConsoleJS = (function () {
         var self = this;
 
         this.socket.on('connect', function () {
+            self.socket.emit('subscribe', { name: self.name });
             wrapper.log('Connected to the Server');
             wrapper.log('Subscribing to', { name: self.name });
-            self.socket.emit('subscribe', { name: self.name });
         });
 
         this.socket.on('connecting', function (mode) {
@@ -50,9 +50,9 @@ var ConsoleJS = (function () {
 
         this.socket.on('reconnect', function (mode, attempts) {
             self.mode = mode;
+            self.socket.emit('subscribe', { name: self.name });
             wrapper.log('Reconnected to the Server');
             wrapper.log('Subscribing to', { name: self.name });
-            self.socket.emit('subscribe', { name: self.name });
         });
 
         this.socket.on('reconnecting', function () {
@@ -61,15 +61,15 @@ var ConsoleJS = (function () {
 
         this.socket.on('disconnect', function () {
             wrapper.log('Unsubscribing from', { name: self.name });
-            self.socket.emit('unsubscribe', { name: self.name });
             wrapper.log('Disconnected from the Server');
+            self.socket.emit('unsubscribe', { name: self.name });
         });
 
         this.socket.on('online', function (data) {
             if (data.name === self.name) {
                 self.subscribed = true;
-                wrapper.log('Subscribed to', data);
                 self.processPendingRequest();
+                wrapper.log('Subscribed to', data);
             }
         });
 
