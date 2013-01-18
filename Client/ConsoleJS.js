@@ -3,7 +3,6 @@
  * User: Nisheeth
  * Date: 25/12/12
  * Time: 11:41
- * TODO........................
  */
 
 var ConsoleJS = (function () {
@@ -82,10 +81,10 @@ var ConsoleJS = (function () {
         });
 
         this.socket.on('command', function (cmd) {
-            var evalFun;
+            var evalFun, result;
             try {
                 evalFun = new Function([], "return " + cmd.data + ";");
-                var result = evalFun();
+                result = evalFun();
                 wrapper.log(result);
             } catch (e) {
                 if (evalFun && evalFun.toString()) {
@@ -110,12 +109,12 @@ var ConsoleJS = (function () {
     }
 
     SocketServer.prototype.getServerURL = function getServerURL() {
-        var url = '',
+        var url = '', src,
             scripts = window.document.scripts,
             length = scripts.length;
 
         while (length > 0) {
-            var src = scripts[--length].src;
+            src = scripts[--length].src;
             if (src.indexOf('socket.io') > -1) {
                 url = src.split('socket.io')[0];
                 break;
@@ -126,13 +125,12 @@ var ConsoleJS = (function () {
     };
 
     SocketServer.prototype.processPendingRequest = function processPendingRequest() {
-        var i = 0, length = this.pending.length;
+        var i = 0, req, length = this.pending.length;
         if (length) {
             do {
-                var req = this.pending[i++];
+                req = this.pending[i++];
                 this.request(req.type, req.data);
             } while (i < length);
-
             this.pending = [];
         }
     };
@@ -147,6 +145,17 @@ var ConsoleJS = (function () {
     };
 
 
+    function copy(source, target) {
+        var prop;
+        for (prop in source) {
+            if (source.hasOwnProperty(prop)) {
+                target[prop] = source[prop];
+            }
+        }
+
+        return target;
+    }
+
     function config(cfg) {
         copy(cfg, settings);
 
@@ -160,25 +169,19 @@ var ConsoleJS = (function () {
         }
     }
 
-    function copy(source, target) {
-        var prop;
-        for (prop in source) {
-            if (source.hasOwnProperty(prop)) {
-                target[prop] = source[prop];
-            }
-        }
-
-        return target;
-    }
-
 
     formatter = {
         chrome: function (e, obj) {
+            var stack, result = [];
+
             if (obj) {
-                var stack = e.stack.replace(/\n\r|\r\n/g, "\n").split(/[\n\r]/),
-                    length = stack.length,
-                    result = [],
-                    i, item, match, frame, value;
+                stack = e.stack.replace(/\n\r|\r\n/g, "\n").split(/[\n\r]/);
+                var length = stack.length,
+                    i,
+                    item,
+                    match,
+                    frame,
+                    value;
 
                 for (i = 0; i < length; i++) {
                     item = stack[i];
@@ -199,19 +202,17 @@ var ConsoleJS = (function () {
                     }
                 }
 
-                return result;
-
             } else {
 
-                var stack = (e.stack + '\n').replace(/^\S[^\(]+?[\n$]/gm, '').
+                result = (e.stack + '\n').replace(/^\S[^\(]+?[\n$]/gm, '').
                     replace(/^\s+(at eval )?at\s+/gm, '').
                     replace(/^([^\(]+?)([\n$])/gm, '{anonymous}()@$1$2').
                     replace(/^Object.<anonymous>\s*\(([^\)]+)\)/gm, '{anonymous}()@$1').split('\n');
 
-                stack.pop();
-
-                return stack;
+                result.pop();
             }
+
+            return result;
         },
 
         firefox: function (e, obj) {
@@ -221,7 +222,12 @@ var ConsoleJS = (function () {
                 length = stack.length,
                 items = [],
                 result = [],
-                i, item, value, match, name, frame;
+                i,
+                item,
+                value,
+                match,
+                name,
+                frame;
 
             for (i = 0; i < length; i++) {
                 item = stack[i];
@@ -393,7 +399,9 @@ var ConsoleJS = (function () {
                         fn: fn
                     });
 
-                    if (++i >= maxStackSize) break;
+                    if (++i >= maxStackSize) {
+                        break;
+                    }
                 }
             } catch (e) {
                 return ["Error in generating trace", e];
@@ -427,10 +435,10 @@ var ConsoleJS = (function () {
 
     function getValueOrClassName(obj) {
         var valueList = [
-            '[object String]', '[object Error]', '[object Arguments]', '[object Array]', '[object Object]',
-            '[object Number]', '[object Boolean]', '[object Function]', '[object ErrorEvent]'
-        ]
-        var type = ({}).toString.call(obj);
+                '[object String]', '[object Error]', '[object Arguments]', '[object Array]', '[object Object]',
+                '[object Number]', '[object Boolean]', '[object Function]', '[object ErrorEvent]'
+            ],
+            type = ({}).toString.call(obj);
 
         if (valueList.indexOf(type) > -1) {
             return stringify(obj);
@@ -486,7 +494,7 @@ var ConsoleJS = (function () {
                     names.sort(sort);
 
                     if (obj && obj.constructor && obj.constructor.name) {
-                        value = obj.constructor.name
+                        value = obj.constructor.name;
                         parts[partsCount++] = '\t"constructor": "' + obj.constructor.name + '"';
                     }
 
@@ -544,7 +552,7 @@ var ConsoleJS = (function () {
 
     function createException() {
         try {
-            undef();
+            undefined();
         } catch (e) {
             return e;
         }
