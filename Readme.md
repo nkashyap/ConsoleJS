@@ -18,7 +18,7 @@ npm install socket.io
 node Server\Start.js
 ```
 
-## Inject following scripts in your website or javascript application
+## Include following scripts in your website or javascript application
 
 ```html
 <script type="text/javascript" src="http://NodeServerURL:Port/socket.io/socket.io.js"></script>
