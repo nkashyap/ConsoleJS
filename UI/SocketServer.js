@@ -19,8 +19,8 @@ SocketServer.prototype.start = function start() {
     this.socket = io.connect(this.url);
     this.manager = new RoomManager(this, this.socket);
 
-    this.manager.online({ name : this.name });
-    this.room = this.manager.getRoom({ name : this.name });
+    this.manager.online({ name: this.name });
+    this.room = this.manager.getRoom({ name: this.name });
     this.room.subscribed();
     this.room.offline();
 

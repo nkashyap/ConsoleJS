@@ -24,17 +24,21 @@ Room.prototype.add = function add() {
 
     this.link.find("a").click(function (e) {
         if (self.isSubscribed) {
-            self.show();
+            self.setActive(true);
         }
 
         if (!self.isSubscribed && self.isOnline) {
-            self.manager.emit('subscribe', { name: self.name });
+            self.emit('subscribe', { name: self.name });
         }
     });
 
     this.target.append(this.link);
     this.online();
-}
+};
+
+Room.prototype.emit = function emit(eventName, data) {
+    this.manager.emit(eventName, data);
+};
 
 Room.prototype.online = function online() {
     this.link.removeClass('offline');
@@ -43,7 +47,7 @@ Room.prototype.online = function online() {
     if (this.isSubscribed) {
         this.console.online();
     }
-}
+};
 
 Room.prototype.offline = function offline() {
     this.link.removeClass('online');
@@ -52,55 +56,60 @@ Room.prototype.offline = function offline() {
     if (this.isSubscribed) {
         this.console.offline();
     }
-}
+};
 
 Room.prototype.setActive = function setActive(flag) {
     this.isActive = flag;
-    if(this.isActive){
+    if (this.isActive) {
         this.link.addClass('active');
-    }else{
+    } else {
         this.link.removeClass('active');
     }
     this.manager.setActive(this);
-}
+    if (this.isActive) {
+        this.show();
+    }
+};
 
 Room.prototype.command = function command(data) {
-    if(data === 'console.clear()'){
+    if (data === 'console.clear()') {
         this.console.clear();
     }
 
-    if(this.isSubscribed){
-        this.manager.emit('command', { name: this.name, data: data });
+    if (this.isSubscribed) {
+        this.emit('command', { name: this.name, data: data });
     }
-}
+};
 
 Room.prototype.log = function log(data) {
-    if(this.isSubscribed){
+    if (this.isSubscribed) {
         this.console.log(data, !this.isActive);
     }
-}
+};
 
 Room.prototype.subscribed = function subscribed() {
     this.isSubscribed = true;
     this.console.add();
-    this.show();
-}
+    this.setActive(true);
+};
 
 Room.prototype.unsubscribed = function unsubscribed() {
     this.isSubscribed = false;
     this.console.remove();
-}
+    this.setActive(false);
+};
 
 Room.prototype.getTransportMode = function getTransportMode() {
     var transport = this.manager.socket.socket.transport,
         list = this.manager.socket.socket.transports,
-        mode = '';
+        mode = '',
+        length;
 
-    if(list){
-        var length =  list.length;
-        while(length > 0){
+    if (list) {
+        length = list.length;
+        while (length > 0) {
             mode = list[--length];
-            if(transport[mode]){
+            if (transport[mode]) {
                 break;
             }
         }

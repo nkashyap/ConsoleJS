@@ -24,9 +24,9 @@ ControlClient.prototype.subscribe = function subscribe(name) {
 ControlClient.prototype.unSubscribe = function unSubscribe(name) {
     var index = this.rooms.indexOf(name);
     if (index > -1) {
-        this.broadcast('unsubscribed', { name: name }, name);
-        this.socket.leave(name);
         this.rooms.splice(index, 1);
+        this.emit('unsubscribed', { name: name });
+        this.socket.leave(name);
     }
 };
 

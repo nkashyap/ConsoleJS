@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="Lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="Lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="Lib/prettify/prettify.css" type="text/css" rel="stylesheet" />
+    <link href="Lib/prettify/prettify.css" type="text/css" rel="stylesheet"/>
 
     <script src="Lib/jquery-1.8.3.min.js"></script>
     <script src="Lib/bootstrap/js/bootstrap.min.js"></script>
@@ -76,96 +76,96 @@
 </body>
 <script type="text/javascript">
 
-(function () {
+    (function () {
 
-    $('.btn').click(function(){
-        var self = $(this),
-            cmd = '';
+        $('.btn').click(function () {
+            var self = $(this),
+                    cmd = '';
 
-        switch(self.html().toLowerCase()){
-            case 'send':
-                cmd = $('#command').val();
-                $('#command').val('');
-                break;
-            case 'ping':
-                cmd = '"ping..."';
-                break;
+            switch (self.html().toLowerCase()) {
+                case 'send':
+                    cmd = $('#command').val();
+                    $('#command').val('');
+                    break;
+                case 'ping':
+                    cmd = '"ping..."';
+                    break;
 
-            case 'window':
-                cmd = 'console.dir(window)';
-                break;
-            case 'document':
-                cmd = 'console.dir(document)';
-                break;
-            case 'body':
-                cmd = 'console.dirxml(document.body)';
-                break;
-            case 'navigator':
-                cmd = 'console.dir(window.navigator)';
-                break;
-            case 'location':
-                cmd = 'console.dir(window.location)';
-                break;
-            case 'history':
-                cmd = 'console.dir(window.history)';
-                break;
-            case 'screen':
-                cmd = 'console.dir(window.screen)';
-                break;
-            case 'scripts':
-                cmd = ' (function getScripts(){ ' +
-                      '     var i = 0, scripts = document.scripts, length = scripts.length;' +
-                      '     for(; i < length; i++){ '+
-                      '         console.dirxml(scripts[i]); ' +
-                      '     }; ' +
-                      '}())';
-                break;
-            case 'styles':
-                cmd =   ' (function getStyles(){ ' +
-                        '     var i = 0, styles = document.getElementsByTagName("link"), length = styles.length;' +
-                        '     for(; i < length; i++){ '+
-                        '         console.dirxml(styles[i]);' +
-                        '      }; ' +
-                        '}())';
-                break;
-            case 'cookie':
-                cmd = 'console.log(document.cookie)';
-                break;
+                case 'window':
+                    cmd = 'console.dir(window)';
+                    break;
+                case 'document':
+                    cmd = 'console.dir(document)';
+                    break;
+                case 'body':
+                    cmd = 'console.dirxml(document.body)';
+                    break;
+                case 'navigator':
+                    cmd = 'console.dir(window.navigator)';
+                    break;
+                case 'location':
+                    cmd = 'console.dir(window.location)';
+                    break;
+                case 'history':
+                    cmd = 'console.dir(window.history)';
+                    break;
+                case 'screen':
+                    cmd = 'console.dir(window.screen)';
+                    break;
+                case 'scripts':
+                    cmd = ' (function getScripts(){ ' +
+                            '     var i = 0, scripts = document.scripts, length = scripts.length;' +
+                            '     for(; i < length; i++){ ' +
+                            '         console.dirxml(scripts[i]); ' +
+                            '     }; ' +
+                            '}())';
+                    break;
+                case 'styles':
+                    cmd = ' (function getStyles(){ ' +
+                            '     var i = 0, styles = document.getElementsByTagName("link"), length = styles.length;' +
+                            '     for(; i < length; i++){ ' +
+                            '         console.dirxml(styles[i]);' +
+                            '      }; ' +
+                            '}())';
+                    break;
+                case 'cookie':
+                    cmd = 'console.log(document.cookie)';
+                    break;
 
-            case 'clear':
-                cmd = 'console.clear()';
-                break;
-            case 'reload':
-                cmd = 'window.location.reload()';
-                break;
-        }
-
-        server.request(cmd);
-    });
-
-    $('#command').keypress(function (e) {
-        if (e.keyCode == 13 && !e.shiftKey) {
-            var data = $(this).val();
-            if (data) {
-                server.request(data);
-                $(this).val('');
+                case 'clear':
+                    cmd = 'console.clear()';
+                    break;
+                case 'reload':
+                    cmd = 'window.location.reload()';
+                    break;
             }
-            e.preventDefault();
+
+            server.request(cmd);
+        });
+
+        $('#command').keypress(function (e) {
+            if (e.keyCode == 13 && !e.shiftKey) {
+                var data = $(this).val();
+                if (data) {
+                    server.request(data);
+                    $(this).val('');
+                }
+                e.preventDefault();
+            }
+        });
+
+        function sizing() {
+            var wrapperHeight = $("#main-wrapper").height();
+            var tabHeight = $("#connectRooms").height() || 0;
+            var contentHeight = wrapperHeight - tabHeight - 200;
+            $("#connectRoomsContent").height(contentHeight + "px");
         }
-    });
 
-    function sizing() {
-        var wrapperHeight = $("#main-wrapper").height();
-        var tabHeight = $("#connectRooms").height() || 0;
-        var contentHeight = wrapperHeight - tabHeight - 200;
-        $("#connectRoomsContent").height(contentHeight + "px");
-    }
+        $(document).ready(sizing);
+        $(window).resize(sizing);
 
-    $(document).ready(sizing);
-    $(window).resize(sizing);
-
-    var server = new SocketServer('http://localhost:8082');
-    server.start();
-}());
+        var server = new SocketServer('http://localhost:8082');
+        server.start();
+    }());
 </script>
 </html>

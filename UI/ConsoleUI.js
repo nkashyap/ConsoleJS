@@ -17,11 +17,15 @@ function ConsoleUI(room) {
 
 ConsoleUI.prototype.add = function add() {
     var self = this;
-    this.tab = $("<li><a href='#Tab-" + this.name + "' data-toggle='tab'>" + this.name + "</a></li>");
+    this.tab = $("<li><a href='#Tab-" + this.name + "' data-toggle='tab'>" + this.name + "&nbsp;<span class='close' title='Close'></span></a></li>");
     this.content = $("<div class='tab-pane fade' id='Content-" + this.name + "'></div>");
 
     this.tab.click(function (e) {
-        self.room.show();
+        if (e.target.tagName.toLowerCase() === 'span') {
+            self.emit('unsubscribe', { name: self.name });
+        } else {
+            self.room.setActive(true);
+        }
     });
 
     this.contentTarget.append(this.content);
@@ -38,8 +42,10 @@ ConsoleUI.prototype.remove = function remove() {
         this.tab.remove();
         this.tab = null;
     }
+};
 
-    this.room.setActive(false);
+ConsoleUI.prototype.emit = function emit(eventName, data) {
+    this.room.emit(eventName, data);
 };
 
 ConsoleUI.prototype.clear = function clear() {
@@ -71,8 +77,6 @@ ConsoleUI.prototype.show = function show() {
     this.tab.addClass('selected active');
     activeContent.show();
     activeContent.addClass('active');
-
-    this.room.setActive(true);
 };
 
 ConsoleUI.prototype.log = function log(data, notify) {

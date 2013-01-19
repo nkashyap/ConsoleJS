@@ -12,7 +12,7 @@ p {
     margin: 0 0 1px;
 }
 
-.notify{
+.notify {
     -o-box-shadow: 0px -2px 4px 0px rgb(14, 175, 238);
     -moz-box-shadow: 0px -2px 4px 0px rgb(14, 175, 238);
     -webkit-box-shadow: 0px -2px 4px 0px rgb(14, 175, 238);
@@ -31,7 +31,7 @@ p {
     list-style-position: inside;
 }
 
-.online a, .offline a{
+.online a, .offline a {
     font-size: 12px;
     text-transform: capitalize;
     text-overflow: ellipsis;
@@ -42,6 +42,20 @@ p {
     line-height: 1.3 !important;
 }
 
+.close {
+    background-image: url("icons/close.png");
+    height: 13px;
+    width: 13px;
+    margin-left:5px;
+    opacity: 0.5 !important;
+    filter: alpha(opacity=50)!important;
+}
+
+.close:hover {
+    opacity: 0.7 !important;
+    filter: alpha(opacity=70)!important;
+}
+
 .sidebar-nav {
     padding: 9px 0;
 }
@@ -49,15 +63,6 @@ p {
 .btn-group {
     margin-bottom: 5px;;
 }
-
-/*.table td, .label {*/
-    /*line-height: 16px;*/
-    /*font-size: 13px;*/
-/*}*/
-
-/*pre.prettyprint {*/
-    /*margin-bottom: 2px;*/
-/*}*/
 
 .console {
     position: relative;
@@ -67,12 +72,9 @@ p {
     -moz-border-radius: 4px;
     -o-border-radius: 4px;
     border-radius: 4px;
-    /*background-color: #fff;*/
-    /*border: 1px solid #ddd;*/
     border: 1px solid rgb(111, 114, 117);
     background-color: rgba(236, 235, 235, 0.5);
 }
-
 
 .type-log::after,
 .type-info::after,
@@ -93,8 +95,7 @@ p {
 .type-profileEnd::after,
 .type-error::after,
 .type-trace::after,
-.type-clear::after
-{
+.type-clear::after {
     position: absolute;
     top: -1px;
     left: -1px;
@@ -106,11 +107,11 @@ p {
     border-radius: 4px 0 4px 0;
 }
 
-
 .type-log {
     /*border: 1px solid rgb(111, 114, 117);*/
     /*background-color: rgba(236, 235, 235, 0.5);*/
 }
+
 .type-log::after {
     content: "log";
     color: rgb(111, 114, 117);
@@ -118,11 +119,11 @@ p {
     border: 1px solid rgb(111, 114, 117);
 }
 
-
 .type-info {
     /*background-color: rgba(2, 123, 255, 0.1);*/
     /*border: 1px solid rgb(0, 92, 255);*/
 }
+
 .type-info::after {
     content: "info";
     color: rgb(0, 92, 255);
@@ -130,11 +131,11 @@ p {
     border: 1px solid rgb(0, 92, 255);
 }
 
-
 .type-error {
     /*border: 1px solid rgb(255, 0, 0);*/
     /*background-color: rgba(255, 0, 0, 0.2);*/
 }
+
 .type-error::after {
     content: "error";
     color: rgb(255, 0, 0);
@@ -142,12 +143,11 @@ p {
     border: 1px solid rgb(255, 0, 0);
 }
 
-
-
 .type-assert {
     /*border: 1px solid rgb(3, 92, 3);*/
     /*background-color: rgba(5, 156, 35, 0.25);*/
 }
+
 .type-assert::after {
     content: "assert";
     color: rgb(3, 92, 3);
@@ -159,6 +159,7 @@ p {
     /*border: 1px solid rgb(255, 0, 0);*/
     /*background-color: rgba(255, 0, 0, 0.2);*/
 }
+
 .type-assert-failed::after {
     content: "assert";
     color: rgb(255, 0, 0);
@@ -166,11 +167,11 @@ p {
     border: 1px solid rgb(255, 0, 0);
 }
 
-
 .type-count {
     /*border: 1px solid rgb(111, 114, 117);*/
     /*background-color: rgba(236, 235, 235, 0.5);*/
 }
+
 .type-count::after {
     content: "count";
     color: rgb(111, 114, 117);
@@ -178,11 +179,11 @@ p {
     border: 1px solid rgb(111, 114, 117);
 }
 
-
 .type-time {
     /*border: 1px solid rgb(111, 114, 117);*/
     /*background-color: rgba(236, 235, 235, 0.5);*/
 }
+
 .type-time::after {
     content: "time";
     color: rgb(111, 114, 117);
@@ -190,11 +191,11 @@ p {
     border: 1px solid rgb(111, 114, 117);
 }
 
-
 .type-timeEnd {
     /*border: 1px solid rgb(111, 114, 117);*/
     /*background-color: rgba(236, 235, 235, 0.5);*/
 }
+
 .type-timeEnd::after {
     content: "timeEnd";
     color: rgb(111, 114, 117);
@@ -202,11 +203,11 @@ p {
     border: 1px solid rgb(111, 114, 117);
 }
 
-
 .type-debug {
     /*border: 1px solid rgb(111, 114, 117);*/
     /*background-color: rgba(236, 235, 235, 0.5);*/
 }
+
 .type-debug::after {
     content: "debug";
     color: rgb(111, 114, 117);
@@ -214,11 +215,11 @@ p {
     border: 1px solid rgb(111, 114, 117);
 }
 
-
 .type-warn {
     /*border: 1px solid rgb(111, 114, 117);*/
     /*background-color: rgba(236, 235, 235, 0.5);*/
 }
+
 .type-warn::after {
     content: "warn";
     color: rgb(111, 114, 117);
@@ -226,11 +227,11 @@ p {
     border: 1px solid rgb(111, 114, 117);
 }
 
-
 .type-dir {
     /*border: 1px solid rgb(111, 114, 117);*/
     /*background-color: rgba(236, 235, 235, 0.5);*/
 }
+
 .type-dir::after {
     content: "dir";
     color: rgb(111, 114, 117);
@@ -238,11 +239,11 @@ p {
     border: 1px solid rgb(111, 114, 117);
 }
 
-
 .type-dirxml {
     /*border: 1px solid rgb(111, 114, 117);*/
     /*background-color: rgba(236, 235, 235, 0.5);*/
 }
+
 .type-dirxml::after {
     content: "dirxml";
     color: rgb(111, 114, 117);
@@ -250,11 +251,11 @@ p {
     border: 1px solid rgb(111, 114, 117);
 }
 
-
 .type-group {
     /*border: 1px solid rgb(111, 114, 117);*/
     /*background-color: rgba(236, 235, 235, 0.5);*/
 }
+
 .type-group::after {
     content: "group";
     color: rgb(111, 114, 117);
@@ -262,11 +263,11 @@ p {
     border: 1px solid rgb(111, 114, 117);
 }
 
-
 .type-groupCollapsed {
     /*border: 1px solid rgb(111, 114, 117);*/
     /*background-color: rgba(236, 235, 235, 0.5);*/
 }
+
 .type-groupCollapsed::after {
     content: "groupCollapsed";
     color: rgb(111, 114, 117);
@@ -274,11 +275,11 @@ p {
     border: 1px solid rgb(111, 114, 117);
 }
 
-
 .type-groupEnd {
     /*border: 1px solid rgb(111, 114, 117);*/
     /*background-color: rgba(236, 235, 235, 0.5);*/
 }
+
 .type-groupEnd::after {
     content: "groupEnd";
     color: rgb(111, 114, 117);
@@ -286,11 +287,11 @@ p {
     border: 1px solid rgb(111, 114, 117);
 }
 
-
 .type-markTimeline {
     /*border: 1px solid rgb(111, 114, 117);*/
     /*background-color: rgba(236, 235, 235, 0.5);*/
 }
+
 .type-markTimeline::after {
     content: "markTimeline";
     color: rgb(111, 114, 117);
@@ -298,11 +299,11 @@ p {
     border: 1px solid rgb(111, 114, 117);
 }
 
-
 .type-timeStamp {
     /*border: 1px solid rgb(111, 114, 117);*/
     /*background-color: rgba(236, 235, 235, 0.5);*/
 }
+
 .type-timeStamp::after {
     content: "timeStamp";
     color: rgb(111, 114, 117);
@@ -310,11 +311,11 @@ p {
     border: 1px solid rgb(111, 114, 117);
 }
 
-
 .type-profile {
     /*border: 1px solid rgb(111, 114, 117);*/
     /*background-color: rgba(236, 235, 235, 0.5);*/
 }
+
 .type-profile::after {
     content: "profile";
     color: rgb(111, 114, 117);
@@ -322,11 +323,11 @@ p {
     border: 1px solid rgb(111, 114, 117);
 }
 
-
 .type-profileEnd {
     /*border: 1px solid rgb(111, 114, 117);*/
     /*background-color: rgba(236, 235, 235, 0.5);*/
 }
+
 .type-profileEnd::after {
     content: "profileEnd";
     color: rgb(111, 114, 117);
@@ -334,11 +335,11 @@ p {
     border: 1px solid rgb(111, 114, 117);
 }
 
-
 .type-trace {
     /*border: 1px solid rgb(111, 114, 117);*/
     /*background-color: rgba(236, 235, 235, 0.5);*/
 }
+
 .type-trace::after {
     content: "trace";
     color: rgb(111, 114, 117);
@@ -350,13 +351,13 @@ p {
     /*border: 1px solid rgb(111, 114, 117);*/
     /*background-color: rgba(236, 235, 235, 0.5);*/
 }
+
 .type-clear::after {
     content: "clear";
     color: rgb(111, 114, 117);
     background-color: rgba(192, 192, 192, 0.6);
     border: 1px solid rgb(111, 114, 117);
 }
-
 
 #main-wrapper {
     min-height: 100%;
