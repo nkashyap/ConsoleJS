@@ -28,5 +28,33 @@ node Server\Start.js
 
 Then goto following url to access web console http://NodeServerURL:Port/
 
+#Console API methods supported
+ * console.assert(x)
+ * console.count(key)
+ * console.time(name, reset)
+ * console.timeEnd(name)
+ * console.debug(arguments...)
+ * console.warn(arguments...)
+ * console.info(arguments...)
+ * console.log(arguments...)
+ * console.dir(object)
+ * console.dirxml(HTML Element)
+ * console.error(error)
+ * console.exception(error)
+ * console.trace()
+
+#Coming soon...
+ * console.group()
+ * console.groupCollapsed()
+ * console.groupEnd()
+ * console.markTimeline()
+ * console.timestamp()
+ * console.profiles
+ * console.profile()
+ * console.profileEnd()
+
+
 #TODO
-Change it into npm module.
+ * Change it into npm module
+ * 
+
