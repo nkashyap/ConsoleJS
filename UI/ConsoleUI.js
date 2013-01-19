@@ -32,23 +32,31 @@ ConsoleUI.prototype.add = function add() {
 ConsoleUI.prototype.remove = function remove() {
     if (this.content) {
         this.content.remove();
+        this.content = null;
     }
     if (this.tab) {
         this.tab.remove();
+        this.tab = null;
     }
 
     this.room.setActive(false);
 };
 
+ConsoleUI.prototype.clear = function clear() {
+    if (this.content) {
+        this.content.empty();
+    }
+};
+
 ConsoleUI.prototype.online = function online() {
     this.tab.removeClass('offline');
     this.tab.addClass('online');
-}
+};
 
 ConsoleUI.prototype.offline = function remove() {
     this.tab.removeClass('online');
     this.tab.addClass('offline');
-}
+};
 
 ConsoleUI.prototype.show = function show() {
     var index = this.target.find("li").index(this.tab),
@@ -77,7 +85,7 @@ ConsoleUI.prototype.log = function log(data, notify) {
         message += prettyPrintOne(this.stripBrackets(data.stack.split(",").join("\n").replace(/"/img, '')));
     }
 
-    var msg = $('<' + tag + ' class="console type-' + data.type + ' ' + css + '">' + (message || '') + '</' + tag + '>');
+    var msg = $('<' + tag + ' class="console type-' + data.type + ' ' + css + '">' + (message || '.') + '</' + tag + '>');
     this.content.prepend(msg);
 
     if (notify) {

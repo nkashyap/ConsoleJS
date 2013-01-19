@@ -85,7 +85,9 @@ var ConsoleJS = (function () {
             try {
                 evalFun = new Function([], "return " + cmd.data + ";");
                 result = evalFun();
-                wrapper.log(result);
+                if (result) {
+                    wrapper.log(result);
+                }
             } catch (e) {
                 if (evalFun && evalFun.toString()) {
                     wrapper.error(e, evalFun.toString());

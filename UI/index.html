@@ -46,7 +46,21 @@
                 </div>
             </div>
             <div class="span10">
-                <!--Body content-->
+                <div class="btn-group">
+                    <button class="btn btn-success">Send</button>
+                    <button class="btn btn-warning">Ping</button>
+                    <button class="btn btn-info">Window</button>
+                    <button class="btn btn-info">Document</button>
+                    <button class="btn btn-info">Navigator</button>
+                    <button class="btn btn-info">Location</button>
+                    <button class="btn btn-info">History</button>
+                    <button class="btn btn-info">Screen</button>
+                    <button class="btn btn-info">Scripts</button>
+                    <button class="btn btn-info">Styles</button>
+                    <button class="btn btn-info">Cookie</button>
+                    <button class="btn btn-warning">Clear</button>
+                    <button class="btn btn-success">Reload</button>
+                </div>
                 <div class="input-append">
                     <textarea id="command" class="input-block-level" rows="2"></textarea>
                 </div>
@@ -62,6 +76,74 @@
 <script type="text/javascript">
 
 (function () {
+
+    $('.btn').click(function(){
+        var self = $(this),
+            cmd = '';
+
+        switch(self.html().toLowerCase()){
+            case 'send':
+                cmd = $('#command').val();
+                $('#command').val('');
+                break;
+            case 'ping':
+                cmd = '"ping..."';
+                break;
+
+            case 'window':
+                cmd = ' (function getWindow(){ ' +
+                        '     var list = []; ' +
+                        '     for(var prop in window){ '+
+                        '         list.push(prop +": "+ window[prop]); ' +
+                        '      }; ' +
+                        '      console.dir(list); ' +
+                        '}())';
+                break;
+            case 'document':
+                cmd = 'console.dir(document)';
+                break;
+            case 'navigator':
+                cmd = 'console.dir(window.navigator)';
+                break;
+            case 'location':
+                cmd = 'console.dir(window.location)';
+                break;
+            case 'history':
+                cmd = 'console.dir(window.history)';
+                break;
+            case 'screen':
+                cmd = 'console.dir(window.screen)';
+                break;
+            case 'scripts':
+                cmd = ' (function getScripts(){ ' +
+                      '     var i = 0, scripts = document.scripts, length = scripts.length;' +
+                      '     for(; i < length; i++){ '+
+                      '         console.dirxml(scripts[i]); ' +
+                      '     }; ' +
+                      '}())';
+                break;
+            case 'styles':
+                cmd =   ' (function getStyles(){ ' +
+                        '     var i = 0, styles = document.getElementsByTagName("link"), length = styles.length;' +
+                        '     for(; i < length; i++){ '+
+                        '         console.dirxml(styles[i]);' +
+                        '      }; ' +
+                        '}())';
+                break;
+            case 'cookie':
+                cmd = 'console.log(document.cookie)';
+                break;
+
+            case 'clear':
+                cmd = 'console.clear()';
+                break;
+            case 'reload':
+                cmd = 'window.location.reload()';
+                break;
+        }
+
+        server.request(cmd);
+    });
 
     $('#command').keypress(function (e) {
         if (e.keyCode == 13 && !e.shiftKey) {

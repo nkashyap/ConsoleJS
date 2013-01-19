@@ -17,7 +17,7 @@ ConnectionManager.prototype.isConsoleClient = function isConsoleClient(socket) {
 ConnectionManager.prototype.getTransportMode = function getTransportMode(socket) {
     var mode = this.server.transports[socket.id];
     return mode ? mode.name : '';
-}
+};
 
 ConnectionManager.prototype.add = function add(socket) {
     if (this.isConsoleClient(socket)) {

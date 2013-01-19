@@ -65,6 +65,10 @@ Room.prototype.setActive = function setActive(flag) {
 }
 
 Room.prototype.command = function command(data) {
+    if(data === 'console.clear()'){
+        this.console.clear();
+    }
+
     if(this.isSubscribed){
         this.manager.emit('command', { name: this.name, data: data });
     }
