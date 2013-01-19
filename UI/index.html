@@ -51,6 +51,7 @@
                     <button class="btn btn-warning">Ping</button>
                     <button class="btn btn-info">Window</button>
                     <button class="btn btn-info">Document</button>
+                    <button class="btn btn-info">Body</button>
                     <button class="btn btn-info">Navigator</button>
                     <button class="btn btn-info">Location</button>
                     <button class="btn btn-info">History</button>
@@ -91,16 +92,13 @@
                 break;
 
             case 'window':
-                cmd = ' (function getWindow(){ ' +
-                        '     var list = []; ' +
-                        '     for(var prop in window){ '+
-                        '         list.push(prop +": "+ window[prop]); ' +
-                        '      }; ' +
-                        '      console.dir(list); ' +
-                        '}())';
+                cmd = 'console.dir(window)';
                 break;
             case 'document':
                 cmd = 'console.dir(document)';
+                break;
+            case 'body':
+                cmd = 'console.dirxml(document.body)';
                 break;
             case 'navigator':
                 cmd = 'console.dir(window.navigator)';

@@ -435,14 +435,14 @@ var ConsoleJS = (function () {
         return name || "anonymous";
     }
 
-    function getValueOrClassName(obj) {
+    function getValueOrClassName(obj, skipGlobal) {
         var valueList = [
                 '[object String]', '[object Error]', '[object Arguments]', '[object Array]', '[object Object]',
                 '[object Number]', '[object Boolean]', '[object Function]', '[object ErrorEvent]'
             ],
             type = ({}).toString.call(obj);
 
-        if (valueList.indexOf(type) > -1) {
+        if (valueList.indexOf(type) > -1 && !skipGlobal) {
             return stringify(obj);
         } else {
             return type;
@@ -501,7 +501,7 @@ var ConsoleJS = (function () {
                     }
 
                     for (i = 0; i < namesCount; i++) {
-                        parts[partsCount++] = '\t"' + names[i] + '": ' + getValueOrClassName(obj[names[i]]);
+                        parts[partsCount++] = '\t"' + names[i] + '": ' + getValueOrClassName(obj[names[i]], type === '[object global]');
                     }
 
                     value += ': {\n' + parts.join(',\n') + '\n}\n';
@@ -536,7 +536,7 @@ var ConsoleJS = (function () {
             names.sort(sort);
 
             for (i = 0; i < namesCount; i++) {
-                parts[partsCount++] = '\t' + names[i] + ': ' + getValueOrClassName(obj[names[i]]);
+                parts[partsCount++] = '\t' + names[i] + ': ' + getValueOrClassName(obj[names[i]], type === '[object global]');
             }
 
             value += parts.join(',\n') + '\n}\n';
