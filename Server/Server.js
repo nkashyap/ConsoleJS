@@ -29,7 +29,7 @@ module.exports.start = function start(config) {
     });
 
     function parseURL(url) {
-        if (url == '/') {
+        if (url == '/' || url == '/index.html') {
             url = '/UI/index.html';
         }
 
