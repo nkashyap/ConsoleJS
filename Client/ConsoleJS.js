@@ -773,6 +773,13 @@ var ConsoleJS = (function () {
         }
     };
 
+    //IE Fix
+    if (Function.prototype.bind && console && typeof console.log === "object") {
+        ["log","info","warn","error","assert","dir","clear","profile","profileEnd"].forEach(function (method) {
+           console[method] = this.bind(console[method], console);
+        }, Function.prototype.call);
+    }
+
     return copy(wrapper, {
         config: config,
         native: console

@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a443409a-9e2c-40b9-828b-2c44d355713c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/ConnectionManager.js" afterPath="$PROJECT_DIR$/Server/ConnectionManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/ConsoleClient.js" afterPath="$PROJECT_DIR$/Server/ConsoleClient.js" />
+    <list default="true" id="a443409a-9e2c-40b9-828b-2c44d355713c" name="Default" comment="Quick commands added">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/ConsoleJS.js" afterPath="$PROJECT_DIR$/Client/ConsoleJS.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/ConsoleUI.css" afterPath="$PROJECT_DIR$/UI/ConsoleUI.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/ConsoleUI.js" afterPath="$PROJECT_DIR$/UI/ConsoleUI.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/Room.js" afterPath="$PROJECT_DIR$/UI/Room.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/RoomManager.js" afterPath="$PROJECT_DIR$/UI/RoomManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/index.html" afterPath="$PROJECT_DIR$/UI/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ConsoleJS.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/ConsoleJS.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358600058706" ignored="false" />
-    <file path="/Dummy.txt" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358601044191" ignored="false" />
-    <file path="/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358600400600" ignored="false" />
+    <file path="/ConsoleJS.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358635685060" ignored="false" />
+    <file path="/Dummy.txt" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358634911472" ignored="false" />
+    <file path="/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358612003428" ignored="false" />
     <file path="/RequestManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357495395468" ignored="false" />
     <file path="/client.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358077090758" ignored="false" />
     <file path="$PROJECT_DIR$/../GetAppointment/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358123302158" ignored="false" />
@@ -34,11 +27,12 @@
     <file path="/Client.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358199068819" ignored="false" />
     <file path="/ClientManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358201480810" ignored="false" />
     <file path="/ConnectionManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358203746447" ignored="false" />
-    <file path="/Room.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358593635358" ignored="false" />
+    <file path="/Room.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358633505649" ignored="false" />
     <file path="/ConsoleClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358201641802" ignored="false" />
-    <file path="/ControlClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358203441077" ignored="false" />
-    <file path="/ConsoleUI.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358593832447" ignored="false" />
-    <file path="/ConsoleUI.css" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358593958807" ignored="false" />
+    <file path="/ControlClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358631072438" ignored="false" />
+    <file path="/ConsoleUI.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358633281048" ignored="false" />
+    <file path="/ConsoleUI.css" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358634693809" ignored="false" />
+    <file path="/RoomManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358634016895" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +47,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -87,7 +82,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -97,39 +91,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ConsoleJS.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/ConsoleJS.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="534" column="0" selection-start="16646" selection-end="16646" vertical-scroll-proportion="-8.423077">
-              <folding>
-                <element signature="e#17250#18005#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UI/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="131" column="22" selection-start="5317" selection-end="5317" vertical-scroll-proportion="1.5724138">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RoomManager.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UI/RoomManager.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="23" selection-start="1954" selection-end="1964" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Room.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UI/Room.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="29" selection-start="1691" selection-end="1691" vertical-scroll-proportion="0.0">
+            <state line="96" column="27" selection-start="3852" selection-end="3852" vertical-scroll-proportion="2.3793104">
               <folding />
             </state>
           </provider>
@@ -138,8 +103,63 @@
       <file leaf-file-name="ConsoleUI.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="123" column="28" selection-start="3467" selection-end="3467" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="17" column="11" selection-start="387" selection-end="387" vertical-scroll-proportion="-3.0769231">
+              <folding>
+                <element signature="n#!!doc;n#ConsoleUI#0" expanded="false" />
+                <element signature="n#!!block;n#ConsoleUI#0" expanded="false" />
+                <element signature="e#417#1005#0" expanded="false" />
+                <element signature="e#1055#1226#0" expanded="false" />
+                <element signature="e#1287#1327#0" expanded="false" />
+                <element signature="e#1375#1438#0" expanded="false" />
+                <element signature="e#1488#1561#0" expanded="false" />
+                <element signature="e#1612#1685#0" expanded="false" />
+                <element signature="e#1731#2191#0" expanded="false" />
+                <element signature="e#2247#2762#0" expanded="false" />
+                <element signature="e#2830#2991#0" expanded="false" />
+                <element signature="e#2994#3020#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Room.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UI/Room.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="95" column="0" selection-start="2228" selection-end="2228" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc;n#Room#0" expanded="false" />
+                <element signature="n#!!block;n#Room#0" expanded="false" />
+                <element signature="e#491#913#0" expanded="false" />
+                <element signature="e#969#1012#0" expanded="false" />
+                <element signature="e#1057#1224#0" expanded="false" />
+                <element signature="e#1271#1440#0" expanded="false" />
+                <element signature="e#1784#1960#0" expanded="false" />
+                <element signature="e#2003#2089#0" expanded="false" />
+                <element signature="e#2142#2225#0" expanded="false" />
+                <element signature="e#2282#2370#0" expanded="false" />
+                <element signature="e#2435#2802#0" expanded="false" />
+                <element signature="e#2843#2963#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RoomManager.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UI/RoomManager.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="75" column="5" selection-start="1763" selection-end="1763" vertical-scroll-proportion="-16.923077">
+              <folding>
+                <element signature="n#!!doc;n#RoomManager#0" expanded="false" />
+                <element signature="n#!!block;n#RoomManager#0" expanded="false" />
+                <element signature="e#352#568#0" expanded="false" />
+                <element signature="e#626#741#0" expanded="false" />
+                <element signature="e#805#892#0" expanded="false" />
+                <element signature="e#960#1049#0" expanded="false" />
+                <element signature="e#1099#1183#0" expanded="false" />
+                <element signature="e#1246#1288#0" expanded="false" />
+                <element signature="e#1346#1548#0" expanded="false" />
+                <element signature="e#2045#2353#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -147,8 +167,49 @@
       <file leaf-file-name="ConsoleUI.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="353" column="19" selection-start="7863" selection-end="7863" vertical-scroll-proportion="0.0">
+            <state line="87" column="20" selection-start="1647" selection-end="1647" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConsoleJS.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Client/ConsoleJS.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="773" column="6" selection-start="23112" selection-end="23112" vertical-scroll-proportion="0.9635701">
+              <folding>
+                <element signature="e#4081#4324#0" expanded="false" />
+                <element signature="e#4362#4558#0" expanded="false" />
+                <element signature="e#4585#4856#0" expanded="false" />
+                <element signature="e#4875#12782#0" expanded="false" />
+                <element signature="e#12809#12875#0" expanded="false" />
+                <element signature="e#12908#13228#0" expanded="false" />
+                <element signature="e#13280#13729#0" expanded="false" />
+                <element signature="e#13767#17169#0" expanded="false" />
+                <element signature="e#17202#17302#0" expanded="false" />
+                <element signature="e#17333#18088#0" expanded="false" />
+                <element signature="e#18120#18683#0" expanded="false" />
+                <element signature="e#19496#19811#0" expanded="false" />
+                <element signature="e#19849#20283#0" expanded="false" />
+                <element signature="e#20327#20644#0" expanded="false" />
+                <element signature="e#20687#21060#0" expanded="false" />
+                <element signature="e#21095#21146#0" expanded="false" />
+                <element signature="e#21179#21229#0" expanded="false" />
+                <element signature="e#21262#21312#0" expanded="false" />
+                <element signature="e#21343#21392#0" expanded="false" />
+                <element signature="e#21426#21469#0" expanded="false" />
+                <element signature="e#21510#21912#0" expanded="false" />
+                <element signature="e#21947#21998#0" expanded="false" />
+                <element signature="e#22051#22111#0" expanded="false" />
+                <element signature="e#22152#22206#0" expanded="false" />
+                <element signature="e#22255#22313#0" expanded="false" />
+                <element signature="e#22360#22415#0" expanded="false" />
+                <element signature="e#22481#22534#0" expanded="false" />
+                <element signature="e#22583#22639#0" expanded="false" />
+                <element signature="e#22675#22745#0" expanded="false" />
+                <element signature="e#22788#22858#0" expanded="false" />
+                <element signature="e#22892#22961#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -178,7 +239,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Lib/prettify/prettify.js" />
         <option value="$PROJECT_DIR$/Lib/prettify/prettify.css" />
         <option value="$PROJECT_DIR$/Lib/prettify/lang-css.js" />
         <option value="$PROJECT_DIR$/Lib/prettify/lang-tex.js" />
@@ -186,14 +246,15 @@
         <option value="$PROJECT_DIR$/node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js" />
         <option value="$USER_HOME$/Desktop/movlconnect1.1.js" />
         <option value="$PROJECT_DIR$/Server/Server.js" />
-        <option value="$PROJECT_DIR$/UI/RoomManager.js" />
         <option value="$PROJECT_DIR$/Server/ConnectionManager.js" />
         <option value="$PROJECT_DIR$/Server/ConsoleClient.js" />
+        <option value="$PROJECT_DIR$/UI/index.html" />
+        <option value="$PROJECT_DIR$/Server/ControlClient.js" />
+        <option value="$PROJECT_DIR$/UI/ConsoleUI.js" />
+        <option value="$PROJECT_DIR$/UI/RoomManager.js" />
         <option value="$PROJECT_DIR$/UI/Room.js" />
         <option value="$PROJECT_DIR$/UI/ConsoleUI.css" />
-        <option value="$PROJECT_DIR$/UI/ConsoleUI.js" />
         <option value="$PROJECT_DIR$/Client/ConsoleJS.js" />
-        <option value="$PROJECT_DIR$/UI/index.html" />
       </list>
     </option>
   </component>
@@ -247,7 +308,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -263,20 +323,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ConsoleJS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ConsoleJS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ConsoleJS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UI" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -311,6 +357,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -327,8 +374,8 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig" persistUploadOnCheckin="false" />
   <component name="RecentsManager">
@@ -359,22 +406,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" working-dir="$PROJECT_DIR$" coffeescript-run="false">
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -403,6 +434,22 @@
       <listeners />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" working-dir="$PROJECT_DIR$" coffeescript-run="false">
+      <method />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -416,13 +463,6 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
-      <JSDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -446,8 +486,17 @@
       <patterns />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
+      <method />
+    </configuration>
     <configuration default="false" name="Start" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="Server/Start.js" working-dir="$PROJECT_DIR$" coffeescript-run="false">
+      <RunnerSettings RunnerId="NodeJS.debug" />
       <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.debug" />
       <ConfigurationWrapper RunnerId="NodeJS.run" />
       <method />
     </configuration>
@@ -520,7 +569,19 @@
       <created>1358601046231</created>
       <updated>1358601046231</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Quick commands added">
+      <created>1358601069175</created>
+      <updated>1358601069175</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Quick commands added">
+      <created>1358623102163</created>
+      <updated>1358623102164</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Close button added on tabs">
+      <created>1358634917447</created>
+      <updated>1358634917447</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -547,12 +608,12 @@
     <frame x="-1928" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.62966913" sideWeight="0.49359658" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38420492" sideWeight="0.49359658" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399361" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49839914" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -564,8 +625,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13767342" sideWeight="0.37033084" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30990416" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13767342" sideWeight="0.6157951" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25080043" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -611,7 +672,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Quick commands added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Close button added on tabs" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -628,10 +689,11 @@
     <MESSAGE value="File moved" />
     <MESSAGE value="Style and prettify applied" />
     <MESSAGE value="Quick commands added" />
+    <MESSAGE value="Close button added on tabs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -646,115 +708,167 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1539" column="26" selection-start="34957" selection-end="34957" vertical-scroll-proportion="0.023752969">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state line="1539" column="26" selection-start="34957" selection-end="34957" vertical-scroll-proportion="0.023752969" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/socket.io/node_modules/socket.io-client/lib/transports/jsonp-polling.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="0" selection-start="1325" selection-end="1325" vertical-scroll-proportion="-1.2792281">
-          <folding />
-        </state>
+        <state line="59" column="0" selection-start="1325" selection-end="1325" vertical-scroll-proportion="-1.2792281" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Desktop/movlconnect1.1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="36" selection-start="4693" selection-end="4693" vertical-scroll-proportion="-3.7861915">
-          <folding>
-            <element signature="e#64#107#0" expanded="false" />
-            <element signature="e#127#384#0" expanded="false" />
-            <element signature="e#407#1917#0" expanded="false" />
-            <element signature="e#2007#2248#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/ConnectionManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="2" selection-start="647" selection-end="647" vertical-scroll-proportion="-2.59854">
-          <folding />
-        </state>
+        <state line="99" column="36" selection-start="4693" selection-end="4693" vertical-scroll-proportion="-3.7861915" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/ConsoleClient.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="2" selection-start="521" selection-end="521" vertical-scroll-proportion="0.03649635">
+        <state line="21" column="2" selection-start="521" selection-end="521" vertical-scroll-proportion="0.03649635" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="27" selection-start="3852" selection-end="3852" vertical-scroll-proportion="2.3793104">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/ControlClient.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="5" selection-start="379" selection-end="379" vertical-scroll-proportion="-0.08029197">
+        <state line="27" column="0" selection-start="707" selection-end="707" vertical-scroll-proportion="0.8695652">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/Room.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/Server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="19" selection-start="1020" selection-end="1020" vertical-scroll-proportion="-0.43065694">
+        <state line="36" column="46" selection-start="987" selection-end="987" vertical-scroll-proportion="0.28985506">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/UI/SocketServer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.3649635">
+        <state line="55" column="22" selection-start="1669" selection-end="1672" vertical-scroll-proportion="0.1626409">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI/RoomManager.js">
+    <entry file="file://$PROJECT_DIR$/Server/ConnectionManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="23" selection-start="1954" selection-end="1964" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="353" column="19" selection-start="7863" selection-end="7863" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI/Room.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="29" selection-start="1691" selection-end="1691" vertical-scroll-proportion="0.0">
+        <state line="19" column="2" selection-start="647" selection-end="647" vertical-scroll-proportion="-1.4170692">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="28" selection-start="3467" selection-end="3467" vertical-scroll-proportion="0.0">
+        <state line="17" column="11" selection-start="387" selection-end="387" vertical-scroll-proportion="-3.0769231">
+          <folding>
+            <element signature="n#!!doc;n#ConsoleUI#0" expanded="false" />
+            <element signature="n#!!block;n#ConsoleUI#0" expanded="false" />
+            <element signature="e#417#1005#0" expanded="false" />
+            <element signature="e#1055#1226#0" expanded="false" />
+            <element signature="e#1287#1327#0" expanded="false" />
+            <element signature="e#1375#1438#0" expanded="false" />
+            <element signature="e#1488#1561#0" expanded="false" />
+            <element signature="e#1612#1685#0" expanded="false" />
+            <element signature="e#1731#2191#0" expanded="false" />
+            <element signature="e#2247#2762#0" expanded="false" />
+            <element signature="e#2830#2991#0" expanded="false" />
+            <element signature="e#2994#3020#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI/RoomManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="5" selection-start="1763" selection-end="1763" vertical-scroll-proportion="-16.923077">
+          <folding>
+            <element signature="n#!!doc;n#RoomManager#0" expanded="false" />
+            <element signature="n#!!block;n#RoomManager#0" expanded="false" />
+            <element signature="e#352#568#0" expanded="false" />
+            <element signature="e#626#741#0" expanded="false" />
+            <element signature="e#805#892#0" expanded="false" />
+            <element signature="e#960#1049#0" expanded="false" />
+            <element signature="e#1099#1183#0" expanded="false" />
+            <element signature="e#1246#1288#0" expanded="false" />
+            <element signature="e#1346#1548#0" expanded="false" />
+            <element signature="e#2045#2353#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI/Room.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="0" selection-start="2228" selection-end="2228" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc;n#Room#0" expanded="false" />
+            <element signature="n#!!block;n#Room#0" expanded="false" />
+            <element signature="e#491#913#0" expanded="false" />
+            <element signature="e#969#1012#0" expanded="false" />
+            <element signature="e#1057#1224#0" expanded="false" />
+            <element signature="e#1271#1440#0" expanded="false" />
+            <element signature="e#1784#1960#0" expanded="false" />
+            <element signature="e#2003#2089#0" expanded="false" />
+            <element signature="e#2142#2225#0" expanded="false" />
+            <element signature="e#2282#2370#0" expanded="false" />
+            <element signature="e#2435#2802#0" expanded="false" />
+            <element signature="e#2843#2963#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/Server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="19" selection-start="1020" selection-end="1020" vertical-scroll-proportion="1.0385756">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="20" selection-start="1647" selection-end="1647" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/ConsoleJS.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="534" column="0" selection-start="16646" selection-end="16646" vertical-scroll-proportion="-8.423077">
+        <state line="773" column="6" selection-start="23112" selection-end="23112" vertical-scroll-proportion="0.9635701">
           <folding>
-            <element signature="e#17250#18005#0" expanded="false" />
+            <element signature="e#4081#4324#0" expanded="false" />
+            <element signature="e#4362#4558#0" expanded="false" />
+            <element signature="e#4585#4856#0" expanded="false" />
+            <element signature="e#4875#12782#0" expanded="false" />
+            <element signature="e#12809#12875#0" expanded="false" />
+            <element signature="e#12908#13228#0" expanded="false" />
+            <element signature="e#13280#13729#0" expanded="false" />
+            <element signature="e#13767#17169#0" expanded="false" />
+            <element signature="e#17202#17302#0" expanded="false" />
+            <element signature="e#17333#18088#0" expanded="false" />
+            <element signature="e#18120#18683#0" expanded="false" />
+            <element signature="e#19496#19811#0" expanded="false" />
+            <element signature="e#19849#20283#0" expanded="false" />
+            <element signature="e#20327#20644#0" expanded="false" />
+            <element signature="e#20687#21060#0" expanded="false" />
+            <element signature="e#21095#21146#0" expanded="false" />
+            <element signature="e#21179#21229#0" expanded="false" />
+            <element signature="e#21262#21312#0" expanded="false" />
+            <element signature="e#21343#21392#0" expanded="false" />
+            <element signature="e#21426#21469#0" expanded="false" />
+            <element signature="e#21510#21912#0" expanded="false" />
+            <element signature="e#21947#21998#0" expanded="false" />
+            <element signature="e#22051#22111#0" expanded="false" />
+            <element signature="e#22152#22206#0" expanded="false" />
+            <element signature="e#22255#22313#0" expanded="false" />
+            <element signature="e#22360#22415#0" expanded="false" />
+            <element signature="e#22481#22534#0" expanded="false" />
+            <element signature="e#22583#22639#0" expanded="false" />
+            <element signature="e#22675#22745#0" expanded="false" />
+            <element signature="e#22788#22858#0" expanded="false" />
+            <element signature="e#22892#22961#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="131" column="22" selection-start="5317" selection-end="5317" vertical-scroll-proportion="1.5724138">
-          <folding />
         </state>
       </provider>
     </entry>
