@@ -7,18 +7,13 @@
 
 var ConsoleJS = (function () {
 
-    "use strict";
-
     var console = window.console,
         counters = {},
         timeCounters = {},
         withoutScope = ['dir', 'dirxml'],
-        wrapper,
-        formatter,
-        settings,
         server;
 
-    settings = {
+    var settings = {
         name: 'NoName',
         nativeOverride: true,
         nativeEnabled: true,
@@ -28,6 +23,509 @@ var ConsoleJS = (function () {
         //TODO
         webEnabled: false
     };
+
+
+    var Utils = {
+        getObjectType: function getObjectType(data) {
+            return ({}).toString.call(data);
+        },
+
+        getFunctionName: function getFunctionName(data) {
+            var name;
+            // in FireFox, Function objects have a name property...
+            if (data) {
+                name = (data.getName instanceof Function) ? data.getName() : data.name;
+                name = name || data.toString().match(/function\s*([_$\w\d]*)/)[1];
+            }
+            return name || "anonymous";
+        },
+
+        isArray: function isArray(data) {
+            return Object.prototype.toString.call(data) === '[object Array]';
+        },
+
+        toArray: function toArray(data) {
+            return Array.prototype.slice.call(data);
+        },
+
+        every: (function () {
+            if (Array.prototype.every) {
+                return function (array, callback, scope) {
+                    return (array || []).every(callback, scope);
+                };
+            } else {
+                return function (array, callback, scope) {
+                    array = array || [];
+                    var i = 0, length = array.length;
+                    if (length) {
+                        do {
+                            if (!callback.call(scope || array, array[i], i, array)) {
+                                return false;
+                            }
+                        } while (++i < length);
+                    }
+                    return true;
+                };
+            }
+        }()),
+
+        forEach: (function () {
+            if (Array.prototype.forEach) {
+                return function (array, callback, scope) {
+                    (array || []).forEach(callback, scope);
+                };
+            } else {
+                return function (array, callback, scope) {
+                    array = array || [];
+                    var i = 0, length = array.length;
+                    if (length) {
+                        do {
+                            callback.call(scope || array, array[i], i, array);
+                        } while (++i < length);
+                    }
+                };
+            }
+        }()),
+
+        forEachProperty: (function () {
+            if (window.navigator.userAgent.indexOf('MSIE') > -1) {
+                return function (obj, callback, scope) {
+                    for (var prop in obj) {
+                        callback.call(scope || obj, obj[prop], prop, obj);
+                    }
+                };
+            } else {
+                if (Object.getOwnPropertyNames) {
+                    return function (obj, callback, scope) {
+                        var array = Object.getOwnPropertyNames(obj);
+                        Utils.forEach(array, function (prop) {
+                            callback.call(scope || obj, obj[prop], prop, obj);
+                        }, scope);
+                    };
+                } else {
+                    return function (obj, callback, scope) {
+                        for (var prop in obj) {
+                            if (obj.hasOwnProperty(obj)) {
+                                callback.call(scope || obj, obj[prop], prop, obj);
+                            }
+                        }
+                    };
+                }
+            }
+        }()),
+
+        merge: function merge(source, target) {
+            this.forEachProperty(source, function (value, property) {
+                target[property] = value;
+            });
+
+            return target;
+        }
+    };
+
+
+    // From https://github.com/eriwen/javascript-stacktrace
+    var Formatter = {
+        /**
+         * Given an Error object, return a formatted Array based on Chrome's stack string.
+         *
+         * @param e - Error object to inspect
+         * @return Array<String> of function calls, files and line numbers
+         */
+        chrome: function chrome(e) {
+            var stack = (e.stack + '\n').replace(/^\S[^\(]+?[\n$]/gm, '').
+                replace(/^\s+(at eval )?at\s+/gm, '').
+                replace(/^([^\(]+?)([\n$])/gm, '{anonymous}()@$1$2').
+                replace(/^Object.<anonymous>\s*\(([^\)]+)\)/gm, '{anonymous}()@$1').split('\n');
+            stack.pop();
+            return stack;
+        },
+
+        /**
+         * Given an Error object, return a formatted Array based on Safari's stack string.
+         *
+         * @param e - Error object to inspect
+         * @return Array<String> of function calls, files and line numbers
+         */
+        safari: function safari(e) {
+            return e.stack.replace(/\[native code\]\n/m, '')
+                .replace(/^(?=\w+Error\:).*$\n/m, '')
+                .replace(/^@/gm, '{anonymous}()@')
+                .split('\n');
+        },
+
+        /**
+         * Given an Error object, return a formatted Array based on IE's stack string.
+         *
+         * @param e - Error object to inspect
+         * @return Array<String> of function calls, files and line numbers
+         */
+        ie: function (e) {
+            var lineRE = /^.*at (\w+) \(([^\)]+)\)$/gm;
+            return e.stack.replace(/at Anonymous function /gm, '{anonymous}()@')
+                .replace(/^(?=\w+Error\:).*$\n/m, '')
+                .replace(lineRE, '$1@$2')
+                .split('\n');
+        },
+
+        /**
+         * Given an Error object, return a formatted Array based on Firefox's stack string.
+         *
+         * @param e - Error object to inspect
+         * @return Array<String> of function calls, files and line numbers
+         */
+        firefox: function (e) {
+            return e.stack.replace(/(?:\n@:0)?\s+$/m, '').replace(/^[\(@]/gm, '{anonymous}()@').split('\n');
+        },
+
+        opera11: function (e) {
+            var ANON = '{anonymous}', lineRE = /^.*line (\d+), column (\d+)(?: in (.+))? in (\S+):$/;
+            var lines = e.stacktrace.split('\n'), result = [];
+
+            for (var i = 0, len = lines.length; i < len; i += 2) {
+                var match = lineRE.exec(lines[i]);
+                if (match) {
+                    var location = match[4] + ':' + match[1] + ':' + match[2];
+                    var fnName = match[3] || "global code";
+                    fnName = fnName.replace(/<anonymous function: (\S+)>/, "$1").replace(/<anonymous function>/, ANON);
+                    result.push(fnName + '@' + location + ' -- ' + lines[i + 1].replace(/^\s+/, ''));
+                }
+            }
+
+            return result;
+        },
+
+        opera10b: function (e) {
+            // "<anonymous function: run>([arguments not available])@file://localhost/G:/js/stacktrace.js:27\n" +
+            // "printStackTrace([arguments not available])@file://localhost/G:/js/stacktrace.js:18\n" +
+            // "@file://localhost/G:/js/test/functional/testcase1.html:15"
+            var lineRE = /^(.*)@(.+):(\d+)$/;
+            var lines = e.stacktrace.split('\n'), result = [];
+
+            for (var i = 0, len = lines.length; i < len; i++) {
+                var match = lineRE.exec(lines[i]);
+                if (match) {
+                    var fnName = match[1] ? (match[1] + '()') : "global code";
+                    result.push(fnName + '@' + match[2] + ':' + match[3]);
+                }
+            }
+
+            return result;
+        },
+
+        /**
+         * Given an Error object, return a formatted Array based on Opera 10's stacktrace string.
+         *
+         * @param e - Error object to inspect
+         * @return Array<String> of function calls, files and line numbers
+         */
+        opera10a: function (e) {
+            // "  Line 27 of linked script file://localhost/G:/js/stacktrace.js\n"
+            // "  Line 11 of inline#1 script in file://localhost/G:/js/test/functional/testcase1.html: In function foo\n"
+            var ANON = '{anonymous}', lineRE = /Line (\d+).*script (?:in )?(\S+)(?:: In function (\S+))?$/i;
+            var lines = e.stacktrace.split('\n'), result = [];
+
+            for (var i = 0, len = lines.length; i < len; i += 2) {
+                var match = lineRE.exec(lines[i]);
+                if (match) {
+                    var fnName = match[3] || ANON;
+                    result.push(fnName + '()@' + match[2] + ':' + match[1] + ' -- ' + lines[i + 1].replace(/^\s+/, ''));
+                }
+            }
+
+            return result;
+        },
+
+        // Opera 7.x-9.2x only!
+        opera9: function (e) {
+            // "  Line 43 of linked script file://localhost/G:/js/stacktrace.js\n"
+            // "  Line 7 of inline#1 script in file://localhost/G:/js/test/functional/testcase1.html\n"
+            var ANON = '{anonymous}', lineRE = /Line (\d+).*script (?:in )?(\S+)/i;
+            var lines = e.message.split('\n'), result = [];
+
+            for (var i = 2, len = lines.length; i < len; i += 2) {
+                var match = lineRE.exec(lines[i]);
+                if (match) {
+                    result.push(ANON + '()@' + match[2] + ':' + match[1] + ' -- ' + lines[i + 1].replace(/^\s+/, ''));
+                }
+            }
+
+            return result;
+        },
+
+        // Safari 5-, IE 9-, and others
+        other: function (curr) {
+            var ANON = '{anonymous}', fnRE = /function\s*([\w\-$]+)?\s*\(/i, stack = [], fn, args, maxStackSize = 10;
+            while (curr && curr['arguments'] && stack.length < maxStackSize) {
+                fn = fnRE.test(curr.toString()) ? RegExp.$1 || ANON : ANON;
+                args = Array.prototype.slice.call(curr['arguments'] || []);
+                stack[stack.length] = fn + '(' + this.stringifyArguments(args) + ')';
+                curr = curr.caller;
+            }
+            return stack;
+        },
+
+        /**
+         * Given arguments array as a String, subsituting type names for non-string types.
+         *
+         * @param {Arguments} args
+         * @return {Array} of Strings with stringified arguments
+         */
+        stringifyArguments: function (args) {
+            var result = [],
+                slice = Array.prototype.slice;
+
+            for (var i = 0; i < args.length; ++i) {
+                var arg = args[i];
+                if (arg === undefined) {
+                    result[i] = 'undefined';
+                } else if (arg === null) {
+                    result[i] = 'null';
+                } else if (arg.constructor) {
+                    if (arg.constructor === Array) {
+                        if (arg.length < 3) {
+                            result[i] = '[' + this.stringifyArguments(arg) + ']';
+                        } else {
+                            result[i] = '[' + this.stringifyArguments(slice.call(arg, 0, 1)) + '...' + this.stringifyArguments(slice.call(arg, -1)) + ']';
+                        }
+                    } else if (arg.constructor === Object) {
+                        result[i] = '#object';
+                    } else if (arg.constructor === Function) {
+                        result[i] = '#function';
+                    } else if (arg.constructor === String) {
+                        result[i] = '"' + arg + '"';
+                    } else if (arg.constructor === Number) {
+                        result[i] = arg;
+                    }
+                }
+            }
+
+            return result.join(",");
+        }
+    };
+
+
+    // From https://github.com/eriwen/javascript-stacktrace
+    var Stack = {
+        create: function create() {
+            try {
+                undefined();
+            } catch (e) {
+                return e;
+            }
+        },
+
+        getType: function getType(e) {
+            if (e['arguments'] && e.stack) {
+                return 'chrome';
+
+            } else if (e.stack && e.sourceURL) {
+                return 'safari';
+
+            } else if (e.stack && e.number) {
+                return 'ie';
+
+            } else if (typeof e.message === 'string' && typeof window !== 'undefined' && window.opera) {
+                if (!e.stacktrace) {
+                    return 'opera9';
+                }
+
+                if (e.message.indexOf('\n') > -1 && e.message.split('\n').length > e.stacktrace.split('\n').length) {
+                    return 'opera9';
+                }
+
+                if (!e.stack) {
+                    return 'opera10a';
+                }
+
+                if (e.stacktrace.indexOf("called from line") < 0) {
+                    return 'opera10b';
+                }
+
+                return 'opera11';
+
+            } else if (e.stack) {
+                return 'firefox';
+            }
+
+            return 'other';
+        },
+
+        get: function get(e) {
+            e = e || this.create();
+
+            var data = "",
+                type = this.getType(e),
+                className = Utils.getObjectType(e);
+
+            if (['[object Error]', '[object ErrorEvent]'].indexOf(className) === -1) {
+                wrapper.warn(className + ' error type missing!');
+                return data;
+            }
+
+            if (type === 'other') {
+                data = Formatter.other(arguments.callee);
+            } else {
+                data = Formatter[type](e);
+            }
+
+            return data;
+        }
+    };
+
+
+    var wrapper = {
+        assert: function assert(x) {
+            if (!x) {
+                var args = ['Assertion failed:'];
+                args = args.concat(Utils.toArray(arguments).slice(1));
+                logger("assert", arguments, Stringify.parse(args), Stack.get());
+            } else {
+                logger("assert", arguments);
+            }
+        },
+
+        count: function count(key) {
+            var frameId = (key || '_GLOBAL_'),
+                frameCounter = counters[frameId];
+
+            if (!frameCounter) {
+                counters[frameId] = frameCounter = {
+                    key: key || '',
+                    count: 1
+                };
+            } else {
+                ++frameCounter.count;
+            }
+
+            logger("count", arguments, (key || '') + ": " + frameCounter.count);
+        },
+
+        time: function time(name, reset) {
+            if (!name) {
+                return false;
+            }
+
+            var key = "KEY" + name.toString();
+
+            if (!reset && timeCounters[key]) {
+                return false;
+            }
+
+            timeCounters[key] = (new Date()).getTime();
+
+            logger("time", arguments);
+        },
+
+        timeEnd: function timeEnd(name) {
+            if (!name) {
+                return false;
+            }
+
+            var key = "KEY" + name.toString(),
+                timeCounter = timeCounters[key];
+
+            if (timeCounter) {
+                delete timeCounters[key];
+
+                logger("timeEnd", arguments, name + ": " + ((new Date()).getTime() - timeCounter) + "ms");
+            }
+        },
+
+        debug: function debug() {
+            logger("debug", arguments);
+        },
+
+        warn: function warn() {
+            logger("warn", arguments);
+        },
+
+        info: function info() {
+            logger("info", arguments);
+        },
+
+        log: function log() {
+            logger("log", arguments);
+        },
+
+        dir: function dir(obj) {
+            logger("dir", obj);
+        },
+
+        dirxml: function dirxml(node) {
+            var value,
+                nodeType = node.nodeType;
+
+            if (nodeType === 9) {
+                node = node.documentElement;
+            }
+
+            value = node ? node.outerHTML || node.innerHTML || node.toString() || Stringify.parse(node) : null;
+
+            if (value) {
+                value = value.replace(/</img, '&lt;');
+                value = value.replace(/>/img, '&gt;');
+            }
+
+            logger("dirxml", node, value);
+        },
+
+        group: function group() {
+            logger("group", arguments);
+        },
+
+        groupCollapsed: function groupCollapsed() {
+            logger("groupCollapsed", arguments);
+        },
+
+        groupEnd: function groupEnd() {
+            logger("groupEnd", arguments);
+        },
+
+        markTimeline: function markTimeline() {
+            logger("markTimeline", arguments);
+        },
+
+        timeStamp: function timeStamp(name) {
+            logger("timeStamp", arguments);
+        },
+
+        profiles: [],
+        profile: function profile(title) {
+            logger("profile", arguments);
+        },
+        profileEnd: function profileEnd(title) {
+            logger("profileEnd", arguments);
+        },
+
+        error: function error(e) {
+            logger("error", arguments, null, Stack.get(e));
+        },
+        exception: function exception(e) {
+            logger("error", arguments, null, Stack.get(e));
+        },
+        trace: function trace() {
+            logger("trace", arguments, null, Stack.get());
+        },
+
+        clear: function clear() {
+            counters = {};
+            timeCounters = {};
+            logger("clear", arguments);
+        }
+    };
+
+
+    //IE Fix
+    if (Function.prototype.bind && console && typeof console.log === "object") {
+        Utils.forEach(["log", "info", "warn", "error", "assert", "dir", "clear", "profile", "profileEnd"],
+            function (method) {
+                console[method] = this.bind(console[method], console);
+            },
+            Function.prototype.call
+        );
+    }
+
 
     function SocketServer(name) {
         this.name = name;
@@ -111,30 +609,23 @@ var ConsoleJS = (function () {
     }
 
     SocketServer.prototype.getServerURL = function getServerURL() {
-        var url = '', src,
-            scripts = window.document.scripts,
-            length = scripts.length;
-
-        while (length > 0) {
-            src = scripts[--length].src;
-            if (src.indexOf('socket.io') > -1) {
-                url = src.split('socket.io')[0];
-                break;
+        var url = '';
+        Utils.every(Utils.toArray(document.scripts), function (script) {
+            if (script.src.indexOf('socket.io') > -1) {
+                url = script.src.split('socket.io')[0];
+                return false;
             }
-        }
+            return true;
+        });
 
         return url;
     };
 
     SocketServer.prototype.processPendingRequest = function processPendingRequest() {
-        var i = 0, req, length = this.pending.length;
-        if (length) {
-            do {
-                req = this.pending[i++];
-                this.request(req.type, req.data);
-            } while (i < length);
-            this.pending = [];
-        }
+        Utils.forEach(this.pending, function (item) {
+            this.request(item.type, item.data);
+        }, this);
+        this.pending = [];
     };
 
     SocketServer.prototype.request = function request(eventName, data) {
@@ -147,19 +638,117 @@ var ConsoleJS = (function () {
     };
 
 
-    function copy(source, target) {
-        var prop;
-        for (prop in source) {
-            if (source.hasOwnProperty(prop)) {
-                target[prop] = source[prop];
-            }
-        }
+    var Stringify = {
+        TYPES: [
+            '[object Arguments]', '[object Array]',
+            '[object String]', '[object Number]', '[object Boolean]',
+            '[object Error]', '[object ErrorEvent]',
+            '[object Function]', '[object Object]'
+        ],
 
-        return target;
-    }
+        parse: function (data, simple) {
+            var value = '',
+                type = Utils.getObjectType(data);
+
+            if (this.TYPES.indexOf(type) > -1) {
+                switch (type) {
+                    case '[object Error]':
+                    case '[object ErrorEvent]':
+                        data = data.message;
+                    case '[object String]':
+                        value = this.parseString(data);
+                        break;
+
+                    case '[object Arguments]':
+                        data = Utils.toArray(data);
+                    case '[object Array]':
+                        value = this.parseArray(data);
+                        break;
+
+                    case '[object Object]':
+                        value = this.parseObject(type, data);
+                        break;
+
+                    case '[object Number]':
+                        value = String(data);
+                        break;
+
+                    case '[object Boolean]':
+                        value = data ? 'true' : 'false';
+                        break;
+
+                    case '[object Function]':
+                        value = '"' + Utils.getFunctionName(data) + '"';
+                        break;
+                }
+            } else if (data === null) {
+                value = '"null"';
+
+            } else if (data === undefined) {
+                value = '"undefined"';
+
+            } else if (simple === undefined) {
+                value = this.parseObject(type, data);
+
+            } else {
+                try {
+                    value = String(data);
+                } catch (e) {
+                }
+            }
+
+            return value;
+        },
+
+        valueOf: function valueOf(data, skipGlobal) {
+            var type = Utils.getObjectType(data);
+
+            if (this.TYPES.indexOf(type) > -1 && !skipGlobal) {
+                return this.parse(data);
+            } else {
+                if (type === '[object Function]') {
+                    type = '[Function ' + Utils.getFunctionName(data) + ']';
+                } else if (data && data.constructor && data.constructor.name) {
+                    type = '[object ' + data.constructor.name + ']';
+                }
+
+                return type;
+            }
+        },
+
+        parseString: function parseString(data) {
+            return '"' + data.replace(/\n/g, '\\n').replace(/"/g, '\\"').replace(/</g, '').replace(/>/g, '') + '"';
+        },
+
+        parseArray: function parseArray(data) {
+            var target = [];
+            Utils.forEach(data, function (item, index) {
+                this[index] = Stringify.valueOf(item);
+            }, target);
+
+            return '[' + target.join(',') + ']';
+        },
+
+        parseObject: function parseObject(type, data) {
+            var name = '',
+                skipGlobal = type === '[object global]',
+                target = [];
+
+            if (data && data.constructor) {
+                name = data.constructor.name;
+            }
+
+            Utils.forEachProperty(data, function (value, property) {
+                this.push('\t"' + property + '": ' + Stringify.valueOf(value, skipGlobal));
+            }, target);
+
+            return (name || type) + ': {\n' + target.join(',\n') + '\n}\n';
+        }
+    };
+
 
     function config(cfg) {
-        copy(cfg, settings);
+        Utils.merge(cfg, settings);
 
         // override native console
         if (settings.nativeOverride) {
@@ -171,445 +760,6 @@ var ConsoleJS = (function () {
         }
     }
 
-
-    formatter = {
-        chrome: function (e, obj) {
-            var stack, result = [];
-
-            if (obj) {
-                stack = e.stack.replace(/\n\r|\r\n/g, "\n").split(/[\n\r]/);
-                var length = stack.length,
-                    i,
-                    item,
-                    match,
-                    frame,
-                    value;
-
-                for (i = 0; i < length; i++) {
-                    item = stack[i];
-                    match = item.match(/^\s+at\s+(.*)((?:http|https|ftp|file):\/\/.*)$/);
-
-                    if (match) {
-                        frame = {
-                            name: match[1].replace(/\s*\($/, "") || "{anonymous}"
-                        };
-                        value = match[2].match(/^(.+)\:(\d+\:\d+)\)?$/);
-
-                        if (value) {
-                            frame.href = value[1];
-                            frame.lineNo = value[2].substring(0, value[2].indexOf(':'));
-                        }
-
-                        result.push(frame);
-                    }
-                }
-
-            } else {
-
-                result = (e.stack + '\n').replace(/^\S[^\(]+?[\n$]/gm, '').
-                    replace(/^\s+(at eval )?at\s+/gm, '').
-                    replace(/^([^\(]+?)([\n$])/gm, '{anonymous}()@$1$2').
-                    replace(/^Object.<anonymous>\s*\(([^\)]+)\)/gm, '{anonymous}()@$1').split('\n');
-
-                result.pop();
-            }
-
-            return result;
-        },
-
-        firefox: function (e, obj) {
-            var stack = e.stack.replace(/(?:\n@:0)?\s+$/m, '').replace(/^\(/gm, '{anonymous}(').split('\n'),
-                idx = 0,
-                count = 0,
-                length = stack.length,
-                items = [],
-                result = [],
-                i,
-                item,
-                value,
-                match,
-                name,
-                frame;
-
-            for (i = 0; i < length; i++) {
-                item = stack[i];
-                value = item || '';
-
-                if (value.indexOf('@http') > -1) {
-                    if (idx) {
-                        items[idx] += value;
-                    } else {
-                        items[count++] = value;
-                    }
-                    idx = 0;
-                } else {
-                    if (idx) {
-                        items[idx] += value;
-                    } else {
-                        idx = count;
-                        items[count++] = value;
-                    }
-                }
-            }
-
-            items.pop();
-
-            if (obj) {
-                for (i = 0; item = items[i++];) {
-                    match = item.match(/^(.*)((?:http|https|ftp|file):\/\/.*)$/);
-                    if (match) {
-                        name = match[1].replace(/\s*\($/, "") || "{anonymous}";
-                        frame = {
-                            name: name.substring(0, name.indexOf("("))
-                        };
-                        value = match[2].match(/(.+)\:(.+)/);
-
-                        if (value) {
-                            frame.href = value[1];
-                            frame.lineNo = value[2];
-                        }
-
-                        result.push(frame);
-                    }
-                }
-
-                return result;
-            } else {
-                return items;
-            }
-        },
-
-        opera11: function (e, obj) {
-            var ANON = '{anonymous}',
-                lineRE = /^.*line (\d+), column (\d+)(?: in (.+))? in (\S+):$/,
-                lines = (e.stacktrace || '').split('\n'),
-                result = [],
-                i, match, location, fnName,
-                len = lines.length;
-
-            for (i = 0; i < len; i += 2) {
-                match = lineRE.exec(lines[i]);
-                if (match) {
-                    location = match[4] + ':' + match[1] + ':' + match[2];
-                    fnName = (match[3] || "global code").replace(/<anonymous function: (\S+)>/, "$1").replace(/<anonymous function>/, ANON);
-                    if (obj) {
-                        result.push({
-                            name: fnName,
-                            href: match[4],
-                            lineNo: match[1]
-                        });
-                    } else {
-                        result.push(fnName + '@' + location);
-                    }
-                }
-            }
-
-            return result;
-        },
-
-        opera10b: function (e, obj) {
-            var lineRE = /^(.*)@(.+):(\d+)$/,
-                lines = (e.stacktrace || '').split('\n'),
-                result = [],
-                i, match, fnName,
-                len = lines.length;
-
-            for (i = 0; i < len; i++) {
-                match = lineRE.exec(lines[i]);
-                if (match) {
-                    fnName = match[1] ? (match[1] + '()') : "global code";
-                    if (obj) {
-                        result.push({
-                            name: fnName,
-                            href: match[2],
-                            lineNo: match[3]
-                        });
-                    } else {
-                        result.push(fnName + '@' + match[2] + ':' + match[3]);
-                    }
-                }
-            }
-
-            return result;
-        },
-
-        opera10a: function (e, obj) {
-            var ANON = '{anonymous}',
-                lineRE = /Line (\d+).*script (?:in )?(\S+)(?:: In function (\S+))?$/i,
-                lines = (e.stacktrace || '').split('\n'),
-                result = [],
-                i, match, fnName,
-                len = lines.length;
-
-            for (i = 0; i < len; i += 2) {
-                match = lineRE.exec(lines[i]);
-                if (match) {
-                    fnName = match[3] || ANON;
-                    if (obj) {
-                        result.push({
-                            name: fnName,
-                            href: match[2],
-                            lineNo: match[1]
-                        });
-                    } else {
-                        result.push(fnName + '()@' + match[2] + ':' + match[1]);
-                    }
-                }
-            }
-
-            return result;
-        },
-
-        opera9: function (e, obj) {
-            var ANON = '{anonymous}',
-                lineRE = /Line (\d+).*script (?:in )?(\S+)/i,
-                lines = e.message.split('\n'),
-                result = [],
-                i, match,
-                len = lines.length;
-
-            for (i = 2; i < len; i += 2) {
-                match = lineRE.exec(lines[i]);
-                if (match) {
-                    if (obj) {
-                        result.push({
-                            name: ANON,
-                            href: match[2],
-                            lineNo: match[1]
-                        });
-                    } else {
-                        result.push(ANON + '()@' + match[2] + ':' + match[1]);
-                    }
-                }
-            }
-
-            return result;
-        },
-
-        other: function (args, obj) {
-            var frames = [],
-                fn,
-                maxStackSize = 10,
-                i = 0,
-                length;
-
-            try {
-                fn = args.callee;
-                for (; (fn = fn.caller);) {
-                    frames.push({
-                        name: getFuncName(fn),
-                        fn: fn
-                    });
-
-                    if (++i >= maxStackSize) {
-                        break;
-                    }
-                }
-            } catch (e) {
-                return ["Error in generating trace", e];
-            }
-
-            if (!obj) {
-                for (i = 0, length = frames.length; i < length; i++) {
-                    frames[i] = frames[i].name;
-                }
-            }
-
-            return frames;
-        }
-    };
-
-    function sort(a, b) {
-        return a.toLowerCase() < b.toLowerCase() ? -1 : 1;
-    }
-
-    function getFuncName(func) {
-        var name;
-
-        // in FireFox, Function objects have a name property...
-        if (func) {
-            name = (func.getName instanceof Function) ? func.getName() : func.name;
-            name = name || func.toString().match(/function\s*([_$\w\d]*)/)[1];
-        }
-
-        return name || "anonymous";
-    }
-
-    function getValueOrClassName(obj, skipGlobal) {
-        var valueList = [
-                '[object String]', '[object Error]', '[object Arguments]', '[object Array]', '[object Object]',
-                '[object Number]', '[object Boolean]', '[object Function]', '[object ErrorEvent]'
-            ],
-            type = ({}).toString.call(obj);
-
-        if (valueList.indexOf(type) > -1 && !skipGlobal) {
-            return stringify(obj);
-        } else {
-            return type;
-        }
-    }
-
-    function stringify(obj, simple) {
-        var value = '',
-            type = ({}).toString.call(obj),
-            typeList = [
-                '[object String]', '[object Error]', '[object Arguments]', '[object Array]', '[object Object]',
-                '[object Number]', '[object Boolean]', '[object Function]', '[object ErrorEvent]'
-            ],
-            i,
-            prop,
-            length = 0,
-            partsCount = 0,
-            namesCount = 0,
-            parts = [],
-            names = [];
-
-        if (typeList.indexOf(type) > -1) {
-
-            switch (type) {
-                case '[object Error]':
-                case '[object ErrorEvent]':
-                    obj = obj.message;
-
-                case '[object String]':
-                    value = '"' + obj.replace(/\n/g, '\\n').replace(/"/g, '\\"').replace(/</g, '').replace(/>/g, '') + '"';
-                    break;
-
-                case '[object Arguments]':
-                    obj = Array.prototype.slice.call(obj);
-
-                case '[object Array]':
-                    value = '[';
-                    for (i = 0, length = obj.length; i < length; i++) {
-                        parts[partsCount++] = getValueOrClassName(obj[i]);
-                    }
-                    value += parts.join(',') + ']';
-                    break;
-
-                case '[object Object]':
-                    for (prop in obj) {
-                        if (obj.hasOwnProperty(prop)) {
-                            names[namesCount++] = prop;
-                        }
-                    }
-
-                    names.sort(sort);
-
-                    if (obj && obj.constructor && obj.constructor.name) {
-                        value = obj.constructor.name;
-                        parts[partsCount++] = '\t"constructor": "' + obj.constructor.name + '"';
-                    }
-
-                    for (i = 0; i < namesCount; i++) {
-                        parts[partsCount++] = '\t"' + names[i] + '": ' + getValueOrClassName(obj[names[i]], type === '[object global]');
-                    }
-
-                    value += ': {\n' + parts.join(',\n') + '\n}\n';
-                    break;
-
-                case '[object Number]':
-                    value = String(obj);
-                    break;
-                case '[object Boolean]':
-                    value = obj ? 'true' : 'false';
-                    break;
-                case '[object Function]':
-                    value = '"' + getFuncName(obj) + '"';
-                    break;
-                default:
-                    break;
-            }
-        } else if (obj === null) {
-            value = '"null"';
-
-        } else if (obj === undefined) {
-            value = '"undefined"';
-
-        } else if (simple === undefined) {
-            value = type + ': {\n';
-            for (prop in obj) {
-                if (obj.hasOwnProperty(prop)) {
-                    names[namesCount++] = prop;
-                }
-            }
-
-            names.sort(sort);
-
-            for (i = 0; i < namesCount; i++) {
-                parts[partsCount++] = '\t' + names[i] + ': ' + getValueOrClassName(obj[names[i]], type === '[object global]');
-            }
-
-            value += parts.join(',\n') + '\n}\n';
-
-        } else {
-            try {
-                // should look like an object
-                value = String(obj);
-            } catch (e) {
-            }
-        }
-
-        return value;
-    }
-
-    function createException() {
-        try {
-            undefined();
-        } catch (e) {
-            return e;
-        }
-    }
-
-    function getStackType(e) {
-        if (e.hasOwnProperty('arguments') && e.stack) {
-            return 'chrome';
-
-        } else if (typeof e.message === 'string' && typeof window !== 'undefined' && window.opera) {
-            if (!e.stacktrace) {
-                return 'opera9';
-            }
-
-            if (e.message.indexOf('\n') > -1 && e.message.split('\n').length > e.stacktrace.split('\n').length) {
-                return 'opera9';
-            }
-
-            if (!e.stack) {
-                return 'opera10a';
-            }
-
-            if (e.stacktrace.indexOf("called from line") < 0) {
-                return 'opera10b';
-            }
-
-            return 'opera11';
-
-        } else if (e.stack) {
-            return 'firefox';
-        }
-
-        return 'other';
-    }
-
-    function getStack(e, obj) {
-        e = e || createException();
-
-        var data = "",
-            type = getStackType(e),
-            className = ({}).toString.call(e);
-
-        if (['[object Error]', '[object ErrorEvent]'].indexOf(className) === -1) {
-            wrapper.warn(className + ' error type missing!');
-            return data;
-        }
-
-        if (type !== 'other' && (!!(e.stack || e.stacktrace) || type === 'opera9')) {
-            data = formatter[type](e, obj);
-        } else {
-            data = formatter.other(arguments, obj);
-        }
-
-        return data;
-    }
 
     function logger(type, args, value, callStack) {
 
@@ -626,8 +776,8 @@ var ConsoleJS = (function () {
         if (settings.remoteEnabled) {
             var output = {
                 type: type,
-                message: value || stringify(args),
-                stack: callStack ? stringify(callStack) : ''
+                message: value || Stringify.parse(args),
+                stack: callStack ? Stringify.parse(callStack) : ''
             };
 
             server.request('console', output);
@@ -638,149 +788,8 @@ var ConsoleJS = (function () {
         }
     }
 
-    wrapper = {
-        assert: function assert(x) {
-            if (!x) {
-                var args = ['Assertion failed:'];
-                args = args.concat(Array.prototype.slice.call(arguments, 1));
-                logger("assert", arguments, stringify(args), getStack());
-            } else {
-                logger("assert", arguments);
-            }
-        },
 
-        count: function count(key) {
-            var frameId = (key || '_GLOBAL_'),
-                frameCounter = counters[frameId];
-
-            if (!frameCounter) {
-                counters[frameId] = frameCounter = {
-                    key: key || '',
-                    count: 1
-                };
-            } else {
-                ++frameCounter.count;
-            }
-
-            logger("count", arguments, (key || '') + ": " + frameCounter.count);
-        },
-
-        time: function time(name, reset) {
-            if (!name) {
-                return false;
-            }
-
-            var key = "KEY" + name.toString();
-
-            if (!reset && timeCounters[key]) {
-                return false;
-            }
-
-            timeCounters[key] = (new Date()).getTime();
-
-            logger("time", arguments);
-        },
-
-        timeEnd: function timeEnd(name) {
-            if (!name) {
-                return false;
-            }
-
-            var key = "KEY" + name.toString(),
-                timeCounter = timeCounters[key];
-
-            if (timeCounter) {
-                delete timeCounters[key];
-
-                logger("timeEnd", arguments, name + ": " + ((new Date()).getTime() - timeCounter) + "ms");
-            }
-        },
-
-        debug: function debug() {
-            logger("debug", arguments);
-        },
-
-        warn: function warn() {
-            logger("warn", arguments);
-        },
-
-        info: function info() {
-            logger("info", arguments);
-        },
-
-        log: function log() {
-            logger("log", arguments);
-        },
-
-        dir: function dir(obj) {
-            logger("dir", obj);
-        },
-
-        dirxml: function dirxml(node) {
-            var nodeType = node.nodeType;
-            if (nodeType === 9) {
-                node = node.documentElement;
-            }
-
-            var value = node ? node.outerHTML || node.innerHTML || node.toString() || stringify(node) : null;
-            value = value.replace(/</img, '&lt;');
-            value = value.replace(/>/img, '&gt;');
-            logger("dirxml", node, value);
-        },
-
-        group: function group() {
-            logger("group", arguments);
-        },
-
-        groupCollapsed: function groupCollapsed() {
-            logger("groupCollapsed", arguments);
-        },
-
-        groupEnd: function groupEnd() {
-            logger("groupEnd", arguments);
-        },
-
-        markTimeline: function markTimeline() {
-            logger("markTimeline", arguments);
-        },
-
-        timeStamp: function timeStamp(name) {
-            logger("timeStamp", arguments);
-        },
-
-        profiles: [],
-        profile: function profile(title) {
-            logger("profile", arguments);
-        },
-        profileEnd: function profileEnd(title) {
-            logger("profileEnd", arguments);
-        },
-
-        error: function error(e) {
-            logger("error", arguments, null, getStack(e));
-        },
-        exception: function exception(e) {
-            logger("error", arguments, null, getStack(e));
-        },
-        trace: function trace() {
-            logger("trace", arguments, null, getStack());
-        },
-
-        clear: function clear() {
-            counters = {};
-            timeCounters = {};
-            logger("clear", arguments);
-        }
-    };
-
-    //IE Fix
-    if (Function.prototype.bind && console && typeof console.log === "object") {
-        ["log","info","warn","error","assert","dir","clear","profile","profileEnd"].forEach(function (method) {
-           console[method] = this.bind(console[method], console);
-        }, Function.prototype.call);
-    }
-
-    return copy(wrapper, {
+    return Utils.merge(wrapper, {
         config: config,
         native: console
     });

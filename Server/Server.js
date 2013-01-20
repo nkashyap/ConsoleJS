@@ -21,7 +21,7 @@ module.exports.start = function start(config) {
         socketServer.set('log level', 1);
         socketServer.set('transports', [
             'websocket',
-            'flashsocket',
+            //'flashsocket',
             'htmlfile',
             'xhr-polling',
             'jsonp-polling'
