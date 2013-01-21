@@ -90,8 +90,13 @@ ConsoleUI.prototype.log = function log(data, notify) {
     message = prettyPrintOne(message);
 
     if (data.stack) {
+        var stack = data.stack.split(",")
+                    .join("\n")
+                    .replace(/"/img, '')
+                    .replace(/%20/img, ' ');
+
         message += '\n';
-        message += prettyPrintOne(this.stripBrackets(data.stack.split(",").join("\n").replace(/"/img, '')));
+        message += prettyPrintOne(this.stripBrackets(stack));
     }
 
     var msg = $('<' + tag + ' class="console type-' + data.type + ' ' + css + '">' + (message || '.') + '</' + tag + '>');

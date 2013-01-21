@@ -673,6 +673,7 @@ var ConsoleJS = (function () {
                 try {
                     value = String(data);
                 } catch (e) {
+                    wrapper.error(e);
                 }
             }
 
