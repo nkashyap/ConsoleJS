@@ -1,17 +1,16 @@
 ﻿/// <summary>Device detection based on user agent.</summary>
 
-var BrowserJS = (function ()
-{
+var BrowserJS = (function () {
     var BrowserDetect = {
-        init: function () {
+        init: function init() {
             this.browser = this.searchString(this.dataBrowser) || "Unknown";
             this.version = this.searchVersion(navigator.userAgent)
                 || this.searchVersion(navigator.appVersion)
                 || "Unknown";
             this.platform = this.searchString(this.dataOS) || "Unknown";
         },
-        searchString: function (data) {
-            for (var i = 0, ii = data.length; i < ii; i++)	{
+        searchString: function searchString(data) {
+            for (var i = 0, ii = data.length; i < ii; i++) {
                 var dataString = data[i].string;
                 var dataProp = data[i].prop;
                 this.versionSearchString = data[i].versionSearch || data[i].identity;
@@ -23,36 +22,36 @@ var BrowserJS = (function ()
                     return data[i].identity;
             }
         },
-        searchVersion: function (dataString) {
+        searchVersion: function searchVersion(dataString) {
             var index = dataString.indexOf(this.versionSearchString);
             if (index == -1) return;
-            return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+            return parseFloat(dataString.substring(index + this.versionSearchString.length + 1));
         },
         dataBrowser: [
-            { 	string: navigator.userAgent,
+            {     string: navigator.userAgent,
                 subString: "LG Browser",
                 versionSearch: "LG Browser/",
                 identity: "LG"
             },
-            { 	string: navigator.userAgent,
+            {     string: navigator.userAgent,
                 subString: "Maple",
                 identity: "Maple"
             },
-            { 	string: navigator.userAgent,
+            {     string: navigator.userAgent,
                 subString: "Philips",
                 versionSearch: "Version/",
                 identity: "Philips"
             },
-            { 	string: navigator.userAgent,
+            {     string: navigator.userAgent,
                 subString: "ToshibaTP",
                 versionSearch: "ToshibaTP/",
                 identity: "ToshibaTP"
             },
-            { 	string: navigator.userAgent,
+            {     string: navigator.userAgent,
                 subString: "Mstar",
                 identity: "Technika"
             },
-            { 	string: navigator.userAgent,
+            {     string: navigator.userAgent,
                 subString: "Technika Media Streamer",
                 identity: "Technika"
             },
@@ -61,7 +60,7 @@ var BrowserJS = (function ()
                 subString: "Chrome",
                 identity: "Chrome"
             },
-            { 	string: navigator.userAgent,
+            {     string: navigator.userAgent,
                 subString: "OmniWeb",
                 versionSearch: "OmniWeb/",
                 identity: "OmniWeb"
@@ -97,7 +96,7 @@ var BrowserJS = (function ()
                 subString: "Camino",
                 identity: "Camino"
             },
-            {		// for newer Netscapes (6+)
+            {        // for newer Netscapes (6+)
                 string: navigator.userAgent,
                 subString: "Netscape",
                 identity: "Netscape"
@@ -114,14 +113,14 @@ var BrowserJS = (function ()
                 identity: "Mozilla",
                 versionSearch: "rv"
             },
-            { 		// for older Netscapes (4-)
+            {         // for older Netscapes (4-)
                 string: navigator.userAgent,
                 subString: "Mozilla",
                 identity: "Netscape",
                 versionSearch: "Mozilla"
             }
         ],
-        dataOS : [
+        dataOS: [
             {
                 string: navigator.userAgent,
                 subString: "NetCast.TV-2011",
@@ -182,7 +181,7 @@ var BrowserJS = (function ()
                 subString: "Technika22",
                 identity: "Mstar"
             },
-            { 	string: navigator.userAgent,
+            {     string: navigator.userAgent,
                 subString: "Technika Media Streamer",
                 identity: "Avtrex"
             },
@@ -215,7 +214,7 @@ var BrowserJS = (function ()
         browser: BrowserDetect.browser,
         version: BrowserDetect.version,
         platform: BrowserDetect.platform,
-        toString: function(){
+        toString: function () {
             return BrowserDetect.browser + ':' + BrowserDetect.version + ':' + BrowserDetect.platform;
         }
     };

@@ -80,8 +80,13 @@ ConsoleUI.prototype.show = function show() {
 };
 
 ConsoleUI.prototype.log = function log(data, notify) {
-    var css = '', tag = 'pre';
-    var message = this.stripBrackets(data.message);
+    var css = '',
+        tag = 'pre',
+        message = this.stripBrackets(data.message);
+
+    // for Opera and Maple browser
+    message = message.replace(/%20/img, " ");
+
     message = prettyPrintOne(message);
 
     if (data.stack) {

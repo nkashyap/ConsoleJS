@@ -87,32 +87,11 @@ var ConsoleJS = (function () {
             }
         }()),
 
-        forEachProperty: (function () {
-            if (window.navigator.userAgent.indexOf('MSIE') > -1) {
-                return function (obj, callback, scope) {
-                    for (var prop in obj) {
-                        callback.call(scope || obj, obj[prop], prop, obj);
-                    }
-                };
-            } else {
-                if (Object.getOwnPropertyNames) {
-                    return function (obj, callback, scope) {
-                        var array = Object.getOwnPropertyNames(obj);
-                        Utils.forEach(array, function (prop) {
-                            callback.call(scope || obj, obj[prop], prop, obj);
-                        }, scope);
-                    };
-                } else {
-                    return function (obj, callback, scope) {
-                        for (var prop in obj) {
-                            if (obj.hasOwnProperty(obj)) {
-                                callback.call(scope || obj, obj[prop], prop, obj);
-                            }
-                        }
-                    };
-                }
+        forEachProperty: function forEachProperty(obj, callback, scope) {
+            for (var prop in obj) {
+                callback.call(scope || obj, obj[prop], prop, obj);
             }
-        }()),
+        },
 
         merge: function merge(source, target) {
             this.forEachProperty(source, function (value, property) {
@@ -726,7 +705,11 @@ var ConsoleJS = (function () {
                 this[index] = Stringify.valueOf(item);
             }, target);
 
-            return '[' + target.join(',') + ']';
+            if(target.length > 0){
+                return '[' + target.join(',') + ']';
+            } else {
+                return '[' + data.toString() + ']';
+            }
         },
 
         parseObject: function parseObject(type, data) {
@@ -742,7 +725,11 @@ var ConsoleJS = (function () {
                 this.push('\t"' + property + '": ' + Stringify.valueOf(value, skipGlobal));
             }, target);
 
-            return (name || type) + ': {\n' + target.join(',\n') + '\n}\n';
+            if(target.length > 0){
+                return (name || type) + ': {\n' + target.join(',\n') + '\n}\n';
+            } else {
+                return data.toString() + '\n';
+            }
         }
     };
 
