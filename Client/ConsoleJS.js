@@ -27,7 +27,7 @@ var ConsoleJS = (function () {
 
     var Utils = {
         getObjectType: function getObjectType(data) {
-            return ({}).toString.call(data);
+            return Object.prototype.toString.apply(data);
         },
 
         getFunctionName: function getFunctionName(data) {
@@ -763,7 +763,7 @@ var ConsoleJS = (function () {
         if (settings.remoteEnabled) {
             var output = {
                 type: type,
-                message: value || Stringify.parse(args),
+                message: value || Stringify.parse(args.length ? Utils.toArray(args) : args),
                 stack: callStack ? Stringify.parse(callStack) : ''
             };
 

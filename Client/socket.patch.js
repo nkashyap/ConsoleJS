@@ -63,7 +63,7 @@ io.Transport["jsonp-polling"].prototype.post = function (data) {
     }
 
     if (this.iframe.attachEvent) {
-        iframe.onreadystatechange = function () {
+        this.iframe.onreadystatechange = function () {
             if (self.iframe.readyState.toLowerCase() === 'complete') {
                 complete();
             }
@@ -74,5 +74,5 @@ io.Transport["jsonp-polling"].prototype.post = function (data) {
 
     this.socket.setBuffer(true);
 
-    setTimeout(complete, 3000);
+    setTimeout(complete, 250);
 };
