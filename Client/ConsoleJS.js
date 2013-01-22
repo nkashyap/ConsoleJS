@@ -629,7 +629,7 @@ var ConsoleJS = (function () {
 
         emit('console', {
             type: type,
-            message: value || Stringify.parse(args.length ? Utils.toArray(args) : args),
+            message: value || Stringify.parse(args && args.hasOwnProperty("length") ? Utils.toArray(args) : args),
             stack: callStack ? Stringify.parse(callStack) : ''
         });
     }
