@@ -11,18 +11,11 @@ var ConsoleJS = (function () {
         counters = {},
         timeCounters = {},
         withoutScope = ['dir', 'dirxml'],
-        server;
-
-    var settings = {
-        name: 'NoName',
-        nativeOverride: true,
-        nativeEnabled: true,
-        remoteEnabled: true,
-        remoteCallback: function (data, mode) {
-        },
-        //TODO
-        webEnabled: false
-    };
+        events = {},
+        settings = {
+            nativeOverride: true,
+            nativeEnabled: true
+        };
 
 
     var Utils = {
@@ -40,34 +33,13 @@ var ConsoleJS = (function () {
             return name || "anonymous";
         },
 
-        isArray: function isArray(data) {
-            return Object.prototype.toString.call(data) === '[object Array]';
-        },
+//        isArray: function isArray(data) {
+//            return Object.prototype.toString.call(data) === '[object Array]';
+//        },
 
         toArray: function toArray(data) {
             return Array.prototype.slice.call(data);
         },
-
-        every: (function () {
-            if (Array.prototype.every) {
-                return function (array, callback, scope) {
-                    return (array || []).every(callback, scope);
-                };
-            } else {
-                return function (array, callback, scope) {
-                    array = array || [];
-                    var i = 0, length = array.length;
-                    if (length) {
-                        do {
-                            if (!callback.call(scope || array, array[i], i, array)) {
-                                return false;
-                            }
-                        } while (++i < length);
-                    }
-                    return true;
-                };
-            }
-        }()),
 
         forEach: (function () {
             if (Array.prototype.forEach) {
@@ -480,9 +452,11 @@ var ConsoleJS = (function () {
         error: function error(e) {
             logger("error", arguments, null, Stack.get(e));
         },
+
         exception: function exception(e) {
             logger("error", arguments, null, Stack.get(e));
         },
+
         trace: function trace() {
             logger("trace", arguments, null, Stack.get());
         },
@@ -491,128 +465,6 @@ var ConsoleJS = (function () {
             counters = {};
             timeCounters = {};
             logger("clear", arguments);
-        }
-    };
-
-
-    //IE Fix
-    if (Function.prototype.bind && console && typeof console.log === "object") {
-        Utils.forEach(["log", "info", "warn", "error", "assert", "dir", "clear", "profile", "profileEnd"],
-            function (method) {
-                console[method] = this.bind(console[method], console);
-            },
-            Function.prototype.call
-        );
-    }
-
-
-    function SocketServer(name) {
-        this.name = name;
-        this.pending = [];
-        this.subscribed = false;
-        this.socket = io.connect(this.getServerURL());
-        this.mode = null;
-        var self = this;
-
-        this.socket.on('connect', function () {
-            self.socket.emit('subscribe', { name: self.name });
-            wrapper.log('Connected to the Server');
-            wrapper.log('Subscribing to', { name: self.name });
-        });
-
-        this.socket.on('connecting', function (mode) {
-            self.mode = mode;
-            wrapper.log('Connecting to the Server');
-        });
-
-        this.socket.on('reconnect', function (mode, attempts) {
-            self.mode = mode;
-            self.socket.emit('subscribe', { name: self.name });
-            wrapper.log('Reconnected to the Server');
-            wrapper.log('Subscribing to', { name: self.name });
-        });
-
-        this.socket.on('reconnecting', function () {
-            wrapper.log('Reconnecting to the Server');
-        });
-
-        this.socket.on('disconnect', function () {
-            wrapper.log('Unsubscribing from', { name: self.name });
-            wrapper.log('Disconnected from the Server');
-            self.socket.emit('unsubscribe', { name: self.name });
-        });
-
-        this.socket.on('online', function (data) {
-            if (data.name === self.name) {
-                self.subscribed = true;
-                self.processPendingRequest();
-                wrapper.log('Subscribed to', data);
-            }
-        });
-
-        this.socket.on('offline', function (data) {
-            if (data.name === self.name) {
-                wrapper.log('Unsubscribed from', data);
-                self.subscribed = false;
-            }
-        });
-
-        this.socket.on('command', function (cmd) {
-            var evalFun, result;
-            try {
-                evalFun = new Function([], "return " + cmd.data + ";");
-                result = evalFun();
-                if (result) {
-                    wrapper.log(result);
-                }
-            } catch (e) {
-                if (evalFun && evalFun.toString()) {
-                    wrapper.error(e, evalFun.toString());
-                } else {
-                    wrapper.error(e);
-                }
-            }
-        });
-
-        this.socket.on('connect_failed', function () {
-            wrapper.warn('Failed to connect to the Server');
-        });
-
-        this.socket.on('reconnect_failed', function () {
-            wrapper.warn('Failed to reconnect to the Server');
-        });
-
-        this.socket.on('error', function () {
-            wrapper.warn('Socket Error');
-        });
-    }
-
-    SocketServer.prototype.getServerURL = function getServerURL() {
-        var url = '';
-        Utils.every(Utils.toArray(document.scripts), function (script) {
-            if (script.src.indexOf('socket.io') > -1) {
-                url = script.src.split('socket.io')[0];
-                return false;
-            }
-            return true;
-        });
-
-        return url;
-    };
-
-    SocketServer.prototype.processPendingRequest = function processPendingRequest() {
-        Utils.forEach(this.pending, function (item) {
-            this.request(item.type, item.data);
-        }, this);
-        this.pending = [];
-    };
-
-    SocketServer.prototype.request = function request(eventName, data) {
-        if (this.socket.socket.connected && this.subscribed) {
-            data.name = this.name;
-            this.socket.emit(eventName, data);
-        } else {
-            this.pending.push({ type: eventName, data: data });
         }
     };
 
@@ -741,16 +593,30 @@ var ConsoleJS = (function () {
         // override native console
         if (settings.nativeOverride) {
             window.console = window.ConsoleJS;
+        }else{
+            window.console = console;
         }
+    }
 
-        if (settings.remoteEnabled) {
-            server = new SocketServer(settings.name);
+    function on(eventName, callback) {
+        if(!events[eventName]){
+            events[eventName] = [];
+        }
+        events[eventName].push(callback);
+    }
+
+
+    function emit(eventName, data) {
+        var event = events[eventName];
+        if(event){
+            Utils.forEach(event, function(callback){
+                callback(data);
+            });
         }
     }
 
 
     function logger(type, args, value, callStack) {
-
         if (console && settings.nativeEnabled) {
             if (console[type]) {
                 if (withoutScope.indexOf(type) > -1) {
@@ -761,24 +627,30 @@ var ConsoleJS = (function () {
             }
         }
 
-        if (settings.remoteEnabled) {
-            var output = {
-                type: type,
-                message: value || Stringify.parse(args.length ? Utils.toArray(args) : args),
-                stack: callStack ? Stringify.parse(callStack) : ''
-            };
-
-            server.request('console', output);
-
-            if (settings.remoteCallback) {
-                settings.remoteCallback(output, server.mode);
-            }
-        }
+        emit('console', {
+            type: type,
+            message: value || Stringify.parse(args.length ? Utils.toArray(args) : args),
+            stack: callStack ? Stringify.parse(callStack) : ''
+        });
     }
 
 
-    return Utils.merge(wrapper, {
+    //IE Fix
+    if (Function.prototype.bind && console && typeof console.log === "object") {
+        Utils.forEach(["log", "info", "warn", "error", "assert", "dir", "clear", "profile", "profileEnd"],
+            function (method) {
+                console[method] = this.bind(console[method], console);
+            },
+            Function.prototype.call
+        );
+    }
+
+
+    window.console = Utils.merge(wrapper, {
         config: config,
+        on: on,
         native: console
     });
+
+    return window.console;
 }());
