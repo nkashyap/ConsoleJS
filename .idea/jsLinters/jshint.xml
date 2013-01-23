@@ -8,9 +8,9 @@
     <option noarg="true" />
     <option noempty="true" />
     <option nonew="true" />
-    <option es5="true" />
-    <option strict="true" />
     <option undef="true" />
+    <option strict="true" />
+    <option es5="true" />
     <option browser="true" />
     <option maxerr="50" />
     <option predef="window,document,console,io" />
