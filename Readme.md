@@ -4,7 +4,6 @@ ConsoleJS is a Node.JS project. Its provide Remote Web Console for websites, Jav
 It uses socket.io to provide real time response from the browsers.
 
 Its works pretty much on all modern browsers, mobile devices, Smart TVs, etc
-Some issue with Philips 2011 and Samsung 2010 TVs
 
 ## Install Socket.io
 
@@ -24,6 +23,8 @@ node Server\Start.js
 <script type="text/javascript" src="http://NodeServerURL:Port/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="http://NodeServerURL:Port/Client/ConsoleJS.js"></script>
 <script type="text/javascript" src="http://NodeServerURL:Port/Client/BrowserJS.js"></script>
+<script type="text/javascript" src="http://NodeServerURL:Port/Client/SocketJS.js"></script>
+<script type="text/javascript" src="http://NodeServerURL:Port/Client/WebJS.js"></script>
 ```
 
 Then goto following url to access web console http://NodeServerURL:Port/
@@ -56,5 +57,4 @@ Then goto following url to access web console http://NodeServerURL:Port/
 
 #TODO
  * Change it into npm module
- * 
 
