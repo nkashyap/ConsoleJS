@@ -4,7 +4,7 @@
     <option indent="4" />
     <option maxerr="50" />
     <option plusplus="true" />
-    <option predef="window,document,console,io" />
+    <option predef="window,document,console,io,SocketJS,ConsoleJS" />
     <option sloppy="true" />
     <option todo="true" />
   </component>

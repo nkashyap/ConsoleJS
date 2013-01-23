@@ -13,7 +13,7 @@
     <option undef="true" />
     <option browser="true" />
     <option maxerr="50" />
-    <option predef="window,document,console,io" />
+    <option predef="window,document,console,io,SocketJS,ConsoleJS" />
   </component>
 </project>
 
