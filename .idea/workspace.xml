@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a443409a-9e2c-40b9-828b-2c44d355713c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/sass_stdlib.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/socket.patch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" afterPath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/BrowserJS.js" afterPath="$PROJECT_DIR$/Client/BrowserJS.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/ConsoleJS.js" afterPath="$PROJECT_DIR$/Client/ConsoleJS.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/demo.html" afterPath="$PROJECT_DIR$/Client/demo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/index.html" afterPath="$PROJECT_DIR$/Client/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ConsoleJS.iml" afterPath="$PROJECT_DIR$/ConsoleJS.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/ConsoleUI.js" afterPath="$PROJECT_DIR$/UI/ConsoleUI.js" />
     </list>
     <ignored path="ConsoleJS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -100,34 +91,108 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ConsoleJS.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ConsoleJS.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/ConsoleJS.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="714" column="54" selection-start="23642" selection-end="23642" vertical-scroll-proportion="0.92269737">
+            <state line="626" column="13" selection-start="20406" selection-end="20406" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#560#616#0" expanded="false" />
-                <element signature="e#675#1025#0" expanded="false" />
-                <element signature="e#1068#1157#0" expanded="false" />
-                <element signature="e#1200#1264#0" expanded="false" />
-                <element signature="e#1295#2026#0" expanded="false" />
-                <element signature="e#2062#2674#0" expanded="false" />
-                <element signature="e#2752#2880#0" expanded="false" />
-                <element signature="e#3186#10828#0" expanded="false" />
-                <element signature="e#10908#12692#0" expanded="false" />
-                <element signature="e#12714#16444#0" expanded="false" />
-                <element signature="e#16540#16819#0" expanded="false" />
-                <element signature="e#16854#19495#0" expanded="false" />
-                <element signature="e#19563#19879#0" expanded="false" />
-                <element signature="e#19966#20120#0" expanded="false" />
-                <element signature="e#20194#20437#0" expanded="false" />
-                <element signature="e#20757#22423#0" expanded="false" />
-                <element signature="e#22478#23006#0" expanded="false" />
-                <element signature="e#23057#23184#0" expanded="false" />
-                <element signature="e#23233#23585#0" expanded="false" />
-                <element signature="e#23642#24255#0" expanded="false" />
-                <element signature="e#24290#24568#0" expanded="false" />
-                <element signature="e#24621#25341#0" expanded="false" />
+                <element signature="e#422#491#0" expanded="false" />
+                <element signature="e#550#900#0" expanded="false" />
+                <element signature="e#1081#1145#0" expanded="false" />
+                <element signature="e#1178#1790#0" expanded="false" />
+                <element signature="e#1868#1996#0" expanded="false" />
+                <element signature="e#2045#2212#0" expanded="false" />
+                <element signature="e#2302#9944#0" expanded="false" />
+                <element signature="e#2312#2550#0" expanded="false" />
+                <element signature="e#2586#2945#0" expanded="false" />
+                <element signature="e#2956#3194#0" expanded="false" />
+                <element signature="e#3230#3437#0" expanded="false" />
+                <element signature="e#3448#3682#0" expanded="false" />
+                <element signature="e#3708#3982#0" expanded="false" />
+                <element signature="e#3993#4232#0" expanded="false" />
+                <element signature="e#4263#4383#0" expanded="false" />
+                <element signature="e#4416#5161#0" expanded="false" />
+                <element signature="e#5195#5967#0" expanded="false" />
+                <element signature="e#5978#6223#0" expanded="false" />
+                <element signature="e#6255#7023#0" expanded="false" />
+                <element signature="e#7087#7756#0" expanded="false" />
+                <element signature="e#7830#8352#0" expanded="false" />
+                <element signature="e#8363#8580#0" expanded="false" />
+                <element signature="e#8625#9938#0" expanded="false" />
+                <element signature="e#10024#11808#0" expanded="false" />
+                <element signature="e#10060#10184#0" expanded="false" />
+                <element signature="e#10224#11207#0" expanded="false" />
+                <element signature="e#11239#11802#0" expanded="false" />
+                <element signature="e#11867#12182#0" expanded="false" />
+                <element signature="e#12220#12654#0" expanded="false" />
+                <element signature="e#12698#13015#0" expanded="false" />
+                <element signature="e#13058#13431#0" expanded="false" />
+                <element signature="e#13466#13517#0" expanded="false" />
+                <element signature="e#13550#13600#0" expanded="false" />
+                <element signature="e#13633#13683#0" expanded="false" />
+                <element signature="e#13714#13763#0" expanded="false" />
+                <element signature="e#13797#13840#0" expanded="false" />
+                <element signature="e#13881#14358#0" expanded="false" />
+                <element signature="e#15121#15192#0" expanded="false" />
+                <element signature="e#15236#15307#0" expanded="false" />
+                <element signature="e#15342#15412#0" expanded="false" />
+                <element signature="e#15603#15840#0" expanded="false" />
+                <element signature="e#15882#17586#0" expanded="false" />
+                <element signature="e#17641#18169#0" expanded="false" />
+                <element signature="e#18220#18347#0" expanded="false" />
+                <element signature="e#18396#18748#0" expanded="false" />
+                <element signature="e#18805#19418#0" expanded="false" />
+                <element signature="e#19720#19847#0" expanded="false" />
+                <element signature="e#19885#20061#0" expanded="false" />
+                <element signature="e#20758#21037#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SocketJS.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/SocketJS.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="110" column="0" selection-start="3141" selection-end="4107" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#498#1163#0" expanded="false" />
+                <element signature="e#1203#1765#0" expanded="false" />
+                <element signature="e#2218#2274#0" expanded="false" />
+                <element signature="e#2304#2608#0" expanded="false" />
+                <element signature="e#2648#2884#0" expanded="false" />
+                <element signature="e#2923#3066#0" expanded="false" />
+                <element signature="e#3101#3139#0" expanded="false" />
+                <element signature="e#3172#4107#0" expanded="false" />
+                <element signature="e#4299#4475#0" expanded="false" />
+                <element signature="e#4527#4626#0" expanded="false" />
+                <element signature="e#4687#4900#0" expanded="false" />
+                <element signature="e#4950#5016#0" expanded="false" />
+                <element signature="e#5064#5251#0" expanded="false" />
+                <element signature="e#5299#5490#0" expanded="false" />
+                <element signature="e#5539#5694#0" expanded="false" />
+                <element signature="e#5742#6233#0" expanded="false" />
+                <element signature="e#6285#6357#0" expanded="false" />
+                <element signature="e#6411#6485#0" expanded="false" />
+                <element signature="e#6528#6581#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="demo.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/demo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="33" selection-start="1057" selection-end="1057" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="demo.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Client/demo.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="20" selection-start="808" selection-end="808" vertical-scroll-proportion="0.4802183">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -154,22 +219,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js" />
-        <option value="$PROJECT_DIR$/Server/ConnectionManager.js" />
-        <option value="$PROJECT_DIR$/Server/ConsoleClient.js" />
-        <option value="$PROJECT_DIR$/UI/index.html" />
         <option value="$PROJECT_DIR$/Server/ControlClient.js" />
         <option value="$PROJECT_DIR$/UI/RoomManager.js" />
         <option value="$PROJECT_DIR$/UI/Room.js" />
         <option value="$PROJECT_DIR$/UI/ConsoleUI.css" />
         <option value="$USER_HOME$/Desktop/movlconnect1.1.js" />
-        <option value="$PROJECT_DIR$/Server/Server.js" />
-        <option value="$PROJECT_DIR$/Client/BrowserJS.js" />
-        <option value="$PROJECT_DIR$/UI/ConsoleUI.js" />
         <option value="$PROJECT_DIR$/Client/socket.io.patch.js" />
-        <option value="$PROJECT_DIR$/Client/ConsoleJS.js" />
-        <option value="$PROJECT_DIR$/Client/demo.html" />
         <option value="$PROJECT_DIR$/Client/index.html" />
+        <option value="$PROJECT_DIR$/UI/ConsoleUI.js" />
+        <option value="$PROJECT_DIR$/Client/socket.patch.js" />
+        <option value="$PROJECT_DIR$/Client/BrowserJS.js" />
+        <option value="$PROJECT_DIR$/Server/Server.js" />
+        <option value="$PROJECT_DIR$/Client/SocketJS.js" />
+        <option value="$PROJECT_DIR$/Client/ConsoleJS.css" />
+        <option value="$PROJECT_DIR$/Client/demo.html" />
+        <option value="$PROJECT_DIR$/Client/ConsoleJS.js" />
+        <option value="$PROJECT_DIR$/Client/demo.js" />
       </list>
     </option>
   </component>
@@ -223,6 +288,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -251,13 +317,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -312,7 +391,7 @@
       </JSDebuggerConfigurationSettings>
       <method />
     </configuration>
-    <configuration default="false" name="Start" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files (x86)/nodejs/node" path-to-js-file="Server/Start.js" working-dir="$PROJECT_DIR$">
+    <configuration default="false" name="Start" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files (x86)/nodejs/node" path-to-js-file="Server/Start.js" working-dir="$PROJECT_DIR$" coffeescript-run="false">
       <RunnerSettings RunnerId="NodeJS.debug" />
       <RunnerSettings RunnerId="NodeJS.run" />
       <ConfigurationWrapper RunnerId="NodeJS.debug" />
@@ -408,7 +487,11 @@
       <created>1358718015801</created>
       <updated>1358718015801</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Code refactoring, Opera and maple fix">
+      <created>1358762697707</created>
+      <updated>1358762697707</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -433,32 +516,32 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1186" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38304093" sideWeight="0.49359658" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38304093" sideWeight="0.49359658" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49786553" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13767342" sideWeight="0.61695904" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Jenkins" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13767342" sideWeight="0.76413256" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Jenkins" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399361" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49839914" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2602339" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23586744" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15101388" sideWeight="0.6710671" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49573106" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49573106" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -497,7 +580,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code refactoring, Opera and maple fix" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -517,10 +600,11 @@
     <MESSAGE value="Close button added on tabs" />
     <MESSAGE value="IE fix" />
     <MESSAGE value="Code refactoring" />
+    <MESSAGE value="Code refactoring, Opera and maple fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="8" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -528,25 +612,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/UI/SocketServer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="22" selection-start="1669" selection-end="1672" vertical-scroll-proportion="0.1626409">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/ConnectionManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="2" selection-start="647" selection-end="647" vertical-scroll-proportion="-1.4170692" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="20" selection-start="1647" selection-end="1647" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/UI/RoomManager.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="75" column="5" selection-start="1763" selection-end="1763" vertical-scroll-proportion="0.36333698">
@@ -575,53 +640,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/movlconnect1.1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1349" column="5" selection-start="49296" selection-end="51326" vertical-scroll-proportion="0.7719298">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/Server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="0" selection-start="1189" selection-end="1189" vertical-scroll-proportion="1.3233082">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/BrowserJS.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="41" selection-start="5132" selection-end="5136" vertical-scroll-proportion="0.36390978">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="0" selection-start="2462" selection-end="2462" vertical-scroll-proportion="0.76842105">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/socket.patch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="2" selection-start="2172" selection-end="2172" vertical-scroll-proportion="0.94621027">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="23" selection-start="2799" selection-end="2799" vertical-scroll-proportion="0.6944444">
           <folding />
         </state>
       </provider>
@@ -633,33 +654,154 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="44" selection-start="2644" selection-end="2644" vertical-scroll-proportion="0.640327">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/movlconnect1.1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1349" column="5" selection-start="51326" selection-end="51326" vertical-scroll-proportion="0.65229887">
+          <folding>
+            <element signature="e#49580#50303#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/Server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="3" selection-start="961" selection-end="961" vertical-scroll-proportion="0.640327">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/socket.patch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="0" selection-start="946" selection-end="946" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#252#894#0" expanded="false" />
+            <element signature="e#971#1038#0" expanded="false" />
+            <element signature="e#1066#1576#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/BrowserJS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="13" selection-start="1237" selection-end="1237" vertical-scroll-proportion="0.28985506">
+          <folding>
+            <element signature="e#149#467#0" expanded="false" />
+            <element signature="e#519#1036#0" expanded="false" />
+            <element signature="e#1368#4345#0" expanded="false" />
+            <element signature="e#4363#7004#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/ConsoleJS.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="29" selection-start="296" selection-end="296" vertical-scroll-proportion="0.5217391">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Client/ConsoleJS.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="714" column="54" selection-start="23642" selection-end="23642" vertical-scroll-proportion="0.92269737">
+        <state line="626" column="13" selection-start="20406" selection-end="20406" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#560#616#0" expanded="false" />
-            <element signature="e#675#1025#0" expanded="false" />
-            <element signature="e#1068#1157#0" expanded="false" />
-            <element signature="e#1200#1264#0" expanded="false" />
-            <element signature="e#1295#2026#0" expanded="false" />
-            <element signature="e#2062#2674#0" expanded="false" />
-            <element signature="e#2752#2880#0" expanded="false" />
-            <element signature="e#3186#10828#0" expanded="false" />
-            <element signature="e#10908#12692#0" expanded="false" />
-            <element signature="e#12714#16444#0" expanded="false" />
-            <element signature="e#16540#16819#0" expanded="false" />
-            <element signature="e#16854#19495#0" expanded="false" />
-            <element signature="e#19563#19879#0" expanded="false" />
-            <element signature="e#19966#20120#0" expanded="false" />
-            <element signature="e#20194#20437#0" expanded="false" />
-            <element signature="e#20757#22423#0" expanded="false" />
-            <element signature="e#22478#23006#0" expanded="false" />
-            <element signature="e#23057#23184#0" expanded="false" />
-            <element signature="e#23233#23585#0" expanded="false" />
-            <element signature="e#23642#24255#0" expanded="false" />
-            <element signature="e#24290#24568#0" expanded="false" />
-            <element signature="e#24621#25341#0" expanded="false" />
+            <element signature="e#422#491#0" expanded="false" />
+            <element signature="e#550#900#0" expanded="false" />
+            <element signature="e#1081#1145#0" expanded="false" />
+            <element signature="e#1178#1790#0" expanded="false" />
+            <element signature="e#1868#1996#0" expanded="false" />
+            <element signature="e#2045#2212#0" expanded="false" />
+            <element signature="e#2302#9944#0" expanded="false" />
+            <element signature="e#2312#2550#0" expanded="false" />
+            <element signature="e#2586#2945#0" expanded="false" />
+            <element signature="e#2956#3194#0" expanded="false" />
+            <element signature="e#3230#3437#0" expanded="false" />
+            <element signature="e#3448#3682#0" expanded="false" />
+            <element signature="e#3708#3982#0" expanded="false" />
+            <element signature="e#3993#4232#0" expanded="false" />
+            <element signature="e#4263#4383#0" expanded="false" />
+            <element signature="e#4416#5161#0" expanded="false" />
+            <element signature="e#5195#5967#0" expanded="false" />
+            <element signature="e#5978#6223#0" expanded="false" />
+            <element signature="e#6255#7023#0" expanded="false" />
+            <element signature="e#7087#7756#0" expanded="false" />
+            <element signature="e#7830#8352#0" expanded="false" />
+            <element signature="e#8363#8580#0" expanded="false" />
+            <element signature="e#8625#9938#0" expanded="false" />
+            <element signature="e#10024#11808#0" expanded="false" />
+            <element signature="e#10060#10184#0" expanded="false" />
+            <element signature="e#10224#11207#0" expanded="false" />
+            <element signature="e#11239#11802#0" expanded="false" />
+            <element signature="e#11867#12182#0" expanded="false" />
+            <element signature="e#12220#12654#0" expanded="false" />
+            <element signature="e#12698#13015#0" expanded="false" />
+            <element signature="e#13058#13431#0" expanded="false" />
+            <element signature="e#13466#13517#0" expanded="false" />
+            <element signature="e#13550#13600#0" expanded="false" />
+            <element signature="e#13633#13683#0" expanded="false" />
+            <element signature="e#13714#13763#0" expanded="false" />
+            <element signature="e#13797#13840#0" expanded="false" />
+            <element signature="e#13881#14358#0" expanded="false" />
+            <element signature="e#15121#15192#0" expanded="false" />
+            <element signature="e#15236#15307#0" expanded="false" />
+            <element signature="e#15342#15412#0" expanded="false" />
+            <element signature="e#15603#15840#0" expanded="false" />
+            <element signature="e#15882#17586#0" expanded="false" />
+            <element signature="e#17641#18169#0" expanded="false" />
+            <element signature="e#18220#18347#0" expanded="false" />
+            <element signature="e#18396#18748#0" expanded="false" />
+            <element signature="e#18805#19418#0" expanded="false" />
+            <element signature="e#19720#19847#0" expanded="false" />
+            <element signature="e#19885#20061#0" expanded="false" />
+            <element signature="e#20758#21037#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/SocketJS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="0" selection-start="3141" selection-end="4107" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#498#1163#0" expanded="false" />
+            <element signature="e#1203#1765#0" expanded="false" />
+            <element signature="e#2218#2274#0" expanded="false" />
+            <element signature="e#2304#2608#0" expanded="false" />
+            <element signature="e#2648#2884#0" expanded="false" />
+            <element signature="e#2923#3066#0" expanded="false" />
+            <element signature="e#3101#3139#0" expanded="false" />
+            <element signature="e#3172#4107#0" expanded="false" />
+            <element signature="e#4299#4475#0" expanded="false" />
+            <element signature="e#4527#4626#0" expanded="false" />
+            <element signature="e#4687#4900#0" expanded="false" />
+            <element signature="e#4950#5016#0" expanded="false" />
+            <element signature="e#5064#5251#0" expanded="false" />
+            <element signature="e#5299#5490#0" expanded="false" />
+            <element signature="e#5539#5694#0" expanded="false" />
+            <element signature="e#5742#6233#0" expanded="false" />
+            <element signature="e#6285#6357#0" expanded="false" />
+            <element signature="e#6411#6485#0" expanded="false" />
+            <element signature="e#6528#6581#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/demo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="33" selection-start="1057" selection-end="1057" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="20" selection-start="808" selection-end="808" vertical-scroll-proportion="0.4802183">
+          <folding />
         </state>
       </provider>
     </entry>
