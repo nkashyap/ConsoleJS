@@ -5,65 +5,16 @@
  * Time: 13:20
  * To change this template use File | Settings | File Templates.
  */
-var SocketJS = (function (console, browser, io) {
+ConsoleJS.Socket = (function (console, io) {
 
     "use strict";
 
-    var Utils,
-        name = browser ? browser.toString() : window.navigator.userAgent,
+    var name = console.Browser ? console.Browser.toString() : window.navigator.userAgent,
         pendingRequests = [],
         subscribed = false,
         connectionMode = null,
         domReady = false,
-        every,
-        forEach,
         socket;
-
-
-    Utils = {
-        toArray: function toArray(data) {
-            return Array.prototype.slice.call(data);
-        },
-
-        every: (function () {
-            if (Array.prototype.every) {
-                return function (array, callback, scope) {
-                    return (array || []).every(callback, scope);
-                };
-            } else {
-                return function (array, callback, scope) {
-                    array = array || [];
-                    var i = 0, length = array.length;
-                    if (length) {
-                        do {
-                            if (!callback.call(scope || array, array[i], i, array)) {
-                                return false;
-                            }
-                        } while (++i < length);
-                    }
-                    return true;
-                };
-            }
-        }()),
-
-        forEach: (function () {
-            if (Array.prototype.forEach) {
-                return function (array, callback, scope) {
-                    (array || []).forEach(callback, scope);
-                };
-            } else {
-                return function (array, callback, scope) {
-                    array = array || [];
-                    var i = 0, length = array.length;
-                    if (length) {
-                        do {
-                            callback.call(scope || array, array[i], i, array);
-                        } while (++i < length);
-                    }
-                };
-            }
-        }())
-    };
 
 
     // Fix for old Opera and Maple browsers
@@ -80,19 +31,6 @@ var SocketJS = (function (console, browser, io) {
     }());
 
 
-    function getServerURL() {
-        var url = '';
-        Utils.every(Utils.toArray(document.scripts), function (script) {
-            if (script.src.indexOf('socket.io') > -1) {
-                url = script.src.split('socket.io')[0];
-                return false;
-            }
-            return true;
-        });
-
-        return url;
-    }
-
     function request(eventName, data) {
         if (socket && socket.socket.connected && subscribed) {
             data.name = name;
@@ -103,7 +41,7 @@ var SocketJS = (function (console, browser, io) {
     }
 
     function processPendingRequest() {
-        Utils.forEach(pendingRequests, function (item) {
+        console.Utils.forEach(pendingRequests, function (item) {
             request(item.type, item.data);
         });
         pendingRequests = [];
@@ -124,7 +62,7 @@ var SocketJS = (function (console, browser, io) {
 
         domReady = true;
 
-        socket = io.connect(getServerURL());
+        socket = io.connect(console.Utils.getScriptURL('socket.io'));
 
         socket.on('connect', function () {
             socket.emit('subscribe', { name: name });
@@ -213,4 +151,4 @@ var SocketJS = (function (console, browser, io) {
         getConnectionMode: getConnectionMode
     };
 
-})(ConsoleJS, BrowserJS, io);
+})(ConsoleJS, io);

@@ -20,7 +20,7 @@ function init() {
     var log = document.getElementById('log'),
         connectionMode = document.getElementById('ConnectionMode'),
         debug = document.getElementById('debug'),
-        name = BrowserJS.toString(),
+        name = ConsoleJS.Browser.toString(),
         maxItems = 50,
         removeItems = 30,
         currentItem = 0,
@@ -66,54 +66,55 @@ function init() {
         return true;
     };
 
-    function stripBrackets(data) {
-        var last = data.length - 1;
-        if (data.charAt(0) === '[' && data.charAt(last) === ']') {
-            return data.substring(1, last);
-        }
-        return data;
-    }
-
-    function parse(data) {
-        var message = stripBrackets(data.message);
-
-        // for Opera and Maple browser
-        message = message.replace(/%20/img, " ");
-
-        if (data.stack) {
-            var stack = data.stack.split(",")
-                .join("\n")
-                .replace(/"/img, '')
-                .replace(/%20/img, ' ');
-
-            message += '\n';
-            message += stripBrackets(stack);
-        }
-
-        return message;
-    }
+//    function stripBrackets(data) {
+//        var last = data.length - 1;
+//        if (data.charAt(0) === '[' && data.charAt(last) === ']') {
+//            return data.substring(1, last);
+//        }
+//        return data;
+//    }
+//
+//    function parse(data) {
+//        var message = stripBrackets(data.message);
+//
+//        // for Opera and Maple browser
+//        message = message.replace(/%20/img, " ");
+//
+//        if (data.stack) {
+//            var stack = data.stack.split(",")
+//                .join("\n")
+//                .replace(/"/img, '')
+//                .replace(/%20/img, ' ');
+//
+//            message += '\n';
+//            message += stripBrackets(stack);
+//        }
+//
+//        return message;
+//    }
 
     ConsoleJS.on('console', function (data) {
-        var i = 0,
-            connection = '',
-            li = document.createElement("li");
+//        var i = 0,
+//            connection = '',
+//            li = document.createElement("li");
 
-        if (SocketJS) {
-            connection = SocketJS.getConnectionStatus() + ' : ' + SocketJS.getConnectionMode();
+        var connection;
+        if (ConsoleJS.Socket) {
+            connection = ConsoleJS.Socket.getConnectionStatus() + ' : ' + ConsoleJS.Socket.getConnectionMode();
         }
 
         connectionMode.innerHTML = 'Name: ' + name + ' : ' + connection;
-        li.innerHTML = '<b>' + data.type + ':</b> ' + parse(data);
-        log.insertBefore(li, log.firstElementChild || log.firstChild);
-        currentItem++;
-
-        if (currentItem > maxItems) {
-            while (i < removeItems) {
-                log.removeChild(log.lastElementChild || log.lastChild);
-                i++;
-            }
-            currentItem -= removeItems;
-        }
+//        li.innerHTML = '<b>' + data.type + ':</b> ' + parse(data);
+//        log.insertBefore(li, log.firstElementChild || log.firstChild);
+//        currentItem++;
+//
+//        if (currentItem > maxItems) {
+//            while (i < removeItems) {
+//                log.removeChild(log.lastElementChild || log.lastChild);
+//                i++;
+//            }
+//            currentItem -= removeItems;
+//        }
     });
 }
 

@@ -1,6 +1,6 @@
 ﻿/// <summary>Device detection based on user agent.</summary>
 
-var BrowserJS = (function () {
+ConsoleJS.Browser = (function () {
     var BrowserDetect = {
         init: function init() {
             this.browser = this.searchString(this.dataBrowser) || "Unknown";
@@ -213,7 +213,7 @@ var BrowserJS = (function () {
     BrowserDetect.init();
 
     return {
-        browser: BrowserDetect.browser,
+        name: BrowserDetect.browser,
         version: BrowserDetect.version,
         platform: BrowserDetect.platform,
         toString: function () {

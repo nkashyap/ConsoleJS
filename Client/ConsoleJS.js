@@ -5,7 +5,9 @@
  * Time: 11:41
  */
 
-var ConsoleJS = (function () {
+window.ConsoleJS = (function () {
+
+    "use strict";
 
     var console = window.console,
         Utils,
@@ -38,13 +40,47 @@ var ConsoleJS = (function () {
             return name || "anonymous";
         },
 
-//        isArray: function isArray(data) {
-//            return Object.prototype.toString.call(data) === '[object Array]';
-//        },
+        getScriptURL: function getScriptURL(name) {
+            var url = '';
+            Utils.every(Utils.toArray(document.scripts), function (script) {
+                if (script.src.indexOf(name) > -1) {
+                    url = script.src.split(name)[0];
+                    return false;
+                }
+                return true;
+            });
+
+            return url;
+        },
+
+        isArray: function isArray(data) {
+            return Object.prototype.toString.call(data) === '[object Array]';
+        },
 
         toArray: function toArray(data) {
             return Array.prototype.slice.call(data);
         },
+
+        every: (function () {
+            if (Array.prototype.every) {
+                return function (array, callback, scope) {
+                    return (array || []).every(callback, scope);
+                };
+            } else {
+                return function (array, callback, scope) {
+                    array = array || [];
+                    var i = 0, length = array.length;
+                    if (length) {
+                        do {
+                            if (!callback.call(scope || array, array[i], i, array)) {
+                                return false;
+                            }
+                        } while (++i < length);
+                    }
+                    return true;
+                };
+            }
+        }()),
 
         forEach: (function () {
             if (Array.prototype.forEach) {
@@ -65,7 +101,8 @@ var ConsoleJS = (function () {
         }()),
 
         forEachProperty: function forEachProperty(obj, callback, scope) {
-            for (var prop in obj) {
+            var prop;
+            for (prop in obj) {
                 callback.call(scope || obj, obj[prop], prop, obj);
             }
         },
@@ -679,6 +716,7 @@ var ConsoleJS = (function () {
         config: config,
         on: on,
         ready: ready,
+        Utils: Utils,
         native: console
     });
 

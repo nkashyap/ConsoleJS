@@ -22,9 +22,9 @@ node Server\Start.js
 ```html
 <script type="text/javascript" src="http://NodeServerURL:Port/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="http://NodeServerURL:Port/Client/ConsoleJS.js"></script>
-<script type="text/javascript" src="http://NodeServerURL:Port/Client/BrowserJS.js"></script>
-<script type="text/javascript" src="http://NodeServerURL:Port/Client/SocketJS.js"></script>
-<script type="text/javascript" src="http://NodeServerURL:Port/Client/WebJS.js"></script>
+<script type="text/javascript" src="http://NodeServerURL:Port/Client/Browser.js"></script>
+<script type="text/javascript" src="http://NodeServerURL:Port/Client/Socket.js"></script>
+<script type="text/javascript" src="http://NodeServerURL:Port/Client/Web.js"></script>
 ```
 
 Then goto following url to access web console http://NodeServerURL:Port/

@@ -80,8 +80,7 @@ ConsoleUI.prototype.show = function show() {
 };
 
 ConsoleUI.prototype.log = function log(data, notify) {
-    var css = '',
-        tag = 'pre',
+    var tag = 'code',
         message = this.stripBrackets(data.message);
 
     // for Opera and Maple browser
@@ -99,7 +98,11 @@ ConsoleUI.prototype.log = function log(data, notify) {
         message += prettyPrintOne(this.stripBrackets(stack));
     }
 
-    var msg = $('<' + tag + ' class="console type-' + data.type + ' ' + css + '">' + (message || '.') + '</' + tag + '>');
+    if (['assert', 'dir', 'dirxml', 'error', 'trace'].indexOf(data.type) > -1) {
+        tag = 'pre';
+    }
+
+    var msg = $('<' + tag + ' class="console type-' + data.type + '">' + (message || '.') + '</' + tag + '>');
     this.content.prepend(msg);
 
     if (notify) {
