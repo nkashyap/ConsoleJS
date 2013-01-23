@@ -26,7 +26,6 @@ ConsoleJS.Web = (function (console) {
         domReady = false;
 
 
-
     function stripBrackets(data) {
         var last = data.length - 1;
         if (data.charAt(0) === '[' && data.charAt(last) === ']') {
@@ -42,7 +41,7 @@ ConsoleJS.Web = (function (console) {
         // for Opera and Maple browser
         message = message.replace(/%20/img, " ");
 
-        if(prettify){
+        if (prettify) {
             message = prettyPrintOne(message);
         }
 
@@ -55,7 +54,7 @@ ConsoleJS.Web = (function (console) {
             stack = stripBrackets(stack);
 
             message += '\n';
-            message += (prettify)? prettyPrintOne(stack) : stack;
+            message += (prettify) ? prettyPrintOne(stack) : stack;
         }
 
         if (previewMode.indexOf(data.type) > -1) {
@@ -74,10 +73,10 @@ ConsoleJS.Web = (function (console) {
 
     function cleanUp() {
         if (count > cacheCount) {
-            do{
+            do {
                 logger.removeChild(logger.lastElementChild || logger.lastChild);
                 count--;
-            }while (count >= settings.maxLogs);
+            } while (count >= settings.maxLogs);
         }
     }
 
