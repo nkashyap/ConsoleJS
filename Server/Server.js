@@ -15,10 +15,11 @@ module.exports.start = function start(config) {
     webServer.listen(config.port);
 
     socketServer.configure(function () {
-        //socketServer.enable('browser client minification');
+        socketServer.enable('browser client minification');
         socketServer.enable('browser client etag');
         socketServer.enable('browser client gzip');
-        socketServer.set('log level', 1);
+        //socketServer.set('polling duration', 60);
+        socketServer.set('log level', 2);
         socketServer.set('transports', [
             'websocket',
             //'flashsocket',

@@ -20,6 +20,7 @@ function init() {
     var log = document.getElementById('log'),
         connectionMode = document.getElementById('ConnectionMode'),
         debug = document.getElementById('debug'),
+        name = BrowserJS.toString(),
         maxItems = 50,
         removeItems = 30,
         currentItem = 0,
@@ -101,7 +102,7 @@ function init() {
             connection = SocketJS.getConnectionStatus() + ' : ' + SocketJS.getConnectionMode();
         }
 
-        connectionMode.innerHTML = 'Info: ' + connection;
+        connectionMode.innerHTML = 'Name: ' + name + ' : ' + connection;
         li.innerHTML = '<b>' + data.type + ':</b> ' + parse(data);
         log.insertBefore(li, log.firstElementChild || log.firstChild);
         currentItem++;
