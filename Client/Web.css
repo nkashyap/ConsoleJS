@@ -1,0 +1,57 @@
+#logger {
+    background-color:white;
+    overflow:auto;
+    margin: 5px;
+    -o-box-shadow: 0 0 5px 1px #888;
+    -moz-box-shadow: 0 0 5px 1px #888;
+    -webkit-box-shadow: 0 0 5px 1px #888;
+    box-shadow: 0 0 5px 1px #888;
+}
+
+#logger::-webkit-scrollbar {
+    width: 15px
+}
+
+#logger::-webkit-scrollbar-button:vertical {
+    background-color: transparent;
+    height: 5px
+}
+
+#logger::-webkit-scrollbar-button:start:decrement {
+    display: block
+}
+
+#logger::-webkit-scrollbar-button:end:increment {
+    display: block
+}
+
+#logger::-webkit-scrollbar-button:vertical:start:increment {
+    display: none
+}
+
+#logger::-webkit-scrollbar-button:vertical:end:decrement {
+    display: none
+}
+
+#logger::-webkit-scrollbar-track-piece {
+    background-color: white
+}
+
+#logger::-webkit-scrollbar-thumb:vertical {
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 50px;
+    border-right: 4px solid white;
+    border-left: 4px solid white
+}
+
+#logger::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: rgba(0, 0, 0, 0.4)
+}
+
+#logger::-webkit-scrollbar-corner:vertical {
+    background-color: white
+}
+
+#logger::-webkit-scrollbar-resizer:vertical {
+    background-color: red
+}

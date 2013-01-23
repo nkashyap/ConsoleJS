@@ -5,57 +5,17 @@
  * Time: 13:20
  * To change this template use File | Settings | File Templates.
  */
-var SocketJS = (function (console, browser, io) {
+ConsoleJS.Socket = (function (console, io) {
 
     "use strict";
 
-    var name = browser ? browser.toString() : window.navigator.userAgent,
+    var name = console.Browser ? console.Browser.toString() : window.navigator.userAgent,
         pendingRequests = [],
         subscribed = false,
         connectionMode = null,
         domReady = false,
-        every,
-        forEach,
         socket;
 
-    every = (function every() {
-        if (Array.prototype.every) {
-            return function every(array, callback, scope) {
-                return (array || []).every(callback, scope);
-            };
-        } else {
-            return function every(array, callback, scope) {
-                array = array || [];
-                var i = 0, length = array.length;
-                if (length) {
-                    do {
-                        if (!callback.call(scope || array, array[i], i, array)) {
-                            return false;
-                        }
-                    } while (++i < length);
-                }
-                return true;
-            };
-        }
-    }());
-
-    forEach = (function forEach() {
-        if (Array.prototype.forEach) {
-            return function forEach(array, callback, scope) {
-                (array || []).forEach(callback, scope);
-            };
-        } else {
-            return function forEach(array, callback, scope) {
-                array = array || [];
-                var i = 0, length = array.length;
-                if (length) {
-                    do {
-                        callback.call(scope || array, array[i], i, array);
-                    } while (++i < length);
-                }
-            };
-        }
-    }());
 
     // Fix for old Opera and Maple browsers
     (function overrideJsonPolling() {
@@ -71,23 +31,6 @@ var SocketJS = (function (console, browser, io) {
     }());
 
 
-    function toArray(data) {
-        return Array.prototype.slice.call(data);
-    }
-
-    function getServerURL() {
-        var url = '';
-        every(toArray(document.scripts), function (script) {
-            if (script.src.indexOf('socket.io') > -1) {
-                url = script.src.split('socket.io')[0];
-                return false;
-            }
-            return true;
-        });
-
-        return url;
-    }
-
     function request(eventName, data) {
         if (socket && socket.socket.connected && subscribed) {
             data.name = name;
@@ -98,7 +41,7 @@ var SocketJS = (function (console, browser, io) {
     }
 
     function processPendingRequest() {
-        forEach(pendingRequests, function (item) {
+        console.Utils.forEach(pendingRequests, function (item) {
             request(item.type, item.data);
         });
         pendingRequests = [];
@@ -108,30 +51,8 @@ var SocketJS = (function (console, browser, io) {
         return connectionMode;
     }
 
-    function onReady(callback) {
-        function DOMContentLoaded() {
-            if (document.addEventListener) {
-                document.removeEventListener("DOMContentLoaded", DOMContentLoaded, false);
-                callback();
-            } else if (document.attachEvent) {
-                if (document.readyState === "complete") {
-                    document.detachEvent("onreadystatechange", DOMContentLoaded);
-                    callback();
-                }
-            }
-        }
-
-        if (document.readyState === "complete") {
-            setTimeout(callback, 1);
-        }
-
-        if (document.addEventListener) {
-            document.addEventListener("DOMContentLoaded", DOMContentLoaded, false);
-            window.addEventListener("load", callback, false);
-        } else if (document.attachEvent) {
-            document.attachEvent("onreadystatechange", DOMContentLoaded);
-            window.attachEvent("onload", callback);
-        }
+    function getConnectionStatus() {
+        return socket && socket.socket.connected ? 'Connected' : 'Disconnected';
     }
 
     function init() {
@@ -141,7 +62,7 @@ var SocketJS = (function (console, browser, io) {
 
         domReady = true;
 
-        socket = io.connect(getServerURL());
+        socket = io.connect(console.Utils.getScriptURL('socket.io'));
 
         socket.on('connect', function () {
             socket.emit('subscribe', { name: name });
@@ -216,15 +137,18 @@ var SocketJS = (function (console, browser, io) {
         });
     }
 
+
     //Hook into ConsoleJS API
     console.on('console', function (data) {
         request('console', data);
     });
 
-    onReady(init);
+    console.ready(init);
+
 
     return {
+        getConnectionStatus: getConnectionStatus,
         getConnectionMode: getConnectionMode
     };
 
-})(ConsoleJS, BrowserJS, io);
+})(ConsoleJS, io);

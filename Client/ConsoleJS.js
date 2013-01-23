@@ -5,9 +5,16 @@
  * Time: 11:41
  */
 
-var ConsoleJS = (function () {
+window.ConsoleJS = (function () {
+
+    "use strict";
 
     var console = window.console,
+        Utils,
+        Formatter,
+        Stack,
+        Wrapper,
+        Stringify,
         counters = {},
         timeCounters = {},
         withoutScope = ['dir', 'dirxml'],
@@ -18,7 +25,7 @@ var ConsoleJS = (function () {
         };
 
 
-    var Utils = {
+    Utils = {
         getObjectType: function getObjectType(data) {
             return Object.prototype.toString.apply(data);
         },
@@ -33,13 +40,47 @@ var ConsoleJS = (function () {
             return name || "anonymous";
         },
 
-//        isArray: function isArray(data) {
-//            return Object.prototype.toString.call(data) === '[object Array]';
-//        },
+        getScriptURL: function getScriptURL(name) {
+            var url = '';
+            Utils.every(Utils.toArray(document.scripts), function (script) {
+                if (script.src.indexOf(name) > -1) {
+                    url = script.src.split(name)[0];
+                    return false;
+                }
+                return true;
+            });
+
+            return url;
+        },
+
+        isArray: function isArray(data) {
+            return Object.prototype.toString.call(data) === '[object Array]';
+        },
 
         toArray: function toArray(data) {
             return Array.prototype.slice.call(data);
         },
+
+        every: (function () {
+            if (Array.prototype.every) {
+                return function (array, callback, scope) {
+                    return (array || []).every(callback, scope);
+                };
+            } else {
+                return function (array, callback, scope) {
+                    array = array || [];
+                    var i = 0, length = array.length;
+                    if (length) {
+                        do {
+                            if (!callback.call(scope || array, array[i], i, array)) {
+                                return false;
+                            }
+                        } while (++i < length);
+                    }
+                    return true;
+                };
+            }
+        }()),
 
         forEach: (function () {
             if (Array.prototype.forEach) {
@@ -60,7 +101,8 @@ var ConsoleJS = (function () {
         }()),
 
         forEachProperty: function forEachProperty(obj, callback, scope) {
-            for (var prop in obj) {
+            var prop;
+            for (prop in obj) {
                 callback.call(scope || obj, obj[prop], prop, obj);
             }
         },
@@ -76,7 +118,7 @@ var ConsoleJS = (function () {
 
 
     // From https://github.com/eriwen/javascript-stacktrace
-    var Formatter = {
+    Formatter = {
         /**
          * Given an Error object, return a formatted Array based on Chrome's stack string.
          *
@@ -111,7 +153,7 @@ var ConsoleJS = (function () {
          * @param e - Error object to inspect
          * @return Array<String> of function calls, files and line numbers
          */
-        ie: function (e) {
+        ie: function ie(e) {
             var lineRE = /^.*at (\w+) \(([^\)]+)\)$/gm;
             return e.stack.replace(/at Anonymous function /gm, '{anonymous}()@')
                 .replace(/^(?=\w+Error\:).*$\n/m, '')
@@ -125,11 +167,11 @@ var ConsoleJS = (function () {
          * @param e - Error object to inspect
          * @return Array<String> of function calls, files and line numbers
          */
-        firefox: function (e) {
+        firefox: function firefox(e) {
             return e.stack.replace(/(?:\n@:0)?\s+$/m, '').replace(/^[\(@]/gm, '{anonymous}()@').split('\n');
         },
 
-        opera11: function (e) {
+        opera11: function opera11(e) {
             var ANON = '{anonymous}', lineRE = /^.*line (\d+), column (\d+)(?: in (.+))? in (\S+):$/;
             var lines = e.stacktrace.split('\n'), result = [];
 
@@ -146,7 +188,7 @@ var ConsoleJS = (function () {
             return result;
         },
 
-        opera10b: function (e) {
+        opera10b: function opera10b(e) {
             // "<anonymous function: run>([arguments not available])@file://localhost/G:/js/stacktrace.js:27\n" +
             // "printStackTrace([arguments not available])@file://localhost/G:/js/stacktrace.js:18\n" +
             // "@file://localhost/G:/js/test/functional/testcase1.html:15"
@@ -170,7 +212,7 @@ var ConsoleJS = (function () {
          * @param e - Error object to inspect
          * @return Array<String> of function calls, files and line numbers
          */
-        opera10a: function (e) {
+        opera10a: function opera10a(e) {
             // "  Line 27 of linked script file://localhost/G:/js/stacktrace.js\n"
             // "  Line 11 of inline#1 script in file://localhost/G:/js/test/functional/testcase1.html: In function foo\n"
             var ANON = '{anonymous}', lineRE = /Line (\d+).*script (?:in )?(\S+)(?:: In function (\S+))?$/i;
@@ -188,7 +230,7 @@ var ConsoleJS = (function () {
         },
 
         // Opera 7.x-9.2x only!
-        opera9: function (e) {
+        opera9: function opera9(e) {
             // "  Line 43 of linked script file://localhost/G:/js/stacktrace.js\n"
             // "  Line 7 of inline#1 script in file://localhost/G:/js/test/functional/testcase1.html\n"
             var ANON = '{anonymous}', lineRE = /Line (\d+).*script (?:in )?(\S+)/i;
@@ -205,7 +247,7 @@ var ConsoleJS = (function () {
         },
 
         // Safari 5-, IE 9-, and others
-        other: function (curr) {
+        other: function other(curr) {
             var ANON = '{anonymous}', fnRE = /function\s*([\w\-$]+)?\s*\(/i, stack = [], fn, args, maxStackSize = 10;
             while (curr && curr['arguments'] && stack.length < maxStackSize) {
                 fn = fnRE.test(curr.toString()) ? RegExp.$1 || ANON : ANON;
@@ -222,7 +264,7 @@ var ConsoleJS = (function () {
          * @param {Arguments} args
          * @return {Array} of Strings with stringified arguments
          */
-        stringifyArguments: function (args) {
+        stringifyArguments: function stringifyArguments(args) {
             var result = [],
                 slice = Array.prototype.slice;
 
@@ -257,7 +299,7 @@ var ConsoleJS = (function () {
 
 
     // From https://github.com/eriwen/javascript-stacktrace
-    var Stack = {
+    Stack = {
         create: function create() {
             try {
                 undefined();
@@ -310,7 +352,7 @@ var ConsoleJS = (function () {
                 className = Utils.getObjectType(e);
 
             if (['[object Error]', '[object ErrorEvent]'].indexOf(className) === -1) {
-                wrapper.warn(className + ' error type missing!');
+                Wrapper.warn(className + ' error type missing!');
                 return data;
             }
 
@@ -325,7 +367,7 @@ var ConsoleJS = (function () {
     };
 
 
-    var wrapper = {
+    Wrapper = {
         assert: function assert(x) {
             if (!x) {
                 var args = ['Assertion failed:'];
@@ -469,7 +511,7 @@ var ConsoleJS = (function () {
     };
 
 
-    var Stringify = {
+    Stringify = {
         TYPES: [
             '[object Arguments]', '[object Array]',
             '[object String]', '[object Number]', '[object Boolean]',
@@ -477,7 +519,7 @@ var ConsoleJS = (function () {
             '[object Function]', '[object Object]'
         ],
 
-        parse: function (data, simple) {
+        parse: function parse(data, simple) {
             var value = '',
                 type = Utils.getObjectType(data);
 
@@ -525,7 +567,7 @@ var ConsoleJS = (function () {
                 try {
                     value = String(data);
                 } catch (e) {
-                    wrapper.error(e);
+                    Wrapper.error(e);
                 }
             }
 
@@ -558,7 +600,7 @@ var ConsoleJS = (function () {
                 this[index] = Stringify.valueOf(item);
             }, target);
 
-            if(target.length > 0){
+            if (target.length > 0) {
                 return '[' + target.join(',') + ']';
             } else {
                 return '[' + data.toString() + ']';
@@ -578,7 +620,7 @@ var ConsoleJS = (function () {
                 this.push('\t"' + property + '": ' + Stringify.valueOf(value, skipGlobal));
             }, target);
 
-            if(target.length > 0){
+            if (target.length > 0) {
                 return (name || type) + ': {\n' + target.join(',\n') + '\n}\n';
             } else {
                 return data.toString() + '\n';
@@ -593,28 +635,26 @@ var ConsoleJS = (function () {
         // override native console
         if (settings.nativeOverride) {
             window.console = window.ConsoleJS;
-        }else{
+        } else {
             window.console = console;
         }
     }
 
     function on(eventName, callback) {
-        if(!events[eventName]){
+        if (!events[eventName]) {
             events[eventName] = [];
         }
         events[eventName].push(callback);
     }
 
-
     function emit(eventName, data) {
         var event = events[eventName];
-        if(event){
-            Utils.forEach(event, function(callback){
+        if (event) {
+            Utils.forEach(event, function (callback) {
                 callback(data);
             });
         }
     }
-
 
     function logger(type, args, value, callStack) {
         if (console && settings.nativeEnabled) {
@@ -634,6 +674,32 @@ var ConsoleJS = (function () {
         });
     }
 
+    function ready(callback) {
+        function DOMContentLoaded() {
+            if (document.addEventListener) {
+                document.removeEventListener("DOMContentLoaded", DOMContentLoaded, false);
+                callback();
+            } else if (document.attachEvent) {
+                if (document.readyState === "complete") {
+                    document.detachEvent("onreadystatechange", DOMContentLoaded);
+                    callback();
+                }
+            }
+        }
+
+        if (document.readyState === "complete") {
+            setTimeout(callback, 1);
+        }
+
+        if (document.addEventListener) {
+            document.addEventListener("DOMContentLoaded", DOMContentLoaded, false);
+            window.addEventListener("load", callback, false);
+        } else if (document.attachEvent) {
+            document.attachEvent("onreadystatechange", DOMContentLoaded);
+            window.attachEvent("onload", callback);
+        }
+    }
+
 
     //IE Fix
     if (Function.prototype.bind && console && typeof console.log === "object") {
@@ -646,9 +712,11 @@ var ConsoleJS = (function () {
     }
 
 
-    window.console = Utils.merge(wrapper, {
+    window.console = Utils.merge(Wrapper, {
         config: config,
         on: on,
+        ready: ready,
+        Utils: Utils,
         native: console
     });
 
