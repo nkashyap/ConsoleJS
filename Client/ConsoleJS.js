@@ -603,7 +603,7 @@ window.ConsoleJS = (function () {
             }, target);
 
             if (target.length > 0) {
-                return '[' + target.join(',') + ']';
+                return '[' + target.join(', ') + ']';
             } else {
                 return '[' + data.toString() + ']';
             }

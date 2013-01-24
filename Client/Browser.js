@@ -32,7 +32,7 @@ ConsoleJS.Browser = (function () {
         dataBrowser: [
             {     string: navigator.userAgent,
                 subString: "LG Browser",
-                versionSearch: "LG Browser/",
+                versionSearch: "Browser",
                 identity: "LG"
             },
             {     string: navigator.userAgent,
