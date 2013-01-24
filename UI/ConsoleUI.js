@@ -90,9 +90,9 @@ ConsoleUI.prototype.log = function log(data, notify) {
 
     if (data.stack) {
         var stack = data.stack.split(",")
-                    .join("\n")
-                    .replace(/"/img, '')
-                    .replace(/%20/img, ' ');
+            .join("\n")
+            .replace(/"/img, '')
+            .replace(/%20/img, ' ');
 
         message += '\n';
         message += prettyPrintOne(this.stripBrackets(stack));

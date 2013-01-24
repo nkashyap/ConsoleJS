@@ -12,7 +12,7 @@ ConsoleJS.Web = (function (console) {
 
     var logger,
         previewMode = ['assert', 'dir', 'dirxml', 'error', 'trace'],
-        prettify = false,
+        hasPrettify = false,
         settings = {
             docked: true,
             position: 'bottom', //top/bottom
@@ -24,7 +24,6 @@ ConsoleJS.Web = (function (console) {
         count = 0,
         cacheCount = (settings.maxLogs * settings.cache),
         domReady = false;
-
 
 
     function stripBrackets(data) {
@@ -42,7 +41,7 @@ ConsoleJS.Web = (function (console) {
         // for Opera and Maple browser
         message = message.replace(/%20/img, " ");
 
-        if(prettify){
+        if (hasPrettify) {
             message = prettyPrintOne(message);
         }
 
@@ -55,7 +54,7 @@ ConsoleJS.Web = (function (console) {
             stack = stripBrackets(stack);
 
             message += '\n';
-            message += (prettify)? prettyPrintOne(stack) : stack;
+            message += (hasPrettify) ? prettyPrintOne(stack) : stack;
         }
 
         if (previewMode.indexOf(data.type) > -1) {
@@ -74,10 +73,10 @@ ConsoleJS.Web = (function (console) {
 
     function cleanUp() {
         if (count > cacheCount) {
-            do{
+            do {
                 logger.removeChild(logger.lastElementChild || logger.lastChild);
                 count--;
-            }while (count >= settings.maxLogs);
+            } while (count >= settings.maxLogs);
         }
     }
 
@@ -137,7 +136,7 @@ ConsoleJS.Web = (function (console) {
         domReady = true;
 
         //detect prettifier
-        prettify = !!console.Utils.getScriptURL('prettify.js');
+        hasPrettify = !!console.Utils.getScriptURL('prettify.js');
 
         createLogger();
         setPosition();

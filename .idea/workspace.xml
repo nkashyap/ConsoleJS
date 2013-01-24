@@ -2,50 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a443409a-9e2c-40b9-828b-2c44d355713c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/Web.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/Web.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI/main.css" />
-      <change type="MOVED" beforePath="C:\dev\github\ConsoleJS\Client\BrowserJS.js" afterPath="$PROJECT_DIR$/Client/Browser.js" />
-      <change type="MOVED" beforePath="C:\dev\github\ConsoleJS\Client\SocketJS.js" afterPath="$PROJECT_DIR$/Client/Socket.js" />
-      <change type="MOVED" beforePath="C:\dev\github\ConsoleJS\Client\demo.html" afterPath="$PROJECT_DIR$/Example/demo.html" />
-      <change type="MOVED" beforePath="C:\dev\github\ConsoleJS\Client\index.html" afterPath="$PROJECT_DIR$/Example/index.html" />
-      <change type="MOVED" beforePath="C:\dev\github\ConsoleJS\Client\main.css" afterPath="$PROJECT_DIR$/Example/main.css" />
-      <change type="MOVED" beforePath="C:\dev\github\ConsoleJS\Client\main.js" afterPath="$PROJECT_DIR$/Example/main.js" />
-      <change type="MOVED" beforePath="C:\dev\github\ConsoleJS\UI\ConsoleUI.css" afterPath="$PROJECT_DIR$/Shared/console.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/ConsoleJS.js" afterPath="$PROJECT_DIR$/Client/ConsoleJS.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Readme.md" afterPath="$PROJECT_DIR$/Readme.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/Web.css" afterPath="$PROJECT_DIR$/Client/Web.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/Web.js" afterPath="$PROJECT_DIR$/Client/Web.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Example/main.css" afterPath="$PROJECT_DIR$/Example/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/ConsoleUI.js" afterPath="$PROJECT_DIR$/UI/ConsoleUI.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/index.html" afterPath="$PROJECT_DIR$/UI/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/main.css" afterPath="$PROJECT_DIR$/UI/main.css" />
     </list>
     <ignored path="ConsoleJS.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/ConsoleJS.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358715377894" ignored="false" />
-    <file path="/Dummy.txt" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358718012943" ignored="false" />
-    <file path="/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358612003428" ignored="false" />
-    <file path="/RequestManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357495395468" ignored="false" />
-    <file path="/client.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358077090758" ignored="false" />
-    <file path="$PROJECT_DIR$/../GetAppointment/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358123302158" ignored="false" />
-    <file path="/Start.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357767168224" ignored="false" />
-    <file path="/Config.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357856347690" ignored="false" />
-    <file path="/Server.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358202886537" ignored="false" />
-    <file path="/package.json" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357847469135" ignored="false" />
-    <file path="$PROJECT_DIR$/../GetAppointment/IFrameClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358035456815" ignored="false" />
-    <file path="$PROJECT_DIR$/../GetAppointment/Controller.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357949861505" ignored="false" />
-    <file path="/IFrameClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357951329504" ignored="false" />
-    <file path="$PROJECT_DIR$/../GetAppointment/Helper.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357951367974" ignored="false" />
-    <file path="/Helper.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357951367974" ignored="false" />
-    <file path="/SocketServer.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358201301022" ignored="false" />
-    <file path="/ChatRoom.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358199494533" ignored="false" />
-    <file path="/Client.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358199068819" ignored="false" />
-    <file path="/ClientManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358201480810" ignored="false" />
-    <file path="/ConnectionManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358203746447" ignored="false" />
-    <file path="/Room.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358633505649" ignored="false" />
-    <file path="/ConsoleClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358201641802" ignored="false" />
-    <file path="/ControlClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358631072438" ignored="false" />
-    <file path="/ConsoleUI.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358633281048" ignored="false" />
-    <file path="/ConsoleUI.css" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358634693809" ignored="false" />
     <file path="/RoomManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358634016895" ignored="false" />
+    <file path="/ConsoleUI.css" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358634693809" ignored="false" />
+    <file path="/ConsoleUI.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358633281048" ignored="false" />
+    <file path="/ControlClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358631072438" ignored="false" />
+    <file path="/ConsoleClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358201641802" ignored="false" />
+    <file path="/Room.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358633505649" ignored="false" />
+    <file path="/ConnectionManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358203746447" ignored="false" />
+    <file path="/ClientManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358201480810" ignored="false" />
+    <file path="/Client.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358199068819" ignored="false" />
+    <file path="/ChatRoom.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358199494533" ignored="false" />
+    <file path="/SocketServer.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358201301022" ignored="false" />
+    <file path="/Helper.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357951367974" ignored="false" />
+    <file path="$PROJECT_DIR$/../GetAppointment/Helper.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357951367974" ignored="false" />
+    <file path="/IFrameClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357951329504" ignored="false" />
+    <file path="$PROJECT_DIR$/../GetAppointment/Controller.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357949861505" ignored="false" />
+    <file path="$PROJECT_DIR$/../GetAppointment/IFrameClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358035456815" ignored="false" />
+    <file path="/package.json" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357847469135" ignored="false" />
+    <file path="/Server.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358202886537" ignored="false" />
+    <file path="/Config.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357856347690" ignored="false" />
+    <file path="/Start.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357767168224" ignored="false" />
+    <file path="$PROJECT_DIR$/../GetAppointment/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358123302158" ignored="false" />
+    <file path="/client.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358077090758" ignored="false" />
+    <file path="/RequestManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357495395468" ignored="false" />
+    <file path="/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358612003428" ignored="false" />
+    <file path="/Dummy.txt" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358718012943" ignored="false" />
+    <file path="/ConsoleJS.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358715377894" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +95,63 @@
     <favorites_list name="ConsoleJS" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="ConsoleJS.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Client/ConsoleJS.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="521" column="51" selection-start="17214" selection-end="17214" vertical-scroll-proportion="1.7243994">
+              <folding>
+                <element signature="e#525#594#0" expanded="false" />
+                <element signature="e#653#1003#0" expanded="false" />
+                <element signature="e#1056#1398#0" expanded="false" />
+                <element signature="e#1441#1530#0" expanded="false" />
+                <element signature="e#1573#1637#0" expanded="false" />
+                <element signature="e#1668#2399#0" expanded="false" />
+                <element signature="e#2435#3047#0" expanded="false" />
+                <element signature="e#3125#3271#0" expanded="false" />
+                <element signature="e#3320#3487#0" expanded="false" />
+                <element signature="e#3573#11276#0" expanded="false" />
+                <element signature="e#3857#4216#0" expanded="false" />
+                <element signature="e#4501#4708#0" expanded="false" />
+                <element signature="e#11352#13136#0" expanded="false" />
+                <element signature="e#11388#11512#0" expanded="false" />
+                <element signature="e#11552#12535#0" expanded="false" />
+                <element signature="e#13154#16886#0" expanded="false" />
+                <element signature="e#13191#13506#0" expanded="false" />
+                <element signature="e#13544#13978#0" expanded="false" />
+                <element signature="e#16923#17160#0" expanded="false" />
+                <element signature="e#17214#18972#0" expanded="false" />
+                <element signature="e#19034#19569#0" expanded="false" />
+                <element signature="e#19620#19747#0" expanded="false" />
+                <element signature="e#19803#20171#0" expanded="false" />
+                <element signature="e#20235#21000#0" expanded="false" />
+                <element signature="e#21035#21265#0" expanded="false" />
+                <element signature="e#21304#21433#0" expanded="false" />
+                <element signature="e#21472#21696#0" expanded="false" />
+                <element signature="e#21733#21913#0" expanded="false" />
+                <element signature="e#21965#22605#0" expanded="false" />
+                <element signature="e#22636#23571#0" expanded="false" />
+                <element signature="e#23666#23945#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Web.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/Web.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="70" column="12" selection-start="1835" selection-end="1835" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#1872#2095#0" expanded="false" />
+                <element signature="e#2125#2210#0" expanded="false" />
+                <element signature="e#2239#3377#0" expanded="false" />
+                <element signature="e#3404#3534#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -212,6 +260,90 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Shared" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Example" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -232,8 +364,8 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig" persistUploadOnCheckin="false">
     <servers>
@@ -369,7 +501,11 @@
       <created>1358762697707</created>
       <updated>1358762697707</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Code refactoring and web support added">
+      <created>1358960785492</created>
+      <updated>1358960785492</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -396,11 +532,11 @@
     <frame x="-8" y="-8" width="1936" height="1186" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38304093" sideWeight="0.49359658" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20467836" sideWeight="0.49359658" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49786553" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294347" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13767342" sideWeight="0.61695904" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13767342" sideWeight="0.79532164" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Jenkins" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399361" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -458,7 +594,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code refactoring, Opera and maple fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code refactoring and web support added" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -479,6 +615,7 @@
     <MESSAGE value="IE fix" />
     <MESSAGE value="Code refactoring" />
     <MESSAGE value="Code refactoring, Opera and maple fix" />
+    <MESSAGE value="Code refactoring and web support added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -565,43 +702,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/ConsoleJS.js">
+    <entry file="file://$PROJECT_DIR$/UI/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="16" selection-start="226" selection-end="226" vertical-scroll-proportion="0.297561">
+        <state line="113" column="55" selection-start="4516" selection-end="4516" vertical-scroll-proportion="1.7178842">
           <folding>
-            <element signature="e#525#594#0" expanded="false" />
-            <element signature="e#653#1003#0" expanded="false" />
-            <element signature="e#1056#1398#0" expanded="false" />
-            <element signature="e#1441#1530#0" expanded="false" />
-            <element signature="e#1573#1637#0" expanded="false" />
-            <element signature="e#3320#3487#0" expanded="false" />
-            <element signature="e#3573#11276#0" expanded="false" />
-            <element signature="e#3857#4216#0" expanded="false" />
-            <element signature="e#4501#4708#0" expanded="false" />
-            <element signature="e#11352#13136#0" expanded="false" />
-            <element signature="e#11388#11512#0" expanded="false" />
-            <element signature="e#11552#12535#0" expanded="false" />
-            <element signature="e#13154#16886#0" expanded="false" />
-            <element signature="e#13191#13506#0" expanded="false" />
-            <element signature="e#13544#13978#0" expanded="false" />
-            <element signature="e#17207#18911#0" expanded="false" />
-            <element signature="e#18966#19494#0" expanded="false" />
-            <element signature="e#19545#19672#0" expanded="false" />
-            <element signature="e#19721#20075#0" expanded="false" />
-            <element signature="e#20132#20747#0" expanded="false" />
-            <element signature="e#20782#21012#0" expanded="false" />
-            <element signature="e#21051#21180#0" expanded="false" />
-            <element signature="e#21217#21397#0" expanded="false" />
-            <element signature="e#21449#21998#0" expanded="false" />
-            <element signature="e#22029#22964#0" expanded="false" />
-            <element signature="e#23059#23338#0" expanded="false" />
+            <element signature="tag#div#0;tag#body#0;tag#html#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Example/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="25" selection-start="2707" selection-end="2707" vertical-scroll-proportion="0.13780025">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/Socket.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="4" selection-start="210" selection-end="223" vertical-scroll-proportion="0.24905661">
+        <state line="6" column="3" selection-start="159" selection-end="159" vertical-scroll-proportion="-0.05562579">
           <folding>
             <element signature="e#528#861#0" expanded="false" />
             <element signature="e#906#1142#0" expanded="false" />
@@ -625,40 +744,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Example/main.js">
+    <entry file="file://$PROJECT_DIR$/Example/demo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="0" selection-start="1800" selection-end="1800" vertical-scroll-proportion="0.13414635">
+        <state line="4" column="40" selection-start="142" selection-end="142" vertical-scroll-proportion="0.11083123">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/Web.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="142" column="22" selection-start="3765" selection-end="3765" vertical-scroll-proportion="1.3951219">
+        <state line="70" column="12" selection-start="1835" selection-end="1835" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#695#880#0" expanded="false" />
-            <element signature="e#908#1836#0" expanded="false" />
-            <element signature="e#1861#2082#0" expanded="false" />
-            <element signature="e#2112#2197#0" expanded="false" />
-            <element signature="e#2226#3364#0" expanded="false" />
-            <element signature="e#3391#3521#0" expanded="false" />
+            <element signature="e#1872#2095#0" expanded="false" />
+            <element signature="e#2125#2210#0" expanded="false" />
+            <element signature="e#2239#3377#0" expanded="false" />
+            <element signature="e#3404#3534#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI/index.html">
+    <entry file="file://$PROJECT_DIR$/Client/ConsoleJS.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="55" selection-start="4516" selection-end="4516" vertical-scroll-proportion="1.7178842">
+        <state line="521" column="51" selection-start="17214" selection-end="17214" vertical-scroll-proportion="1.7243994">
           <folding>
-            <element signature="tag#div#0;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="e#525#594#0" expanded="false" />
+            <element signature="e#653#1003#0" expanded="false" />
+            <element signature="e#1056#1398#0" expanded="false" />
+            <element signature="e#1441#1530#0" expanded="false" />
+            <element signature="e#1573#1637#0" expanded="false" />
+            <element signature="e#1668#2399#0" expanded="false" />
+            <element signature="e#2435#3047#0" expanded="false" />
+            <element signature="e#3125#3271#0" expanded="false" />
+            <element signature="e#3320#3487#0" expanded="false" />
+            <element signature="e#3573#11276#0" expanded="false" />
+            <element signature="e#3857#4216#0" expanded="false" />
+            <element signature="e#4501#4708#0" expanded="false" />
+            <element signature="e#11352#13136#0" expanded="false" />
+            <element signature="e#11388#11512#0" expanded="false" />
+            <element signature="e#11552#12535#0" expanded="false" />
+            <element signature="e#13154#16886#0" expanded="false" />
+            <element signature="e#13191#13506#0" expanded="false" />
+            <element signature="e#13544#13978#0" expanded="false" />
+            <element signature="e#16923#17160#0" expanded="false" />
+            <element signature="e#17214#18972#0" expanded="false" />
+            <element signature="e#19034#19569#0" expanded="false" />
+            <element signature="e#19620#19747#0" expanded="false" />
+            <element signature="e#19803#20171#0" expanded="false" />
+            <element signature="e#20235#21000#0" expanded="false" />
+            <element signature="e#21035#21265#0" expanded="false" />
+            <element signature="e#21304#21433#0" expanded="false" />
+            <element signature="e#21472#21696#0" expanded="false" />
+            <element signature="e#21733#21913#0" expanded="false" />
+            <element signature="e#21965#22605#0" expanded="false" />
+            <element signature="e#22636#23571#0" expanded="false" />
+            <element signature="e#23666#23945#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Example/demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="7" selection-start="1258" selection-end="1258" vertical-scroll-proportion="0.49874055">
-          <folding />
         </state>
       </provider>
     </entry>
