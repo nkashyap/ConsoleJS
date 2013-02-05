@@ -17,11 +17,11 @@ function ConsoleUI(room) {
 
 ConsoleUI.prototype.add = function add() {
     var self = this;
-    this.tab = $("<li><a href='#Tab-" + this.name + "' data-toggle='tab'>" + this.name + "&nbsp;<span class='close' title='Close'></span></a></li>");
+    this.tab = $("<li><a href='#Tab-" + this.name + "' data-toggle='tab'>" + this.name + "&nbsp;<button class='close'>&times;</button></a></li>");
     this.content = $("<div class='tab-pane fade' id='Content-" + this.name + "'></div>");
 
     this.tab.click(function (e) {
-        if (e.target.tagName.toLowerCase() === 'span') {
+        if (e.target.tagName.toLowerCase() === 'button') {
             self.emit('unsubscribe', { name: self.name });
         } else {
             self.room.setActive(true);
