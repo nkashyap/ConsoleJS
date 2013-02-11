@@ -1,41 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a443409a-9e2c-40b9-828b-2c44d355713c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ConsoleJS.iml" afterPath="$PROJECT_DIR$/ConsoleJS.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/Web.js" afterPath="$PROJECT_DIR$/Client/Web.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Example/index.html" afterPath="$PROJECT_DIR$/Example/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="a443409a-9e2c-40b9-828b-2c44d355713c" name="Default" comment="" />
     <ignored path="ConsoleJS.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/ConsoleJS.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358715377894" ignored="false" />
-    <file path="/Dummy.txt" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358973494821" ignored="false" />
-    <file path="/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358612003428" ignored="false" />
-    <file path="/RequestManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357495395468" ignored="false" />
-    <file path="/client.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358077090758" ignored="false" />
-    <file path="$PROJECT_DIR$/../GetAppointment/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358123302158" ignored="false" />
-    <file path="/Start.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357767168224" ignored="false" />
-    <file path="/Config.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357856347690" ignored="false" />
-    <file path="/Server.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358202886537" ignored="false" />
-    <file path="/package.json" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357847469135" ignored="false" />
-    <file path="$PROJECT_DIR$/../GetAppointment/IFrameClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358035456815" ignored="false" />
-    <file path="$PROJECT_DIR$/../GetAppointment/Controller.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357949861505" ignored="false" />
-    <file path="/IFrameClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357951329504" ignored="false" />
-    <file path="$PROJECT_DIR$/../GetAppointment/Helper.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357951367974" ignored="false" />
-    <file path="/Helper.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357951367974" ignored="false" />
-    <file path="/SocketServer.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358201301022" ignored="false" />
-    <file path="/ChatRoom.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358199494533" ignored="false" />
-    <file path="/Client.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358199068819" ignored="false" />
-    <file path="/ClientManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358201480810" ignored="false" />
-    <file path="/ConnectionManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358203746447" ignored="false" />
-    <file path="/Room.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358633505649" ignored="false" />
-    <file path="/ConsoleClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358201641802" ignored="false" />
-    <file path="/ControlClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358631072438" ignored="false" />
-    <file path="/ConsoleUI.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358633281048" ignored="false" />
-    <file path="/ConsoleUI.css" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358634693809" ignored="false" />
-    <file path="/RoomManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358634016895" ignored="false" />
     <file path="/Web.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358974279303" ignored="false" />
+    <file path="/RoomManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358634016895" ignored="false" />
+    <file path="/ConsoleUI.css" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358634693809" ignored="false" />
+    <file path="/ConsoleUI.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358633281048" ignored="false" />
+    <file path="/ControlClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358631072438" ignored="false" />
+    <file path="/ConsoleClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358201641802" ignored="false" />
+    <file path="/Room.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358633505649" ignored="false" />
+    <file path="/ConnectionManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358203746447" ignored="false" />
+    <file path="/ClientManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358201480810" ignored="false" />
+    <file path="/Client.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358199068819" ignored="false" />
+    <file path="/ChatRoom.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358199494533" ignored="false" />
+    <file path="/SocketServer.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358201301022" ignored="false" />
+    <file path="/Helper.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357951367974" ignored="false" />
+    <file path="$PROJECT_DIR$/../GetAppointment/Helper.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357951367974" ignored="false" />
+    <file path="/IFrameClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357951329504" ignored="false" />
+    <file path="$PROJECT_DIR$/../GetAppointment/Controller.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357949861505" ignored="false" />
+    <file path="$PROJECT_DIR$/../GetAppointment/IFrameClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358035456815" ignored="false" />
+    <file path="/package.json" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357847469135" ignored="false" />
+    <file path="/Server.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358202886537" ignored="false" />
+    <file path="/Config.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357856347690" ignored="false" />
+    <file path="/Start.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357767168224" ignored="false" />
+    <file path="$PROJECT_DIR$/../GetAppointment/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358123302158" ignored="false" />
+    <file path="/client.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358077090758" ignored="false" />
+    <file path="/RequestManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357495395468" ignored="false" />
+    <file path="/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358612003428" ignored="false" />
+    <file path="/Dummy.txt" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1359197699150" ignored="false" />
+    <file path="/ConsoleJS.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358715377894" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +45,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -84,7 +80,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -97,7 +92,7 @@
       <file leaf-file-name="demo.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Example/demo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="4" selection-start="689" selection-end="1130" vertical-scroll-proportion="-5.2413793">
+            <state line="10" column="4" selection-start="689" selection-end="1130" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -106,7 +101,7 @@
       <file leaf-file-name="Web.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/Web.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="49" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.9708738">
+            <state line="41" column="49" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.07496252">
               <folding>
                 <element signature="e#694#879#0" expanded="false" />
                 <element signature="e#1863#2086#0" expanded="false" />
@@ -121,7 +116,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Example/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="51" selection-start="1120" selection-end="1120" vertical-scroll-proportion="-11.724138">
+            <state line="17" column="51" selection-start="1120" selection-end="1120" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -145,9 +140,6 @@
   </component>
   <component name="GitLogSettings">
     <option name="myStructureFilterPaths" />
-    <option name="myDateState">
-      <MyDateState />
-    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
@@ -172,10 +164,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1066" />
+    <option name="x" value="80" />
+    <option name="y" value="118" />
+    <option name="width" value="1324" />
+    <option name="height" value="792" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -209,7 +201,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -221,49 +213,14 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ConsoleJS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ConsoleJS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ConsoleJS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ConsoleJS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ConsoleJS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="Settings.JavaScript.Linters.JSHint" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="last_opened_file_path" value="C:/Program Files/nodejs/node.exe" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
@@ -301,7 +258,7 @@
       </JSDebuggerConfigurationSettings>
       <method />
     </configuration>
-    <configuration default="false" name="Start" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="Server/Start.js" working-dir="$PROJECT_DIR$">
+    <configuration default="false" name="Start" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="Server/Start.js" working-dir="$PROJECT_DIR$" coffeescript-run="false">
       <RunnerSettings RunnerId="NodeJS.debug" />
       <RunnerSettings RunnerId="NodeJS.run" />
       <ConfigurationWrapper RunnerId="NodeJS.debug" />
@@ -425,33 +382,33 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
+    <frame x="80" y="118" width="1324" height="792" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38283828" sideWeight="0.49359658" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399361" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49839914" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15101388" sideWeight="0.6710671" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49786553" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13767342" sideWeight="0.8239824" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13767342" sideWeight="0.8239824" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399361" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49839914" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1760176" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15101388" sideWeight="0.6710671" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Jenkins" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294347" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49573106" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -488,9 +445,6 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
-    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
-    <option name="LIMIT_HISTORY" value="true" />
-    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
     <option name="LAST_COMMIT_MESSAGE" value="Code refactoring, Opera and maple fix" />
@@ -592,21 +546,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Example/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="51" selection-start="1120" selection-end="1120" vertical-scroll-proportion="-11.724138">
+        <state line="17" column="51" selection-start="1120" selection-end="1120" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Example/demo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="4" selection-start="689" selection-end="1130" vertical-scroll-proportion="-5.2413793">
+        <state line="10" column="4" selection-start="689" selection-end="1130" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/Web.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="49" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.9708738">
+        <state line="41" column="49" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.07496252">
           <folding>
             <element signature="e#694#879#0" expanded="false" />
             <element signature="e#1863#2086#0" expanded="false" />
