@@ -2,40 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a443409a-9e2c-40b9-828b-2c44d355713c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI/Config.js" />
-      <change type="DELETED" beforePath="E:\Dev\ConsoleJS\UI\icons\close.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/Browser.js" afterPath="$PROJECT_DIR$/Client/Browser.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/ConnectionManager.js" afterPath="$PROJECT_DIR$/Server/ConnectionManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/ConsoleClient.js" afterPath="$PROJECT_DIR$/Server/ConsoleClient.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ConsoleJS.iml" afterPath="$PROJECT_DIR$/ConsoleJS.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/ConsoleJS.js" afterPath="$PROJECT_DIR$/Client/ConsoleJS.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/ConsoleUI.js" afterPath="$PROJECT_DIR$/UI/ConsoleUI.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/ControlClient.js" afterPath="$PROJECT_DIR$/Server/ControlClient.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/Room.js" afterPath="$PROJECT_DIR$/Server/Room.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/Room.js" afterPath="$PROJECT_DIR$/UI/Room.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/RoomManager.js" afterPath="$PROJECT_DIR$/UI/RoomManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/Server.js" afterPath="$PROJECT_DIR$/Server/Server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/SocketServer.js" afterPath="$PROJECT_DIR$/UI/SocketServer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/Web.css" afterPath="$PROJECT_DIR$/Client/Web.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/Web.js" afterPath="$PROJECT_DIR$/Client/Web.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Shared/console.css" afterPath="$PROJECT_DIR$/Shared/console.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/index.html" afterPath="$PROJECT_DIR$/UI/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/firebug.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" afterPath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/main.css" afterPath="$PROJECT_DIR$/UI/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/sass_stdlib.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sass_stdlib.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/Browser.js" afterPath="$PROJECT_DIR$/Client/Browser.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/ConsoleJS.js" afterPath="$PROJECT_DIR$/Client/ConsoleJS.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ConsoleJS.iml" afterPath="$PROJECT_DIR$/ConsoleJS.iml" />
     </list>
     <ignored path="ConsoleJS.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Web.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358974279303" ignored="false" />
     <file path="/RoomManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358634016895" ignored="false" />
     <file path="/ConsoleUI.css" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358634693809" ignored="false" />
-    <file path="/ConsoleUI.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1360707230354" ignored="false" />
+    <file path="/ConsoleUI.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358633281048" ignored="false" />
     <file path="/ControlClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358631072438" ignored="false" />
-    <file path="/ConsoleClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1360701218902" ignored="false" />
-    <file path="/Room.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1360704476569" ignored="false" />
-    <file path="/ConnectionManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1360613849311" ignored="false" />
+    <file path="/ConsoleClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358201641802" ignored="false" />
+    <file path="/Room.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358633505649" ignored="false" />
+    <file path="/ConnectionManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358203746447" ignored="false" />
     <file path="/ClientManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358201480810" ignored="false" />
     <file path="/Client.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358199068819" ignored="false" />
     <file path="/ChatRoom.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358199494533" ignored="false" />
@@ -46,17 +30,15 @@
     <file path="$PROJECT_DIR$/../GetAppointment/Controller.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357949861505" ignored="false" />
     <file path="$PROJECT_DIR$/../GetAppointment/IFrameClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358035456815" ignored="false" />
     <file path="/package.json" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357847469135" ignored="false" />
-    <file path="/Server.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1360616366111" ignored="false" />
-    <file path="/Config.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1360699154145" ignored="false" />
+    <file path="/Server.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358202886537" ignored="false" />
+    <file path="/Config.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357856347690" ignored="false" />
     <file path="/Start.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357767168224" ignored="false" />
     <file path="$PROJECT_DIR$/../GetAppointment/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358123302158" ignored="false" />
     <file path="/client.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358077090758" ignored="false" />
     <file path="/RequestManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357495395468" ignored="false" />
-    <file path="/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1360698882533" ignored="false" />
-    <file path="/Dummy.txt" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1360697678452" ignored="false" />
+    <file path="/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358612003428" ignored="false" />
+    <file path="/Dummy.txt" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358718012943" ignored="false" />
     <file path="/ConsoleJS.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358715377894" ignored="false" />
-    <file path="/a.dummy" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1360701119309" ignored="false" />
-    <file path="/console.css" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1360704902267" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,58 +96,7 @@
     <favorites_list name="ConsoleJS" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="ConsoleUI.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="24" selection-start="3019" selection-end="3019" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#1328#1368#0" expanded="false" />
-                <element signature="e#1416#1479#0" expanded="false" />
-                <element signature="e#1529#1602#0" expanded="false" />
-                <element signature="e#1653#1726#0" expanded="false" />
-                <element signature="e#1772#2232#0" expanded="false" />
-                <element signature="e#2507#2738#0" expanded="false" />
-                <element signature="e#2819#2847#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="console.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Shared/console.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="1" selection-start="424" selection-end="424" vertical-scroll-proportion="0.38162544">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Room.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UI/Room.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="122" column="38" selection-start="2960" selection-end="2960" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!block;n#Room#0" expanded="false" />
-                <element signature="e#560#982#0" expanded="false" />
-                <element signature="e#1038#1081#0" expanded="false" />
-                <element signature="e#1126#1293#0" expanded="false" />
-                <element signature="e#1340#1509#0" expanded="false" />
-                <element signature="e#1564#1802#0" expanded="false" />
-                <element signature="e#1853#2029#0" expanded="false" />
-                <element signature="e#2072#2206#0" expanded="false" />
-                <element signature="e#2259#2342#0" expanded="false" />
-                <element signature="e#2399#2487#0" expanded="false" />
-                <element signature="e#2552#2919#0" expanded="false" />
-                <element signature="e#2960#3599#0" expanded="false" />
-                <element signature="e#3645#3986#0" expanded="false" />
-                <element signature="e#4057#4214#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -183,37 +114,34 @@
   </component>
   <component name="GitLogSettings">
     <option name="myStructureFilterPaths" />
-    <option name="myDateState">
-      <MyDateState />
-    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/Client/demo.html" />
+        <option value="$PROJECT_DIR$/Example/index.html" />
+        <option value="$PROJECT_DIR$/UI/ConsoleUI.css" />
+        <option value="$PROJECT_DIR$/Example/main.css" />
+        <option value="$PROJECT_DIR$/UI/main.css" />
+        <option value="$PROJECT_DIR$/UI/console.css" />
+        <option value="$PROJECT_DIR$/UI/ConsoleUI.js" />
+        <option value="$PROJECT_DIR$/Client/Web.css" />
+        <option value="$PROJECT_DIR$/UI/index.html" />
         <option value="$PROJECT_DIR$/Example/demo.html" />
         <option value="$PROJECT_DIR$/Example/main.js" />
         <option value="$PROJECT_DIR$/Client/Socket.js" />
-        <option value="$PROJECT_DIR$/Client/ConsoleJS.js" />
-        <option value="$PROJECT_DIR$/Example/index.html" />
         <option value="$PROJECT_DIR$/Client/Web.js" />
-        <option value="$PROJECT_DIR$/Server/ConnectionManager.js" />
-        <option value="$PROJECT_DIR$/Server/Server.js" />
-        <option value="$PROJECT_DIR$/UI/SocketServer.js" />
-        <option value="$PROJECT_DIR$/UI/Config.js" />
-        <option value="$PROJECT_DIR$/UI/index.html" />
-        <option value="$PROJECT_DIR$/Server/Room.js" />
-        <option value="$PROJECT_DIR$/Server/ConsoleClient.js" />
-        <option value="$PROJECT_DIR$/UI/Room.js" />
-        <option value="$PROJECT_DIR$/UI/ConsoleUI.js" />
-        <option value="$PROJECT_DIR$/Shared/console.css" />
+        <option value="$PROJECT_DIR$/Client/ConsoleJS.js" />
+        <option value="$PROJECT_DIR$/firebug.js" />
+        <option value="$PROJECT_DIR$/Client/Browser.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1066" />
+    <option name="x" value="285" />
+    <option name="y" value="121" />
+    <option name="width" value="1374" />
+    <option name="height" value="991" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -259,8 +187,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -303,7 +229,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Shared" />
+              <option name="myItemId" value="Example" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -317,24 +243,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Server" />
+              <option name="myItemId" value="Client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Project" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.proportion" value="0.0" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.lastSelected" value="Settings.JavaScript.Linters.JSHint" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="last_opened_file_path" value="C:/Program Files (x86)/Git/bin/git.exe" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="C:/Program Files (x86)/nodejs/node.exe" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -342,10 +267,19 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
-  <component name="PublishConfig" persistUploadOnCheckin="false" />
+  <component name="PublishConfig" persistUploadOnCheckin="false">
+    <servers>
+      <server id="d05de326-73e9-4204-954a-5b6c86c739fa">
+        <serverdata />
+      </server>
+      <server id="dea690d9-1770-45e2-b1e7-36b173b465aa">
+        <serverdata />
+      </server>
+    </servers>
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Dev\ConsoleJS\Static" />
@@ -360,7 +294,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Node.js.Start">
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="$PROJECT_DIR$" coffeescript-run="false">
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" working-dir="$PROJECT_DIR$" coffeescript-run="false">
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
@@ -470,7 +404,15 @@
       <created>1358762697707</created>
       <updated>1358762697707</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Code refactoring and web support added">
+      <created>1358960785492</created>
+      <updated>1358960785492</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added off method to remove event">
+      <created>1359021241223</created>
+      <updated>1359021241223</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -494,33 +436,33 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
-    <editor active="true" />
+    <frame x="285" y="121" width="1374" height="991" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38283828" sideWeight="0.49359658" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.49786553" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39933994" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34763476" sideWeight="0.50053364" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15101388" sideWeight="0.6710671" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49786553" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20467836" sideWeight="0.49359658" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294347" sideWeight="0.49786553" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13767342" sideWeight="0.6523652" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34763476" sideWeight="0.49573106" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19664635" sideWeight="0.78219014" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Jenkins" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399361" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49839914" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21780987" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15101388" sideWeight="0.6710671" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294347" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.49573106" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -557,12 +499,9 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
-    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
-    <option name="LIMIT_HISTORY" value="true" />
-    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code refactoring, Opera and maple fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added off method to remove event" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -583,10 +522,12 @@
     <MESSAGE value="IE fix" />
     <MESSAGE value="Code refactoring" />
     <MESSAGE value="Code refactoring, Opera and maple fix" />
+    <MESSAGE value="Code refactoring and web support added" />
+    <MESSAGE value="Added off method to remove event" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <option name="time" value="11" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -594,216 +535,154 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Server/Guid.js">
+    <entry file="file://$PROJECT_DIR$/Server/Server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="45" selection-start="102" selection-end="102" vertical-scroll-proportion="0.19081272">
+        <state line="20" column="50" selection-start="690" selection-end="690" vertical-scroll-proportion="-1.75" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Readme.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="351" selection-end="351" vertical-scroll-proportion="0.46455505">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Example/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="18" selection-start="1191" selection-end="1191" vertical-scroll-proportion="0.66790354" />
+        <state line="13" column="7" selection-start="787" selection-end="787" vertical-scroll-proportion="0.41130298" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Example/demo.html">
+    <entry file="file://$PROJECT_DIR$/Example/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="10" selection-start="40" selection-end="40" vertical-scroll-proportion="0.033395175" />
+        <state line="21" column="1" selection-start="332" selection-end="332" vertical-scroll-proportion="0.46153846" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI/Config.js">
+    <entry file="file://$PROJECT_DIR$/Shared/console.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="14" selection-start="185" selection-end="185" vertical-scroll-proportion="0.09540636">
-          <folding>
-            <element signature="e#0#154#0" expanded="false" />
-          </folding>
+        <state line="3" column="0" selection-start="29" selection-end="29" vertical-scroll-proportion="0.06593407">
+          <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="142" selection-end="142" vertical-scroll-proportion="0.2857143" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="46" selection-start="1887" selection-end="1887" vertical-scroll-proportion="-0.47560975" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/Web.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="16" selection-start="73" selection-end="73" vertical-scroll-proportion="-0.5829268" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Example/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="25" selection-start="2707" selection-end="2707" vertical-scroll-proportion="0.13780025" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/Socket.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="3" selection-start="159" selection-end="159" vertical-scroll-proportion="-0.05562579" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/Web.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="8" selection-start="1814" selection-end="1841" vertical-scroll-proportion="0.4770318">
-          <folding />
+        <state line="70" column="12" selection-start="1835" selection-end="1835" vertical-scroll-proportion="0.021978023" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/firebug.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11757" column="65" selection-start="580041" selection-end="580050" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1359026964065" expanded="true" signature="232463:232500" placeholder="{...}" />
+            <marker date="1359026964065" expanded="false" signature="743418:743423" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/Server.js">
+    <entry file="file://$PROJECT_DIR$/Client/Browser.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="55" selection-start="220" selection-end="220" vertical-scroll-proportion="-0.73144877">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/ConnectionManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="28" selection-start="624" selection-end="624" vertical-scroll-proportion="0.5866209">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/Room.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="19" selection-start="1638" selection-end="1638" vertical-scroll-proportion="0.50600344">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/ConsoleClient.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="11" selection-start="798" selection-end="814" vertical-scroll-proportion="0.40137222">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI/RoomManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="24" selection-start="527" selection-end="531" vertical-scroll-proportion="-1.4511149">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI/SocketServer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="33" selection-start="2155" selection-end="2155" vertical-scroll-proportion="2.0205832">
-          <folding />
+        <state line="36" column="14" selection-start="1549" selection-end="1549" vertical-scroll-proportion="0.8301887">
+          <folding>
+            <element signature="e#153#471#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/UI/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="31" selection-start="3646" selection-end="3646" vertical-scroll-proportion="0.2504638">
+        <state line="113" column="55" selection-start="4516" selection-end="4516" vertical-scroll-proportion="0.56171286">
           <folding>
-            <element signature="tag#div#1;tag#div#0;tag#div#1;tag#div#0;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="tag#div#0;tag#body#0;tag#html#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/ControlClient.js">
+    <entry file="file://$PROJECT_DIR$/Example/demo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="18" selection-start="680" selection-end="698" vertical-scroll-proportion="0.5724382">
+        <state line="4" column="39" selection-start="141" selection-end="141" vertical-scroll-proportion="0.11083123">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI/Room.js">
+    <entry file="file://$PROJECT_DIR$/Client/ConsoleJS.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="38" selection-start="2960" selection-end="2960" vertical-scroll-proportion="0.0">
+        <state line="466" column="39" selection-start="15758" selection-end="15758" vertical-scroll-proportion="0.026829269">
           <folding>
-            <element signature="n#!!block;n#Room#0" expanded="false" />
-            <element signature="e#560#982#0" expanded="false" />
-            <element signature="e#1038#1081#0" expanded="false" />
-            <element signature="e#1126#1293#0" expanded="false" />
-            <element signature="e#1340#1509#0" expanded="false" />
-            <element signature="e#1564#1802#0" expanded="false" />
-            <element signature="e#1853#2029#0" expanded="false" />
-            <element signature="e#2072#2206#0" expanded="false" />
-            <element signature="e#2259#2342#0" expanded="false" />
-            <element signature="e#2399#2487#0" expanded="false" />
-            <element signature="e#2552#2919#0" expanded="false" />
-            <element signature="e#2960#3599#0" expanded="false" />
-            <element signature="e#3645#3986#0" expanded="false" />
-            <element signature="e#4057#4214#0" expanded="false" />
+            <element signature="e#525#594#0" expanded="false" />
+            <element signature="e#653#1003#0" expanded="false" />
+            <element signature="e#1056#1398#0" expanded="false" />
+            <element signature="e#1441#1530#0" expanded="false" />
+            <element signature="e#1573#1637#0" expanded="false" />
+            <element signature="e#1668#2399#0" expanded="false" />
+            <element signature="e#2435#3047#0" expanded="false" />
+            <element signature="e#3125#3271#0" expanded="false" />
+            <element signature="e#3320#3487#0" expanded="false" />
+            <element signature="e#3573#11276#0" expanded="false" />
+            <element signature="e#3857#4216#0" expanded="false" />
+            <element signature="e#4501#4708#0" expanded="false" />
+            <element signature="e#11352#13136#0" expanded="false" />
+            <element signature="e#11388#11512#0" expanded="false" />
+            <element signature="e#11552#12535#0" expanded="false" />
+            <element signature="e#13191#13506#0" expanded="false" />
+            <element signature="e#13544#13978#0" expanded="false" />
+            <element signature="e#14022#14339#0" expanded="false" />
+            <element signature="e#14382#14755#0" expanded="false" />
+            <element signature="e#14790#14841#0" expanded="false" />
+            <element signature="e#14874#14924#0" expanded="false" />
+            <element signature="e#14957#15007#0" expanded="false" />
+            <element signature="e#15038#15087#0" expanded="false" />
+            <element signature="e#15121#15164#0" expanded="false" />
+            <element signature="e#15205#15682#0" expanded="false" />
+            <element signature="e#16025#16083#0" expanded="false" />
+            <element signature="e#16130#16185#0" expanded="false" />
+            <element signature="e#16251#16304#0" expanded="false" />
+            <element signature="e#16353#16409#0" expanded="false" />
+            <element signature="e#16445#16516#0" expanded="false" />
+            <element signature="e#16560#16631#0" expanded="false" />
+            <element signature="e#16666#16736#0" expanded="false" />
+            <element signature="e#16771#16880#0" expanded="false" />
+            <element signature="e#16923#17160#0" expanded="false" />
+            <element signature="e#17214#18972#0" expanded="false" />
+            <element signature="e#19034#19569#0" expanded="false" />
+            <element signature="e#19620#19747#0" expanded="false" />
+            <element signature="e#19803#20172#0" expanded="false" />
+            <element signature="e#20236#21001#0" expanded="false" />
+            <element signature="e#21036#21266#0" expanded="false" />
+            <element signature="e#21305#21434#0" expanded="false" />
+            <element signature="e#21473#21697#0" expanded="false" />
+            <element signature="e#21734#21914#0" expanded="false" />
+            <element signature="e#21966#22606#0" expanded="false" />
+            <element signature="e#22637#23572#0" expanded="false" />
+            <element signature="e#23667#23946#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI/ConsoleUI.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="24" selection-start="3019" selection-end="3019" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1328#1368#0" expanded="false" />
-            <element signature="e#1416#1479#0" expanded="false" />
-            <element signature="e#1529#1602#0" expanded="false" />
-            <element signature="e#1653#1726#0" expanded="false" />
-            <element signature="e#1772#2232#0" expanded="false" />
-            <element signature="e#2507#2738#0" expanded="false" />
-            <element signature="e#2819#2847#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Shared/console.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="1" selection-start="424" selection-end="424" vertical-scroll-proportion="0.38162544">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>ConsoleJS</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.5" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>sass-stdlib</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
 

@@ -39,7 +39,11 @@ Room.prototype.add = function add() {
 };
 
 Room.prototype.emit = function emit(eventName, data) {
-    this.manager.emit(eventName, data);
+    if (this.isOnline && eventName === 'unsubscribe') {
+        this.unsubscribed();
+    } else {
+        this.manager.emit(eventName, data);
+    }
 };
 
 Room.prototype.online = function online() {
