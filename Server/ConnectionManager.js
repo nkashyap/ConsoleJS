@@ -5,13 +5,16 @@ var ControlClient = require('./ControlClient'),
 function ConnectionManager(server, config) {
     this.server = server;
     this.config = config;
-    this.clients = [];
+    this.controls = [];
     this.consoles = [];
     this.rooms = [];
 }
 
 ConnectionManager.prototype.isConsoleClient = function isConsoleClient(socket) {
-    return socket.manager.handshaken[socket.id].headers.referer.indexOf(this.config.port) === -1;
+    var activeSocket = socket.manager.handshaken[socket.id],
+        referer = activeSocket.headers.referer;
+
+    return (referer) ? referer.indexOf(this.config.port) === -1 : (activeSocket.address) ? true : false;
 };
 
 ConnectionManager.prototype.getTransportMode = function getTransportMode(socket) {
@@ -24,77 +27,61 @@ ConnectionManager.prototype.add = function add(socket) {
         this.consoles.push(new ConsoleClient(this, socket));
     } else {
         var control = new ControlClient(this, socket);
+        this.controls.push(control);
+
         this.consoles.forEach(function (item) {
             if (item.room) {
-                control.emit('online', { name: item.room.name, mode: item.getTransportMode() });
+                control.emit('online', {
+                    name: item.room.name,
+                    mode: item.getTransportMode()
+                });
             }
         });
-        this.clients.push(control);
     }
 };
 
 ConnectionManager.prototype.remove = function remove(socket) {
-    var index, item;
+    var index, list, item;
     if (this.isConsoleClient(socket)) {
         item = this.getConsole(socket);
-        index = this.consoles.indexOf(item);
-        if (index > -1) {
-            item.remove();
-            this.consoles.splice(index, 1);
-        }
+        list = this.consoles;
     } else {
-        item = this.getClient(socket);
-        index = this.clients.indexOf(item);
-        if (index > -1) {
-            item.remove();
-            this.clients.splice(index, 1);
-        }
+        item = this.getControl(socket);
+        list = this.controls;
+    }
+
+    index = list.indexOf(item);
+    if (index > -1) {
+        item.remove();
+        list.splice(index, 1);
     }
 };
 
 ConnectionManager.prototype.subscribe = function subscribe(socket, data) {
-    if (this.isConsoleClient(socket)) {
-        var currentConsole = this.getConsole(socket);
-        var room = this.getRoom(data);
+    var client = this.isConsoleClient(socket) ? this.getConsole(socket) : this.getControl(socket),
+        room = this.getRoom(data);
 
-        if (room) {
-            room.bind(currentConsole);
-        } else {
-            room = new Room(this, currentConsole, data);
-            this.rooms.push(room);
-        }
-
-        room.online();
-    } else {
-        var self = this;
-        this.rooms.forEach(function (room) {
-            if (room.name === data.name) {
-                room.subscribe(self.getClient(socket));
-            }
-        });
+    if (!room) {
+        room = new Room(this, data);
+        this.rooms.push(room);
     }
+
+    client.join(room);
 };
 
 ConnectionManager.prototype.unSubscribe = function unSubscribe(socket, data) {
-    if (this.isConsoleClient(socket)) {
-        this.rooms.forEach(function (room) {
-            if (room.name === data.name) {
-                room.offline();
-            }
-        });
-    } else {
-        var self = this;
-        this.rooms.forEach(function (room) {
-            if (room.name === data.name) {
-                room.unSubscribe(self.getClient(socket));
-            }
-        });
-    }
+    var client = this.isConsoleClient(socket) ? this.getConsole(socket) : this.getControl(socket),
+        room = this.getRoom(data);
+
+    client.leave(room);
 };
 
-ConnectionManager.prototype.console = function console(socket, data) {
-    var room = this.getRoom(data);
+ConnectionManager.prototype.log = function log(socket, data) {
+    var client = this.isConsoleClient(socket) ? this.getConsole(socket) : this.getControl(socket),
+        room = this.getRoom(data);
+
     if (room) {
+        data.guid = client.id;
         room.log(data);
     }
 };
@@ -110,29 +97,29 @@ ConnectionManager.prototype.emit = function emit(eventName, data) {
     this.server.sockets.emit(eventName, data);
 };
 
-ConnectionManager.prototype.getClient = function getClient(socket) {
-    var list = this.clients.filter(function (client) {
-        return client.id === socket.id;
-    });
+ConnectionManager.prototype.filter = function filter(list, fun) {
+    var filteredList = list.filter(fun);
+    return filteredList.length > 0 ? filteredList[0] : null;
+};
 
-    return list.length > 0 ? list[0] : null;
+ConnectionManager.prototype.getControl = function getControl(socket) {
+    var id = (socket.handshake.guid || socket.id);
+    return this.filter(this.controls, function (client) {
+        return client.id === id;
+    });
 };
 
 ConnectionManager.prototype.getConsole = function getConsole(socket) {
-    var list = this.consoles.filter(function (console) {
-        return console.id === socket.id;
+    var id = (socket.handshake.guid || socket.id);
+    return this.filter(this.consoles, function (client) {
+        return client.id === id;
     });
-
-    return list.length > 0 ? list[0] : null;
 };
 
 ConnectionManager.prototype.getRoom = function getRoom(data) {
-    var list = this.rooms.filter(function (room) {
+    return this.filter(this.rooms, function (room) {
         return room.name === data.name;
     });
-
-    return list.length > 0 ? list[0] : null;
 };
-
 
 module.exports = ConnectionManager;

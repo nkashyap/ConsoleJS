@@ -519,9 +519,11 @@ window.ConsoleJS = (function () {
             '[object Function]', '[object Object]'
         ],
 
-        parse: function parse(data, simple) {
+        parse: function parse(data, level, simple) {
             var value = '',
                 type = Utils.getObjectType(data);
+
+            level = level || 1;
 
             if (this.TYPES.indexOf(type) > -1) {
                 switch (type) {
@@ -535,11 +537,11 @@ window.ConsoleJS = (function () {
                     case '[object Arguments]':
                         data = Utils.toArray(data);
                     case '[object Array]':
-                        value = this.parseArray(data);
+                        value = this.parseArray(data, level);
                         break;
 
                     case '[object Object]':
-                        value = this.parseObject(type, data);
+                        value = this.parseObject(type, data, level);
                         break;
 
                     case '[object Number]':
@@ -561,7 +563,7 @@ window.ConsoleJS = (function () {
                 value = '"undefined"';
 
             } else if (simple === undefined) {
-                value = this.parseObject(type, data);
+                value = this.parseObject(type, data, level);
 
             } else {
                 try {
@@ -574,11 +576,11 @@ window.ConsoleJS = (function () {
             return value;
         },
 
-        valueOf: function valueOf(data, skipGlobal) {
+        valueOf: function valueOf(data, skipGlobal, level) {
             var type = Utils.getObjectType(data);
 
             if (this.TYPES.indexOf(type) > -1 && !skipGlobal) {
-                return this.parse(data);
+                return this.parse(data, level);
             } else {
                 if (type === '[object Function]') {
                     type = '[Function ' + Utils.getFunctionName(data) + ']';
@@ -594,22 +596,24 @@ window.ConsoleJS = (function () {
             return '"' + data.replace(/\n/g, '\\n').replace(/"/g, '\\"').replace(/</g, '').replace(/>/g, '') + '"';
         },
 
-        parseArray: function parseArray(data) {
+        parseArray: function parseArray(data, level) {
             var target = [];
             Utils.forEach(data, function (item, index) {
-                this[index] = Stringify.valueOf(item);
+                this[index] = Stringify.valueOf(item, false, level);
             }, target);
 
             if (target.length > 0) {
-                return '[' + target.join(',') + ']';
+                return '[' + target.join(', ') + ']';
             } else {
                 return '[' + data.toString() + ']';
             }
         },
 
-        parseObject: function parseObject(type, data) {
+        parseObject: function parseObject(type, data, level) {
             var name = '',
                 skipGlobal = type === '[object global]',
+                tabAfter = (new Array(level)).join('\t'),
+                tabBefore = (new Array(++level)).join('\t'),
                 target = [];
 
             if (data && data.constructor) {
@@ -617,11 +621,11 @@ window.ConsoleJS = (function () {
             }
 
             Utils.forEachProperty(data, function (value, property) {
-                this.push('\t"' + property + '": ' + Stringify.valueOf(value, skipGlobal));
+                this.push(tabBefore + '"' + property + '": ' + Stringify.valueOf(value, skipGlobal, level));
             }, target);
 
             if (target.length > 0) {
-                return (name || type) + ': {\n' + target.join(',\n') + '\n}\n';
+                return (name || type) + ': {\n' + target.join(',\n') + '\n'+ tabAfter +'}\n';
             } else {
                 return data.toString() + '\n';
             }
@@ -647,6 +651,16 @@ window.ConsoleJS = (function () {
         events[eventName].push(callback);
     }
 
+    function off(eventName, callback){
+        var callbacks = events[eventName];
+        if (callbacks) {
+            var index = callbacks.indexOf(callback);
+            if(index > -1){
+                callbacks.splice(index, 1);
+            }
+        }
+    }
+
     function emit(eventName, data) {
         var event = events[eventName];
         if (event) {
@@ -667,9 +681,15 @@ window.ConsoleJS = (function () {
             }
         }
 
+        if(args && args.hasOwnProperty("length")){
+            if(args.length > 0){
+                args = Utils.toArray(args);
+            }
+        }
+
         emit('console', {
             type: type,
-            message: value || Stringify.parse(args && args.hasOwnProperty("length") ? Utils.toArray(args) : args),
+            message: value || Stringify.parse(args),
             stack: callStack ? Stringify.parse(callStack) : ''
         });
     }
@@ -715,6 +735,7 @@ window.ConsoleJS = (function () {
     window.console = Utils.merge(Wrapper, {
         config: config,
         on: on,
+        off: off,
         ready: ready,
         Utils: Utils,
         native: console

@@ -9,16 +9,30 @@
 function ConsoleClient(manager, socket) {
     this.manager = manager;
     this.socket = socket;
-    this.id = this.socket.id;
+    this.id = this.socket.handshake.guid || this.socket.id;
     this.room = null;
 }
 
-ConsoleClient.prototype.bind = function bind(room) {
+ConsoleClient.prototype.join = function join(room) {
+    if (this.room) {
+        this.leave();
+    }
+
     this.room = room;
+    this.room.join(this);
+    this.subscribe(this.room.name);
+};
+
+ConsoleClient.prototype.leave = function leave() {
+    if (this.room) {
+        this.unSubscribe(this.room.name);
+        this.room.leave(this);
+        this.room = null;
+    }
 };
 
 ConsoleClient.prototype.getTransportMode = function getTransportMode() {
-    return this.manager.getTransportMode(this.socket);
+    return this.id + ":" + this.manager.getTransportMode(this.socket);
 };
 
 ConsoleClient.prototype.subscribe = function subscribe(name) {
@@ -27,7 +41,6 @@ ConsoleClient.prototype.subscribe = function subscribe(name) {
 };
 
 ConsoleClient.prototype.unSubscribe = function unSubscribe(name) {
-    //this.broadcast('unsubscribed', { name: name }, name);
     this.socket.leave(name);
     this.emit('unsubscribed', { name: name });
 };
@@ -41,9 +54,7 @@ ConsoleClient.prototype.broadcast = function broadcast(eventName, data, room) {
 };
 
 ConsoleClient.prototype.remove = function remove() {
-    if (this.room) {
-        this.room.offline();
-    }
+    this.leave();
 };
 
 module.exports = ConsoleClient;

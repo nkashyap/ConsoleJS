@@ -3,6 +3,7 @@ var io = require('socket.io'),
     fs = require('fs'),
     path = require('path'),
     os = require('os'),
+    GUID = require('./Guid'),
     ConnectionManager = require('./ConnectionManager');
 
 
@@ -10,7 +11,17 @@ module.exports.start = function start(config) {
 
     var webServer = http.createServer(handler),
         socketServer = io.listen(webServer),
-        manager = new ConnectionManager(socketServer, config);
+        manager = new ConnectionManager(socketServer, config),
+        originalHandleRequest = io.Manager.prototype.handleRequest;
+
+
+    io.Manager.prototype.handleRequest = function handleRequest(request, response) {
+        if (!GUID.isSet(request.headers)) {
+            GUID.set(response);
+        }
+
+        originalHandleRequest.call(socketServer, request, response);
+    };
 
     webServer.listen(config.port);
 
@@ -22,11 +33,17 @@ module.exports.start = function start(config) {
         socketServer.set('log level', 2);
         socketServer.set('transports', [
             'websocket',
-            //'flashsocket',
             'htmlfile',
             'xhr-polling',
             'jsonp-polling'
         ]);
+
+        socketServer.set('authorization', function (handshakeData, callback) {
+            if (GUID.isSet(handshakeData.headers)) {
+                handshakeData.guid = GUID.getCookie(handshakeData.headers);
+            }
+            callback(null, true);
+        });
     });
 
     function parseURL(url) {
@@ -67,7 +84,6 @@ module.exports.start = function start(config) {
         );
     }
 
-
     socketServer.sockets.on('connection', function (socket) {
         manager.add(socket);
 
@@ -87,7 +103,7 @@ module.exports.start = function start(config) {
         });
 
         socket.on('console', function (data) {
-            manager.console(socket, data);
+            manager.log(socket, data);
         });
 
         socket.on('command', function (data) {

@@ -13,15 +13,17 @@ function ConsoleUI(room) {
     this.name = this.room.name;
     this.tab = null;
     this.content = null;
+    this.count = 0;
+    this.styles = {};
 }
 
 ConsoleUI.prototype.add = function add() {
     var self = this;
-    this.tab = $("<li><a href='#Tab-" + this.name + "' data-toggle='tab'>" + this.name + "&nbsp;<span class='close' title='Close'></span></a></li>");
+    this.tab = $("<li><a href='#Tab-" + this.name + "' data-toggle='tab'>" + this.name + "&nbsp;<button class='close'>&times;</button></a></li>");
     this.content = $("<div class='tab-pane fade' id='Content-" + this.name + "'></div>");
 
     this.tab.click(function (e) {
-        if (e.target.tagName.toLowerCase() === 'span') {
+        if (e.target.tagName.toLowerCase() === 'button') {
             self.emit('unsubscribe', { name: self.name });
         } else {
             self.room.setActive(true);
@@ -90,9 +92,9 @@ ConsoleUI.prototype.log = function log(data, notify) {
 
     if (data.stack) {
         var stack = data.stack.split(",")
-                    .join("\n")
-                    .replace(/"/img, '')
-                    .replace(/%20/img, ' ');
+            .join("\n")
+            .replace(/"/img, '')
+            .replace(/%20/img, ' ');
 
         message += '\n';
         message += prettyPrintOne(this.stripBrackets(stack));
@@ -102,12 +104,31 @@ ConsoleUI.prototype.log = function log(data, notify) {
         tag = 'pre';
     }
 
-    var msg = $('<' + tag + ' class="console type-' + data.type + '">' + (message || '.') + '</' + tag + '>');
+    var msg = $('<' + tag + ' class="console type-' + data.type + ' ' + this.getStyles(data.guid) + '">' + (message || '.') + '</' + tag + '>');
+
     this.content.prepend(msg);
 
     if (notify) {
         this.tab.find('a').addClass('notify');
     }
+
+    this.count++;
+    this.cleanUp();
+};
+
+ConsoleUI.prototype.getStyles = function getStyles(id) {
+    if (id) {
+        var className = "log-" + id;
+
+        if (!this.styles[id]) {
+            this.styles[id] = $('<style>.' + className + '::before { content: "' + id + '"; }</style>');
+            $('html > head').append(this.styles[id]);
+        }
+
+        return className;
+    }
+
+    return (id || "none");
 };
 
 ConsoleUI.prototype.stripBrackets = function stripBrackets(data) {
@@ -116,4 +137,13 @@ ConsoleUI.prototype.stripBrackets = function stripBrackets(data) {
         return data.substring(1, last);
     }
     return data;
+};
+
+ConsoleUI.prototype.cleanUp = function cleanUp() {
+    if (this.count > Config.cacheCount) {
+        do {
+            this.content.children().last().remove();
+            this.count--;
+        } while (this.count >= Config.maxLogs);
+    }
 };

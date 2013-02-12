@@ -6,69 +6,81 @@
  * To change this template use File | Settings | File Templates.
  */
 
-function Room(manager, console, data) {
+function Room(manager, data) {
     this.manager = manager;
-    this.console = console;
     this.name = data.name;
-    this.enabled = false;
-    this.clients = [];
-
-    this.console.bind(this);
+    this.controls = [];
+    this.consoles = [];
 }
 
-Room.prototype.bind = function bind(console) {
-    this.console = console;
-    this.console.bind(this);
+Room.prototype.join = function join(client) {
+    if (this.consoles.indexOf(client) === -1) {
+        this.consoles.push(client);
+        this.detectState();
+    }
+};
+
+Room.prototype.leave = function leave(client) {
+    var index = this.consoles.indexOf(client);
+    if (index > -1) {
+        this.consoles.splice(index, 1);
+        this.detectState();
+    }
+};
+
+Room.prototype.subscribe = function subscribe(control) {
+    if (this.controls.indexOf(control) === -1) {
+        this.controls.push(control);
+    }
+};
+
+Room.prototype.unSubscribe = function unSubscribe(control) {
+    var index = this.controls.indexOf(control);
+    if (index > -1) {
+        this.controls.splice(index, 1);
+    }
+};
+
+Room.prototype.detectState = function detectState() {
+    if (this.consoles.length > 0) {
+        this.online();
+    } else {
+        this.offline();
+    }
+};
+
+Room.prototype.getTransportMode = function getTransportMode() {
+    var mode = [];
+    this.consoles.forEach(function (item) {
+        mode.push(item.getTransportMode());
+    });
+    return mode.join(",");
 };
 
 Room.prototype.online = function online() {
-    this.enabled = true;
-    this.console.subscribe(this.name);
-    this.manager.emit('online', { name: this.name, mode: this.console.getTransportMode() });
+    this.manager.emit('online', {
+        name: this.name,
+        mode: this.getTransportMode()
+    });
 };
 
 Room.prototype.offline = function offline() {
-    this.enabled = false;
-    this.console.unSubscribe(this.name);
-    this.manager.emit('offline', { name: this.name, mode: this.console.getTransportMode() });
+    this.manager.emit('offline', {
+        name: this.name,
+        mode: this.getTransportMode()
+    });
 };
-
-Room.prototype.subscribe = function subscribe(client) {
-    if (this.clients.indexOf(client) === -1) {
-        this.clients.push(client);
-        client.subscribe(this.name);
-    }
-};
-
-Room.prototype.unSubscribe = function unSubscribe(client) {
-    var index = this.clients.indexOf(client);
-    if (index > -1) {
-        client.unSubscribe(this.name);
-        this.clients.splice(index, 1);
-    }
-};
-
 
 Room.prototype.log = function log(data) {
-    this.clients.forEach(function (client) {
-        client.emit('console', data);
+    this.controls.forEach(function (control) {
+        control.emit('console', data);
     });
 };
 
 Room.prototype.command = function command(data) {
-    this.console.emit('command', data);
+    this.consoles.forEach(function (item) {
+        item.emit('command', data);
+    });
 };
-
-
-Room.prototype.remove = function remove() {
-//    var self = this;
-//    this.clients.forEach(function (clientSocket) {
-//        self.emit('unsubscribed', { name : self.name }, clientSocket);
-//        clientSocket.leave(self.name);
-//    });
-//    this.offline();
-//    this.clients = [];
-};
-
 
 module.exports = Room;

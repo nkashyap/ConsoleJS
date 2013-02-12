@@ -14,6 +14,13 @@ code {
     background-color: rgba(236, 235, 235, 0.5);
 }
 
+.console::before {
+    color: rgba(111, 114, 117, 0.5);
+    position: absolute;
+    top: 0px;
+    right: 5px
+}
+
 .type-log::after,
 .type-info::after,
 .type-assert::after,

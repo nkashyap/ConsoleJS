@@ -8,6 +8,7 @@
 
 function Room(manager, data) {
     this.target = $("#clientList");
+    this.infoTarget = $('#connection');
     this.manager = manager;
     this.name = data.name;
     this.mode = data.mode;
@@ -16,6 +17,7 @@ function Room(manager, data) {
     this.isOnline = false;
     this.console = new ConsoleUI(this);
     this.link = null;
+    this.activeFilters = [];
 }
 
 Room.prototype.add = function add() {
@@ -82,7 +84,7 @@ Room.prototype.command = function command(data) {
 };
 
 Room.prototype.log = function log(data) {
-    if (this.isSubscribed) {
+    if (this.isSubscribed && this.activeFilters.indexOf(data.guid) === -1) {
         this.console.log(data, !this.isActive);
     }
 };
@@ -93,7 +95,7 @@ Room.prototype.subscribed = function subscribed() {
     this.setActive(true);
 };
 
-Room.prototype.unsubscribed = function unsubscribed() {
+Room.prototype.unSubscribed = function unSubscribed() {
     this.isSubscribed = false;
     this.console.remove();
     this.setActive(false);
@@ -120,7 +122,48 @@ Room.prototype.getTransportMode = function getTransportMode() {
 
 Room.prototype.show = function show() {
     this.mode = this.mode || this.getTransportMode();
-    $('#connection').text(this.mode);
+
+    if (this.mode) {
+        var i = 0,
+            mode = this.mode.split(","),
+            length = mode.length;
+
+        this.resetConnectionInfo();
+
+        while (i < length) {
+            var item = mode[i++].split(":"),
+                id = item[0],
+                label = item[1],
+                link = $("<li class='active'><a href='#' id='info-" + id + "' title='" + id + "'>" + (i + ". " + (label || id)) + "</a></li>");
+
+            link.find("a").click($.proxy(this.filter, this));
+            this.infoTarget.append(link);
+        }
+    }
+
     this.console.show();
 };
 
+Room.prototype.filter = function filter(e) {
+    var item = $(e.target),
+        id = item.attr("title"),
+        parent = item.parent(),
+        index = this.activeFilters.indexOf(id);
+
+    if (index > -1) {
+        this.activeFilters.splice(index, 1);
+        parent.addClass('active');
+    } else {
+        this.activeFilters.push(id);
+        parent.removeClass('active');
+    }
+};
+
+Room.prototype.resetConnectionInfo = function resetConnectionInfo() {
+    var length = this.infoTarget.children().length;
+
+    while (length > 1) {
+        --length;
+        this.infoTarget.children().last().remove();
+    }
+};

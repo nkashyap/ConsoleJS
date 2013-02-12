@@ -58,7 +58,7 @@ SocketServer.prototype.start = function start() {
     });
     this.socket.on('unsubscribed', function (data) {
         self.emit('log', 'Unsubscribed from ' + data.name);
-        self.manager.unsubscribed(data);
+        self.manager.unSubscribed(data);
     });
 
     this.socket.on('console', function (data) {
@@ -67,7 +67,11 @@ SocketServer.prototype.start = function start() {
 };
 
 SocketServer.prototype.emit = function emit(eventName, message) {
-    this.manager.log({ name: this.name, type: eventName || 'log', message: message });
+    this.manager.log({
+        name: this.name,
+        type: eventName || 'log',
+        message: message
+    });
 };
 
 SocketServer.prototype.request = function request(data) {

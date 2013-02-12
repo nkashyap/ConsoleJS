@@ -3,23 +3,24 @@
 <head>
     <title>ConsoleJS Remote</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="Lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="Lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="Lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" type="text/css">
+    <link href="Lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
     <link href="Lib/prettify/prettify.css" type="text/css" rel="stylesheet"/>
 
-    <script src="Lib/jquery-1.8.3.min.js"></script>
-    <script src="Lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="Lib/prettify/prettify.js"></script>
-    <script src="Lib/prettify/lang-css.js"></script>
-    <script src="Lib/prettify/lang-tex.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="Lib/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="Lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="Lib/prettify/prettify.js" type="text/javascript"></script>
+    <script src="Lib/prettify/lang-css.js" type="text/javascript"></script>
+    <script src="Lib/prettify/lang-tex.js" type="text/javascript"></script>
+    <script src="/socket.io/socket.io.js" type="text/javascript"></script>
 
-    <link href="Shared/console.css" rel="stylesheet">
-    <link href="UI/main.css" rel="stylesheet">
-    <script src="UI/ConsoleUI.js"></script>
-    <script src="UI/Room.js"></script>
-    <script src="UI/RoomManager.js"></script>
-    <script src="UI/SocketServer.js"></script>
+    <link href="Shared/console.css" rel="stylesheet" type="text/css">
+    <link href="UI/main.css" rel="stylesheet" type="text/css">
+    <script src="UI/Config.js" type="text/javascript"></script>
+    <script src="UI/ConsoleUI.js" type="text/javascript"></script>
+    <script src="UI/Room.js" type="text/javascript"></script>
+    <script src="UI/RoomManager.js" type="text/javascript"></script>
+    <script src="UI/SocketServer.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="main-wrapper">
@@ -40,9 +41,8 @@
                     </ul>
                 </div>
                 <div class="well sidebar-nav">
-                    <ul class="nav nav-list">
+                    <ul id="connection" class="nav nav-list">
                         <li class="nav-header">Connection Info</li>
-                        <li><a id="connection"></a></li>
                     </ul>
                 </div>
             </div>

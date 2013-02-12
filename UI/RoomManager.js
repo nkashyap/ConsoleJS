@@ -40,10 +40,10 @@ RoomManager.prototype.subscribed = function subscribed(data) {
     }
 };
 
-RoomManager.prototype.unsubscribed = function unsubscribed(data) {
+RoomManager.prototype.unSubscribed = function unSubscribed(data) {
     var room = this.getRoom(data);
     if (room) {
-        room.unsubscribed();
+        room.unSubscribed();
     }
 };
 
