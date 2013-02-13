@@ -6,6 +6,7 @@ body {
     overflow: hidden;
     padding-top: 60px;
     padding-bottom: 40px;
+    font-size: 13px;
 }
 
 p {
@@ -63,6 +64,15 @@ p {
 
 #connection {
     text-transform: capitalize;
+}
+
+#connectRooms {
+    margin-bottom: 10px;
+}
+
+#connectRooms li a {
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 
 #connectRoomsContent {

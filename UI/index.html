@@ -28,6 +28,46 @@
         <div class="navbar-inner">
             <div class="container-fluid">
                 <a class="brand" href="#">Console JS</a>
+
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li><a href="#">Configure</a></li>
+                    </ul>
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Commands<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-header">Quick</li>
+                                <li><a href="#">Ping</a></li>
+                                <li><a href="#">Clear</a></li>
+                                <li><a href="#">Reload</a></li>
+                                <li class="divider"></li>
+                                <li class="nav-header">Global</li>
+                                <li><a href="#">Window</a></li>
+                                <li><a href="#">Document</a></li>
+                                <li><a href="#">Body</a></li>
+                                <li><a href="#">Navigator</a></li>
+                                <li><a href="#">Location</a></li>
+                                <li><a href="#">History</a></li>
+                                <li><a href="#">Screen</a></li>
+                                <li><a href="#">Scripts</a></li>
+                                <li><a href="#">Styles</a></li>
+                                <li><a href="#">Cookie</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">User's<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Add Some</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn-group pull-right">
+                    <a href="#" class="btn btn-success">Save</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
+                    <a href="#" class="btn btn-info">Send</a>
+                </div>
             </div>
         </div>
     </div>
@@ -47,24 +87,8 @@
                 </div>
             </div>
             <div class="span10">
-                <div class="btn-group">
-                    <button class="btn btn-success">Send</button>
-                    <button class="btn btn-warning">Ping</button>
-                    <button class="btn btn-info">Window</button>
-                    <button class="btn btn-info">Document</button>
-                    <button class="btn btn-info">Body</button>
-                    <button class="btn btn-info">Navigator</button>
-                    <button class="btn btn-info">Location</button>
-                    <button class="btn btn-info">History</button>
-                    <button class="btn btn-info">Screen</button>
-                    <button class="btn btn-info">Scripts</button>
-                    <button class="btn btn-info">Styles</button>
-                    <button class="btn btn-info">Cookie</button>
-                    <button class="btn btn-warning">Clear</button>
-                    <button class="btn btn-success">Reload</button>
-                </div>
                 <div class="input-append">
-                    <textarea id="command" class="input-block-level" rows="2"></textarea>
+                    <textarea id="command" class="input-block-level" rows="5"></textarea>
                 </div>
                 <ul id="connectRooms" class="nav nav-tabs">
                 </ul>
