@@ -36,7 +36,16 @@ ConsoleJS.Web = (function (console) {
 
     function addLog(data) {
         var tag = 'code',
+            css = data.type,
             message = stripBrackets(data.message);
+
+        // check if asset failed
+        if (data.type === "assert") {
+            var asset = stripBrackets(message).split(",");
+            if (asset[0].toLowerCase() !== "true") {
+                css = "assert-failed";
+            }
+        }
 
         // for Opera and Maple browser
         message = message.replace(/%20/img, " ");
@@ -62,7 +71,7 @@ ConsoleJS.Web = (function (console) {
         }
 
         var row = document.createElement(tag);
-        row.className = "console type-" + data.type;
+        row.className = "console type-" + css;
         row.innerHTML = message || "";
 
         logger.insertBefore(row, logger.firstElementChild || logger.firstChild);
