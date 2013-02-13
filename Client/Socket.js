@@ -10,6 +10,7 @@ ConsoleJS.Socket = (function (console, io) {
     "use strict";
 
     var name = console.Browser ? console.Browser.toString() : window.navigator.userAgent,
+        cookieName = "guid",
         pendingRequests = [],
         subscribed = false,
         connectionMode = null,
@@ -55,6 +56,50 @@ ConsoleJS.Socket = (function (console, io) {
         return socket && socket.socket.connected ? 'Connected' : 'Disconnected';
     }
 
+    function getCookie(name) {
+        if (document && document.cookie) {
+            var i,
+                cookieName,
+                cookieValue,
+                cookies = document.cookie.split(";");
+
+            for (i = 0; i < cookies.length; i++) {
+                cookieName = (cookies[i].substr(0, cookies[i].indexOf("="))).replace(/^\s+|\s+$/g, "");
+                cookieValue = cookies[i].substr(cookies[i].indexOf("=") + 1);
+
+                if (cookieName === name) {
+                    return unescape(cookieValue);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    function showGuid(content) {
+        var className = "console-content",
+            styleId = "guid-style";
+
+        if (!document.getElementById(styleId)) {
+            var css = "." + className + "::after { content: '" + content + "'; position: fixed; top: 0px; left: 0px; padding: 2px 8px; font-size: 12px; font-weight: bold; color: rgb(111, 114, 117); background-color: rgba(192, 192, 192, 0.5); border: 1px solid rgb(111, 114, 117); font-family: Monaco,Menlo,Consolas,'Courier New',monospace; };",
+                head = document.getElementsByTagName('head')[0],
+                style = document.createElement('style');
+
+            style.type = 'text/css';
+            style.id = styleId;
+
+            if (style.styleSheet) {
+                style.styleSheet.cssText = css;
+            } else {
+                style.appendChild(document.createTextNode(css));
+            }
+
+            head.appendChild(style);
+        }
+
+        (document.body.firstElementChild || document.body.firstChild).setAttribute("class", className);
+    }
+
     function init() {
         if (domReady) {
             return;
@@ -65,6 +110,11 @@ ConsoleJS.Socket = (function (console, io) {
         socket = io.connect(console.Utils.getScriptURL('socket.io'));
 
         socket.on('connect', function () {
+            var guid = getCookie(cookieName);
+            if (guid) {
+                showGuid(guid);
+            }
+
             socket.emit('subscribe', { name: name });
             console.log('Connected to the Server');
             console.log('Subscribing to', { name: name });

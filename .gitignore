@@ -164,4 +164,5 @@ pip-log.txt
 /node_modules
 /aspnet_client
 /.idea
+/ConsoleJS.iml
 /.idea

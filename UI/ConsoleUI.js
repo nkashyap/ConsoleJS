@@ -83,7 +83,16 @@ ConsoleUI.prototype.show = function show() {
 
 ConsoleUI.prototype.log = function log(data, notify) {
     var tag = 'code',
+        css = data.type,
         message = this.stripBrackets(data.message);
+
+    // check if asset failed
+    if (data.type === "assert") {
+        var asset = this.stripBrackets(message).split(",");
+        if (asset[0].toLowerCase() !== "true") {
+            css = "assert-failed";
+        }
+    }
 
     // for Opera and Maple browser
     message = message.replace(/%20/img, " ");
@@ -104,7 +113,7 @@ ConsoleUI.prototype.log = function log(data, notify) {
         tag = 'pre';
     }
 
-    var msg = $('<' + tag + ' class="console type-' + data.type + ' ' + this.getStyles(data.guid) + '">' + (message || '.') + '</' + tag + '>');
+    var msg = $('<' + tag + ' class="console type-' + css + ' ' + this.getStyles(data.guid) + '">' + (message || '.') + '</' + tag + '>');
 
     this.content.prepend(msg);
 
@@ -121,7 +130,7 @@ ConsoleUI.prototype.getStyles = function getStyles(id) {
         var className = "log-" + id;
 
         if (!this.styles[id]) {
-            this.styles[id] = $('<style>.' + className + '::before { content: "' + id + '"; }</style>');
+            this.styles[id] = $('<style type="text/css">.' + className + '::before { content: "' + id + '"; }</style>');
             $('html > head').append(this.styles[id]);
         }
 

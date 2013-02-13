@@ -24,6 +24,7 @@ code {
 .type-log::after,
 .type-info::after,
 .type-assert::after,
+.type-assert-failed::after,
 .type-count::after,
 .type-time::after,
 .type-timeEnd::after,
@@ -49,6 +50,7 @@ code {
     font-weight: bold;
     -webkit-border-radius: 4px 0 4px 0;
     -moz-border-radius: 4px 0 4px 0;
+    -o-border-radius: 4px 0 4px 0;
     border-radius: 4px 0 4px 0;
 }
 
@@ -119,9 +121,9 @@ code {
 
 .type-count::after {
     content: "count";
-    color: rgb(111, 114, 117);
-    background-color: rgba(192, 192, 192, 0.6);
-    border: 1px solid rgb(111, 114, 117);
+    color: rgb(9, 109, 117);
+    background-color: rgba(98, 192, 184, 0.60);
+    border: 1px solid rgb(9, 109, 117);
 }
 
 .type-time {
@@ -131,9 +133,9 @@ code {
 
 .type-time::after {
     content: "time";
-    color: rgb(111, 114, 117);
-    background-color: rgba(192, 192, 192, 0.6);
-    border: 1px solid rgb(111, 114, 117);
+    color: rgb(44, 46, 117);
+    background-color: rgba(120, 125, 192, 0.60);
+    border: 1px solid rgb(44, 46, 117);
 }
 
 .type-timeEnd {
@@ -143,9 +145,9 @@ code {
 
 .type-timeEnd::after {
     content: "timeEnd";
-    color: rgb(111, 114, 117);
-    background-color: rgba(192, 192, 192, 0.6);
-    border: 1px solid rgb(111, 114, 117);
+    color: rgb(23, 33, 117);
+    background-color: rgba(120, 78, 192, 0.60);
+    border: 1px solid rgb(23, 33, 117);
 }
 
 .type-debug {
@@ -155,9 +157,9 @@ code {
 
 .type-debug::after {
     content: "debug";
-    color: rgb(111, 114, 117);
-    background-color: rgba(192, 192, 192, 0.6);
-    border: 1px solid rgb(111, 114, 117);
+    color: rgb(117, 86, 8);
+    background-color: rgba(192, 150, 75, 0.60);
+    border: 1px solid rgb(117, 86, 8);
 }
 
 .type-warn {
@@ -167,9 +169,9 @@ code {
 
 .type-warn::after {
     content: "warn";
-    color: rgb(111, 114, 117);
-    background-color: rgba(192, 192, 192, 0.6);
-    border: 1px solid rgb(111, 114, 117);
+    color: rgb(167, 153, 9);
+    background-color: rgba(201, 195, 22, 0.5);
+    border: 1px solid rgb(167, 153, 9);
 }
 
 .type-dir {
@@ -179,9 +181,9 @@ code {
 
 .type-dir::after {
     content: "dir";
-    color: rgb(111, 114, 117);
-    background-color: rgba(192, 192, 192, 0.6);
-    border: 1px solid rgb(111, 114, 117);
+    color: rgb(41, 117, 75);
+    background-color: rgba(114, 192, 162, 0.60);
+    border: 1px solid rgb(41, 117, 75);
 }
 
 .type-dirxml {
@@ -191,9 +193,9 @@ code {
 
 .type-dirxml::after {
     content: "dirxml";
-    color: rgb(111, 114, 117);
-    background-color: rgba(192, 192, 192, 0.6);
-    border: 1px solid rgb(111, 114, 117);
+    color: rgb(44, 117, 20);
+    background-color: rgba(130, 192, 93, 0.60);
+    border: 1px solid rgb(44, 117, 20);
 }
 
 .type-group {
@@ -287,9 +289,9 @@ code {
 
 .type-trace::after {
     content: "trace";
-    color: rgb(111, 114, 117);
-    background-color: rgba(192, 192, 192, 0.6);
-    border: 1px solid rgb(111, 114, 117);
+    color: rgb(117, 17, 112);
+    background-color: rgba(237, 134, 217, 0.60);
+    border: 1px solid rgb(117, 17, 112);
 }
 
 .type-clear {
@@ -299,7 +301,7 @@ code {
 
 .type-clear::after {
     content: "clear";
-    color: rgb(111, 114, 117);
-    background-color: rgba(192, 192, 192, 0.6);
-    border: 1px solid rgb(111, 114, 117);
+    color: rgb(53, 117, 110);
+    background-color: rgba(159, 192, 189, 0.60);
+    border: 1px solid rgb(53, 117, 110);
 }

@@ -625,7 +625,7 @@ window.ConsoleJS = (function () {
             }, target);
 
             if (target.length > 0) {
-                return (name || type) + ': {\n' + target.join(',\n') + '\n'+ tabAfter +'}\n';
+                return (name || type) + ': {\n' + target.join(',\n') + '\n' + tabAfter + '}\n';
             } else {
                 return data.toString() + '\n';
             }
@@ -651,11 +651,11 @@ window.ConsoleJS = (function () {
         events[eventName].push(callback);
     }
 
-    function off(eventName, callback){
+    function off(eventName, callback) {
         var callbacks = events[eventName];
         if (callbacks) {
             var index = callbacks.indexOf(callback);
-            if(index > -1){
+            if (index > -1) {
                 callbacks.splice(index, 1);
             }
         }
@@ -681,8 +681,8 @@ window.ConsoleJS = (function () {
             }
         }
 
-        if(args && args.hasOwnProperty("length")){
-            if(args.length > 0){
+        if (args && args.hasOwnProperty("length")) {
+            if (args.length > 0) {
                 args = Utils.toArray(args);
             }
         }
