@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a443409a-9e2c-40b9-828b-2c44d355713c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ConsoleJS.iml" afterPath="$PROJECT_DIR$/ConsoleJS.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/sass_stdlib.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sass_stdlib.xml" />
-    </list>
+    <list default="true" id="a443409a-9e2c-40b9-828b-2c44d355713c" name="Default" comment="" />
     <ignored path="ConsoleJS.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/RoomManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358634016895" ignored="false" />
