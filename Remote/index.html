@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ConsoleJS Remote</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" type="text/css">
+    <link href="Lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+    <link href="Lib/prettify/prettify.css" type="text/css" rel="stylesheet"/>
+
+    <script src="Lib/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="Lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="Lib/prettify/prettify.js" type="text/javascript"></script>
+    <script src="Lib/prettify/lang-css.js" type="text/javascript"></script>
+    <script src="Lib/prettify/lang-tex.js" type="text/javascript"></script>
+    <script src="/socket.io/socket.io.js" type="text/javascript"></script>
+
+    <link href="Shared/console.css" rel="stylesheet" type="text/css">
+    <link href="Remote/main.css" rel="stylesheet" type="text/css">
+
+    <script src="Remote/Utils.js" type="text/javascript"></script>
+    <script src="Remote/Store.js" type="text/javascript"></script>
+    <script src="Remote/Commands.js" type="text/javascript"></script>
+    <script src="Remote/Config.js" type="text/javascript"></script>
+    <script src="Remote/ConsoleUI.js" type="text/javascript"></script>
+    <script src="Remote/Room.js" type="text/javascript"></script>
+    <script src="Remote/RoomManager.js" type="text/javascript"></script>
+    <script src="Remote/SocketServer.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="main-wrapper">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="brand" href="#">Console JS</a>
+
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li><a href="#">Configure</a></li>
+                    </ul>
+                    <ul id="commandMenu" class="nav">
+                        <li id="globalCommands" class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Commands<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            </ul>
+                        </li>
+                        <li id="userCommands" class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">User's<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div id="quickCommands" class="btn-group pull-right">
+                    <a href="#" class="btn btn-danger">Clear</a>
+                    <a href="#" class="btn btn-warning">Reload</a>
+                    <a href="#" class="btn btn-info">Ping</a>
+                    <a href="#" class="btn btn-success">Send</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span2">
+                <div class="well sidebar-nav">
+                    <ul id="clientList" class="nav nav-list">
+                        <li class="nav-header">Remote Client List</li>
+                    </ul>
+                </div>
+                <div class="well sidebar-nav">
+                    <ul id="connection" class="nav nav-list">
+                        <li class="nav-header">Connection Info</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="span10">
+                <div class="input-append">
+                    <textarea id="command" class="input-block-level" rows="5"></textarea>
+                </div>
+                <ul id="connectRooms" class="nav nav-tabs">
+                </ul>
+                <div id="connectRoomsContent" class="tab-content">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var mainWrapper = $("#main-wrapper"),
+                roomTab = $("#connectRooms"),
+                roomContent = $("#connectRoomsContent"),
+                commandText = $("#command"),
+                commandMenu = $("#commandMenu"),
+                quickCommands = $("#quickCommands"),
+                globalCommands = $("#globalCommands"),
+                userCommands = $("#userCommands"),
+                server = new SocketServer('http://localhost:8082');
+
+
+        function addCommands(target, list) {
+            var show = false,
+                    id = target.attr("id"),
+                    targetList = target.find(".dropdown-menu");
+
+            ConsoleJS.Remote.Utils.forEachProperty(list, function (value, property, obj) {
+                if (obj.hasOwnProperty(property)) {
+                    show = true;
+                    var value, item;
+
+                    if (property.indexOf('divider') > -1) {
+                        item = $('<li class="divider"></li>');
+                    } else if (property.indexOf('nav-header') > -1) {
+                        item = $('<li class="nav-header">' + value + '</li>');
+                    } else {
+                        item = $('<li><a href="#" group-id="' + id + '">' + property + '</a></li>');
+                    }
+
+                    targetList.append(item);
+                }
+            });
+
+            if (!show) {
+                target.hide();
+            }
+        }
+
+        function bindCommands() {
+            commandMenu.find(".dropdown-menu a").click(function () {
+                var scope = $(this),
+                        groupId = scope.attr("group-id"),
+                        cmdName = scope.html(), cmd;
+
+                switch (groupId) {
+                    case "globalCommands":
+                        cmd = ConsoleJS.Remote.Commands.Global[cmdName];
+                        break;
+                    case "userCommands":
+                        cmd = ConsoleJS.Remote.Commands.User[cmdName];
+                        break;
+                }
+
+                if (cmd) {
+                    server.request(cmd);
+                }
+            });
+
+            quickCommands.find(".btn").click(function () {
+                var scope = $(this),
+                        cmd = "";
+
+                switch (scope.html().toLowerCase()) {
+                    case 'send':
+                        cmd = commandText.val();
+                        break;
+                    case 'ping':
+                        cmd = '"ping..."';
+                        break;
+                    case 'clear':
+                        cmd = 'console.clear()';
+                        break;
+                    case 'reload':
+                        cmd = 'window.location.reload()';
+                        break;
+                }
+
+                if (cmd) {
+                    server.request(cmd);
+                }
+            });
+        }
+
+        function bindEditor() {
+            commandText.keypress(function (e) {
+                if (e.keyCode == 13 && !e.shiftKey) {
+                    var data = $(this).val();
+                    if (data) {
+                        server.request(data);
+                    }
+                    e.preventDefault();
+                }
+            });
+        }
+
+        function sizing() {
+            var wrapperHeight = mainWrapper.height(),
+                    tabHeight = roomTab.height() || 0,
+                    contentHeight = wrapperHeight - tabHeight - 200;
+
+            roomContent.height(contentHeight + "px");
+        }
+
+
+        addCommands(globalCommands, ConsoleJS.Remote.Commands.Global);
+        addCommands(userCommands, ConsoleJS.Remote.Commands.User);
+
+        bindCommands();
+        bindEditor();
+
+        server.start();
+
+        $(window).resize(sizing);
+        sizing();
+    });
+</script>
+</html>

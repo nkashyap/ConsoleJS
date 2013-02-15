@@ -149,10 +149,11 @@ ConsoleUI.prototype.stripBrackets = function stripBrackets(data) {
 };
 
 ConsoleUI.prototype.cleanUp = function cleanUp() {
-    if (this.count > Config.cacheCount) {
+    var maxLogs = ConsoleJS.Remote.Config.get("maxLogs");
+    if (this.count > ConsoleJS.Remote.Config.get("cacheCount")) {
         do {
             this.content.children().last().remove();
             this.count--;
-        } while (this.count >= Config.maxLogs);
+        } while (this.count >= maxLogs);
     }
 };

@@ -4,8 +4,8 @@ code {
 
 .console {
     position: relative;
-    margin: 2px;
-    padding: 5px 80px 5px;
+    margin: 1px;
+    padding: 2px 80px 2px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -o-border-radius: 4px;
