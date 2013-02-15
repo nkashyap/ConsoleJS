@@ -97,6 +97,11 @@ ConsoleUI.prototype.log = function log(data, notify) {
     // for Opera and Maple browser
     message = message.replace(/%20/img, " ");
 
+    // switch to pre mode if message contain object
+    if (message.indexOf("{") > -1 && message.indexOf("}") > -1) {
+        tag = 'pre';
+    }
+
     message = prettyPrintOne(message);
 
     if (data.stack) {
