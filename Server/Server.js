@@ -1,5 +1,6 @@
 var io = require('socket.io'),
     http = require('http'),
+    https = require('https'),
     fs = require('fs'),
     path = require('path'),
     os = require('os'),
@@ -9,11 +10,25 @@ var io = require('socket.io'),
 
 module.exports.start = function start(config) {
 
-    var webServer = http.createServer(handler),
-        socketServer = io.listen(webServer),
-        manager = new ConnectionManager(socketServer, config),
-        originalHandleRequest = io.Manager.prototype.handleRequest;
+    var webServer, socketServer, manager, originalHandleRequest;
 
+    if (config.secure) {
+        //    download and install OPENSSL and generate certificates using following commands
+        //    set OPENSSL_CONF=C:\OpenSSL-Win64\bin\openssl.cfg
+        //    openssl genrsa -out privatekey.pem 1024
+        //    openssl req -new -key privatekey.pem -out certrequest.csr
+        //    openssl x509 -req -in certrequest.csr -signkey privatekey.pem -out certificate.pem
+        webServer = https.createServer({
+            key: fs.readFileSync('certificates/privatekey.pem'),
+            cert: fs.readFileSync('certificates/certificate.pem')
+        }, handler);
+    } else {
+        webServer = http.createServer(handler);
+    }
+
+    socketServer = io.listen(webServer);
+    manager = new ConnectionManager(socketServer, config);
+    originalHandleRequest = io.Manager.prototype.handleRequest;
 
     io.Manager.prototype.handleRequest = function handleRequest(request, response) {
         if (!GUID.isSet(request.headers)) {

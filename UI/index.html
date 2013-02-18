@@ -165,7 +165,7 @@
         $(document).ready(sizing);
         $(window).resize(sizing);
 
-        var server = new SocketServer('http://localhost:8082');
+        var server = new SocketServer();
         server.start();
     }());
 </script>

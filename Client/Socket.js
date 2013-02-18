@@ -107,7 +107,8 @@ ConsoleJS.Socket = (function (console, io) {
 
         domReady = true;
 
-        socket = io.connect(console.Utils.getScriptURL('socket.io'));
+        var url = console.Utils.getScriptURL('socket.io');
+        socket = (url.indexOf("https") > -1) ? io.connect(url, { secure: true }) : io.connect(url);
 
         socket.on('connect', function () {
             var guid = getCookie(cookieName);
