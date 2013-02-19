@@ -1,7 +1,17 @@
 window.ConsoleJS = window.ConsoleJS || {};
-ConsoleJS.Remote = ConsoleJS.Remote || {};
 
-ConsoleJS.Remote.Utils = {
+ConsoleJS.Utils = {
+
+    namespace: function namespace(name) {
+        var ns = name.split('.'),
+            i,
+            node = window,
+            length = ns.length;
+
+        for (i = 0; i < length; i++) {
+            node = node[ns[i]] = node[ns[i]] || {};
+        }
+    },
 
     getObjectType: function getObjectType(data) {
         return Object.prototype.toString.apply(data);

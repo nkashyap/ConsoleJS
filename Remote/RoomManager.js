@@ -6,17 +6,19 @@
  * To change this template use File | Settings | File Templates.
  */
 
-function RoomManager(server, socket) {
+ConsoleJS.Utils.namespace("ConsoleJS.Remote.RoomManager");
+
+ConsoleJS.Remote.RoomManager = function RoomManager(server, socket) {
     this.server = server;
     this.socket = socket;
     this.rooms = [];
     this.activeRoom = null;
 }
 
-RoomManager.prototype.online = function online(data) {
+ConsoleJS.Remote.RoomManager.prototype.online = function online(data) {
     var room = this.getRoom(data);
     if (!room) {
-        room = new Room(this, data);
+        room = new ConsoleJS.Remote.Room(this, data);
         this.rooms.push(room);
         room.add();
     } else {
@@ -25,7 +27,7 @@ RoomManager.prototype.online = function online(data) {
     }
 };
 
-RoomManager.prototype.offline = function offline(data) {
+ConsoleJS.Remote.RoomManager.prototype.offline = function offline(data) {
     var room = this.getRoom(data);
     if (room) {
         room.mode = data.mode;
@@ -33,32 +35,32 @@ RoomManager.prototype.offline = function offline(data) {
     }
 };
 
-RoomManager.prototype.subscribed = function subscribed(data) {
+ConsoleJS.Remote.RoomManager.prototype.subscribed = function subscribed(data) {
     var room = this.getRoom(data);
     if (room) {
         room.subscribed();
     }
 };
 
-RoomManager.prototype.unSubscribed = function unSubscribed(data) {
+ConsoleJS.Remote.RoomManager.prototype.unSubscribed = function unSubscribed(data) {
     var room = this.getRoom(data);
     if (room) {
         room.unSubscribed();
     }
 };
 
-RoomManager.prototype.log = function log(data) {
+ConsoleJS.Remote.RoomManager.prototype.log = function log(data) {
     var room = this.getRoom(data);
     if (room) {
         room.log(data);
     }
 };
 
-RoomManager.prototype.emit = function emit(eventName, data) {
+ConsoleJS.Remote.RoomManager.prototype.emit = function emit(eventName, data) {
     this.socket.emit(eventName, data);
 };
 
-RoomManager.prototype.getRoom = function getRoom(data) {
+ConsoleJS.Remote.RoomManager.prototype.getRoom = function getRoom(data) {
     var length = this.rooms.length;
     while (length > 0) {
         var room = this.rooms[--length];
@@ -69,7 +71,7 @@ RoomManager.prototype.getRoom = function getRoom(data) {
     return null;
 };
 
-RoomManager.prototype.setActive = function setActive(room) {
+ConsoleJS.Remote.RoomManager.prototype.setActive = function setActive(room) {
     if (this.activeRoom && this.activeRoom !== room && room.isActive) {
         this.activeRoom.setActive(false);
         this.activeRoom = null;
@@ -85,7 +87,7 @@ RoomManager.prototype.setActive = function setActive(room) {
     }
 };
 
-RoomManager.prototype.command = function command(data) {
+ConsoleJS.Remote.RoomManager.prototype.command = function command(data) {
     if (this.activeRoom && this.activeRoom.name !== this.server.room.name) {
         this.activeRoom.command(data);
     } else {

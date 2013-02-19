@@ -6,8 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-window.ConsoleJS = window.ConsoleJS || {};
-ConsoleJS.Remote = ConsoleJS.Remote || {};
+ConsoleJS.Utils.namespace("ConsoleJS.Remote.Store");
 
 ConsoleJS.Remote.Store = function Store(type) {
     var scope = this;
@@ -25,9 +24,21 @@ ConsoleJS.Remote.Store = function Store(type) {
 
 ConsoleJS.Remote.Store.prototype.set = function set(key, value) {
     if (this.isStorageSupported) {
-        this.storage.setItem(key, value);
+        this.storage.setItem(key, JSON.stringify(value));
     } else {
         this.storage[key] = value;
+    }
+};
+
+ConsoleJS.Remote.Store.prototype.append = function append(key, value) {
+    var store = this.get(key);
+    if (!store) {
+        this.set(key, [value]);
+    } else if (!ConsoleJS.Utils.isArray(store)) {
+        this.set(key, [store, value]);
+    } else {
+        store.push(value);
+        this.set(key, store);
     }
 };
 
@@ -41,7 +52,8 @@ ConsoleJS.Remote.Store.prototype.unSet = function unSet(key) {
 
 ConsoleJS.Remote.Store.prototype.get = function get(key) {
     if (this.isStorageSupported) {
-        return this.storage.getItem(key) || null;
+        var data = this.storage.getItem(key);
+        return data ? JSON.parse(data) : null;
     } else {
         return this.storage[key] || null;
     }

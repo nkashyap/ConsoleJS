@@ -5,8 +5,9 @@
  * Time: 23:14
  * To change this template use File | Settings | File Templates.
  */
+ConsoleJS.Utils.namespace("ConsoleJS.Remote.SocketServer");
 
-function SocketServer(url) {
+ConsoleJS.Remote.SocketServer = function SocketServer(url) {
     this.url = url;
     this.name = 'ConsoleJS';
     this.socket = null;
@@ -14,10 +15,10 @@ function SocketServer(url) {
     this.room = null;
 }
 
-SocketServer.prototype.start = function start() {
-    var self = this;
+ConsoleJS.Remote.SocketServer.prototype.start = function start() {
+    var scope = this;
     this.socket = io.connect(this.url);
-    this.manager = new RoomManager(this, this.socket);
+    this.manager = new ConsoleJS.Remote.RoomManager(this, this.socket);
 
     this.manager.online({ name: this.name });
     this.room = this.manager.getRoom({ name: this.name });
@@ -25,48 +26,48 @@ SocketServer.prototype.start = function start() {
     this.room.offline();
 
     this.socket.on('connect', function () {
-        self.room.online();
-        self.emit('info', 'Connected to the Server');
+        scope.room.online();
+        scope.emit('info', 'Connected to the Server');
     });
     this.socket.on('reconnect', function () {
-        self.room.online();
-        self.emit('info', 'Reconnected to the Server');
+        scope.room.online();
+        scope.emit('info', 'Reconnected to the Server');
     });
     this.socket.on('disconnect', function () {
-        self.room.offline();
-        self.emit('info', 'Disconnected from the Server');
+        scope.room.offline();
+        scope.emit('info', 'Disconnected from the Server');
     });
     this.socket.on('connect_failed', function () {
-        self.emit('warn', 'Failed to connect to the Server');
+        scope.emit('warn', 'Failed to connect to the Server');
     });
     this.socket.on('error', function () {
-        self.emit('error', 'Socket Error');
+        scope.emit('error', 'Socket Error');
     });
 
     this.socket.on('online', function (data) {
-        self.emit('log', 'online: ' + data.name + ', mode: ' + data.mode);
-        self.manager.online(data);
+        scope.emit('log', 'online: ' + data.name + ', mode: ' + data.mode);
+        scope.manager.online(data);
     });
     this.socket.on('offline', function (data) {
-        self.emit('log', 'offline: ' + data.name + ', mode: ' + data.mode);
-        self.manager.offline(data);
+        scope.emit('log', 'offline: ' + data.name + ', mode: ' + data.mode);
+        scope.manager.offline(data);
     });
 
     this.socket.on('subscribed', function (data) {
-        self.emit('log', 'Subscribed to ' + data.name);
-        self.manager.subscribed(data);
+        scope.emit('log', 'Subscribed to ' + data.name);
+        scope.manager.subscribed(data);
     });
     this.socket.on('unsubscribed', function (data) {
-        self.emit('log', 'Unsubscribed from ' + data.name);
-        self.manager.unSubscribed(data);
+        scope.emit('log', 'Unsubscribed from ' + data.name);
+        scope.manager.unSubscribed(data);
     });
 
     this.socket.on('console', function (data) {
-        self.manager.log(data);
+        scope.manager.log(data);
     });
 };
 
-SocketServer.prototype.emit = function emit(eventName, message) {
+ConsoleJS.Remote.SocketServer.prototype.emit = function emit(eventName, message) {
     this.manager.log({
         name: this.name,
         type: eventName || 'log',
@@ -74,6 +75,6 @@ SocketServer.prototype.emit = function emit(eventName, message) {
     });
 };
 
-SocketServer.prototype.request = function request(data) {
+ConsoleJS.Remote.SocketServer.prototype.request = function request(data) {
     this.manager.command(data);
 };

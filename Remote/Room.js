@@ -5,8 +5,9 @@
  * Time: 23:15
  * To change this template use File | Settings | File Templates.
  */
+ConsoleJS.Utils.namespace("ConsoleJS.Remote.Room");
 
-function Room(manager, data) {
+ConsoleJS.Remote.Room = function Room(manager, data) {
     this.target = $("#clientList");
     this.infoTarget = $('#connection');
     this.manager = manager;
@@ -15,12 +16,12 @@ function Room(manager, data) {
     this.isSubscribed = false;
     this.isActive = false;
     this.isOnline = false;
-    this.console = new ConsoleUI(this);
+    this.console = new ConsoleJS.Remote.Console(this);
     this.link = null;
     this.activeFilters = [];
 }
 
-Room.prototype.add = function add() {
+ConsoleJS.Remote.Room.prototype.add = function add() {
     var self = this;
     this.link = $("<li><a href='#' id='link-" + this.name + "'>" + this.name + "</a></li>");
 
@@ -38,7 +39,7 @@ Room.prototype.add = function add() {
     this.online();
 };
 
-Room.prototype.emit = function emit(eventName, data) {
+ConsoleJS.Remote.Room.prototype.emit = function emit(eventName, data) {
     if (this.isOnline && eventName === 'unsubscribe') {
         this.unsubscribed();
     } else {
@@ -46,7 +47,7 @@ Room.prototype.emit = function emit(eventName, data) {
     }
 };
 
-Room.prototype.online = function online() {
+ConsoleJS.Remote.Room.prototype.online = function online() {
     this.link.removeClass('offline');
     this.link.addClass('online');
     this.isOnline = true;
@@ -55,7 +56,7 @@ Room.prototype.online = function online() {
     }
 };
 
-Room.prototype.offline = function offline() {
+ConsoleJS.Remote.Room.prototype.offline = function offline() {
     this.link.removeClass('online');
     this.link.addClass('offline');
     this.isOnline = false;
@@ -64,7 +65,7 @@ Room.prototype.offline = function offline() {
     }
 };
 
-Room.prototype.setActive = function setActive(flag) {
+ConsoleJS.Remote.Room.prototype.setActive = function setActive(flag) {
     this.isActive = flag;
     if (this.isActive) {
         this.link.addClass('active');
@@ -77,7 +78,7 @@ Room.prototype.setActive = function setActive(flag) {
     }
 };
 
-Room.prototype.command = function command(data) {
+ConsoleJS.Remote.Room.prototype.command = function command(data) {
     if (data === 'console.clear()') {
         this.console.clear();
     }
@@ -87,25 +88,25 @@ Room.prototype.command = function command(data) {
     }
 };
 
-Room.prototype.log = function log(data) {
+ConsoleJS.Remote.Room.prototype.log = function log(data) {
     if (this.isSubscribed && this.activeFilters.indexOf(data.guid) === -1) {
         this.console.log(data, !this.isActive);
     }
 };
 
-Room.prototype.subscribed = function subscribed() {
+ConsoleJS.Remote.Room.prototype.subscribed = function subscribed() {
     this.isSubscribed = true;
     this.console.add();
     this.setActive(true);
 };
 
-Room.prototype.unSubscribed = function unSubscribed() {
+ConsoleJS.Remote.Room.prototype.unSubscribed = function unSubscribed() {
     this.isSubscribed = false;
     this.console.remove();
     this.setActive(false);
 };
 
-Room.prototype.getTransportMode = function getTransportMode() {
+ConsoleJS.Remote.Room.prototype.getTransportMode = function getTransportMode() {
     var transport = this.manager.socket.socket.transport,
         list = this.manager.socket.socket.transports,
         mode = '',
@@ -124,7 +125,7 @@ Room.prototype.getTransportMode = function getTransportMode() {
     return mode;
 };
 
-Room.prototype.show = function show() {
+ConsoleJS.Remote.Room.prototype.show = function show() {
     this.mode = this.mode || this.getTransportMode();
 
     if (this.mode) {
@@ -148,7 +149,7 @@ Room.prototype.show = function show() {
     this.console.show();
 };
 
-Room.prototype.filter = function filter(e) {
+ConsoleJS.Remote.Room.prototype.filter = function filter(e) {
     var item = $(e.target),
         id = item.attr("title"),
         parent = item.parent(),
@@ -163,7 +164,7 @@ Room.prototype.filter = function filter(e) {
     }
 };
 
-Room.prototype.resetConnectionInfo = function resetConnectionInfo() {
+ConsoleJS.Remote.Room.prototype.resetConnectionInfo = function resetConnectionInfo() {
     var length = this.infoTarget.children().length;
 
     while (length > 1) {

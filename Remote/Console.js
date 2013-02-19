@@ -5,8 +5,9 @@
  * Time: 23:16
  * To change this template use File | Settings | File Templates.
  */
+ConsoleJS.Utils.namespace("ConsoleJS.Remote.Console");
 
-function ConsoleUI(room) {
+ConsoleJS.Remote.Console = function Console(room) {
     this.target = $("#connectRooms");
     this.contentTarget = $("#connectRoomsContent");
     this.room = room;
@@ -15,9 +16,12 @@ function ConsoleUI(room) {
     this.content = null;
     this.count = 0;
     this.styles = {};
+
+    var store = ConsoleJS.Remote.Store.Memory.get(this.name);
+    this.preservedLogs = store ? store.length : 0;
 }
 
-ConsoleUI.prototype.add = function add() {
+ConsoleJS.Remote.Console.prototype.add = function add() {
     var self = this;
     this.tab = $("<li><a href='#Tab-" + this.name + "' data-toggle='tab'>" + this.name + "&nbsp;<button class='close'>&times;</button></a></li>");
     this.content = $("<div class='tab-pane fade' id='Content-" + this.name + "'></div>");
@@ -35,7 +39,7 @@ ConsoleUI.prototype.add = function add() {
     this.online();
 };
 
-ConsoleUI.prototype.remove = function remove() {
+ConsoleJS.Remote.Console.prototype.remove = function remove() {
     if (this.content) {
         this.content.remove();
         this.content = null;
@@ -46,27 +50,27 @@ ConsoleUI.prototype.remove = function remove() {
     }
 };
 
-ConsoleUI.prototype.emit = function emit(eventName, data) {
+ConsoleJS.Remote.Console.prototype.emit = function emit(eventName, data) {
     this.room.emit(eventName, data);
 };
 
-ConsoleUI.prototype.clear = function clear() {
+ConsoleJS.Remote.Console.prototype.clear = function clear() {
     if (this.content) {
         this.content.empty();
     }
 };
 
-ConsoleUI.prototype.online = function online() {
+ConsoleJS.Remote.Console.prototype.online = function online() {
     this.tab.removeClass('offline');
     this.tab.addClass('online');
 };
 
-ConsoleUI.prototype.offline = function remove() {
+ConsoleJS.Remote.Console.prototype.offline = function remove() {
     this.tab.removeClass('online');
     this.tab.addClass('offline');
 };
 
-ConsoleUI.prototype.show = function show() {
+ConsoleJS.Remote.Console.prototype.show = function show() {
     var index = this.target.find("li").index(this.tab),
         content = this.contentTarget.find('> div'),
         activeContent = this.contentTarget.find('> div:eq(' + index + ')');
@@ -81,9 +85,11 @@ ConsoleUI.prototype.show = function show() {
     activeContent.addClass('active');
 };
 
-ConsoleUI.prototype.log = function log(data, notify) {
+ConsoleJS.Remote.Console.prototype.log = function log(data, notify) {
     var tag = 'code',
         css = data.type,
+        stackMessage,
+        messagePreview,
         message = this.stripBrackets(data.message);
 
     // check if asset failed
@@ -102,7 +108,7 @@ ConsoleUI.prototype.log = function log(data, notify) {
         tag = 'pre';
     }
 
-    message = prettyPrintOne(message);
+    messagePreview = prettyPrintOne(message);
 
     if (data.stack) {
         var stack = data.stack.split(",")
@@ -110,15 +116,18 @@ ConsoleUI.prototype.log = function log(data, notify) {
             .replace(/"/img, '')
             .replace(/%20/img, ' ');
 
-        message += '\n';
-        message += prettyPrintOne(this.stripBrackets(stack));
+        stackMessage = this.stripBrackets(stack);
+        messagePreview += '\n' + prettyPrintOne(stackMessage);
     }
+
+    // store in session memory
+    this.store(data.type, message, stackMessage);
 
     if (['assert', 'dir', 'dirxml', 'error', 'trace'].indexOf(data.type) > -1) {
         tag = 'pre';
     }
 
-    var msg = $('<' + tag + ' class="console type-' + css + ' ' + this.getStyles(data.guid) + '">' + (message || '.') + '</' + tag + '>');
+    var msg = $('<' + tag + ' class="console type-' + css + ' ' + this.getStyles(data.guid) + '">' + (messagePreview || '.') + '</' + tag + '>');
 
     this.content.prepend(msg);
 
@@ -130,7 +139,7 @@ ConsoleUI.prototype.log = function log(data, notify) {
     this.cleanUp();
 };
 
-ConsoleUI.prototype.getStyles = function getStyles(id) {
+ConsoleJS.Remote.Console.prototype.getStyles = function getStyles(id) {
     if (id) {
         var className = "log-" + id;
 
@@ -145,7 +154,7 @@ ConsoleUI.prototype.getStyles = function getStyles(id) {
     return (id || "none");
 };
 
-ConsoleUI.prototype.stripBrackets = function stripBrackets(data) {
+ConsoleJS.Remote.Console.prototype.stripBrackets = function stripBrackets(data) {
     var last = data.length - 1;
     if (data.charAt(0) === '[' && data.charAt(last) === ']') {
         return data.substring(1, last);
@@ -153,9 +162,27 @@ ConsoleUI.prototype.stripBrackets = function stripBrackets(data) {
     return data;
 };
 
-ConsoleUI.prototype.cleanUp = function cleanUp() {
+ConsoleJS.Remote.Console.prototype.store = function store(type, message, stack) {
+    var preserveLogs = ConsoleJS.Remote.Config.get("preserveLogs"),
+        maxLogPreserved = ConsoleJS.Remote.Config.get("maxLogPreserved"),
+        storeCache = ConsoleJS.Remote.Config.get("storeCache");
+
+    // store in session memory
+    if (preserveLogs) {
+        ConsoleJS.Remote.Store.Memory.append(this.name, { type: type, message: message, stack: stack });
+        this.preservedLogs++;
+
+        if (this.preservedLogs > storeCache) {
+            var store = ConsoleJS.Remote.Store.Memory.get(this.name);
+            store.splice(0, storeCache - maxLogPreserved);
+            ConsoleJS.Remote.Store.Memory.set(this.name, store);
+        }
+    }
+};
+
+ConsoleJS.Remote.Console.prototype.cleanUp = function cleanUp() {
     var maxLogs = ConsoleJS.Remote.Config.get("maxLogs");
-    if (this.count > ConsoleJS.Remote.Config.get("cacheCount")) {
+    if (this.count > ConsoleJS.Remote.Config.get("logCache")) {
         do {
             this.content.children().last().remove();
             this.count--;

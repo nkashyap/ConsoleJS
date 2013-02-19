@@ -6,8 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-window.ConsoleJS = window.ConsoleJS || {};
-ConsoleJS.Remote = ConsoleJS.Remote || {};
+ConsoleJS.Utils.namespace("ConsoleJS.Remote.Config");
 
 ConsoleJS.Remote.Config = (function () {
 
@@ -19,16 +18,20 @@ ConsoleJS.Remote.Config = (function () {
 
     if (!settings) {
         settings = {
+            preserveLogs: true,
+            maxLogPreserved: 50,
             maxLogs: 50,
             cache: 1.5
         };
 
-        settings.cacheCount = (settings.maxLogs * settings.cache);
+        settings.logCache = (settings.maxLogs * settings.cache);
+        settings.storeCache = (settings.maxLogPreserved * settings.cache);
     }
 
     function set(cfg) {
-        ConsoleJS.Remote.Utils.merge(cfg, settings);
-        settings.cacheCount = (settings.maxLogs * settings.cache);
+        ConsoleJS.Utils.merge(cfg, settings);
+        settings.logCache = (settings.maxLogs * settings.cache);
+        settings.storeCache = (settings.maxLogPreserved * settings.cache);
         store.set(key, settings);
     }
 
