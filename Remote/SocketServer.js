@@ -8,7 +8,7 @@
 ConsoleJS.Utils.namespace("ConsoleJS.Remote.SocketServer");
 
 ConsoleJS.Remote.SocketServer = function SocketServer(url) {
-    this.url = url;
+    this.url = url || window.location.origin;
     this.name = 'ConsoleJS';
     this.socket = null;
     this.manager = null;
@@ -17,7 +17,7 @@ ConsoleJS.Remote.SocketServer = function SocketServer(url) {
 
 ConsoleJS.Remote.SocketServer.prototype.start = function start() {
     var scope = this;
-    this.socket = io.connect(this.url);
+    this.socket = (this.url.indexOf("https") > -1) ? io.connect(this.url, { secure: true }) : io.connect(this.url);
     this.manager = new ConsoleJS.Remote.RoomManager(this, this.socket);
 
     this.manager.online({ name: this.name });
