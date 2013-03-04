@@ -1,6 +1,6 @@
 var config = {
     port: 8082,
-    secure: true
+    secure: false
 };
 
 module.exports = config;

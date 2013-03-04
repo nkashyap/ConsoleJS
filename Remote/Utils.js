@@ -101,5 +101,4 @@ ConsoleJS.Utils = {
 
         return target;
     }
-
 };

@@ -2,32 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a443409a-9e2c-40b9-828b-2c44d355713c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI/SocketServer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/certificates/certificate.pem" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/certificates/certrequest.csr" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Example/demoOnSSL.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UI/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Example/indexOnSSL.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/certificates/privatekey.pem" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/Config.js" afterPath="$PROJECT_DIR$/Server/Config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/Server.js" afterPath="$PROJECT_DIR$/Server/Server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/Socket.js" afterPath="$PROJECT_DIR$/Client/Socket.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Remote/SocketServer.js" afterPath="$PROJECT_DIR$/Remote/SocketServer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Example/demo.html" afterPath="$PROJECT_DIR$/Example/demo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Example/index.html" afterPath="$PROJECT_DIR$/Example/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Remote/Console.js" afterPath="$PROJECT_DIR$/Remote/Console.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Remote/Utils.js" afterPath="$PROJECT_DIR$/Remote/Utils.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Remote/index.html" afterPath="$PROJECT_DIR$/Remote/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ConsoleJS.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/ConsoleJS.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358715377894" ignored="false" />
-    <file path="/Dummy.txt" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1361304257339" ignored="false" />
+    <file path="/Dummy.txt" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1362420135654" ignored="false" />
     <file path="/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1360972978826" ignored="false" />
     <file path="/RequestManager.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357495395468" ignored="false" />
     <file path="/client.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358077090758" ignored="false" />
     <file path="$PROJECT_DIR$/../GetAppointment/index.html" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358123302158" ignored="false" />
     <file path="/Start.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357767168224" ignored="false" />
-    <file path="/Config.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1361018324600" ignored="false" />
+    <file path="/Config.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1362420165862" ignored="false" />
     <file path="/Server.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358202886537" ignored="false" />
     <file path="/package.json" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1357847469135" ignored="false" />
     <file path="$PROJECT_DIR$/../GetAppointment/IFrameClient.js" changelist="a443409a-9e2c-40b9-828b-2c44d355713c" time="1358035456815" ignored="false" />
@@ -66,6 +56,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -100,7 +91,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -109,105 +99,7 @@
     <favorites_list name="ConsoleJS" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Utils.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Remote/Utils.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="0" selection-start="3030" selection-end="3030" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Socket.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/Socket.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Commands.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Remote/Commands.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="36" selection-start="316" selection-end="317" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RoomManager.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Remote/RoomManager.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="24" selection-start="383" selection-end="383" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Config.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Remote/Config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="0" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Config.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/Config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Server.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Server/Server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="23" selection-start="1616" selection-end="1622" vertical-scroll-proportion="1.0180995">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Console.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Remote/Console.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#1320#1491#0" expanded="false" />
-                <element signature="e#1567#1607#0" expanded="false" />
-                <element signature="e#1670#1733#0" expanded="false" />
-                <element signature="e#1798#1871#0" expanded="false" />
-                <element signature="e#1937#2010#0" expanded="false" />
-                <element signature="e#2071#2531#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SocketServer.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Remote/SocketServer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="39" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Store.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Remote/Store.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="29" selection-start="1918" selection-end="1947" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -232,7 +124,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/UI/ConsoleUI.js" />
         <option value="$PROJECT_DIR$/UI/index.html" />
         <option value="$PROJECT_DIR$/Client/Socket.js" />
         <option value="$PROJECT_DIR$/Server/Server.js" />
@@ -242,11 +133,12 @@
         <option value="$PROJECT_DIR$/Remote/Commands.js" />
         <option value="$PROJECT_DIR$/Remote/ConsoleUI.js" />
         <option value="$PROJECT_DIR$/Remote/Room.js" />
-        <option value="$PROJECT_DIR$/Remote/Utils.js" />
         <option value="$PROJECT_DIR$/Remote/Config.js" />
         <option value="$PROJECT_DIR$/Remote/Store.js" />
-        <option value="$PROJECT_DIR$/Remote/Console.js" />
         <option value="$PROJECT_DIR$/Remote/SocketServer.js" />
+        <option value="$PROJECT_DIR$/Server/Config.js" />
+        <option value="$PROJECT_DIR$/Remote/Utils.js" />
+        <option value="$PROJECT_DIR$/Remote/Console.js" />
         <option value="$PROJECT_DIR$/Remote/index.html" />
       </list>
     </option>
@@ -301,6 +193,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -347,10 +240,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConsoleJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -528,7 +434,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5115258" sideWeight="0.4914621" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -546,8 +452,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16061899" sideWeight="0.78265643" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21734358" sideWeight="0.49573106" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16061899" sideWeight="0.78265643" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21734358" sideWeight="0.49573106" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Jenkins" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -658,53 +564,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Remote/Console.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1320#1491#0" expanded="false" />
-            <element signature="e#1567#1607#0" expanded="false" />
-            <element signature="e#1670#1733#0" expanded="false" />
-            <element signature="e#1798#1871#0" expanded="false" />
-            <element signature="e#1937#2010#0" expanded="false" />
-            <element signature="e#2071#2531#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Remote/Store.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="29" selection-start="1918" selection-end="1947" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Remote/SocketServer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="39" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Remote/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="0" selection-start="5275" selection-end="5275" vertical-scroll-proportion="0.32788798">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Shared/console.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="28" selection-start="169" selection-end="169" vertical-scroll-proportion="0.020361992">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Remote/Utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="0" selection-start="3030" selection-end="3030" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="9" column="28" selection-start="169" selection-end="169" vertical-scroll-proportion="0.020361992" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/Socket.js">
@@ -714,30 +576,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Remote/Commands.js">
+    <entry file="file://$PROJECT_DIR$/Remote/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="36" selection-start="316" selection-end="317" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="207" column="9" selection-start="8331" selection-end="8331" vertical-scroll-proportion="-10.407408">
+          <folding>
+            <element signature="e#5288#6220#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Remote/Config.js">
+    <entry file="file://$PROJECT_DIR$/Remote/Commands.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0">
+        <state line="11" column="36" selection-start="316" selection-end="317" vertical-scroll-proportion="0.13119534">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/Config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="7" column="0" selection-start="79" selection-end="79" vertical-scroll-proportion="0.18367347">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Remote/Config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="0" selection-start="554" selection-end="554" vertical-scroll-proportion="0.65597665">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Remote/Console.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="173" column="0" selection-start="5143" selection-end="5143" vertical-scroll-proportion="1.0816944">
+          <folding>
+            <element signature="e#668#1255#0" expanded="false" />
+            <element signature="e#1320#1491#0" expanded="false" />
+            <element signature="e#1567#1607#0" expanded="false" />
+            <element signature="e#1670#1733#0" expanded="false" />
+            <element signature="e#1798#1871#0" expanded="false" />
+            <element signature="e#1937#2010#0" expanded="false" />
+            <element signature="e#2071#2531#0" expanded="false" />
+            <element signature="e#4500#4661#0" expanded="false" />
+            <element signature="e#5469#5733#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Remote/SocketServer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="39" selection-start="670" selection-end="670" vertical-scroll-proportion="-0.73177844">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Remote/Store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="2" selection-start="1673" selection-end="1673" vertical-scroll-proportion="0.5539359">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/Server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="23" selection-start="1616" selection-end="1622" vertical-scroll-proportion="1.0180995">
+        <state line="19" column="84" selection-start="761" selection-end="761" vertical-scroll-proportion="0.026239067">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Remote/Utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="103" column="0" selection-start="3026" selection-end="3026" vertical-scroll-proportion="2.7026238">
           <folding />
         </state>
       </provider>

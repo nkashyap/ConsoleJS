@@ -121,7 +121,7 @@ ConsoleJS.Remote.Console.prototype.log = function log(data, notify) {
     }
 
     // store in session memory
-    this.store(data.type, message, stackMessage);
+    //this.store(data.type, message, stackMessage);
 
     if (['assert', 'dir', 'dirxml', 'error', 'trace'].indexOf(data.type) > -1) {
         tag = 'pre';
