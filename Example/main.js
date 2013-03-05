@@ -21,9 +21,6 @@ function init() {
         connectionMode = document.getElementById('ConnectionMode'),
         debug = document.getElementById('debug'),
         name = ConsoleJS.Browser.toString(),
-        maxItems = 50,
-        removeItems = 30,
-        currentItem = 0,
         currentIndex = 0,
         Commands = [
             "console.log('log test');",
@@ -56,65 +53,18 @@ function init() {
         }
     }, 3000);
 
-    //    ConsoleJS.config({
-    //        nativeOverride: true,
-    //        nativeEnabled: true
-    //    });
-
     window.onerror = function (msg, url, line) {
         debug.innerHTML += '<br/>Error message: ' + msg + '\nURL: ' + url + '\nLine Number: ' + line;
         return true;
     };
 
-//    function stripBrackets(data) {
-//        var last = data.length - 1;
-//        if (data.charAt(0) === '[' && data.charAt(last) === ']') {
-//            return data.substring(1, last);
-//        }
-//        return data;
-//    }
-//
-//    function parse(data) {
-//        var message = stripBrackets(data.message);
-//
-//        // for Opera and Maple browser
-//        message = message.replace(/%20/img, " ");
-//
-//        if (data.stack) {
-//            var stack = data.stack.split(",")
-//                .join("\n")
-//                .replace(/"/img, '')
-//                .replace(/%20/img, ' ');
-//
-//            message += '\n';
-//            message += stripBrackets(stack);
-//        }
-//
-//        return message;
-//    }
-
     ConsoleJS.on('console', function (data) {
-//        var i = 0,
-//            connection = '',
-//            li = document.createElement("li");
-
         var connection;
         if (ConsoleJS.Socket) {
             connection = ConsoleJS.Socket.getConnectionStatus() + ' : ' + ConsoleJS.Socket.getConnectionMode();
         }
 
         connectionMode.innerHTML = 'Name: ' + name + ' : ' + connection;
-//        li.innerHTML = '<b>' + data.type + ':</b> ' + parse(data);
-//        log.insertBefore(li, log.firstElementChild || log.firstChild);
-//        currentItem++;
-//
-//        if (currentItem > maxItems) {
-//            while (i < removeItems) {
-//                log.removeChild(log.lastElementChild || log.lastChild);
-//                i++;
-//            }
-//            currentItem -= removeItems;
-//        }
     });
 }
 

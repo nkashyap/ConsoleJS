@@ -63,7 +63,7 @@ module.exports.start = function start(config) {
 
     function parseURL(url) {
         if (url == '/' || url == '/index.html') {
-            url = '/UI/index.html';
+            url = '/Remote/index.html';
         }
 
         return url;
