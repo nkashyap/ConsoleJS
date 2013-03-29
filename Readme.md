@@ -65,5 +65,6 @@ Then goto following url to access web console http://NodeServerURL:Port/
  MIT-LICENSE
 
 #Reference
- *[Javascript Stacktrace] (https://github.com/eriwen/javascript-stacktrace).
- *[Socket.io] (http://socket.io/#how-to-use).
+ [Javascript Stacktrace] (https://github.com/eriwen/javascript-stacktrace)
+
+ [Socket.io] (http://socket.io/#how-to-use)
