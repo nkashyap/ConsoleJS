@@ -58,8 +58,3 @@ Then goto following url to access web console http://NodeServerURL:Port/
 #TODO
  * Change it into npm module
 
-
-#Copyright and license
-
-MIT-LICENSE
-
