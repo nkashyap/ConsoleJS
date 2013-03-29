@@ -25,6 +25,9 @@ node Server\Start.js
 <script type="text/javascript" src="http://NodeServerURL:Port/Client/Browser.js"></script>
 <script type="text/javascript" src="http://NodeServerURL:Port/Client/Socket.js"></script>
 <script type="text/javascript" src="http://NodeServerURL:Port/Client/Web.js"></script>
+...
+<link rel="stylesheet" href="http://localhost:8082/Client/Web.css" type="text/css">
+<link rel="stylesheet" href="http://localhost:8082/Shared/console.css" type="text/css">
 ```
 
 Then goto following url to access web console http://NodeServerURL:Port/
@@ -54,9 +57,13 @@ Then goto following url to access web console http://NodeServerURL:Port/
  * console.profile()
  * console.profileEnd()
 
-
 #TODO
  * Change it into npm module
+ * Move browser detect into server
 
 #Copyright and license
  MIT-LICENSE
+
+#Reference
+ [Javascript Stacktrace] (https://github.com/eriwen/javascript-stacktrace).
+ [Socket.io] (http://socket.io/#how-to-use).
