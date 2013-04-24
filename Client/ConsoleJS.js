@@ -731,6 +731,31 @@ window.ConsoleJS = (function () {
         );
     }
 
+    // Preserve other handlers
+    var onErrorHandler = window.onerror;
+
+    // Cover uncaught exceptions
+    // Returning true will surpress the default browser handler,
+    // returning false will let it run.
+    window.onerror = function onErrorFn(error, filePath, lineNo) {
+        var result = false;
+        if (onErrorHandler) {
+            result = onErrorHandler(error, filePath, lineNo);
+        }
+
+        // Treat return value as window.onerror itself does,
+        // Only do our handling if not surpressed.
+        if (result !== true) {
+            Wrapper.log("error", {
+                message: error,
+                file: filePath,
+                line: lineNo
+            });
+            return false;
+        }
+
+        return result;
+    };
 
     window.console = Utils.merge(Wrapper, {
         config: config,
