@@ -10,9 +10,14 @@ ConsoleJS.Browser = (function () {
             this.platform = this.searchString(this.dataOS) || "Unknown";
         },
         searchString: function searchString(data) {
-            for (var i = 0, ii = data.length; i < ii; i++) {
-                var dataString = data[i].string;
-                var dataProp = data[i].prop;
+            var i,
+                ii = data.length,
+                dataString,
+                dataProp;
+
+            for (i = 0; i < ii; i++) {
+                dataString = data[i].string;
+                dataProp = data[i].prop;
                 this.versionSearchString = data[i].versionSearch || data[i].identity;
                 if (dataString) {
                     if (dataString.indexOf(data[i].subString) !== -1)
@@ -23,11 +28,19 @@ ConsoleJS.Browser = (function () {
             }
         },
         searchVersion: function searchVersion(dataString) {
-            var index = dataString.indexOf(this.versionSearchString);
+            var version,
+                index = dataString.indexOf(this.versionSearchString);
+
             if (index === -1) {
                 return;
             }
-            return parseFloat(dataString.substring(index + this.versionSearchString.length + 1));
+
+            version = dataString.substring(index + this.versionSearchString.length);
+            if (version) {
+                version = version.replace("/", "");
+            }
+
+            return parseFloat(version);
         },
         dataBrowser: [
             {     string: navigator.userAgent,
@@ -55,7 +68,8 @@ ConsoleJS.Browser = (function () {
             },
             {     string: navigator.userAgent,
                 subString: "Technika Media Streamer",
-                identity: "Technika"
+                versionSearch: "Espial Browser/sig",
+                identity: "Technika Espial"
             },
             {
                 string: navigator.userAgent,

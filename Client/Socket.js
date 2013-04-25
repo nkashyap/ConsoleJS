@@ -11,9 +11,10 @@ ConsoleJS.Socket = (function (console, io) {
     "use strict";
 
     var name = console.Browser ? console.Browser.toString() : window.navigator.userAgent,
-        forceReconnectInterval = 1000,
+        forceReconnectInterval = 5000,
         forceReconnect = true,
         forceInterval,
+        reloadInterval,
         cookieName = "guid",
         pendingRequests = [],
         subscribed = false,
@@ -105,10 +106,13 @@ ConsoleJS.Socket = (function (console, io) {
     }
 
     function forceConnect() {
-        if(forceReconnect && !forceInterval){
-            forceInterval = setInterval(function() {
-                if (!socket.socket.connected) {
-                    window.location.href = unescape(window.location.pathname);
+        if (forceReconnect && !forceInterval) {
+            forceInterval = setInterval(function () {
+                if (!socket.socket.connected && !reloadInterval) {
+                    document.body.innerHTML = "Force reloading.....";
+                    reloadInterval = setTimeout(function () {
+                        window.location.href = unescape(window.location.pathname);
+                    }, 2000);
                 }
             }, forceReconnectInterval);
         }
@@ -130,11 +134,11 @@ ConsoleJS.Socket = (function (console, io) {
                 showGuid(guid);
             }
 
+            forceConnect();
+
             socket.emit('subscribe', { name: name });
             console.log('Connected to the Server');
             console.log('Subscribing to', { name: name });
-
-            forceConnect();
         });
 
         socket.on('connecting', function (mode) {
@@ -147,22 +151,16 @@ ConsoleJS.Socket = (function (console, io) {
             socket.emit('subscribe', { name: name });
             console.log('Reconnected to the Server');
             console.log('Subscribing to', { name: name });
-
-            forceConnect();
         });
 
         socket.on('reconnecting', function () {
             console.log('Reconnecting to the Server');
-
-            forceConnect();
         });
 
         socket.on('disconnect', function () {
             console.log('Unsubscribing from', { name: name });
             console.log('Disconnected from the Server');
             socket.emit('unsubscribe', { name: name });
-
-            forceConnect();
         });
 
         socket.on('online', function (data) {
@@ -170,8 +168,6 @@ ConsoleJS.Socket = (function (console, io) {
                 subscribed = true;
                 processPendingRequest();
                 console.log('Subscribed to', data);
-
-                forceConnect();
             }
         });
 
@@ -179,8 +175,6 @@ ConsoleJS.Socket = (function (console, io) {
             if (data.name === name) {
                 console.log('Unsubscribed from', data);
                 subscribed = false;
-
-                forceConnect();
             }
         });
 
@@ -203,14 +197,10 @@ ConsoleJS.Socket = (function (console, io) {
 
         socket.on('connect_failed', function () {
             console.warn('Failed to connect to the Server');
-
-            forceConnect();
         });
 
         socket.on('reconnect_failed', function () {
             console.warn('Failed to reconnect to the Server');
-
-            forceConnect();
         });
 
         socket.on('error', function () {
