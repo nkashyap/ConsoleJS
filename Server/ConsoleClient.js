@@ -54,9 +54,7 @@ ConsoleClient.prototype.broadcast = function broadcast(eventName, data, room) {
 };
 
 ConsoleClient.prototype.remove = function remove() {
-    //TODO Socket.io sometime think client is disconnected even though client is still connected,
-    // it happens on Technika Avtrex STB box on xhr-polling mode
-    //this.leave();
+    this.leave();
 };
 
 module.exports = ConsoleClient;

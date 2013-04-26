@@ -14,7 +14,6 @@ ConsoleJS.Socket = (function (console, io) {
         forceReconnectInterval = 5000,
         forceReconnect = true,
         forceInterval,
-        reloadInterval,
         cookieName = "guid",
         pendingRequests = [],
         subscribed = false,
@@ -108,11 +107,9 @@ ConsoleJS.Socket = (function (console, io) {
     function forceConnect() {
         if (forceReconnect && !forceInterval) {
             forceInterval = setInterval(function () {
-                if (!socket.socket.connected && !reloadInterval) {
-                    document.body.innerHTML = "Force reloading.....";
-                    reloadInterval = setTimeout(function () {
-                        window.location.href = unescape(window.location.pathname);
-                    }, 2000);
+                if (!socket.socket.connected || (socket.socket.connected && !subscribed)) {
+                    socket.socket.disconnect();
+                    socket.socket.reconnect();
                 }
             }, forceReconnectInterval);
         }
@@ -126,7 +123,7 @@ ConsoleJS.Socket = (function (console, io) {
         domReady = true;
 
         var url = console.Utils.getScriptURL('socket.io');
-        socket = (url.indexOf("https") > -1) ? io.connect(url, { secure: true }) : io.connect(url);
+        socket = io.connect(url, { secure: (url.indexOf("https") > -1), 'sync disconnect on unload': true });
 
         socket.on('connect', function () {
             var guid = getCookie(cookieName);
@@ -134,11 +131,11 @@ ConsoleJS.Socket = (function (console, io) {
                 showGuid(guid);
             }
 
-            forceConnect();
-
             socket.emit('subscribe', { name: name });
             console.log('Connected to the Server');
             console.log('Subscribing to', { name: name });
+
+            forceConnect();
         });
 
         socket.on('connecting', function (mode) {
