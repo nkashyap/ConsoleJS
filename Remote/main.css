@@ -129,3 +129,185 @@ p {
 ::-webkit-scrollbar-resizer:vertical {
     background-color: red
 }
+
+.toggle {
+    padding: 5px;
+}
+
+.label-log,
+.label-info,
+.label-assert,
+.label-assert-failed,
+.label-count,
+.label-time,
+.label-timeEnd,
+.label-debug,
+.label-warn,
+.label-dir,
+.label-dirxml,
+.label-group,
+.label-groupCollapsed,
+.label-groupEnd,
+.label-markTimeline,
+.label-timeStamp,
+.label-profile,
+.label-profileEnd,
+.label-error,
+.label-trace,
+.label-clear,
+.label-disabled {
+    margin: 3px;
+}
+
+.toggle a.label-disabled:hover,
+.label-disabled {
+    opacity: 0.5;
+}
+
+.toggle a.label-log:hover,
+.label-log {
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.5);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+.toggle .label-info[href],
+.toggle a.label-info:hover,
+.label-info {
+    color: rgb(0, 92, 255);
+    background-color: rgba(0, 177, 255, 0.4);
+    border: 1px solid rgb(0, 92, 255);
+}
+
+.toggle a.label-error:hover,
+.label-error {
+    color: rgb(255, 0, 0);
+    background-color: rgba(255, 0, 0, 0.3);
+    border: 1px solid rgb(255, 0, 0);
+}
+
+.toggle a.label-assert:hover,
+.label-assert {
+    color: rgb(3, 92, 3);
+    background-color: rgba(61, 255, 0, 0.22);
+    border: 1px solid rgb(3, 92, 3);
+}
+
+.toggle a.label-assert-failed:hover,
+.label-assert-failed {
+    color: rgb(255, 0, 0);
+    background-color: rgba(255, 0, 0, 0.3);
+    border: 1px solid rgb(255, 0, 0);
+}
+
+.toggle a.label-count:hover,
+.label-count {
+    color: rgb(9, 109, 117);
+    background-color: rgba(98, 192, 184, 0.60);
+    border: 1px solid rgb(9, 109, 117);
+}
+
+.toggle a.label-time:hover,
+.label-time {
+    color: rgb(44, 46, 117);
+    background-color: rgba(120, 125, 192, 0.60);
+    border: 1px solid rgb(44, 46, 117);
+}
+
+.toggle a.label-timeEnd:hover,
+.label-timeEnd {
+    color: rgb(23, 33, 117);
+    background-color: rgba(120, 78, 192, 0.60);
+    border: 1px solid rgb(23, 33, 117);
+}
+
+.toggle a.label-debug:hover,
+.label-debug {
+    color: rgb(117, 86, 8);
+    background-color: rgba(192, 150, 75, 0.60);
+    border: 1px solid rgb(117, 86, 8);
+}
+
+.toggle a.label-warn:hover,
+.label-warn {
+    color: rgb(167, 153, 9);
+    background-color: rgba(201, 195, 22, 0.5);
+    border: 1px solid rgb(167, 153, 9);
+}
+
+.toggle a.label-dir:hover,
+.label-dir {
+    color: rgb(41, 117, 75);
+    background-color: rgba(114, 192, 162, 0.60);
+    border: 1px solid rgb(41, 117, 75);
+}
+
+.toggle a.label-dirxml:hover,
+.label-dirxml {
+    color: rgb(44, 117, 20);
+    background-color: rgba(130, 192, 93, 0.60);
+    border: 1px solid rgb(44, 117, 20);
+}
+
+.toggle a.label-trace:hover,
+.label-trace {
+    color: rgb(117, 17, 112);
+    background-color: rgba(237, 134, 217, 0.60);
+    border: 1px solid rgb(117, 17, 112);
+}
+
+.toggle a.label-clear:hover,
+.label-clear {
+    color: rgb(53, 117, 110);
+    background-color: rgba(159, 192, 189, 0.60);
+    border: 1px solid rgb(53, 117, 110);
+}
+
+.toggle a.label-group:hover,
+.label-group {
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+.toggle a.label-groupCollapsed:hover,
+.label-groupCollapsed {
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+.toggle a.label-groupEnd:hover,
+.label-groupEnd {
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+.toggle a.label-markTimeline:hover,
+.label-markTimeline {
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+.toggle a.label-timeStamp:hover,
+.label-timeStamp {
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+.toggle a.label-profile:hover,
+.label-profile {
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}
+
+.toggle a.label-profileEnd:hover,
+.label-profileEnd {
+    color: rgb(111, 114, 117);
+    background-color: rgba(192, 192, 192, 0.6);
+    border: 1px solid rgb(111, 114, 117);
+}

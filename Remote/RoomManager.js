@@ -39,6 +39,10 @@ ConsoleJS.Remote.RoomManager.prototype.subscribed = function subscribed(data) {
     var room = this.getRoom(data);
     if (room) {
         room.subscribed();
+
+        ConsoleJS.Utils.forEach(this.server.room.console.filters, function (value) {
+            room.filterLog(value, true);
+        });
     }
 };
 
@@ -88,7 +92,7 @@ ConsoleJS.Remote.RoomManager.prototype.setActive = function setActive(room) {
 };
 
 ConsoleJS.Remote.RoomManager.prototype.command = function command(data) {
-    if (this.activeRoom && this.activeRoom.name !== this.server.room.name) {
+    if (this.activeRoom && this.activeRoom.name !== this.server.room.name && data.indexOf('filter:') === -1) {
         this.activeRoom.command(data);
     } else {
         var room,

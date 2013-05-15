@@ -16,7 +16,7 @@ ConsoleJS.Socket = (function (console, io) {
         forceInterval,
         cookieName = "guid",
         pendingRequests = [],
-		paused = false,
+        paused = false,
         subscribed = false,
         connectionMode = null,
         domReady = false,
@@ -53,16 +53,17 @@ ConsoleJS.Socket = (function (console, io) {
         pendingRequests = [];
     }
 
-	function pause() {
-        return paused = true;
+    function pause() {
+        paused = true;
+        return paused;
     }
-	
-	function resume() {
+
+    function resume() {
         paused = false;
-		processPendingRequest();
-		return paused;
+        processPendingRequest();
+        return paused;
     }
-	
+
     function getConnectionMode() {
         return connectionMode;
     }
@@ -228,8 +229,8 @@ ConsoleJS.Socket = (function (console, io) {
     return {
         getConnectionStatus: getConnectionStatus,
         getConnectionMode: getConnectionMode,
-		pause: pause,
-		resume: resume
+        pause: pause,
+        resume: resume
     };
 
 })(ConsoleJS, io);

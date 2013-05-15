@@ -16,7 +16,7 @@ ConsoleJS.Remote.Console = function Console(room) {
     this.content = null;
     this.count = 0;
     this.styles = {};
-
+    this.filters = [];
     var store = ConsoleJS.Remote.Store.Memory.get(this.name);
     this.preservedLogs = store ? store.length : 0;
 }
@@ -85,6 +85,23 @@ ConsoleJS.Remote.Console.prototype.show = function show() {
     activeContent.addClass('active');
 };
 
+ConsoleJS.Remote.Console.prototype.filter = function filter(type, state) {
+    var index = this.filters.indexOf(type),
+        css = '.console.type-' + type;
+
+    if (state) {
+        if (index === -1) {
+            this.filters.push(type);
+            $(css).addClass("hidden");
+        }
+    } else {
+        if (index > -1) {
+            this.filters.splice(index, 1);
+            $(css).removeClass("hidden");
+        }
+    }
+};
+
 ConsoleJS.Remote.Console.prototype.log = function log(data, notify) {
     var tag = 'code',
         css = data.type,
@@ -125,6 +142,10 @@ ConsoleJS.Remote.Console.prototype.log = function log(data, notify) {
 
     if (['assert', 'dir', 'dirxml', 'error', 'trace'].indexOf(data.type) > -1) {
         tag = 'pre';
+    }
+
+    if (this.filters.indexOf(css) > -1) {
+        css += ' hidden';
     }
 
     var msg = $('<' + tag + ' class="console type-' + css + ' ' + this.getStyles(data.guid) + '">' + (messagePreview || '.') + '</' + tag + '>');

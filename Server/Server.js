@@ -42,9 +42,9 @@ module.exports.start = function start(config) {
 
     socketServer.configure(function () {
         socketServer.enable('browser client minification');
-        socketServer.enable('browser client etag');
-        socketServer.enable('browser client gzip');
-        socketServer.set('log level', 2);
+        //socketServer.enable('browser client etag');
+        //socketServer.enable('browser client gzip');
+        //socketServer.set('log level', 2);
         socketServer.set('transports', [
             'websocket',
             'htmlfile',

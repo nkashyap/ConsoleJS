@@ -83,9 +83,19 @@ ConsoleJS.Remote.Room.prototype.command = function command(data) {
         this.console.clear();
     }
 
+    if (data.indexOf('filter:') === 0) {
+        data = data.split(":");
+        this.filterLog(data[1], data[2] === "true");
+        return false;
+    }
+
     if (this.isSubscribed) {
         this.emit('command', { name: this.name, data: data });
     }
+};
+
+ConsoleJS.Remote.Room.prototype.filterLog = function filterLog(type, state) {
+    this.console.filter(type, state);
 };
 
 ConsoleJS.Remote.Room.prototype.log = function log(data) {
