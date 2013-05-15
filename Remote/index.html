@@ -51,6 +51,7 @@
                     </ul>
                 </div>
                 <div id="quickCommands" class="btn-group pull-right">
+					<a href="#" class="btn btn-primary">Pause</a>
                     <a href="#" class="btn btn-danger">Clear</a>
                     <a href="#" class="btn btn-warning">Reload</a>
                     <a href="#" class="btn btn-info">Ping</a>
@@ -172,6 +173,14 @@
                         break;
                     case 'ping':
                         cmd = '"ping..."';
+                        break;
+					case 'pause':
+                        cmd = 'ConsoleJS.Socket.pause()';
+						scope.html('Resume');
+                        break;
+					case 'resume':
+                        cmd = 'ConsoleJS.Socket.resume()';
+						scope.html('Pause');
                         break;
                     case 'clear':
                         cmd = 'console.clear()';

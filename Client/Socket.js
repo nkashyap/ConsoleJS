@@ -16,6 +16,7 @@ ConsoleJS.Socket = (function (console, io) {
         forceInterval,
         cookieName = "guid",
         pendingRequests = [],
+		paused = false,
         subscribed = false,
         connectionMode = null,
         domReady = false,
@@ -37,7 +38,7 @@ ConsoleJS.Socket = (function (console, io) {
 
 
     function request(eventName, data) {
-        if (socket && socket.socket.connected && subscribed) {
+        if (socket && socket.socket.connected && subscribed && !paused) {
             data.name = name;
             socket.emit(eventName, data);
         } else {
@@ -52,6 +53,16 @@ ConsoleJS.Socket = (function (console, io) {
         pendingRequests = [];
     }
 
+	function pause() {
+        return paused = true;
+    }
+	
+	function resume() {
+        paused = false;
+		processPendingRequest();
+		return paused;
+    }
+	
     function getConnectionMode() {
         return connectionMode;
     }
@@ -216,7 +227,9 @@ ConsoleJS.Socket = (function (console, io) {
 
     return {
         getConnectionStatus: getConnectionStatus,
-        getConnectionMode: getConnectionMode
+        getConnectionMode: getConnectionMode,
+		pause: pause,
+		resume: resume
     };
 
 })(ConsoleJS, io);

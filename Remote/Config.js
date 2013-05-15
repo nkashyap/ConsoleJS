@@ -19,8 +19,8 @@ ConsoleJS.Remote.Config = (function () {
     if (!settings) {
         settings = {
             preserveLogs: true,
-            maxLogPreserved: 50,
-            maxLogs: 50,
+            maxLogPreserved: 500,
+            maxLogs: 500,
             cache: 1.5
         };
 
