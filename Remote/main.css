@@ -82,52 +82,29 @@ p {
     box-shadow: 0 0 5px 1px #888;
 }
 
-::-webkit-scrollbar {
-    width: 15px
+.CodeMirror {
+    border: 1px solid #ddd;
+    height: 150px;
+    width:100%;
+    margin-bottom: 10px;
 }
 
-::-webkit-scrollbar-button:vertical {
-    background-color: transparent;
-    height: 5px
+.CodeMirror-activeline-background {
+    background: #e8f2ff !important;
 }
 
-::-webkit-scrollbar-button:start:decrement {
-    display: block
+.CodeMirror-focused .cm-matchhighlight {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFklEQVQI12NgYGBgkKzc8x9CMDAwAAAmhwSbidEoSQAAAABJRU5ErkJggg==);
+    background-position: bottom;
+    background-repeat: repeat-x;
 }
 
-::-webkit-scrollbar-button:end:increment {
-    display: block
+.CodeMirror-empty.CodeMirror-focused {
+    outline: none;
 }
 
-::-webkit-scrollbar-button:vertical:start:increment {
-    display: none
-}
-
-::-webkit-scrollbar-button:vertical:end:decrement {
-    display: none
-}
-
-::-webkit-scrollbar-track-piece {
-    background-color: white
-}
-
-::-webkit-scrollbar-thumb:vertical {
-    background-color: rgba(0, 0, 0, 0.2);
-    height: 50px;
-    border-right: 4px solid white;
-    border-left: 4px solid white
-}
-
-::-webkit-scrollbar-thumb:vertical:hover {
-    background-color: rgba(0, 0, 0, 0.4)
-}
-
-::-webkit-scrollbar-corner:vertical {
-    background-color: white
-}
-
-::-webkit-scrollbar-resizer:vertical {
-    background-color: red
+.CodeMirror pre.CodeMirror-placeholder {
+    color: #999;
 }
 
 .toggle {
@@ -310,4 +287,52 @@ p {
     color: rgb(111, 114, 117);
     background-color: rgba(192, 192, 192, 0.6);
     border: 1px solid rgb(111, 114, 117);
+}
+
+::-webkit-scrollbar {
+    width: 15px
+}
+
+::-webkit-scrollbar-button:vertical {
+    background-color: transparent;
+    height: 5px
+}
+
+::-webkit-scrollbar-button:start:decrement {
+    display: block
+}
+
+::-webkit-scrollbar-button:end:increment {
+    display: block
+}
+
+::-webkit-scrollbar-button:vertical:start:increment {
+    display: none
+}
+
+::-webkit-scrollbar-button:vertical:end:decrement {
+    display: none
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: white
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 50px;
+    border-right: 4px solid white;
+    border-left: 4px solid white
+}
+
+::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: rgba(0, 0, 0, 0.4)
+}
+
+::-webkit-scrollbar-corner:vertical {
+    background-color: white
+}
+
+::-webkit-scrollbar-resizer:vertical {
+    background-color: red
 }

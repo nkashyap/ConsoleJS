@@ -10,7 +10,6 @@ $(document).ready(function () {
     var mainWrapper = $("#main-wrapper"),
         roomTab = $("#connectRooms"),
         roomContent = $("#connectRoomsContent"),
-        commandText = $("#command"),
         commandMenu = $("#commandMenu"),
         quickCommands = $("#quickCommands"),
         toggleLogs = $("#toggleLogs"),
@@ -20,7 +19,19 @@ $(document).ready(function () {
         toggleList = ['log', 'info', 'debug', 'warn', 'dir', 'dirxml', 'assert', 'assert-failed',
             'error', 'trace', 'clear', 'count', 'time', 'timeEnd', 'group', 'groupCollapsed', 'groupEnd',
             'markTimeline', 'timeStamp', 'profile', 'profileEnd'],
-        server = new ConsoleJS.Remote.SocketServer();
+        server = new ConsoleJS.Remote.SocketServer(),
+        editor = CodeMirror.fromTextArea(document.getElementById("command"), {
+            mode: "javascript",
+            lineNumbers: true,
+            matchBrackets: true,
+            autoCloseBrackets: true,
+            statementIndent: true,
+            lineWrapping: true,
+            styleActiveLine: true,
+            highlightSelectionMatches: true,
+            continueComments: "Enter",
+            extraKeys: {"Ctrl-Space": "autocomplete"}
+        });
 
     function addCommands(target, list) {
         var show = false,
@@ -73,6 +84,9 @@ $(document).ready(function () {
                 case "userCommands":
                     cmd = ConsoleJS.Remote.Commands.User[cmdName];
                     break;
+                case "deviceCommands":
+                    cmd = ConsoleJS.Remote.Commands.Device[cmdName];
+                    break;
             }
 
             if (cmd) {
@@ -86,7 +100,7 @@ $(document).ready(function () {
 
             switch (scope.html().toLowerCase()) {
                 case 'send':
-                    cmd = commandText.val();
+                    cmd = editor.getValue();
                     break;
                 case 'ping':
                     cmd = '"ping..."';
@@ -127,21 +141,15 @@ $(document).ready(function () {
     }
 
     function bindEditor() {
-        commandText.keypress(function (e) {
-            if (e.keyCode == 13 && !e.shiftKey) {
-                var data = $(this).val();
-                if (data) {
-                    server.request(data);
-                }
-                e.preventDefault();
-            }
-        });
+        CodeMirror.commands.autocomplete = function(cm) {
+            CodeMirror.showHint(cm, CodeMirror.javascriptHint);
+        };
     }
 
     function sizing() {
         var wrapperHeight = mainWrapper.height(),
             tabHeight = roomTab.height() || 0,
-            contentHeight = wrapperHeight - tabHeight - 200;
+            contentHeight = wrapperHeight - tabHeight - 250;
 
         roomContent.height(contentHeight + "px");
     }
