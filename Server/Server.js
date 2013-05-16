@@ -22,9 +22,12 @@ module.exports.start = function start(config) {
             key: fs.readFileSync('certificates/privatekey.pem'),
             cert: fs.readFileSync('certificates/certificate.pem')
         }, handler);
+
     } else {
         webServer = http.createServer(handler);
     }
+
+    console.log('Remote console URL: ' + (config.secure ? 'https://' : 'http://') + os.hostname() + ':' + config.port);
 
     socketServer = io.listen(webServer);
     manager = new ConnectionManager(socketServer, config);
@@ -44,7 +47,7 @@ module.exports.start = function start(config) {
         socketServer.enable('browser client minification');
         //socketServer.enable('browser client etag');
         //socketServer.enable('browser client gzip');
-        //socketServer.set('log level', 2);
+        socketServer.set('log level', 2);
         socketServer.set('transports', [
             'websocket',
             'htmlfile',

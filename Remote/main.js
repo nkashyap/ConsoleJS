@@ -16,9 +16,11 @@ $(document).ready(function () {
         globalCommands = $("#globalCommands"),
         deviceCommands = $("#deviceCommands"),
         userCommands = $("#userCommands"),
-        toggleList = ['log', 'info', 'debug', 'warn', 'dir', 'dirxml', 'assert', 'assert-failed',
+        toggleList = [
+            'log', 'info', 'debug', 'warn', 'dir', 'dirxml', 'assert', 'assert-failed',
             'error', 'trace', 'clear', 'count', 'time', 'timeEnd', 'group', 'groupCollapsed', 'groupEnd',
-            'markTimeline', 'timeStamp', 'profile', 'profileEnd'],
+            'markTimeline', 'timeStamp', 'profile', 'profileEnd'
+        ],
         server = new ConsoleJS.Remote.SocketServer(),
         editor = CodeMirror.fromTextArea(document.getElementById("command"), {
             mode: "javascript",
@@ -30,7 +32,7 @@ $(document).ready(function () {
             styleActiveLine: true,
             highlightSelectionMatches: true,
             continueComments: "Enter",
-            extraKeys: {"Ctrl-Space": "autocomplete"}
+            extraKeys: {"Ctrl-Space": "autocomplete", "Ctrl-Enter": "submit"}
         });
 
     function addCommands(target, list) {
@@ -141,8 +143,15 @@ $(document).ready(function () {
     }
 
     function bindEditor() {
-        CodeMirror.commands.autocomplete = function(cm) {
+        CodeMirror.commands.autocomplete = function autocomplete(cm) {
             CodeMirror.showHint(cm, CodeMirror.javascriptHint);
+        };
+
+        CodeMirror.commands.submit = function submit() {
+            var cmd = editor.getValue();
+            if (cmd) {
+                server.request(cmd);
+            }
         };
     }
 
