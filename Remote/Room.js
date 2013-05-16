@@ -41,7 +41,7 @@ ConsoleJS.Remote.Room.prototype.add = function add() {
 
 ConsoleJS.Remote.Room.prototype.emit = function emit(eventName, data) {
     if (this.isOnline && eventName === 'unsubscribe') {
-        this.unsubscribed();
+        this.unSubscribed();
     } else {
         this.manager.emit(eventName, data);
     }
