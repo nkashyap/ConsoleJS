@@ -37,7 +37,7 @@ ConsoleJS.Remote.Commands.Global = {
 
 };
 
-ConsoleJS.Remote.Commands.User = {
+ConsoleJS.Remote.Commands.Device = {
     "nav-header-1": "LG",
     "Device Info": "(function(){ " +
         "	var device = document.getElementById('device'); " +
@@ -93,3 +93,4 @@ ConsoleJS.Remote.Commands.User = {
     "divider-5": null
 };
 
+ConsoleJS.Remote.Commands.User = {};

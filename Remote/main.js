@@ -15,6 +15,7 @@ $(document).ready(function () {
         quickCommands = $("#quickCommands"),
         toggleLogs = $("#toggleLogs"),
         globalCommands = $("#globalCommands"),
+        deviceCommands = $("#deviceCommands"),
         userCommands = $("#userCommands"),
         toggleList = ['log', 'info', 'debug', 'warn', 'dir', 'dirxml', 'assert', 'assert-failed',
             'error', 'trace', 'clear', 'count', 'time', 'timeEnd', 'group', 'groupCollapsed', 'groupEnd',
@@ -146,7 +147,9 @@ $(document).ready(function () {
     }
 
     addSwitch(toggleLogs, toggleList);
+
     addCommands(globalCommands, ConsoleJS.Remote.Commands.Global);
+    addCommands(deviceCommands, ConsoleJS.Remote.Commands.Device);
     addCommands(userCommands, ConsoleJS.Remote.Commands.User);
 
     bindCommands();
