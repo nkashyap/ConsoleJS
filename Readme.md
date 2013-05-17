@@ -19,6 +19,31 @@ node Server\Start.js
 
 ## Include following scripts in your website or javascript application
 
+Basic ConsoleJS support for cross-browsers
+
+```html
+<script type="text/javascript" src="http://NodeServerURL:Port/Client/ConsoleJS.js"></script>
+<script type="text/javascript" src="http://NodeServerURL:Port/Client/Browser.js"></script>
+```
+
+ConsoleJS with sockets for remote logging
+
+```html
+<script type="text/javascript" src="http://NodeServerURL:Port/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="http://NodeServerURL:Port/Client/Socket.js"></script>
+```
+
+ConsoleJS with web logging
+
+```html
+<script type="text/javascript" src="http://NodeServerURL:Port/Client/Web.js"></script>
+...
+<link rel="stylesheet" href="http://NodeServerURL:Port/Client/Web.css" type="text/css">
+<link rel="stylesheet" href="http://NodeServerURL:Port/Shared/console.css" type="text/css">
+```
+
+Include files in following order 
+
 ```html
 <script type="text/javascript" src="http://NodeServerURL:Port/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="http://NodeServerURL:Port/Client/ConsoleJS.js"></script>
@@ -29,6 +54,7 @@ node Server\Start.js
 <link rel="stylesheet" href="http://NodeServerURL:Port/Client/Web.css" type="text/css">
 <link rel="stylesheet" href="http://NodeServerURL:Port/Shared/console.css" type="text/css">
 ```
+
 
 Then goto following url to access web console http://NodeServerURL:Port/
 
@@ -60,6 +86,8 @@ Then goto following url to access web console http://NodeServerURL:Port/
 #TODO
  * Change it into npm module
  * Move browser detect into server
+ * refactor code to use express.io
+ * Load addons dynamically (e.g web, socket, etc)
 
 #Copyright and license
  MIT-LICENSE
