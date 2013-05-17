@@ -43,30 +43,36 @@ ConsoleJS.Browser = (function () {
             return parseFloat(version);
         },
         dataBrowser: [
-            {     string: navigator.userAgent,
+            {
+                string: navigator.userAgent,
                 subString: "LG Browser",
                 versionSearch: "Browser",
                 identity: "LG"
             },
-            {     string: navigator.userAgent,
+            {
+                string: navigator.userAgent,
                 subString: "Maple",
                 identity: "Maple"
             },
-            {     string: navigator.userAgent,
+            {
+                string: navigator.userAgent,
                 subString: "Philips",
                 versionSearch: "Version/",
                 identity: "Philips"
             },
-            {     string: navigator.userAgent,
+            {
+                string: navigator.userAgent,
                 subString: "ToshibaTP",
                 versionSearch: "ToshibaTP/",
                 identity: "ToshibaTP"
             },
-            {     string: navigator.userAgent,
+            {
+                string: navigator.userAgent,
                 subString: "Mstar",
                 identity: "Technika"
             },
-            {     string: navigator.userAgent,
+            {
+                string: navigator.userAgent,
                 subString: "Technika Media Streamer",
                 versionSearch: "Espial Browser/sig",
                 identity: "Technika Espial"
@@ -76,7 +82,8 @@ ConsoleJS.Browser = (function () {
                 subString: "Chrome",
                 identity: "Chrome"
             },
-            {     string: navigator.userAgent,
+            {
+                string: navigator.userAgent,
                 subString: "OmniWeb",
                 versionSearch: "OmniWeb/",
                 identity: "OmniWeb"
@@ -176,6 +183,11 @@ ConsoleJS.Browser = (function () {
                 string: navigator.userAgent,
                 subString: "NETTV/4.0",
                 identity: "NETTV/4.0-2012"
+            },
+            {
+                string: navigator.userAgent,
+                subString: "SmartTV+2013",
+                identity: "Samsung-2013"
             },
             {
                 string: navigator.userAgent,
