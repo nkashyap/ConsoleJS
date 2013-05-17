@@ -55,8 +55,22 @@ Include files in following order
 <link rel="stylesheet" href="http://NodeServerURL:Port/Shared/console.css" type="text/css">
 ```
 
-
 Then goto following url to access web console http://NodeServerURL:Port/
+
+![Screen shot](https://raw.github.com/nkashyap/ConsoleJS/master/consoleJS.PNG)
+
+#ConsoleJS Editor
+
+You can execute commands on remote client from ConsoleJS. You can execute single & multilines javascript code.
+
+Shortcuts: Ctrl+Enter to execute command and Ctrl+Space for autocomplate
+
+Note: All multilines code should be wrapped within self executable function. E.G
+```html
+(function doSomeThing(){
+ .......
+}())
+```
 
 #Console API methods supported
  * console.assert(x)
@@ -88,6 +102,7 @@ Then goto following url to access web console http://NodeServerURL:Port/
  * Move browser detect into server
  * refactor code to use express.io
  * Load addons dynamically (e.g web, socket, etc)
+ * Update Readme with full feature list
 
 #Copyright and license
  MIT-LICENSE
