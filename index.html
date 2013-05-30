@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Consolejs by nkashyap</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/nkashyap/ConsoleJS">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Consolejs</h1>
+            <h2>Javascript remote console logging</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/nkashyap/ConsoleJS/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/nkashyap/ConsoleJS/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a name="consolejs" class="anchor" href="#consolejs"><span class="octicon octicon-link"></span></a>ConsoleJS</h1>
+
+<p>ConsoleJS is a Node.JS project. Its provide Remote Web Console for websites, Javascript, Smart Tv, mobile phones apps.
+It uses socket.io to provide real time response from the browsers.</p>
+
+<p>Its works pretty much on all modern browsers, mobile devices, Smart TVs, etc</p>
+
+<h2>
+<a name="install-socketio" class="anchor" href="#install-socketio"><span class="octicon octicon-link"></span></a>Install Socket.io</h2>
+
+<div class="highlight"><pre>npm install socket.io
+</pre></div>
+
+<h2>
+<a name="start-server" class="anchor" href="#start-server"><span class="octicon octicon-link"></span></a>Start server</h2>
+
+<div class="highlight"><pre>node Server<span class="se">\S</span>tart.js
+</pre></div>
+
+<h2>
+<a name="include-following-scripts-in-your-website-or-javascript-application" class="anchor" href="#include-following-scripts-in-your-website-or-javascript-application"><span class="octicon octicon-link"></span></a>Include following scripts in your website or javascript application</h2>
+
+<p>Basic ConsoleJS support for cross-browsers</p>
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"http://NodeServerURL:Port/Client/ConsoleJS.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"http://NodeServerURL:Port/Client/Browser.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<p>ConsoleJS with sockets for remote logging</p>
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"http://NodeServerURL:Port/socket.io/socket.io.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"http://NodeServerURL:Port/Client/Socket.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<p>ConsoleJS with web logging</p>
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"http://NodeServerURL:Port/Client/Web.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+...
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"http://NodeServerURL:Port/Client/Web.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"http://NodeServerURL:Port/Shared/console.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+</pre></div>
+
+<p>Include files in following order </p>
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"http://NodeServerURL:Port/socket.io/socket.io.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"http://NodeServerURL:Port/Client/ConsoleJS.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"http://NodeServerURL:Port/Client/Browser.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"http://NodeServerURL:Port/Client/Socket.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"http://NodeServerURL:Port/Client/Web.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+...
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"http://NodeServerURL:Port/Client/Web.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"http://NodeServerURL:Port/Shared/console.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+</pre></div>
+
+<p>Then goto following url to access web console http://NodeServerURL:Port/</p>
+
+<p><img src="https://raw.github.com/nkashyap/ConsoleJS/master/consoleJS.PNG" alt="Screen shot"></p>
+
+<h1>
+<a name="consolejs-editor" class="anchor" href="#consolejs-editor"><span class="octicon octicon-link"></span></a>ConsoleJS Editor</h1>
+
+<p>You can execute commands on remote client from ConsoleJS. You can execute single &amp; multilines javascript code.</p>
+
+<p>Shortcuts: Ctrl+Enter to execute command and Ctrl+Space for autocomplate</p>
+
+<p>Note: All multilines code should be wrapped within self executable function. E.G</p>
+
+<div class="highlight"><pre>(function doSomeThing(){
+ .......
+}())
+</pre></div>
+
+<h1>
+<a name="console-api-methods-supported" class="anchor" href="#console-api-methods-supported"><span class="octicon octicon-link"></span></a>Console API methods supported</h1>
+
+<ul>
+<li>console.assert(x)</li>
+<li>console.count(key)</li>
+<li>console.time(name, reset)</li>
+<li>console.timeEnd(name)</li>
+<li>console.debug(arguments...)</li>
+<li>console.warn(arguments...)</li>
+<li>console.info(arguments...)</li>
+<li>console.log(arguments...)</li>
+<li>console.dir(object)</li>
+<li>console.dirxml(HTML Element)</li>
+<li>console.error(error)</li>
+<li>console.exception(error)</li>
+<li>console.trace()</li>
+</ul><h1>
+<a name="coming-soon" class="anchor" href="#coming-soon"><span class="octicon octicon-link"></span></a>Coming soon...</h1>
+
+<ul>
+<li>console.group()</li>
+<li>console.groupCollapsed()</li>
+<li>console.groupEnd()</li>
+<li>console.markTimeline()</li>
+<li>console.timestamp()</li>
+<li>console.profiles</li>
+<li>console.profile()</li>
+<li>console.profileEnd()</li>
+</ul><h1>
+<a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>TODO</h1>
+
+<ul>
+<li>Change it into npm module</li>
+<li>Move browser detect into server</li>
+<li>refactor code to use express.io</li>
+<li>Load addons dynamically (e.g web, socket, etc)</li>
+<li>Update Readme with full feature list</li>
+</ul><h1>
+<a name="copyright-and-license" class="anchor" href="#copyright-and-license"><span class="octicon octicon-link"></span></a>Copyright and license</h1>
+
+<p>MIT-LICENSE</p>
+
+<h1>
+<a name="reference" class="anchor" href="#reference"><span class="octicon octicon-link"></span></a>Reference</h1>
+
+<p><a href="https://github.com/eriwen/javascript-stacktrace">Javascript Stacktrace</a></p>
+
+<p><a href="http://socket.io/#how-to-use">Socket.io</a></p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/nkashyap">nkashyap</a> can be found on <a href="https://github.com/nkashyap/ConsoleJS">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
