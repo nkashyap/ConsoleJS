@@ -1,3 +1,6 @@
+# NOTE 
+Check Concole.IO at http://nkashyap.github.io/console.io/ for new and enhanced features. 
+
 # ConsoleJS
 
 ConsoleJS is a Node.JS project. Its provide Remote Web Console for websites, Javascript, Smart Tv, mobile phones apps.
