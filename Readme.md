@@ -1,5 +1,5 @@
 # NOTE 
-Check Concole.IO at http://nkashyap.github.io/console.io/ for new and enhanced features. 
+Check Console.IO at http://nkashyap.github.io/console.io/ for new and enhanced features. 
 
 # ConsoleJS
 
